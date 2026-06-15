@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٢ — البيانات الرئيسية | معهد ريادة الغد</title>
+<meta name="description" content="وثيقة المرحلة الثانية — إدارة البيانات الرئيسية: شركات، أقسام، برامج تدريبية، مجموعات، قاعات، موظفون، وتعيين المدربين. CRUD كامل مع Cascade Soft-Delete وBulk Renewal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============= TOP NAV ============= -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html" class="active">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- ============= BREADCRUMB ============= -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٢ — البيانات الرئيسية</span>
+  </div>
+</div>
+
+<!-- ============= PAGE HERO ============= -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: متوسط · ⏱ أسبوعان</div>
+    <div class="hero-label">المرحلة ٠٢ من ١٠ · Master Data Management</div>
+    <h1>البيانات الرئيسية<br><span>Master Data Management</span></h1>
+    <p class="hero-desc">
+      العمود الفقري لكامل النظام — هذه المرحلة تبني الهياكل التي يرتكز عليها كل شيء لاحق. من الشركة الشريكة وعقدها،
+      إلى القسم والبرنامج التدريبي، وصولاً إلى المجموعة والقاعة. بدون هذه البيانات لا يمكن تسجيل متدرب واحد،
+      ولا تتبُّع حضور، ولا إصدار مخالفة. كما تتضمن منطق إنهاء العقد المبكر مع cascade كامل، وتجديد جماعي
+      لعقود الشركات.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>٧</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>٧</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>٢٧</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>٢</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= PHASE NAVIGATOR ============= -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot current"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- ============= PAGE BODY ============= -->
+<div class="page-body">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ===== SECTION 1: SUMMARY ===== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة الثانية تحوِّل البنية التقنية الفارغة من المرحلة الأولى إلى منظومة بيانات حية — شركات بعقودها،
+        أقسامها، برامجها، مجموعاتها، قاعاتها، وموظفيها. إنها "قاموس" المعهد الكامل الذي تستهلكه جميع المراحل التالية.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p2">
+          <h3>🎯 الهدف</h3>
+          <p>
+            بناء CRUD كامل وصحيح لكل الكيانات الرئيسية في النظام، مع تطبيق قواعد العمل الجوهرية كـ Cascade Soft-Delete
+            عند إنهاء عقد شركة، وفرض gender restriction من البرنامج على المجموعة، وحماية تعارض حجوزات القاعات.
+          </p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li>٧ جداول قاعدة بيانات مكتملة الحقول</li>
+            <li>٢٧ API Endpoint مع validation كامل</li>
+            <li>٧ شاشات إدارة في الـ Frontend</li>
+            <li>Cascade Soft-Delete لإنهاء العقد المبكر</li>
+            <li>Bulk Renewal لتجديد عقود متعددة دفعة واحدة</li>
+            <li>نظام تعيين المدربين للمجموعات</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li>Phase 01: JWT Auth + Middleware جاهز</li>
+            <li>Phase 01: Tenant Isolation على مستوى DB</li>
+            <li>Phase 01: Audit Log للعمليات الحساسة</li>
+            <li>Phase 01: Role-Based Guards (Manager, Staff)</li>
+            <li>Phase 01: Upload Service لرفع الشعارات</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong>Phase 03 (التسجيل):</strong> يحتاج training_programs + groups لرابط التسجيل.<br>
+            <strong>Phase 04 (المتدرب):</strong> يحتاج companies + departments لملف المتدرب.<br>
+            <strong>Phase 05 (الحضور):</strong> يحتاج groups + rooms لجدول الحضور.<br>
+            <strong>Phase 07 (المخالفات):</strong> يحتاج employees لمسار المخالفات.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: WHY ===== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">الهيكل قبل الحركة — لماذا تأتي البيانات الرئيسية أولاً؟</h2>
+      <p class="section-desc">
+        النظام يعمل بتسلسل هرمي صارم: <strong>Company → Department → Training Program → Group → Trainee</strong>.
+        أي عملية في النظام — تسجيل متدرب، تتبُّع حضور، إصدار مخالفة، دفع راتب — تحتاج أن تُشير إلى عنصر
+        في هذه الشجرة. إذا بدأنا بـ Phase 03 (التسجيل) دون أن توجد برامج ومجموعات، ستنكسر كل عملية.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>🏢 الشركة كأساس العقد</h4>
+          <p>
+            المعهد يعمل بنموذج B2B — كل متدرب يأتي من شركة شريكة بعقد محدد المدة. بدون كيان company مع
+            contract_start_date وcontract_end_date لا يمكن حساب صلاحية تسجيل أي متدرب.
+          </p>
+        </div>
+        <div class="card">
+          <h4>📋 البرنامج كـ Template</h4>
+          <p>
+            training_program هو القالب الثابت (مدة، أيام، سعر، ظرفية). أما group فهو "النسخة" التي تُفتح
+            في تواريخ محددة. هذا الفصل يسمح بتكرار البرنامج عشرات المرات دون تكرار الإعداد.
+          </p>
+        </div>
+        <div class="card">
+          <h4>🚪 القاعة كـ Resource محدود</h4>
+          <p>
+            كل group مرتبط بـ room. القاعدة 2.7 تمنع تعارض الحجوزات — لا يمكن لمجموعتين أن تشتركا
+            في نفس القاعة في أوقات متداخلة. هذا يتطلب وجود بيانات الغرف قبل إنشاء أي مجموعة.
+          </p>
+        </div>
+      </div>
+
+      <div class="alert al-gold mt-5">
+        <span class="ico">⚡</span>
+        <div>
+          <strong>الترتيب الحاسم:</strong> لا يمكن إنشاء department بدون company نشطة. لا يمكن إنشاء program
+          بدون department نشطة. لا يمكن إنشاء group بدون program. هذا التسلسل محمي بـ Foreign Key Constraints
+          ومُعزَّز ببusiness validation في كل API.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: MODULES ===== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">كل وحدة وما تُقدِّمه</h2>
+
+      <div class="grid grid-3">
+        <div class="card card-accent c-p2">
+          <div class="card-head">
+            <div class="card-icon">🏢</div>
+            <div>
+              <div class="card-title">إدارة الشركات</div>
+              <div class="card-sub">Companies Management</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>CRUD كامل مع كل الحقول الموسَّعة</li>
+            <li>رفع شعار الشركة (logo_url)</li>
+            <li>إنهاء عقد مبكر مع سبب</li>
+            <li>تجديد جماعي لعقود متعددة</li>
+            <li>تتبع حالة العقد (نشط / منتهي)</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📂</div>
+            <div>
+              <div class="card-title">إدارة الأقسام</div>
+              <div class="card-sub">Departments Management</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>ربط كل قسم بشركة نشطة</li>
+            <li>تحديد مسؤول القسم</li>
+            <li>Soft-Delete عند تعطيل الشركة</li>
+            <li>عرض أقسام شركة بعينها</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">📚</div>
+            <div>
+              <div class="card-title">البرامج التدريبية</div>
+              <div class="card-sub">Training Programs</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>كود فريد للبرنامج (code)</li>
+            <li>مدة بالأسابيع وأيام الدوام الأسبوعية</li>
+            <li>سعة دنيا وقصوى (min/max capacity)</li>
+            <li>قيود الجنس (male/female/mixed)</li>
+            <li>ربط بقسم نشط</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">👥</div>
+            <div>
+              <div class="card-title">المجموعات</div>
+              <div class="card-sub">Groups Management</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>حساب end_date تلقائياً من البرنامج</li>
+            <li>تعيين مدرب وقاعة</li>
+            <li>حماية من تعارض حجوزات القاعة</li>
+            <li>حالات: planned / active / completed / cancelled</li>
+            <li>ورث gender restriction من البرنامج</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">🚪</div>
+            <div>
+              <div class="card-title">القاعات والغرف</div>
+              <div class="card-sub">Rooms Management</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>سعة، موقع، مبنى، طابق</li>
+            <li>قائمة المعدات المتاحة</li>
+            <li>فحص تعارض الحجوزات</li>
+            <li>تفعيل وتعطيل القاعة</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-p2">
+          <div class="card-head">
+            <div class="card-icon">👤</div>
+            <div>
+              <div class="card-title">الموظفون والمدربون</div>
+              <div class="card-sub">Employees & Trainers</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>ربط بـ user_id من Phase 01</li>
+            <li>البيانات الوظيفية (الراتب، تاريخ التعيين)</li>
+            <li>تعيين مدربين لمجموعات</li>
+            <li>مدرب رئيسي vs مساعد (is_primary)</li>
+            <li>تتبع الفترات الزمنية للتعيين</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: SCREENS ===== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">٧ شاشات إدارية لضبط البيانات الرئيسية</h2>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الصفحة</th>
+              <th>المسار (Route)</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-orange">01</span></td>
+              <td>إدارة الشركات</td>
+              <td><code>/admin/companies</code></td>
+              <td>جدول شركات مع فلترة وبحث، نموذج إنشاء/تعديل، أزرار إنهاء عقد مبكر وتجديد جماعي</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gray">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">02</span></td>
+              <td>إدارة الأقسام</td>
+              <td><code>/admin/departments</code></td>
+              <td>أقسام مُجمَّعة حسب الشركة، فلتر بالشركة، نموذج إنشاء مع picker للشركة النشطة</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gray">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">03</span></td>
+              <td>البرامج التدريبية</td>
+              <td><code>/admin/training-programs</code></td>
+              <td>قائمة برامج مع الكود والمدة والسعة، فلتر بالقسم والشركة، نموذج متكامل</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gray">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">04</span></td>
+              <td>إدارة المجموعات</td>
+              <td><code>/admin/groups</code></td>
+              <td>جدول مجموعات مع الحالة واللون، عرض المدرب والقاعة، تحديث الحالة، نموذج إنشاء ذكي</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gray">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">05</span></td>
+              <td>إدارة القاعات</td>
+              <td><code>/admin/rooms</code></td>
+              <td>بطاقات القاعات مع السعة والمعدات، جدول حجوزات مدمج، نموذج إضافة/تعديل</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gray">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">06</span></td>
+              <td>إدارة الموظفين</td>
+              <td><code>/admin/employees</code></td>
+              <td>قائمة موظفين مع الدور والشركة والراتب، نموذج ربط بـ user_id، تصفية حسب الشركة</td>
+              <td><span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">07</span></td>
+              <td>تعيين المدربين</td>
+              <td><code>/admin/trainer-assignments</code></td>
+              <td>واجهة drag-and-drop أو Picker — اختر مجموعة، اختر مدرباً، حدد هل هو رئيسي أم مساعد</td>
+              <td><span class="badge b-navy">Manager</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert al-teal mt-5">
+        <span class="ico">💡</span>
+        <div>
+          <strong>ملاحظة UX:</strong> شاشة الشركات تحتوي على زرَّين حساسَين — "إنهاء العقد المبكر" و"التجديد الجماعي".
+          كلاهما يجب أن يُظهر Dialog تأكيد مع ملخص العمليات قبل التنفيذ، لأن التأثيرات متسلسلة ولا رجعة منها بدون
+          إعادة تفعيل يدوية.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: DATABASE ===== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">٧ جداول — العمود الفقري للنظام</h2>
+
+      <div class="grid grid-3">
+
+        <!-- Table 1: companies -->
+        <div class="db-card">
+          <div class="db-head dh-gold">🏢 companies</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">name · varchar(200) NOT NULL</div>
+            <div class="db-field">address · text</div>
+            <div class="db-field">phone · varchar(20)</div>
+            <div class="db-field">email · varchar(150)</div>
+            <div class="db-field">commercial_registry · varchar(50) UNIQUE</div>
+            <div class="db-field">tax_id · varchar(50)</div>
+            <div class="db-field">activity_type · varchar(100)</div>
+            <div class="db-field">contract_start_date · date NOT NULL</div>
+            <div class="db-field">contract_end_date · date NOT NULL</div>
+            <div class="db-field">logo_url · text</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+            <div class="db-field">early_terminated_at · timestamptz</div>
+            <div class="db-field">early_terminated_reason · text</div>
+            <div class="db-field">notes · text</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+            <div class="db-field">updated_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- Table 2: departments -->
+        <div class="db-card">
+          <div class="db-head dh-gold">📂 departments</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>company_id → companies.id</div>
+            <div class="db-field">name · varchar(150) NOT NULL</div>
+            <div class="db-field">head_of_department · varchar(100)</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- Table 3: training_programs -->
+        <div class="db-card">
+          <div class="db-head dh-gold">📚 training_programs</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>department_id → departments.id</div>
+            <div class="db-field">name · varchar(200) NOT NULL</div>
+            <div class="db-field">code · varchar(30) UNIQUE NOT NULL</div>
+            <div class="db-field">duration_weeks · integer NOT NULL</div>
+            <div class="db-field">days_per_week · integer NOT NULL</div>
+            <div class="db-field">price · numeric(12,2)</div>
+            <div class="db-field">min_capacity · integer DEFAULT 5</div>
+            <div class="db-field">max_capacity · integer NOT NULL</div>
+            <div class="db-field">gender_restriction · enum(male, female, mixed) DEFAULT mixed</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+          </div>
+        </div>
+
+        <!-- Table 4: groups -->
+        <div class="db-card">
+          <div class="db-head dh-gold">👥 groups</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>program_id → training_programs.id</div>
+            <div class="db-field"><span class="fk">FK</span>trainer_id → employees.id</div>
+            <div class="db-field"><span class="fk">FK</span>room_id → rooms.id</div>
+            <div class="db-field">name · varchar(100) NOT NULL</div>
+            <div class="db-field">start_date · date NOT NULL</div>
+            <div class="db-field">end_date · date NOT NULL</div>
+            <div class="db-field">max_trainees · integer NOT NULL</div>
+            <div class="db-field">current_trainees · integer DEFAULT 0</div>
+            <div class="db-field">gender · enum(male, female, mixed)</div>
+            <div class="db-field">status · enum(planned, active, completed, cancelled)</div>
+          </div>
+        </div>
+
+        <!-- Table 5: rooms -->
+        <div class="db-card">
+          <div class="db-head dh-gold">🚪 rooms</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">name · varchar(100) NOT NULL</div>
+            <div class="db-field">building · varchar(100)</div>
+            <div class="db-field">floor · varchar(20)</div>
+            <div class="db-field">capacity · integer NOT NULL</div>
+            <div class="db-field">equipment · jsonb DEFAULT '[]'</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+          </div>
+        </div>
+
+        <!-- Table 6: employees -->
+        <div class="db-card">
+          <div class="db-head dh-gold">👤 employees</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>user_id → users.id</div>
+            <div class="db-field"><span class="fk">FK</span>company_id → companies.id</div>
+            <div class="db-field">job_title · varchar(100)</div>
+            <div class="db-field">hire_date · date</div>
+            <div class="db-field">gender · enum(male, female)</div>
+            <div class="db-field">national_id · varchar(20) UNIQUE</div>
+            <div class="db-field">salary_base · numeric(12,2)</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+          </div>
+        </div>
+
+        <!-- Table 7: trainer_assignments -->
+        <div class="db-card">
+          <div class="db-head dh-gold">📌 trainer_assignments</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>trainer_id → employees.id</div>
+            <div class="db-field"><span class="fk">FK</span>group_id → groups.id</div>
+            <div class="db-field">start_date · date NOT NULL</div>
+            <div class="db-field">end_date · date</div>
+            <div class="db-field">is_primary · boolean DEFAULT true</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Relationships -->
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># تسلسل هرمي رئيسي</span>
+companies      <span class="c-key">1:N</span>  departments
+departments    <span class="c-key">1:N</span>  training_programs
+training_programs <span class="c-key">1:N</span>  groups
+groups         <span class="c-key">M:N</span>  employees  <span class="c-com">(عبر trainer_assignments)</span>
+rooms          <span class="c-key">1:N</span>  groups     <span class="c-com">(room يُحجز لمجموعة)</span>
+
+<span class="c-com"># علاقات الموظفين</span>
+users          <span class="c-key">1:1</span>  employees  <span class="c-com">(كل موظف له حساب مستخدم)</span>
+companies      <span class="c-key">1:N</span>  employees  <span class="c-com">(موظفو الشركة)</span>
+
+<span class="c-com"># Cascade Soft-Delete</span>
+companies.is_active = <span class="c-key">false</span>
+  → departments.is_active = <span class="c-key">false</span>
+    → training_programs.is_active = <span class="c-key">false</span>
+      → groups.status = <span class="c-key">'cancelled'</span>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: APIS ===== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">٢٧ نقطة اتصال موزَّعة على ٧ موارد</h2>
+
+      <!-- Companies -->
+      <div class="api-group">
+        <div class="api-group-title">🏢 الشركات — Companies</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/companies</span>
+            <span class="api-desc">قائمة شركات مع pagination وفلتر is_active + بحث بالاسم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/companies</span>
+            <span class="api-desc">إنشاء شركة جديدة مع validation كامل على commercial_registry</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/companies/:id</span>
+            <span class="api-desc">تفاصيل شركة مع أعداد أقسامها وبرامجها ومجموعاتها النشطة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/companies/:id</span>
+            <span class="api-desc">تعديل بيانات الشركة — لا يُغيِّر early_terminated_at</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/companies/:id</span>
+            <span class="api-desc">Soft-Delete — يُعيِّن is_active=false فقط إذا لم تكن هناك مجموعات active</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/companies/:id/terminate</span>
+            <span class="api-desc">إنهاء عقد مبكر — يحفظ reason وتاريخ التنفيذ ويُشغِّل Cascade</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/companies/bulk-renew</span>
+            <span class="api-desc">تجديد جماعي — body: { company_ids: [], extend_months: N } كل شيء في transaction واحدة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Departments -->
+      <div class="api-group">
+        <div class="api-group-title">📂 الأقسام — Departments</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/departments</span>
+            <span class="api-desc">قائمة أقسام — يقبل query param ?company_id للفلترة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/departments</span>
+            <span class="api-desc">إنشاء قسم — يتحقق أن company_id يشير لشركة نشطة (Rule 2.1)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/departments/:id</span>
+            <span class="api-desc">تعديل بيانات القسم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/departments/:id</span>
+            <span class="api-desc">Soft-Delete — is_active=false يسري على programs تبعاً</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training Programs -->
+      <div class="api-group">
+        <div class="api-group-title">📚 البرامج التدريبية — Training Programs</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/training-programs</span>
+            <span class="api-desc">قائمة برامج — فلتر بـ department_id، is_active، gender_restriction</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/training-programs</span>
+            <span class="api-desc">إنشاء برنامج — يتحقق أن department نشطة (Rule 2.2)، كود فريد</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/training-programs/:id</span>
+            <span class="api-desc">تعديل — تغيير duration_weeks لا يُعدِّل groups الموجودة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/training-programs/:id</span>
+            <span class="api-desc">Soft-Delete — ممنوع إذا كان هناك group بحالة active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Groups -->
+      <div class="api-group">
+        <div class="api-group-title">👥 المجموعات — Groups</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/groups</span>
+            <span class="api-desc">قائمة مجموعات — فلتر بـ program_id، status، trainer_id، room_id</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/groups</span>
+            <span class="api-desc">إنشاء — يحسب end_date تلقائياً (Rule 2.3)، يفحص تعارض القاعة (Rule 2.7)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/groups/:id</span>
+            <span class="api-desc">تعديل — تغيير room_id يُعيد فحص التعارض</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/groups/:id</span>
+            <span class="api-desc">Soft-Delete (status = cancelled) — ممنوع إذا كان هناك متدربون مسجَّلون</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rooms -->
+      <div class="api-group">
+        <div class="api-group-title">🚪 القاعات — Rooms</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/rooms</span>
+            <span class="api-desc">قائمة قاعات مع capacity وis_active</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/rooms</span>
+            <span class="api-desc">إنشاء قاعة جديدة مع قائمة المعدات (jsonb)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/rooms/:id</span>
+            <span class="api-desc">تعديل بيانات القاعة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/rooms/:id</span>
+            <span class="api-desc">is_active=false — ممنوع إذا كانت محجوزة لمجموعة نشطة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employees -->
+      <div class="api-group">
+        <div class="api-group-title">👤 الموظفون — Employees</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/employees</span>
+            <span class="api-desc">قائمة موظفين — فلتر بـ company_id، is_active، job_title</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/employees</span>
+            <span class="api-desc">إنشاء — يتحقق أن user_id موجود وغير مرتبط بموظف آخر</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/employees/:id</span>
+            <span class="api-desc">تعديل البيانات الوظيفية (لا يُعدِّل user_id)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/employees/:id</span>
+            <span class="api-desc">is_active=false — يُلغي تعيينات المدرب النشطة إن وُجدت</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trainer Assignments -->
+      <div class="api-group">
+        <div class="api-group-title">📌 تعيين المدربين — Trainer Assignments</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainer-assignments</span>
+            <span class="api-desc">تعيين مدرب لمجموعة — يفحص التعارض الزمني للمدرب في مجموعات أخرى</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/trainer-assignments</span>
+            <span class="api-desc">قائمة تعيينات — فلتر بـ trainer_id أو group_id</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/trainer-assignments/:id</span>
+            <span class="api-desc">حذف تعيين — يتحقق أن المجموعة لم تبدأ بعد أو إذن خاص</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7: USER FLOWS ===== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك المدير في النظام؟</h2>
+
+      <h3>🔸 تدفق إنشاء شركة جديدة وإعداد برنامجها</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">تسجيل الدخول كـ Manager</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">إنشاء شركة جديدة + رفع الشعار</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">إضافة قسم للشركة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">إنشاء برنامج تدريبي للقسم</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">فتح مجموعة + تحديد قاعة ومدرب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">البرنامج جاهز للتسجيل ✅</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق إنهاء عقد شركة مبكراً</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">الإدارة تُقرر إنهاء العقد</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">زر "إنهاء العقد المبكر" في صفحة الشركة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Dialog تأكيد مع ملخص الأثر (X أقسام، Y مجموعة نشطة)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">POST /api/companies/:id/terminate</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">Cascade: أقسام → برامج → مجموعات ← is_active=false</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Audit Log يُسجِّل العملية بالتفصيل</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق التجديد الجماعي للشركات</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">صفحة الشركات — عرض المنتهية قريباً</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">تحديد شركات متعددة بـ Checkbox</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">زر "تجديد جماعي" — أدخل عدد الأشهر</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">POST /api/companies/bulk-renew</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Transaction: contract_end_date += N months لكل شركة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">تقرير نتائج: نجح X / فشل Y</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق تعيين مدرب لمجموعة</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">صفحة تعيين المدربين</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">اختر مجموعة من Dropdown</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">اختر مدرباً من قائمة المتاحين في نفس الفترة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">حدد is_primary (رئيسي / مساعد)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">POST /api/trainer-assignments ✅</div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 8: BUSINESS LOGIC ===== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">القواعد التشغيلية الدقيقة للمرحلة الثانية</h2>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div>
+          <strong>قاعدة 2.1 — شرط الشركة النشطة:</strong> عند إنشاء department، يجب التحقق من
+          <code>companies.is_active = true</code> وأن <code>contract_end_date &gt; NOW()</code>.
+          خطأ مُقترَح: <code>422 COMPANY_NOT_ACTIVE</code>.
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div>
+          <strong>قاعدة 2.2 — شرط القسم النشط:</strong> عند إنشاء training_program، يجب التحقق من
+          <code>departments.is_active = true</code>. القسم المعطَّل لا يستقبل برامج جديدة.
+          خطأ مُقترَح: <code>422 DEPARTMENT_NOT_ACTIVE</code>.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📅</span>
+        <div>
+          <strong>قاعدة 2.3 — حساب end_date للمجموعة:</strong> يُحسَب تلقائياً عند إنشاء group:
+          <br><code>end_date = start_date + (program.duration_weeks × 7 days)</code>
+          <br>المدير لا يُدخِل end_date يدوياً — تُحسَب من البرنامج.
+        </div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🔴</span>
+        <div>
+          <strong>قاعدة 2.4 — Cascade Soft-Delete عند إنهاء العقد:</strong> عند تنفيذ terminate،
+          يتم في transaction واحدة:
+          <br>1. <code>companies.is_active = false, early_terminated_at = NOW()</code>
+          <br>2. <code>departments.is_active = false</code> WHERE company_id = X
+          <br>3. <code>training_programs.is_active = false</code> WHERE department_id IN (...)
+          <br>4. <code>groups.status = 'cancelled'</code> WHERE program_id IN (...) AND status NOT IN ('completed')
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// Cascade Terminate — pseudo-code</span>
+<span class="c-key">async function</span> <span class="c-fn">terminateCompany</span>(companyId, reason) {
+  <span class="c-key">await</span> db.<span class="c-fn">transaction</span>(<span class="c-key">async</span> (trx) =&gt; {
+    <span class="c-key">await</span> trx(<span class="c-str">'companies'</span>).<span class="c-fn">update</span>({
+      is_active: <span class="c-key">false</span>,
+      early_terminated_at: <span class="c-fn">new Date</span>(),
+      early_terminated_reason: reason
+    }).<span class="c-fn">where</span>({ id: companyId });
+
+    <span class="c-key">const</span> deptIds = <span class="c-key">await</span> trx(<span class="c-str">'departments'</span>)
+      .<span class="c-fn">update</span>({ is_active: <span class="c-key">false</span> })
+      .<span class="c-fn">where</span>({ company_id: companyId })
+      .<span class="c-fn">returning</span>(<span class="c-str">'id'</span>);
+
+    <span class="c-key">const</span> progIds = <span class="c-key">await</span> trx(<span class="c-str">'training_programs'</span>)
+      .<span class="c-fn">update</span>({ is_active: <span class="c-key">false</span> })
+      .<span class="c-fn">whereIn</span>(<span class="c-str">'department_id'</span>, deptIds)
+      .<span class="c-fn">returning</span>(<span class="c-str">'id'</span>);
+
+    <span class="c-key">await</span> trx(<span class="c-str">'groups'</span>)
+      .<span class="c-fn">update</span>({ status: <span class="c-str">'cancelled'</span> })
+      .<span class="c-fn">whereIn</span>(<span class="c-str">'program_id'</span>, progIds)
+      .<span class="c-fn">whereNotIn</span>(<span class="c-str">'status'</span>, [<span class="c-str">'completed'</span>]);
+  });
+}
+      </pre>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div>
+          <strong>قاعدة 2.5 — وراثة قيد الجنس:</strong>
+          عند إنشاء group، إذا كان <code>program.gender_restriction != 'mixed'</code>،
+          يُجبَر <code>group.gender = program.gender_restriction</code> ولا يمكن للمدير تغييره.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🔄</span>
+        <div>
+          <strong>قاعدة 2.6 — Bulk Renewal في Transaction:</strong>
+          <code>POST /api/companies/bulk-renew</code> يُنفِّذ كل التحديثات في transaction واحدة.
+          إذا فشل أي تحديث (مثلاً company محذوفة)، يُلغى الكل ويُرجَع تقرير تفصيلي بالأسباب.
+        </div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🚪</span>
+        <div>
+          <strong>قاعدة 2.7 — منع تعارض حجوزات القاعة:</strong>
+          قبل إنشاء أو تعديل group، يُنفَّذ الاستعلام التالي. إذا أعاد أي نتيجة، يُرفَض الطلب بـ
+          <code>409 ROOM_CONFLICT</code>:
+          <br><code>SELECT id FROM groups WHERE room_id = :room AND status NOT IN ('cancelled','completed') AND NOT (end_date &lt; :start OR start_date &gt; :end)</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 9: DEPENDENCIES ===== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد المرحلة الثانية</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p><strong>Phase 01 — الأساس المعماري</strong></p>
+          <ul class="feat-list">
+            <li>جدول users + JWT Middleware</li>
+            <li>Role-Based Guards (Manager / Staff)</li>
+            <li>Upload Service لرفع الشعارات</li>
+            <li>Audit Logger لتسجيل العمليات الحساسة</li>
+            <li>Tenant Isolation middleware</li>
+            <li>Zod validation schemas محدَّدة المسبق</li>
+          </ul>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p><strong>Phase 03 — التسجيل والقبول</strong></p>
+          <ul class="feat-list">
+            <li>training_programs للربط برابط التسجيل</li>
+            <li>groups لحد الاستيعاب وفحص الجنس</li>
+          </ul>
+          <p class="mt-2"><strong>Phase 04 — دورة حياة المتدرب</strong></p>
+          <ul class="feat-list">
+            <li>companies + departments لملف المتدرب</li>
+          </ul>
+          <p class="mt-2"><strong>Phase 05 — الحضور</strong></p>
+          <ul class="feat-list">
+            <li>groups + rooms لإنشاء جداول الحضور</li>
+          </ul>
+          <p class="mt-2"><strong>Phase 07 — المخالفات والمالية</strong></p>
+          <ul class="feat-list">
+            <li>employees + salary_base لحسابات الراتب</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert al-teal mt-5">
+        <span class="ico">🔗</span>
+        <div>
+          <strong>نقطة حرجة:</strong> لا يمكن لأي مرحلة من 3 إلى 9 أن تعمل بشكل صحيح دون أن تكون
+          البيانات الرئيسية مُكتملة ومُختبَرة. Phase 02 هي <em>blocking dependency</em> لكامل المشروع.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 10: RISKS ===== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يفشل</h2>
+
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li>
+              <strong>Orphan Records:</strong> Cascade Soft-Delete إذا انقطع في المنتصف (خطأ DB)
+              قد يُبقي بعض groups نشطة رغم تعطيل شركتها. الحل: transaction + rollback صريح.
+            </li>
+            <li>
+              <strong>Gender Restriction Complexity:</strong> عند تغيير gender_restriction للبرنامج
+              بعد إنشاء groups، هل تُحدَّث القيود تلقائياً؟ القرار: لا تأثير على groups الموجودة،
+              فقط الجديدة.
+            </li>
+            <li>
+              <strong>Bulk Operations Failure:</strong> تجديد 50 شركة في transaction واحدة — أي
+              deadlock يُلغي الكل. الحل: retry logic + chunking بـ 10 شركات.
+            </li>
+            <li>
+              <strong>Room Conflict Race Condition:</strong> طلبان متزامنان لحجز نفس القاعة.
+              الحل: SELECT ... FOR UPDATE في transaction.
+            </li>
+            <li>
+              <strong>Trainer Time Conflict:</strong> مدرب مُعيَّن لمجموعتين تتداخل أوقاتهما.
+              يحتاج فحص صريح في trainer-assignments.
+            </li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li>كل شركة لها commercial_registry فريد — هذا مُلزَم بـ UNIQUE constraint</li>
+            <li>Duration_weeks للبرنامج لا يتغير بعد إنشاء مجموعات — تغييره يؤثر فقط على المجموعات الجديدة</li>
+            <li>موظف لا يمكنه الانتماء لأكثر من شركة في نفس الوقت</li>
+            <li>شعار الشركة اختياري — النظام يعمل بدونه</li>
+            <li>لا يُحذَف أي سجل نهائياً في هذه المرحلة — كل الحذف Soft-Delete</li>
+            <li>التجديد الجماعي يُعدِّل contract_end_date فقط ولا يُعيد تفعيل شركة مُنهاة مبكراً</li>
+          </ul>
+          <h5 class="mt-4">📐 قرارات تصميمية</h5>
+          <ul class="feat-list">
+            <li>Equipment في rooms مخزَّن كـ jsonb مصفوفة strings — مرونة دون جدول منفصل</li>
+            <li>gender_restriction كـ enum PostgreSQL — أفضل من varchar للـ constraint</li>
+            <li>trainer_assignments جدول منفصل (وليس FK مباشر) — يدعم تاريخ التعيينات والمدرب المساعد</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 11: CHECKLIST ===== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة الثانية انتهت؟</h2>
+
+      <ol class="num-list">
+        <li>
+          <strong>قاعدة البيانات:</strong>
+          الجداول السبعة مُنشأة بكل الـ constraints (FK, UNIQUE, NOT NULL, CHECK للـ enums).
+          Indexes على company_id, department_id, program_id, room_id. ✅
+        </li>
+        <li>
+          <strong>Backend — CRUD:</strong>
+          جميع الـ 27 endpoint مُختبَرة بـ Postman Collection كاملة.
+          Validation بـ Zod على كل route. Auth guards على كل endpoint. ✅
+        </li>
+        <li>
+          <strong>Backend — Business Rules:</strong>
+          Rules 2.1 إلى 2.7 مُختبَرة بـ unit tests و integration tests.
+          Cascade terminate مُختبَر مع rollback scenario. ✅
+        </li>
+        <li>
+          <strong>Frontend — شاشات:</strong>
+          الشاشات السبع مبنية وتعمل مع real API (ليس mock data).
+          Forms مُحققة بـ react-hook-form + zod client-side. ✅
+        </li>
+        <li>
+          <strong>Frontend — UX Confirmations:</strong>
+          Dialog تأكيد لـ Terminate و Bulk Renew يعرض ملخص الأثر قبل التنفيذ. ✅
+        </li>
+        <li>
+          <strong>Audit Logs:</strong>
+          كل عملية حساسة (terminate, bulk-renew, delete) مُسجَّلة في audit_logs مع المستخدم والوقت والتفاصيل. ✅
+        </li>
+        <li>
+          <strong>Room Conflict:</strong>
+          اختبار concurrent requests لحجز نفس القاعة — النظام يرفض الثاني بـ 409. ✅
+        </li>
+        <li>
+          <strong>التوثيق:</strong>
+          هذه الصفحة محدَّثة وتعكس الـ schema الفعلي المُنفَّذ.
+          Postman Collection مُصدَّرة في المستودع. ✅
+        </li>
+      </ol>
+
+      <div class="alert al-gold mt-5">
+        <span class="ico">🏁</span>
+        <div>
+          <strong>معيار الانتقال للمرحلة الثالثة:</strong> لا يمكن بدء Phase 03 قبل أن تكون
+          training_programs وgroups APIs جاهزة وتعمل بشكل صحيح، لأن رابط التسجيل يعتمد عليهما مباشرة.
+        </div>
+      </div>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-01-foundation.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">١. الأساس المعماري</span>
+      </a>
+      <a href="phase-03-registration-intake.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٣. التسجيل والقبول</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- ============= FOOTER ============= -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

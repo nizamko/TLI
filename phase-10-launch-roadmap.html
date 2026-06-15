@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ١٠ — الإطلاق والـ Roadmap | معهد ريادة الغد</title>
+<meta name="description" content="المرحلة العاشرة والأخيرة — الإطلاق الإنتاجي وخارطة الطريق المستقبلية لنظام إدارة معهد ريادة الغد. اختبارات شاملة، بنية تحتية مُدارة، CI/CD، Go/No-Go checklist، وخطة 30-60-90 يوم بعد الإطلاق.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html" class="active">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ١٠ — الإطلاق والـ Roadmap</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">🚀 تعقيد: عالي (شامل كل حاجة) · ⏱ أسبوعان + مستمر</div>
+    <div class="hero-label">المرحلة ١٠ من ١٠ · Launch &amp; Roadmap</div>
+    <h1>الإطلاق والـ Roadmap<br><span>Launch Readiness &amp; Future Roadmap</span></h1>
+    <p class="hero-desc">
+      الخطوة الأخيرة قبل دخول الإنتاج الحقيقي — تشمل اختبارات شاملة (Unit + Integration + E2E + Load + Security + Accessibility + Performance)، بنية تحتية مُدارة بالكامل على السحابة، خط CI/CD آلي من الكود حتى الإنتاج، Runbook يوم الإطلاق مع Go/No-Go checklist من ٢٥+ بند، وخارطة طريق مستقبلية تمتد ١٢–٢٤ شهراً تتضمن تطبيقات موبايل، ذكاء اصطناعي، وبوابة أولياء الأمور.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>4</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>5</strong><span>شاشات واجهة</span></div>
+      <div class="hero-meta-item"><strong>7</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>٢ أسبوع+</strong><span>مستمر</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot done"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot done"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot done"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot done"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot done"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot done"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot current"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body with TOC + Content -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ===== Section 1: Summary ===== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة العاشرة هي نقطة التحول من البيئة التطويرية إلى الإنتاج الحقيقي. تجمع بين ضمان الجودة الشامل، وتأهيل البنية التحتية السحابية، وتدريب الكوادر، ثم تُطلق النظام بثقة وفق خطة مُحكَمة مع مسار واضح للـ ١٢ شهراً القادمة.
+      </p>
+      <div class="grid grid-2">
+        <div class="card card-accent c-p10">
+          <h3>🎯 الهدف</h3>
+          <p>إطلاق نظام إدارة ريادة الغد في بيئة إنتاجية مستقرة وآمنة، مع صفر downtime مُخطَّط له، وفريق مدرَّب جاهز للتشغيل الفعلي من اليوم الأول.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li>نظام مُختبَر بغطاء 70%+ للكود</li>
+            <li>بنية تحتية سحابية مُدارة وموثَّقة</li>
+            <li>CI/CD pipeline كامل (GitHub Actions)</li>
+            <li>Runbook يوم الإطلاق + Go/No-Go checklist</li>
+            <li>مواد تدريبية للموظفين (فيديو + وثائق)</li>
+            <li>خارطة طريق 12-24 شهر مُعتمَدة</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li>المراحل ١–٩ مكتملة ومعتمَدة</li>
+            <li>بيئة Staging مطابقة للإنتاج</li>
+            <li>حسابات AWS/DigitalOcean جاهزة</li>
+            <li>Domain اسم النطاق مُسجَّل وـ SSL مُعَدّ</li>
+            <li>بيانات الاختبار (seed data) ممثِّلة للواقع</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>النظام الحي في الإنتاج — جميع المستخدمين (Super Admin, Manager, Staff, Trainer, Trainee) يبدأون استخدامه الفعلي. العمليات اليومية والتشغيل المستمر تنطلق فور إتمام هذه المرحلة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 2: Why ===== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">بين "يعمل على جهازي" وبين "يعمل للجميع دائماً"</h2>
+      <p class="section-desc">
+        مهما كانت المراحل السابقة محكمة، فإن الإطلاق بدون تحضير منهجي هو المكان الذي تُولَد فيه الكوارث. بيانات المتدربين الحقيقية، أعداد المستخدمين المتزامنين، والاعتماد المؤسسي الفعلي — كلها ضغوط لا تكشفها بيئة التطوير.
+      </p>
+      <div class="grid grid-3">
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🧪</div>
+            <div>
+              <div class="card-title">ضمان الجودة أولاً</div>
+              <div class="card-sub">Pre-launch Testing Suite</div>
+            </div>
+          </div>
+          <p>كل مسار مستخدم يُختبَر E2E بـ Playwright قبل أن يلمسه مستخدم حقيقي. Load test يحاكي ٥٠٠ متدرب + إداريين متزامنين.</p>
+        </div>
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">🏗️</div>
+            <div>
+              <div class="card-title">بنية تحتية محترفة</div>
+              <div class="card-sub">Production Infrastructure</div>
+            </div>
+          </div>
+          <p>PostgreSQL مُدار، Redis Cluster، Load Balancer بـ ٢+ instance، CDN، SSL تجديد تلقائي، مراقبة لحظية بـ Sentry وـ Grafana.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">📋</div>
+            <div>
+              <div class="card-title">خطة لا تُفاجأ</div>
+              <div class="card-sub">Runbook &amp; Rollback Plan</div>
+            </div>
+          </div>
+          <p>Go/No-Go checklist من ٢٥+ بند، خطة rollback آلية إذا تجاوز معدل الخطأ ٥٪، وخطة تواصل واضحة مع العميل والمستخدمين.</p>
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">💡</span>
+        <div><strong>لماذا هي المرحلة الأخيرة بالضبط؟</strong> لأنها تعتمد على صحة وإكمال كل المراحل السابقة — لا يمكن اختبار E2E للتسجيل إذا لم يكن نظام التسجيل مكتملاً، ولا migration البيانات إذا لم يكن schema ثابتاً. إطلاق ناجح = ٩ مراحل سليمة + هذه المرحلة منفَّذة بدقة.</div>
+      </div>
+    </section>
+
+    <!-- ===== Section 3: Modules ===== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">سبع محاور تغطي كل جانب من جوانب الإطلاق</h2>
+      <div class="grid grid-3">
+        <div class="card card-accent c-p10">
+          <div class="card-head">
+            <div class="card-icon">🧪</div>
+            <div>
+              <div class="card-title">اختبارات ما قبل الإطلاق</div>
+              <div class="card-sub">Pre-launch Testing</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>Unit Tests — Jest/Vitest — هدف ٧٠٪ coverage</li>
+            <li>Integration Tests — API endpoints كاملة</li>
+            <li>E2E Tests — Playwright — المسارات الحرجة</li>
+            <li>Load Tests — k6 — ٥٠٠ متزامن</li>
+            <li>Security Audit — OWASP Top 10 + dep scan</li>
+            <li>Accessibility Audit — WCAG 2.1 AA</li>
+            <li>Performance Audit — Lighthouse ≥ 90</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🗄️</div>
+            <div>
+              <div class="card-title">ترحيل البيانات</div>
+              <div class="card-sub">Data Migration Plan</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>استيراد بيانات متدربين من Excel/Paper</li>
+            <li>Dry-run mode قبل التنفيذ الفعلي</li>
+            <li>Validation صارم لكل حقل قبل الإدراج</li>
+            <li>Idempotency — تشغيل آمن متكرر</li>
+            <li>Rollback سريع للبيانات المستوردة</li>
+            <li>تقرير migration مفصَّل بالنجاح والأخطاء</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">☁️</div>
+            <div>
+              <div class="card-title">البنية التحتية الإنتاجية</div>
+              <div class="card-sub">Production Infrastructure</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>PostgreSQL — AWS RDS أو DO Managed DB</li>
+            <li>Redis — ElastiCache أو Upstash</li>
+            <li>٢+ App Servers خلف Load Balancer</li>
+            <li>S3 لتخزين الملفات</li>
+            <li>Cloudflare CDN للـ Static Assets</li>
+            <li>Domain + SSL (Let's Encrypt auto-renew)</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">📡</div>
+            <div>
+              <div class="card-title">المراقبة والسجلات</div>
+              <div class="card-sub">Monitoring &amp; Logging</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>Sentry — Error tracking &amp; alerting</li>
+            <li>Grafana — Dashboards أداء لحظي</li>
+            <li>UptimeRobot — Uptime checks كل ٥ دقائق</li>
+            <li>Logtail / Papertrail — Centralized logging</li>
+            <li>Health check endpoint عام</li>
+            <li>PagerDuty / Slack on-call alerts</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">⚙️</div>
+            <div>
+              <div class="card-title">CI/CD Pipeline</div>
+              <div class="card-sub">GitHub Actions</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>Lint → Test → Build (فشل واحد = إيقاف كل شيء)</li>
+            <li>Deploy to Staging تلقائي عند push إلى main</li>
+            <li>Smoke Tests على Staging</li>
+            <li>Manual approval قبل deploy to Production</li>
+            <li>Rollback بضغطة واحدة من GitHub</li>
+            <li>Slack notification لكل deployment</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📚</div>
+            <div>
+              <div class="card-title">التدريب والتوثيق</div>
+              <div class="card-sub">Training Materials</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>فيديوهات تدريبية لكل دور (Admin, Staff, Trainer)</li>
+            <li>Cheat sheets مطبوعة لكل workflow رئيسي</li>
+            <li>User manual (PDF) عربي شامل</li>
+            <li>FAQ لأكثر الأسئلة تكراراً</li>
+            <li>جلسة onboarding مباشرة للإدارة</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Roadmap Timeline -->
+      <h3 class="mt-6">🗺️ خارطة الطريق المستقبلية — Roadmap 12–24 شهر</h3>
+      <p class="section-desc">ما بعد الإطلاق ليس توقفاً — بل انطلاقة مرحلة جديدة من التطوير المتواصل والتوسع.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-dot pdn-3"></div>
+          <div class="tl-content">
+            <div class="tl-period">Q1 2026 — بعد الإطلاق مباشرة</div>
+            <div class="tl-title">الاستقرار والتحسين السريع</div>
+            <p>إصلاح الأخطاء المكتشَفة خلال ٩٠ يوم الأولى. تحسين الأداء بناءً على بيانات حقيقية. تفعيل Advanced Analytics (Metabase). جمع feedback منظَّم من الموظفين والمتدربين.</p>
+            <div class="tl-tags">
+              <span class="badge b-green">Bug fixes</span>
+              <span class="badge b-teal">Performance</span>
+              <span class="badge b-navy">Analytics</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot pdn-4"></div>
+          <div class="tl-content">
+            <div class="tl-period">Q2 2026 — الربع الثاني</div>
+            <div class="tl-title">Mobile Apps + Payment Gateway</div>
+            <p>تطبيقات React Native (iOS + Android) للمتدربين والمدربين. دفع الرسوم أون-لاين (Stripe أو بوابة محلية). SMS Gateway كقناة ثالثة بجانب WhatsApp + Email.</p>
+            <div class="tl-tags">
+              <span class="badge b-purple">React Native</span>
+              <span class="badge b-gold">Payment</span>
+              <span class="badge b-orange">SMS</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot pdn-5"></div>
+          <div class="tl-content">
+            <div class="tl-period">Q3 2026 — الربع الثالث</div>
+            <div class="tl-title">AI Insights + Parent Portal</div>
+            <p>نماذج ذكاء اصطناعي لتوقع خطر التسرب (Dropout Risk) وتوقعات الأداء. بوابة أولياء الأمور لمتابعة أبنائهم. حضور بيومتري موبايل (بصمة الهاتف).</p>
+            <div class="tl-tags">
+              <span class="badge b-pink">AI/ML</span>
+              <span class="badge b-teal">Parent Portal</span>
+              <span class="badge b-navy">Biometric</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot pdn-6"></div>
+          <div class="tl-content">
+            <div class="tl-period">Q4 2026 — الربع الرابع</div>
+            <div class="tl-title">Multi-language + Ministry APIs</div>
+            <p>واجهة متعددة اللغات (English + French). تكامل مع APIs وزارة التعليم الحكومية. BI Tool متقدم (Superset) مع Dashboards تنفيذية للإدارة العليا.</p>
+            <div class="tl-tags">
+              <span class="badge b-gold">EN/FR</span>
+              <span class="badge b-navy">Gov API</span>
+              <span class="badge b-teal">BI Tool</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot pdn-7"></div>
+          <div class="tl-content">
+            <div class="tl-period">Q1–Q2 2027 — السنة الثانية</div>
+            <div class="tl-title">White-label SaaS للمراكز الأخرى</div>
+            <p>تحويل النظام إلى منصة White-label SaaS تخدم مراكز تدريب أخرى. Multi-tenancy كامل بعزل بيانات لكل مركز. لوحة تحكم SaaS Admin للإدارة المركزية. نموذج تسعير Subscription.</p>
+            <div class="tl-tags">
+              <span class="badge b-purple">SaaS</span>
+              <span class="badge b-green">Multi-tenant</span>
+              <span class="badge b-gold">Revenue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 4: Screens ===== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">خمس شاشات لإدارة الإطلاق والعمليات المستمرة</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الصفحة</th>
+              <th>المسار</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-gray">01</span></td>
+              <td><strong>لوحة الإطلاق</strong><br><span class="mono">Launch Dashboard</span></td>
+              <td class="mono">/admin/launch</td>
+              <td>Go/No-Go checklist التفاعلي مع ٢٥+ بند، حالة كل خدمة بشكل حي، مؤشرات الصحة العامة، وزر الإطلاق النهائي</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-gray">02</span></td>
+              <td><strong>سجل الإصدارات</strong><br><span class="mono">Deployments Log</span></td>
+              <td class="mono">/admin/deployments</td>
+              <td>تاريخ كل deployment مع الإصدار، البيئة (staging/prod)، الحالة، git SHA، ملاحظات الإصدار، وزر rollback لكل سجل</td>
+              <td><span class="badge b-navy">Super Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-gray">03</span></td>
+              <td><strong>سجل الحوادث</strong><br><span class="mono">Incidents Register</span></td>
+              <td class="mono">/admin/incidents</td>
+              <td>قائمة حوادث مع تصنيف الخطورة (SEV1–4)، الحالة الحية، أوقات الميتجيشن، رابط post-mortem، وتاريخ الحوادث المنتهية</td>
+              <td><span class="badge b-navy">Super Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-gray">04</span></td>
+              <td><strong>خارطة الطريق</strong><br><span class="mono">Roadmap Viewer</span></td>
+              <td class="mono">/admin/roadmap</td>
+              <td>عرض مرئي لعناصر الـ Roadmap مصنَّفة حسب الربع السنوي والأولوية (P0/P1/P2)، مع حالة كل عنصر وإمكانية تعديل الملاك والجهد</td>
+              <td><span class="badge b-navy">Super Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-gray">05</span></td>
+              <td><strong>صفحة الحالة العامة</strong><br><span class="mono">Public Status Page</span></td>
+              <td class="mono">/status</td>
+              <td>صفحة عامة تعرض حالة كل خدمة رئيسية لحظياً، uptime آخر ٩٠ يوم، والحوادث النشطة. يمكن لأي مستخدم الوصول إليها دون تسجيل دخول</td>
+              <td><span class="badge b-green">عام</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Section 5: Database ===== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">الجداول المرتبطة بإدارة الإطلاق والعمليات</h2>
+      <div class="grid grid-2">
+        <div class="db-card">
+          <div class="db-head dh-dark">🚀 deployments</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">version · varchar(20) — semver e.g. 2.4.1</div>
+            <div class="db-field">environment · enum(staging, production)</div>
+            <div class="db-field">started_at · timestamptz</div>
+            <div class="db-field">completed_at · timestamptz NULLABLE</div>
+            <div class="db-field">status · enum(pending, running, success, failed, rolled_back)</div>
+            <div class="db-field"><span class="fk">FK</span>deployed_by · uuid → users.id</div>
+            <div class="db-field">git_sha · char(40) — full commit SHA</div>
+            <div class="db-field">release_notes · text NULLABLE</div>
+            <div class="db-field">duration_seconds · int NULLABLE</div>
+            <div class="db-field">rollback_of · uuid NULLABLE → deployments.id</div>
+          </div>
+        </div>
+        <div class="db-card">
+          <div class="db-head dh-dark">🚨 incidents</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">title · varchar(255)</div>
+            <div class="db-field">severity · enum(SEV1, SEV2, SEV3, SEV4)</div>
+            <div class="db-field">status · enum(open, investigating, mitigated, resolved)</div>
+            <div class="db-field">started_at · timestamptz</div>
+            <div class="db-field">mitigated_at · timestamptz NULLABLE</div>
+            <div class="db-field">resolved_at · timestamptz NULLABLE</div>
+            <div class="db-field">affected_services · text[] — array of service names</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">post_mortem_url · varchar(500) NULLABLE</div>
+            <div class="db-field"><span class="fk">FK</span>reported_by · uuid → users.id</div>
+            <div class="db-field"><span class="fk">FK</span>assigned_to · uuid → users.id NULLABLE</div>
+          </div>
+        </div>
+        <div class="db-card">
+          <div class="db-head dh-dark">🏷️ feature_releases</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">version · varchar(20)</div>
+            <div class="db-field">name · varchar(255) — اسم الميزة</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">released_at · timestamptz</div>
+            <div class="db-field">feature_flags_activated · jsonb — e.g. {"new_dashboard":true}</div>
+            <div class="db-field">rollout_percentage · smallint(0-100) — تدرج الرولاوت</div>
+            <div class="db-field">sunset_at · timestamptz NULLABLE</div>
+            <div class="db-field"><span class="fk">FK</span>deployment_id · uuid → deployments.id</div>
+          </div>
+        </div>
+        <div class="db-card">
+          <div class="db-head dh-dark">🗺️ roadmap_items</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">title · varchar(255)</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">category · varchar(100) — Mobile/AI/Integration/…</div>
+            <div class="db-field">quarter · varchar(10) — e.g. 2026-Q2</div>
+            <div class="db-field">priority · enum(P0, P1, P2)</div>
+            <div class="db-field">status · enum(planned, in_progress, done, deferred)</div>
+            <div class="db-field">estimated_effort · varchar(50) — S/M/L/XL</div>
+            <div class="db-field">owner · varchar(100)</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+            <div class="db-field">updated_at · timestamptz</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># علاقات جداول الإطلاق</span>
+deployments <span class="c-key">1:N</span> feature_releases   <span class="c-com">-- كل deployment يحمل N ميزة</span>
+deployments <span class="c-key">self-ref</span> rollback_of    <span class="c-com">-- rollback يشير لـ deployment أصلي</span>
+incidents   <span class="c-key">N:1</span> users             <span class="c-com">-- مُبلِّغ + مُكلَّف</span>
+roadmap_items <span class="c-key">standalone</span>             <span class="c-com">-- مستقل، لا FK خارجي</span>
+
+<span class="c-com"># Indexes مهمة</span>
+<span class="c-key">CREATE INDEX</span> idx_deployments_env_status   <span class="c-key">ON</span> deployments(environment, status);
+<span class="c-key">CREATE INDEX</span> idx_incidents_status_sev       <span class="c-key">ON</span> incidents(status, severity);
+<span class="c-key">CREATE INDEX</span> idx_roadmap_quarter_priority   <span class="c-key">ON</span> roadmap_items(quarter, priority);
+      </div>
+    </section>
+
+    <!-- ===== Section 6: APIs ===== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">نقاط الاتصال — Launch &amp; Operations APIs</h2>
+
+      <div class="api-group">
+        <div class="api-group-title">🚀 Deployments — إدارة الإصدارات</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/deployments</span>
+            <span class="api-desc">قائمة كل deployments مع pagination، فلتر حسب environment وـ status وـ date range</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/admin/deployments</span>
+            <span class="api-desc">CI يُطلقه عند بدء deployment جديد — يُسجَّل تلقائياً مع git_sha وـ version</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/admin/deployments/:id</span>
+            <span class="api-desc">تحديث حالة deployment (running → success/failed/rolled_back) من CI pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">🚨 Incidents — إدارة الحوادث</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/incidents</span>
+            <span class="api-desc">قائمة الحوادث مع فلتر بالحالة والخطورة. الحوادث المفتوحة تظهر أولاً دائماً</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/admin/incidents</span>
+            <span class="api-desc">فتح حادث جديد — SEV1 يُرسل تنبيهاً فورياً للـ CTO وـ on-call عبر PagerDuty</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/admin/incidents/:id</span>
+            <span class="api-desc">تحديث حالة الحادث (investigating → mitigated → resolved) وإضافة post-mortem URL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">🏷️ Feature Releases + Roadmap</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/feature-releases</span>
+            <span class="api-desc">قائمة الميزات المُطلَقة مع rollout_percentage الحالي وـ feature flags المفعَّلة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/roadmap</span>
+            <span class="api-desc">عناصر الـ Roadmap مُصنَّفة حسب quarter وـ priority — يدعم فلترة وـ search</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/health</span>
+            <span class="api-desc">Health endpoint عام — يُعيد حالة DB + Redis + Queue + كل خدمة. Public Status Page تستهلكه كل ٣٠ ثانية</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 7: User Flows ===== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يجري الإطلاق ومعالجة الحوادث؟</h2>
+
+      <h3>🔸 تدفق الإطلاق الأول — Go/No-Go</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">فريق التطوير يُكمل كل الاختبارات</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Super Admin يفتح لوحة الإطلاق</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُراجع الـ checklist بند بند</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">كل البنود خضراء؟</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-dark">يضغط "إطلاق الإنتاج"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">CI/CD يُنفِّذ deploy إلى prod</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Smoke tests تُعدو تلقائياً</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">النظام حي ✅</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق معالجة حادث SEV1</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Sentry/Grafana يكتشف خطأ &gt;5%</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">تنبيه تلقائي → on-call</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يفتح حادث SEV1 في لوحة التحكم</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">CTO يُبلَّغ في &lt;٥ دقائق</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-dark">تحديد السبب الجذري</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Rollback أو Hotfix</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">تحديث الحالة → mitigated</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Post-mortem خلال ٢٤ساعة</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق ترحيل البيانات — Migration</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">تجهيز ملف Excel / بيانات ورقية</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">تشغيل migration بـ --dry-run</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">مراجعة تقرير الأخطاء</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">تصحيح البيانات</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-dark">Dry-run نظيف 100%؟</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">تشغيل فعلي --execute</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">تحقق بالنتائج + مقارنة العدد</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">اعتماد البيانات ✅</div>
+      </div>
+    </section>
+
+    <!-- ===== Section 8: Business Logic ===== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">قواعد تشغيلية دقيقة — ٩ قواعد حاكمة</h2>
+
+      <div class="alert al-rust">
+        <span class="ico">🚦</span>
+        <div><strong>قاعدة 10.1 — Go/No-Go Checklist:</strong> قبل أي إطلاق إنتاجي، يجب أن تكون ٢٥+ بنداً خضراء بالكامل. أي بند أحمر أو أصفر = تأجيل الإطلاق. البنود تشمل: اجتياز كل اختبارات E2E، Lighthouse ≥ 90، security scan نظيف، migration dry-run بلا أخطاء، كل الـ env variables مُعيَّنة، SSL فعّال، backups تلقائية مُفعَّلة، Sentry يتلقى events، UptimeRobot مُعَد.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">⚡</span>
+        <div><strong>قاعدة 10.2 — Rollback Trigger:</strong> إذا تجاوز معدل الخطأ <strong>٥٪ خلال ١٥ دقيقة</strong> من أي deployment جديد، يُطلَق Rollback تلقائي إلى آخر deployment ناجح. يُرسَل تنبيه فوري للـ on-call والـ CTO. لا يحتاج موافقة يدوية في حالات SEV1.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">🔄</span>
+        <div><strong>قاعدة 10.3 — Data Migration Strict Validation:</strong> كل حقل يُتحقَّق منه قبل الإدراج. أي سجل فاشل يُسجَّل في migration_errors جدول مؤقت ولا يوقف باقي السجلات. Idempotency مطلوبة: تشغيل migration مرتين لا يُنتج بيانات مكررة (uuid ثابت مبني على external_id).</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">🚩</span>
+        <div><strong>قاعدة 10.4 — Feature Flags Rollout:</strong> كل ميزة جديدة تنطلق بنسبة <strong>5% → 25% → 100%</strong> على مراحل زمنية بفارق أسبوع على الأقل. في حالة وجود bug في 5% يُوقَف الرولاوت فوراً. Feature flags تُدار من لوحة admin دون إعادة deploy.</div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// قاعدة 10.4 — Feature Flag check في Backend</span>
+<span class="c-key">async function</span> <span class="c-fn">isFeatureEnabled</span>(featureKey: <span class="c-str">string</span>, userId: <span class="c-str">string</span>): <span class="c-str">Promise&lt;boolean&gt;</span> {
+  <span class="c-key">const</span> flag = <span class="c-key">await</span> redis.<span class="c-fn">get</span>(<span class="c-str">`feature:${featureKey}`</span>);
+  <span class="c-key">if</span> (!flag) <span class="c-key">return false</span>;
+  <span class="c-key">const</span> { enabled, rollout_pct } = <span class="c-fn">JSON.parse</span>(flag);
+  <span class="c-key">if</span> (!enabled) <span class="c-key">return false</span>;
+  <span class="c-com">// Deterministic assignment based on userId hash</span>
+  <span class="c-key">const</span> bucket = <span class="c-fn">crc32</span>(userId) % <span class="c-num">100</span>;
+  <span class="c-key">return</span> bucket &lt; rollout_pct;
+}
+      </pre>
+
+      <div class="alert al-rust">
+        <span class="ico">🚨</span>
+        <div><strong>قاعدة 10.5 — SEV1 Response:</strong> حادث SEV1 = توقف مؤثر على المستخدمين النهائيين. يجب تنبيه الـ CTO وـ on-call engineer خلال <strong>٥ دقائق</strong> عبر PagerDuty + WhatsApp مباشرة. Status Page تُحدَّث خلال <strong>١٠ دقائق</strong>. MTTR مستهدف لـ SEV1 = &lt;١ ساعة.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">💾</span>
+        <div><strong>قاعدة 10.6 — Backup Policy:</strong> نسخ احتياطية يومية تُحفظ لمدة <strong>٣٠ يوماً</strong>. أسبوعية لـ <strong>١٢ أسبوعاً</strong>. شهرية لـ <strong>١٢ شهراً</strong>. PostgreSQL pg_dump كامل + WAL streaming. اختبار الاستعادة شهرياً في بيئة staging. النسخ تُخزَّن في S3 مختلف عن بيئة الإنتاج.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⏱️</span>
+        <div><strong>قاعدة 10.7 — RTO/RPO:</strong> <strong>RTO &lt; ١ ساعة</strong> (Recovery Time Objective) — يجب أن يعود النظام للعمل خلال ساعة من أي كارثة. <strong>RPO &lt; ١٥ دقيقة</strong> (Recovery Point Objective) — لا يُفقَد أكثر من ١٥ دقيقة من البيانات في أسوأ الأحوال بفضل WAL streaming كل ٥ دقائق.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📅</span>
+        <div><strong>قاعدة 10.8 — Release Cadence:</strong> إصدارات الميزات <strong>كل أسبوعين</strong> بشكل منتظم (bi-weekly sprints). Hotfixes تُنشر <strong>on-demand</strong> بدون انتظار sprint cycle. كل إصدار له نقطة tag في Git + release notes مُوثَّقة + إشعار للمستخدمين عند الحاجة.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🌙</span>
+        <div><strong>قاعدة 10.9 — Maintenance Window:</strong> الصيانة المُخطَّطة يوم <strong>الجمعة من ٣ص حتى ٥ص بتوقيت القاهرة</strong> (أدنى حركة). تُعلَن ٢٤ ساعة مسبقاً عبر Status Page + Email. أي صيانة تتجاوز ٣٠ دقيقة تستلزم إشعاراً إضافياً في Slack/WhatsApp للإدارة.</div>
+      </div>
+    </section>
+
+    <!-- ===== Section 9: Dependencies ===== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد هذه المرحلة</h2>
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على — كل المراحل السابقة</h5>
+          <p>هذه المرحلة تعتمد على اكتمال المراحل ١–٩ بالكامل واعتمادها:</p>
+          <p><strong>Phase 01:</strong> الأساس المعماري — Express + PostgreSQL + Auth جاهز وآمن</p>
+          <p><strong>Phase 02:</strong> البيانات الرئيسية — Companies, Departments, Programs, Groups مُعرَّفة</p>
+          <p><strong>Phase 03:</strong> التسجيل والقبول — رابط التسجيل وعملية القبول مختبرة</p>
+          <p><strong>Phase 04:</strong> دورة حياة المتدرب — العقود، التعيين، الإنهاء والتجديد مكتملة</p>
+          <p><strong>Phase 05:</strong> الحضور — البصمة + الإلكتروني + اليدوي + Excel كلها تعمل</p>
+          <p><strong>Phase 06:</strong> الإجازات — المرضي بالرقم الرسمي والسنوي مُنفَّذ</p>
+          <p><strong>Phase 07:</strong> المخالفات + الرواتب — الخمس درجات والحساب التلقائي جاهز</p>
+          <p><strong>Phase 08:</strong> الإشعارات — WhatsApp + Email كل الـ ١٤+ نوع مُعَد</p>
+          <p><strong>Phase 09:</strong> البوابات والعمليات — بوابة المتدرب + بوابة الشركة + لوحة Ops</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى — الإنتاج الحي والمستقبل</h5>
+          <p>هذه المرحلة هي نهاية البناء وبداية التشغيل:</p>
+          <p><strong>البيئة الإنتاجية:</strong> كل المستخدمين يبدأون استخدام النظام الحقيقي</p>
+          <p><strong>فريق العمليات:</strong> يستخدم Runbook + Grafana + Sentry يومياً</p>
+          <p><strong>فريق التطوير:</strong> Sprint Cycle منتظم بناءً على Roadmap المعتمَد</p>
+          <p><strong>الإدارة:</strong> تتابع KPIs عبر Grafana Dashboards الأسبوعية</p>
+          <p><strong>Roadmap Q1 2026+:</strong> Mobile Apps, AI Insights, Payment Gateway</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 10: Risks ===== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يفشل</h2>
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><strong>أخطاء ترحيل البيانات:</strong> بيانات ورقية غير منتظمة أو ناقصة تؤدي لفشل الاستيراد — خفَّف بـ dry-run مكثَّف وتنظيف مسبق</li>
+            <li><strong>حوادث يوم الإطلاق:</strong> ارتفاع مفاجئ في الطلبات يُجهد الخوادم — خفَّف بـ load testing مسبق + auto-scaling</li>
+            <li><strong>تأخر تبني الموظفين:</strong> مقاومة التغيير أو ضعف التدريب — خفَّف بجلسات onboarding فردية + cheat sheets</li>
+            <li><strong>زحف نطاق الـ Roadmap:</strong> طلبات جديدة تُعطَّل المبرمجين — خفَّف بـ Product Backlog منظَّم وـ Priority P0/P1/P2 صارم</li>
+            <li><strong>ثغرات أمنية مكتشَفة:</strong> اكتشاف vulnerability حرج بعد الإطلاق — خفَّف بـ Hotfix process سريع + CVE monitoring</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li>فريق التطوير جاهز لدعم ٧٢ ساعة مكثفة حول يوم الإطلاق</li>
+            <li>بيانات المتدربين الحالية متاحة بصيغة Excel أو CSV قابل للاستيراد</li>
+            <li>المسؤول الإداري (Super Admin) متاح للموافقة على Go/No-Go checklist</li>
+            <li>حسابات Cloud (AWS / DigitalOcean) مُعَدَّة ومُموَّلة قبل أسبوعين من الإطلاق</li>
+            <li>اسم النطاق (Domain) مُسجَّل والـ DNS تحت السيطرة</li>
+            <li>WhatsApp Business API token ساري الصلاحية وغير محجوب</li>
+            <li>لا يوجد تغيير رئيسي في المتطلبات بعد نهاية المرحلة ٩</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <h3 class="mt-6">📊 مؤشرات النجاح — KPIs بعد الإطلاق</h3>
+      <div class="grid grid-2">
+        <div class="card card-accent c-teal">
+          <h3>🟢 مؤشرات تقنية</h3>
+          <ul class="feat-list">
+            <li><strong>Uptime ≥ 99.9٪</strong> — لا يتجاوز الانقطاع ٨.٧ ساعة/سنة</li>
+            <li><strong>Page Load &lt; 2s</strong> — Largest Contentful Paint على شبكة ٤G</li>
+            <li><strong>Error Rate &lt; 0.5٪</strong> — خلال العمليات العادية</li>
+            <li><strong>Lighthouse ≥ 90</strong> — Performance + Accessibility</li>
+            <li><strong>P95 API Response &lt; 400ms</strong> — على الـ endpoints الرئيسية</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📈 مؤشرات تجارية</h3>
+          <ul class="feat-list">
+            <li><strong>NPS ≥ 40</strong> — صافي نقاط الترويج من الموظفين</li>
+            <li><strong>Active Adoption ≥ 80٪</strong> خلال الشهر الأول</li>
+            <li><strong>تقليل الأعمال الورقية ≥ 90٪</strong> خلال ٣٠ يوماً</li>
+            <li><strong>وقت تسجيل متدرب جديد &lt; ٥ دقائق</strong> (مقارنة بـ ٣٠ سابقاً)</li>
+            <li><strong>Zero data loss</strong> في عملية الترحيل</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 11: Checklist ===== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة انتهت؟ — Go/No-Go Checklist الكاملة</h2>
+      <p class="section-desc">هذه القائمة هي معيار القبول الرسمي لهذه المرحلة. كل بند يجب أن يكون أخضر قبل اعتبار المشروع جاهزاً للإنتاج.</p>
+
+      <h3>🧪 الاختبارات</h3>
+      <ol class="num-list">
+        <li>Unit Tests تعدو بنجاح مع code coverage ≥ 70٪ (Jest/Vitest) ✅</li>
+        <li>Integration Tests لكل API endpoint مكتملة ولا توجد أخطاء ✅</li>
+        <li>E2E Tests بـ Playwright تغطي كل المسارات الحرجة (تسجيل، حضور، مخالفات، رواتب) ✅</li>
+        <li>Load Test بـ k6 يحاكي ٥٠٠ متدرب + ٥٠ إداري متزامن — P95 response &lt; 400ms ✅</li>
+        <li>Security Audit — OWASP Top 10 مُعالَج، لا CVEs حرجة في التبعيات ✅</li>
+        <li>Accessibility Audit — WCAG 2.1 AA — لا violations حرجة أو رئيسية ✅</li>
+        <li>Lighthouse Performance Score ≥ 90 على الصفحات الرئيسية ✅</li>
+      </ol>
+
+      <h3 class="mt-6">☁️ البنية التحتية</h3>
+      <ol class="num-list" start="8">
+        <li>PostgreSQL Managed DB مُهيَّأ مع connection pooling (PgBouncer) ✅</li>
+        <li>Redis Managed Instance جاهز وـ BullMQ queues مُختبَرة ✅</li>
+        <li>٢+ App Server instances خلف Load Balancer — health checks مُفعَّلة ✅</li>
+        <li>S3 Bucket للملفات مع Presigned URLs و Lifecycle policies ✅</li>
+        <li>Cloudflare CDN مُعَد وـ Cache Rules مُخصَّصة ✅</li>
+        <li>Domain + SSL (Let's Encrypt) صالح — تجديد تلقائي مُفعَّل ✅</li>
+        <li>Sentry مُعَد ويستقبل events من Frontend وـ Backend ✅</li>
+        <li>Grafana Dashboards تعرض CPU/Memory/DB/Redis/Queue metrics ✅</li>
+        <li>UptimeRobot يُرسل تنبيهات لـ Slack وـ Email عند downtime ✅</li>
+        <li>Centralized Logging (Logtail/Papertrail) يجمع logs من كل instance ✅</li>
+      </ol>
+
+      <h3 class="mt-6">🔄 CI/CD وعمليات التشغيل</h3>
+      <ol class="num-list" start="18">
+        <li>GitHub Actions Pipeline: lint → test → build → deploy staging → smoke tests ✅</li>
+        <li>Manual approval step قبل deploy to Production مُفعَّل ✅</li>
+        <li>Rollback script مُختبَر يعمل في &lt; ٥ دقائق ✅</li>
+        <li>Backup تلقائي يومي مُفعَّل وـ restore مُختبَر ✅</li>
+        <li>جميع Secrets/Env Variables مُخزَّنة في Secrets Manager (لا في الكود) ✅</li>
+      </ol>
+
+      <h3 class="mt-6">📦 البيانات والتدريب</h3>
+      <ol class="num-list" start="23">
+        <li>Data Migration dry-run بلا أخطاء — كل السجلات مُحوَّلة بنجاح ✅</li>
+        <li>مواد التدريب (فيديو + PDF + Cheat Sheets) مكتملة ومُوزَّعة ✅</li>
+        <li>جلسة onboarding للإدارة وـ Staff منجزة والتغذية الراجعة إيجابية ✅</li>
+        <li>Runbook يوم الإطلاق مُراجَع ومعتمَد من CTO وـ Project Manager ✅</li>
+        <li>خارطة الطريق (Roadmap) مُدخَلة في النظام ومُعتمَدة من الإدارة ✅</li>
+      </ol>
+    </section>
+
+    <!-- Prev/Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-09-portals-admin-ops.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٩. البوابات والعمليات الإدارية</span>
+      </a>
+      <a href="index.html" class="pfn-link next">
+        <span class="pfn-label">الرجوع للمخطط التنفيذي →</span>
+        <span class="pfn-title">🏠 الصفحة الرئيسية</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+        <li><a href="#checklist">Go/No-Go Checklist</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

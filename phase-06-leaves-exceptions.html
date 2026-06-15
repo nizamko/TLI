@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٦ — الإجازات والاستثناءات | معهد ريادة الغد</title>
+<meta name="description" content="توثيق كامل للمرحلة السادسة — نظام الإجازات والاستثناءات لمعهد ريادة الغد: الإجازات السنوية، الطبية، إجازات الموظفين، إشعارات الاستقالة، ومركز الإجازات الموحد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html" class="active">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٦ — الإجازات والاستثناءات</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: متوسط-عالي · ⏱ أسبوعان</div>
+    <div class="hero-label">المرحلة ٦ من ١٠ · Leaves &amp; Exceptions Center</div>
+    <h1>الإجازات والاستثناءات<br><span>مركز إدارة الإجازات الموحّد</span></h1>
+    <p class="hero-desc">
+      هذه المرحلة تُرسي نظام إجازات متكامل يخدم المتدربين والموظفين على حدٍّ سواء. يشمل منح الإجازات السنوية تلقائياً، معالجة الإجازات الطبية بتحقق رسمي، تتبع الأرصدة في الوقت الفعلي، وربط الإجازات المعتمدة مباشرةً بسجلات الحضور كـ excused. كل طلب يمر بسير عمل واضح من pending إلى approval أو rejection، مع إشعارات WhatsApp وبريد إلكتروني فورية، وسجل تدقيق لكل إجراء.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>٦</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>٥</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>١٣</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>٢</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot done"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot done"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot current"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ========== SECTION 1: SUMMARY ========== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة السادسة تبني "مركز الإجازات" الذي يربط كل طلب إجازة بميزانية الأيام، يتحقق من التداخلات، ويُحوِّل الإجازات المعتمدة إلى سجلات حضور نظيفة. يغطي المتدربين (سنوية + طبية + طارئة) والموظفين/المدربين (سنوية + مرضية + عرضية + غير مدفوعة + أمومة) بأنظمة رصيد مستقلة، مع سير عمل إشعار الاستقالة والتذكيرات التلقائية.
+      </p>
+      <div class="grid grid-2">
+        <div class="card card-accent c-p6">
+          <h3>🎯 الهدف</h3>
+          <p>توفير نظام إجازات موحَّد وشفاف يُلغي الإدارة اليدوية للأيام، يمنع التجاوزات في الأرصدة، ويضمن تحويل كل إجازة معتمدة إلى سجل حضور صحيح في المرحلة الخامسة دون تدخل بشري.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li>٦ جداول قاعدة بيانات جديدة</li>
+            <li>١٣ API endpoint مع validation كامل</li>
+            <li>٥ شاشات إدارية متكاملة</li>
+            <li>Cron job سنوي لمنح الإجازات</li>
+            <li>ربط تلقائي مع attendance (excused)</li>
+            <li>إشعارات WhatsApp + Email عند كل قرار</li>
+            <li>مركز إجازات موحّد (calendar view)</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li>المرحلة ٠١: بنية Auth والأدوار والـ Audit Log</li>
+            <li>المرحلة ٠٤: جدول trainees وبيانات المتدربين الأساسية</li>
+            <li>المرحلة ٠٥: جدول attendance وآلية تحديث status</li>
+            <li>public_holidays قائمة من المرحلة الثانية</li>
+            <li>جدول employees مع بيانات التوظيف</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong>المرحلة ٠٧ (المخالفات والرواتب):</strong> الإجازات المعتمدة تُستثنى من حسابات المخالفات وتُدخل في الراتب كأيام حضور محسوبة. excused_days تُطرح من المبالغ المخصومة.
+            <br><br>
+            <strong>المرحلة ٠٨ (الإشعارات):</strong> كل حدث إجازة (طلب، قبول، رفض، انتهاء رصيد) يُولِّد إشعارات ضمن نظام الإشعارات الموحَّد.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 2: WHY ========== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">بدون نظام إجازات — الحضور يصبح بيانات فاسدة</h2>
+      <p class="section-desc">
+        بعد بناء نظام الحضور في المرحلة الخامسة، أصبح لكل متدرب سجل يومي. لكن الحضور وحده لا يكفي: متدرب غائب بإجازة مرضية موثَّقة ≠ متدرب غائب بدون عذر. إذا لم يُفرَّق بين الحالتين، تتراكم المخالفات بشكل غير عادل وتُحسَب الخصومات على من لا يستحق.
+      </p>
+      <div class="grid grid-2">
+        <div class="card card-accent c-p6">
+          <div class="card-head">
+            <div class="card-icon">⚖️</div>
+            <div>
+              <div class="card-title">العدالة في التقييم</div>
+              <div class="card-sub">التمييز بين absent و excused</div>
+            </div>
+          </div>
+          <p>نظام الإجازات يضمن أن كل غياب مبرر يُحوَّل من absent إلى excused في جدول attendance، مما يعكسه المرحلة السابعة في حسابات المخالفات والرواتب بدقة تامة.</p>
+        </div>
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📊</div>
+            <div>
+              <div class="card-title">الشفافية المالية</div>
+              <div class="card-sub">رصيد الإجازات = أصل مالي</div>
+            </div>
+          </div>
+          <p>كل يوم إجازة سنوية معتمدة له قيمة مالية. رصيد 15 يوم/سنة مع carry-over حتى 5 أيام من العام السابق — هذه أرقام تظهر في بيان الراتب ولا يجوز تجاهلها.</p>
+        </div>
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">🏥</div>
+            <div>
+              <div class="card-title">المتطلبات القانونية</div>
+              <div class="card-sub">توثيق الإجازات الطبية رسمياً</div>
+            </div>
+          </div>
+          <p>رقم التقرير الطبي الإلزامي وفريد لكل متدرب يُوثِّق الإجازة المرضية بشكل قانوني ويمنع الاحتيال. التحقق يجب أن يسبق أي احتساب في الحضور.</p>
+        </div>
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">🔔</div>
+            <div>
+              <div class="card-title">التخطيط المسبق</div>
+              <div class="card-sub">إشعارات الاستقالة وإدارة المغادرة</div>
+            </div>
+          </div>
+          <p>إشعار الاستقالة قبل 4 أسابيع يُمكِّن الإدارة من التخطيط للتغطية وإتمام نقل المعرفة. التذكير اليومي حتى الاعتراف الرسمي يمنع الإغفال.</p>
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">📌</span>
+        <div><strong>الترتيب الزمني:</strong> يجب أن تأتي هذه المرحلة بعد المرحلة الخامسة مباشرةً لأنها تعتمد على وجود جدول attendance قابل للتعديل. لو جاءت قبلها، لا توجد سجلات حضور لتحويلها إلى excused. ولو جاءت بعد المرحلة السابعة، ستحتسب المخالفات بدون أخذ الإجازات بعين الاعتبار.</div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3: MODULES ========== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">خمس وحدات تشغيلية متكاملة</h2>
+      <div class="grid grid-3">
+
+        <div class="card card-accent c-p6">
+          <div class="card-head">
+            <div class="card-icon">📅</div>
+            <div>
+              <div class="card-title">إجازات المتدربين السنوية</div>
+              <div class="card-sub">Annual Leave Management</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>منح 15 يوم في 1 يناير كل عام (cron)</li>
+            <li>carry-over حتى 5 أيام من العام السابق</li>
+            <li>تتبع used_days و remaining_days آنياً</li>
+            <li>رفض تلقائي عند تجاوز الرصيد</li>
+            <li>إعفاء إداري للطوارئ</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🏥</div>
+            <div>
+              <div class="card-title">الإجازات الطبية</div>
+              <div class="card-sub">Medical Leaves Verification</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>رقم تقرير طبي إلزامي وفريد per trainee</li>
+            <li>رفع صورة التقرير (attachment_url)</li>
+            <li>تحقق رسمي قبل تطبيق الإجازة</li>
+            <li>بيانات: doctor, hospital, diagnosis</li>
+            <li>status: pending → verified / rejected</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">👔</div>
+            <div>
+              <div class="card-title">إجازات الموظفين</div>
+              <div class="card-sub">Employee Leave System</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>أنواع: annual / sick / casual / unpaid / maternity</li>
+            <li>رصيد مستقل عن المتدربين تماماً</li>
+            <li>موازنة سنوية (annual_total, sick_total, casual_total)</li>
+            <li>approved_by مرتبط بالمدير المباشر</li>
+            <li>تاريخ البداية والنهاية مع days_count</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">📋</div>
+            <div>
+              <div class="card-title">إشعارات الاستقالة</div>
+              <div class="card-sub">Resignation Notifications</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>إشعار مسبق N أسابيع (افتراضي 4)</li>
+            <li>intended_last_day وسبب المغادرة</li>
+            <li>تذكير يومي للإدارة حتى acknowledged_at</li>
+            <li>acknowledged_by مرتبط بالإدارة</li>
+            <li>تكامل مع offboarding (م. ٠٤)</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-p6">
+          <div class="card-head">
+            <div class="card-icon">🗓️</div>
+            <div>
+              <div class="card-title">مركز الإجازات الموحَّد</div>
+              <div class="card-sub">Unified Leave Center</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>تقويم مركزي يجمع كل أنواع الإجازات</li>
+            <li>فلترة حسب النوع / المجموعة / الموظف</li>
+            <li>تنبيه تداخل الإجازات في نفس الفترة</li>
+            <li>إحصائيات تشغيلية (نسبة الاستخدام)</li>
+            <li>تصدير CSV للإدارة العليا</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🔄</div>
+            <div>
+              <div class="card-title">سير عمل الطلبات</div>
+              <div class="card-sub">Leave Request Workflow</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>pending → approved / rejected</li>
+            <li>إشعار فوري عند كل قرار (WhatsApp+Email)</li>
+            <li>rejection_reason إلزامي عند الرفض</li>
+            <li>reviewed_by + reviewed_at مسجّل دائماً</li>
+            <li>audit log لكل تغيير في الحالة</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4: SCREENS ========== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">خمس شاشات لإدارة دورة الإجازة الكاملة</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الصفحة</th>
+              <th>Route</th>
+              <th>الوصف والمحتوى الرئيسي</th>
+              <th>الأدوار المسموح لهم</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-pink">١</span></td>
+              <td>طلبات إجازة المتدربين</td>
+              <td><code>/leaves/requests</code></td>
+              <td>قائمة كل طلبات الإجازة مع فلاتر (النوع، الحالة، المجموعة، التاريخ). كارد رصيد لكل متدرب، زر موافقة/رفض مع نافذة حوار. يتضمن بحث بالاسم ورقم الهوية.</td>
+              <td><span class="badge b-gold">Admin</span> <span class="badge b-teal">Manager</span> <span class="badge b-navy">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-pink">٢</span></td>
+              <td>الإجازات الطبية</td>
+              <td><code>/leaves/medical</code></td>
+              <td>قائمة الإجازات الطبية في انتظار التحقق. يظهر رقم التقرير الطبي وصورة المرفق (عرض inline). زر "تحقق" يُمكِّن الإدارة من إقرار أو رفض مع ملاحظة. فرز حسب التاريخ والحالة.</td>
+              <td><span class="badge b-gold">Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-pink">٣</span></td>
+              <td>إجازات الموظفين</td>
+              <td><code>/leaves/employees</code></td>
+              <td>قائمة طلبات إجازة المدربين والموظفين مع بطاقة الرصيد (annual / sick / casual). تحديد النوع عند الطلب، عرض الرصيد المتبقي لكل نوع. الموافقة من مدير القسم. فرز حسب الموظف والقسم.</td>
+              <td><span class="badge b-gold">Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-pink">٤</span></td>
+              <td>إشعارات الاستقالة</td>
+              <td><code>/leaves/resignations</code></td>
+              <td>جدول بكل إشعارات الاستقالة المُقدَّمة (موظفين + مدربين). يُظهر intended_last_day وعدد الأيام المتبقية. شارة حمراء للإشعارات غير المُعترَف بها. زر "اعتراف رسمي" يُغلق التذكيرات اليومية.</td>
+              <td><span class="badge b-gold">Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-pink">٥</span></td>
+              <td>مركز الإجازات الموحَّد</td>
+              <td><code>/leaves/center</code></td>
+              <td>تقويم شهري/أسبوعي يجمع كل إجازات المتدربين والموظفين مرمَّزة بالألوان حسب النوع. شريط فلتر (المجموعة، القسم، النوع). لوحة إحصائيات (إجمالي الإجازات المعلقة، المعتمدة هذا الشهر، نسبة الرصيد المستهلك). تصدير إلى CSV.</td>
+              <td><span class="badge b-gold">Admin</span> <span class="badge b-teal">Manager</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">💡</span>
+        <div><strong>ملاحظة UX:</strong> شاشة "مركز الإجازات الموحَّد" هي الصفحة الرئيسية للمدير حين يفتح وحدة الإجازات. الشاشات الأربع الأخرى تُفتح كـ sub-routes مع navigation tabs داخل نفس التخطيط. بطاقة الرصيد (balance card) تظهر في كل شاشة كـ sticky sidebar عند فتح متدرب بعينه.</div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 5: DATABASE ========== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">الجداول الستة لهذه المرحلة</h2>
+
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-gold">📦 annual_leave_grants</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · bigserial</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees.id</div>
+            <div class="db-field">year · smallint (e.g. 2025)</div>
+            <div class="db-field">total_days · smallint DEFAULT 15</div>
+            <div class="db-field">used_days · smallint DEFAULT 0</div>
+            <div class="db-field">remaining_days · smallint GENERATED</div>
+            <div class="db-field">carry_over_from_prev_year · smallint DEFAULT 0</div>
+            <div class="db-field">granted_at · timestamptz</div>
+            <div class="db-field">INDEX (trainee_id, year) UNIQUE</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-gold">📦 leave_requests</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · bigserial</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees.id</div>
+            <div class="db-field">leave_type · enum(annual, emergency, other)</div>
+            <div class="db-field">start_date · date NOT NULL</div>
+            <div class="db-field">end_date · date NOT NULL</div>
+            <div class="db-field">days_count · smallint (computed)</div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field">status · enum(pending, approved, rejected)</div>
+            <div class="db-field">requested_at · timestamptz DEFAULT now()</div>
+            <div class="db-field"><span class="fk">FK</span>reviewed_by → users.id NULLABLE</div>
+            <div class="db-field">reviewed_at · timestamptz NULLABLE</div>
+            <div class="db-field">rejection_reason · text NULLABLE</div>
+            <div class="db-field">INDEX (trainee_id, status)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-gold">📦 medical_leaves</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · bigserial</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees.id</div>
+            <div class="db-field">start_date · date NOT NULL</div>
+            <div class="db-field">end_date · date NOT NULL</div>
+            <div class="db-field">medical_report_number · varchar(100) NOT NULL</div>
+            <div class="db-field">doctor_name · varchar(150)</div>
+            <div class="db-field">hospital_name · varchar(200)</div>
+            <div class="db-field">diagnosis_summary · text</div>
+            <div class="db-field">attachment_url · text NULLABLE</div>
+            <div class="db-field"><span class="fk">FK</span>verified_by → users.id NULLABLE</div>
+            <div class="db-field">verified_at · timestamptz NULLABLE</div>
+            <div class="db-field">status · enum(pending, verified, rejected)</div>
+            <div class="db-field">UNIQUE (trainee_id, medical_report_number)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-gold">📦 employee_leaves</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · bigserial</div>
+            <div class="db-field"><span class="fk">FK</span>employee_id → employees.id</div>
+            <div class="db-field">leave_type · enum(annual, sick, casual, unpaid, maternity)</div>
+            <div class="db-field">start_date · date NOT NULL</div>
+            <div class="db-field">end_date · date NOT NULL</div>
+            <div class="db-field">days_count · smallint NOT NULL</div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field">status · enum(pending, approved, rejected)</div>
+            <div class="db-field"><span class="fk">FK</span>approved_by → users.id NULLABLE</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+            <div class="db-field">INDEX (employee_id, leave_type, status)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-gold">📦 employee_leave_balances</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · bigserial</div>
+            <div class="db-field"><span class="fk">FK</span>employee_id → employees.id</div>
+            <div class="db-field">year · smallint NOT NULL</div>
+            <div class="db-field">annual_total · smallint DEFAULT 21</div>
+            <div class="db-field">sick_total · smallint DEFAULT 30</div>
+            <div class="db-field">casual_total · smallint DEFAULT 6</div>
+            <div class="db-field">annual_used · smallint DEFAULT 0</div>
+            <div class="db-field">sick_used · smallint DEFAULT 0</div>
+            <div class="db-field">casual_used · smallint DEFAULT 0</div>
+            <div class="db-field">UNIQUE (employee_id, year)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-gold">📦 resignation_notifications</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · bigserial</div>
+            <div class="db-field"><span class="fk">FK</span>employee_id → employees.id</div>
+            <div class="db-field">intended_last_day · date NOT NULL</div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field">notification_date · date DEFAULT CURRENT_DATE</div>
+            <div class="db-field">notice_weeks · smallint DEFAULT 4</div>
+            <div class="db-field"><span class="fk">FK</span>acknowledged_by → users.id NULLABLE</div>
+            <div class="db-field">acknowledged_at · timestamptz NULLABLE</div>
+            <div class="db-field">is_cancelled · boolean DEFAULT false</div>
+            <div class="db-field">cancelled_at · timestamptz NULLABLE</div>
+            <div class="db-field">INDEX (employee_id, acknowledged_at)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># الجداول الجديدة وعلاقاتها بالجداول السابقة</span>
+trainees <span class="c-key">1:N</span> annual_leave_grants      <span class="c-com"># كل متدرب يحصل على منحة سنوية واحدة/سنة</span>
+trainees <span class="c-key">1:N</span> leave_requests            <span class="c-com"># متدرب يمكن أن يقدم عدة طلبات</span>
+trainees <span class="c-key">1:N</span> medical_leaves             <span class="c-com"># إجازات طبية متعددة</span>
+employees <span class="c-key">1:N</span> employee_leaves           <span class="c-com"># كل موظف له إجازات متعددة</span>
+employees <span class="c-key">1:1</span> employee_leave_balances   <span class="c-com"># رصيد واحد لكل موظف/سنة</span>
+employees <span class="c-key">1:N</span> resignation_notifications  <span class="c-com"># نادراً أكثر من واحدة نشطة</span>
+
+<span class="c-com"># الربط مع جدول attendance (المرحلة ٠٥)</span>
+leave_requests.<span class="c-fn">approve</span>() → <span class="c-fn">upsert</span>(attendance, status=<span class="c-str">'excused'</span>, leave_id=FK)
+medical_leaves.<span class="c-fn">verify</span>()  → <span class="c-fn">upsert</span>(attendance, status=<span class="c-str">'excused'</span>, medical_leave_id=FK)
+
+<span class="c-com"># القيود الجوهرية</span>
+UNIQUE(annual_leave_grants.trainee_id, annual_leave_grants.year)
+UNIQUE(medical_leaves.trainee_id, medical_leaves.medical_report_number)
+UNIQUE(employee_leave_balances.employee_id, employee_leave_balances.year)
+
+<span class="c-com"># generated column</span>
+remaining_days = (total_days + carry_over_from_prev_year) - used_days
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">🔐</span>
+        <div><strong>Row-Level Security:</strong> الموظف يرى إجازات فريقه فقط. المتدرب يرى طلباته فقط. Admin يرى الكل. كل جدول يحمل company_id ضمنياً عبر employee/trainee FK.</div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 6: APIs ========== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">نقاط الاتصال — ١٣ Endpoint</h2>
+
+      <div class="api-group">
+        <div class="api-group-title">📦 الإجازات السنوية — Annual Leave Grants</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/leaves/trainee/:id/balance</span>
+            <span class="api-desc">رصيد إجازة متدرب بعينه للسنة الحالية — total, used, remaining, carry_over</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/annual-leave-grants</span>
+            <span class="api-desc">منح إجازات يدوياً (admin) أو via cron في 1 يناير — body: {trainee_id, year, total_days, carry_over}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📦 طلبات الإجازة — Leave Requests</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/leave-requests</span>
+            <span class="api-desc">قائمة الطلبات مع filters: status, leave_type, trainee_id, group_id, date_from, date_to — pagination</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/leave-requests</span>
+            <span class="api-desc">إنشاء طلب جديد — يحسب days_count تلقائياً (باستثناء public_holidays والجمعة/السبت) — يتحقق من الرصيد والتداخل</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/leave-requests/:id/approve</span>
+            <span class="api-desc">الموافقة — يُنشئ attendance records بـ status=excused — يُطرح من used_days — يُرسل إشعار</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/leave-requests/:id/reject</span>
+            <span class="api-desc">الرفض — body: {rejection_reason} إلزامي — يُرسل إشعار بسبب الرفض</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📦 الإجازات الطبية — Medical Leaves</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/medical-leaves</span>
+            <span class="api-desc">قائمة الإجازات الطبية مع فلاتر status, trainee_id, date_from</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/medical-leaves</span>
+            <span class="api-desc">إنشاء إجازة طبية — medical_report_number إلزامي — تحقق من uniqueness per trainee</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/medical-leaves/:id</span>
+            <span class="api-desc">تعديل البيانات قبل التحقق (diagnosis_summary, doctor_name, end_date)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/medical-leaves/:id/verify</span>
+            <span class="api-desc">التحقق الرسمي — يُسجِّل verified_by وverified_at — يُنشئ سجلات excused في attendance</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/medical-leaves/:id/upload-report</span>
+            <span class="api-desc">رفع صورة التقرير الطبي — multipart/form-data — يُحدِّث attachment_url</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📦 إجازات الموظفين — Employee Leaves</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/employee-leaves</span>
+            <span class="api-desc">قائمة إجازات الموظفين مع فلاتر employee_id, leave_type, status, year</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/employee-leaves</span>
+            <span class="api-desc">طلب إجازة موظف جديد — يتحقق من رصيد employee_leave_balances قبل الإنشاء</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/employee-leaves/:id/approve</span>
+            <span class="api-desc">موافقة مدير القسم — يُخصم من الرصيد المناسب (annual_used / sick_used / casual_used)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📦 الاستقالة ومركز الإجازات</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/resignation-notifications</span>
+            <span class="api-desc">تقديم إشعار استقالة — body: {employee_id, intended_last_day, reason, notice_weeks}</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/leave-center</span>
+            <span class="api-desc">بيانات مركز الإجازات الموحَّد للتقويم — query: month, year, group_id, department_id, type</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========== SECTION 7: FLOWS ========== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك كل دور في نظام الإجازات؟</h2>
+
+      <h3>🔸 تدفق المتدرب — طلب إجازة سنوية</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يسجل الدخول للبوابة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "طلب إجازة"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يختار النوع والفترة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">النظام يحسب days_count ويتحقق من الرصيد</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُقدِّم الطلب (status=pending)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">ينتظر إشعار الموافقة/الرفض</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق الإدارة — مراجعة طلب الإجازة</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يفتح لوحة الإجازات</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يرى الطلبات pending</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يفحص رصيد المتدرب وتداريخ الفترة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">يضغط "موافقة" أو "رفض"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">النظام يُنشئ attendance.excused</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">إشعار WhatsApp+Email للمتدرب</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق الإجازة الطبية — من التقديم للتطبيق</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">المتدرب يُقدِّم إجازة طبية</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُدخل رقم التقرير الطبي</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يرفع صورة التقرير (اختياري)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">الإدارة تراجع وتُحقِّق (verified_at)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">النظام ينشئ excused records</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">إشعار التحقق للمتدرب</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق cron — منح الإجازات السنوية (1 يناير)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Cron يُشغَّل 1 يناير 00:01</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يجلب كل المتدربين active</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يحسب carry_over من العام السابق (حد أقصى 5 أيام)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">يُنشئ annual_leave_grants للسنة الجديدة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُرسل إشعار "تم تجديد رصيد إجازاتك" لكل متدرب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يسجل في audit_log</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق إشعار الاستقالة</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">الموظف يُقدِّم استقالة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُحدَّد intended_last_day</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">Cron يومي: إشعار للإدارة حتى acknowledged</span>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">الإدارة تضغط "اعتراف رسمي"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">acknowledged_at يُسجَّل — التذكيرات تتوقف</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">بدء إجراءات offboarding (م. ٠٤)</div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 8: BUSINESS LOGIC ========== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">القواعد التشغيلية العشر للمرحلة السادسة</h2>
+
+      <div class="alert al-gold">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.1 — حساب days_count:</strong> days_count = end_date - start_date + 1، مع استثناء public_holidays (من جدول holidays) وأيام اللا-تدريب (non_training_days من إعدادات المجموعة). أيام الجمعة/السبت تُستثنى افتراضياً إلا إذا كانت أيام تدريب فعلية.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.2 — تحويل الإجازة المعتمدة إلى excused:</strong> عند approve أي طلب إجازة مُعتمَد، يُنشئ النظام تلقائياً سجلات في جدول attendance بـ status='excused' لكل يوم في الفترة. إذا كان السجل موجوداً (absent)، يُحدَّث إلى excused. يُضاف leave_request_id كـ FK للمرجعية.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.3 — الرفض التلقائي عند تجاوز الرصيد:</strong> إذا كان days_count > remaining_days في annual_leave_grants للسنة الحالية، يُرفض الطلب تلقائياً بـ rejection_reason='insufficient_balance'. استثناء: لو leave_type='emergency' يُمرَّر للإدارة مع تنبيه واضح للإعفاء الإداري.</div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// قاعدة 6.3 — pseudo-code</span>
+<span class="c-key">async function</span> <span class="c-fn">validateLeaveBalance</span>(trainee_id, days_count, leave_type) {
+  <span class="c-key">const</span> grant = <span class="c-key">await</span> <span class="c-fn">getActiveGrant</span>(trainee_id, <span class="c-fn">currentYear</span>());
+  <span class="c-key">if</span> (days_count &gt; grant.remaining_days) {
+    <span class="c-key">if</span> (leave_type === <span class="c-str">'emergency'</span>) {
+      <span class="c-key">return</span> { allowed: <span class="c-key">true</span>, requiresAdminOverride: <span class="c-key">true</span> };
+    }
+    <span class="c-key">throw new</span> <span class="c-fn">Error</span>(<span class="c-str">'INSUFFICIENT_BALANCE'</span>);
+  }
+  <span class="c-key">return</span> { allowed: <span class="c-key">true</span>, requiresAdminOverride: <span class="c-key">false</span> };
+}
+      </pre>
+
+      <div class="alert al-rust">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.4 — تفرُّد رقم التقرير الطبي:</strong> medical_report_number يجب أن يكون UNIQUE per trainee (UNIQUE constraint على trainee_id + medical_report_number). إذا حاول متدرب إدخال نفس الرقم مرتين، يُعاد خطأ 409 Conflict مع رسالة "رقم التقرير مُستخدَم سابقاً لهذا المتدرب".</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.5 — إلزامية التحقق للإجازة الطبية:</strong> medical_leave لا تُطبَّق على جدول attendance إلا بعد تسجيل verified_at. حتى لو كان status=verified، لو verified_at فارغ — لا يُنشَأ أي excused record. هذا يمنع التحايل ببيانات verification غير مكتملة.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.6 — استقلالية رصيد الموظفين:</strong> employee_leave_balances منفصل تماماً عن annual_leave_grants. الموظف والمدرب لا يستهلكان من رصيد المتدربين. كل جدول له logic الخصم الخاص. عند approval الإجازة الطبية للموظف، يُخصم من sick_used وليس من annual_used.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.7 — تذكيرات الاستقالة اليومية:</strong> BullMQ job يعمل كل يوم يفحص resignation_notifications حيث acknowledged_at IS NULL ولم يتجاوز intended_last_day. إذا تبقى أقل من أسبوع — يُرسل تنبيه urgent. عند is_cancelled=true يُوقف التذكيرات فوراً حتى لو لم يُعترَف.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.8 — Audit Log لكل قرار:</strong> كل approval أو rejection أو verification يُسجَّل في جدول audit_log (م. ٠١) بـ action=leave_approved / leave_rejected / medical_verified، مع actor_id وtimestamp والبيانات الكاملة قبل وبعد التغيير. الإشعارات (WhatsApp+Email) تُرسَل بعد تسجيل الـ audit_log مباشرةً.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.9 — Cron السنوي (1 يناير):</strong> BullMQ cron <code>0 1 1 1 *</code> يجلب كل المتدربين بـ status=active. لكل متدرب: carry_over = MIN(remaining_days_prev_year, 5). يُنشئ annual_leave_grants جديدة بـ total_days=15 + carry_over. يُوقَف إذا وُجد grant مسبق لنفس السنة (idempotent).</div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// قاعدة 6.9 — cron logic</span>
+<span class="c-key">const</span> CRON_SCHEDULE = <span class="c-str">'0 1 1 1 *'</span>; <span class="c-com">// 1 يناير الساعة 01:00</span>
+<span class="c-key">const</span> MAX_CARRY_OVER = <span class="c-num">5</span>;
+<span class="c-key">const</span> BASE_DAYS = <span class="c-num">15</span>;
+
+<span class="c-key">async function</span> <span class="c-fn">grantAnnualLeaves</span>(year) {
+  <span class="c-key">const</span> trainees = <span class="c-key">await</span> <span class="c-fn">getActiveTrainees</span>();
+  <span class="c-key">for</span> (<span class="c-key">const</span> t <span class="c-key">of</span> trainees) {
+    <span class="c-key">const</span> prevGrant = <span class="c-key">await</span> <span class="c-fn">getGrant</span>(t.id, year - <span class="c-num">1</span>);
+    <span class="c-key">const</span> carry = Math.<span class="c-fn">min</span>(prevGrant?.remaining_days ?? <span class="c-num">0</span>, MAX_CARRY_OVER);
+    <span class="c-key">await</span> <span class="c-fn">upsertGrant</span>({
+      trainee_id: t.id, year,
+      total_days: BASE_DAYS,
+      carry_over_from_prev_year: carry,
+    });
+  }
+}
+      </pre>
+
+      <div class="alert al-rust">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 6.10 — منع تداخل الإجازات:</strong> عند POST /api/leave-requests، يُفحَص وجود أي leave_request أو medical_leave بـ status IN (pending, approved) يتقاطع تاريخياً مع الفترة الجديدة لنفس trainee_id. إذا وُجد تداخل، يُعاد خطأ 409 مع تفاصيل الإجازة المتعارضة.</div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// قاعدة 6.10 — overlap check query</span>
+<span class="c-key">SELECT</span> id, start_date, end_date, status
+<span class="c-key">FROM</span> leave_requests
+<span class="c-key">WHERE</span> trainee_id = $<span class="c-num">1</span>
+  <span class="c-key">AND</span> status <span class="c-key">IN</span> (<span class="c-str">'pending'</span>, <span class="c-str">'approved'</span>)
+  <span class="c-key">AND</span> (start_date, end_date) <span class="c-key">OVERLAPS</span> ($<span class="c-num">2</span>, $<span class="c-num">3</span>);
+<span class="c-com">-- إذا أعادت أي صفوف → رفض الطلب الجديد</span>
+      </pre>
+
+    </section>
+
+    <!-- ========== SECTION 9: DEPENDENCIES ========== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد مركز الإجازات</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p><strong>Phase 01 — الأساس:</strong> نظام المصادقة (Auth)، جداول users وroles، Audit Log engine، BullMQ للـ cron jobs والإشعارات.</p>
+          <p><strong>Phase 04 — المتدرب:</strong> جدول trainees مع trainee_id، حالة المتدرب (active/inactive)، بوابة المتدرب للتقديم المباشر.</p>
+          <p><strong>Phase 05 — الحضور:</strong> جدول attendance مع status field قابل للتعديل إلى excused. يجب أن تكون العمليات UPSERT آمنة.</p>
+          <p><strong>Phase 02 — البيانات:</strong> قائمة public_holidays لحساب days_count الصحيح وعدم احتساب الأعياد والعطل ضمن أيام الإجازة.</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p><strong>Phase 07 — المخالفات والرواتب:</strong> attendance.status='excused' يُستثنى من حسابات المخالفات. الأيام المعتمدة تُحتسب كأيام عمل في الراتب الشهري. resignation_notifications تُغذِّي آلية end_of_service_pay.</p>
+          <p><strong>Phase 08 — الإشعارات:</strong> كل حدث (طلب جديد، قبول، رفض، تحقق طبي، استقالة، تجديد رصيد) يُولِّد notification_event يُعالجه نظام الإشعارات الموحَّد عبر WhatsApp وEmail.</p>
+          <p><strong>Phase 09 — البوابات:</strong> بوابة المتدرب تعرض رصيد الإجازة الحالي وسجل الطلبات. نافذة "تقديم طلب إجازة" متاحة مباشرةً من البوابة.</p>
+        </div>
+      </div>
+
+      <div class="alert al-info">
+        <span class="ico">🔗</span>
+        <div><strong>تبعية حرجة:</strong> لو لم تُكتمَل المرحلة الخامسة (الحضور) أولاً، لا يمكن تطبيق قاعدة 6.2 (تحويل إلى excused). الـ schema migration لجدول attendance (إضافة leave_request_id FK) يجب أن تُطبَّق كـ non-breaking migration قبل بدء هذه المرحلة.</div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 10: RISKS ========== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يُعقِّد التنفيذ</h2>
+
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><strong>حساب days_count المعقّد:</strong> استثناء public_holidays وأيام عطلة نهاية الأسبوع مع مراعاة اختلاف جداول المجموعات — يحتاج helper function معتمَدة ومُختبَرة بعناية بحالات حافة متعددة.</li>
+            <li><strong>تكرار رقم التقرير الطبي:</strong> متدرب دخل مستشفيين في نفس اليوم قد يحصل على رقمين مختلفين لنفس الحادثة. UNIQUE constraint قد يكون أكثر صرامة مما يحتاجه الواقع.</li>
+            <li><strong>سحب الاستقالة:</strong> الموظف قدَّم استقالة ثم أراد التراجع. is_cancelled=true يُوقف التذكيرات لكن ماذا يحدث بالـ offboarding المجدوَل؟ يحتاج workflow cancellation.</li>
+            <li><strong>إجازة طارئة بدون رصيد:</strong> المدير قد يوافق يدوياً على إجازة طارئة تتجاوز الرصيد — يحتاج admin_override flag مع audit_log واضح.</li>
+            <li><strong>race condition عند approval متزامن:</strong> مديران يوافقان على نفس الطلب في نفس اللحظة — يحتاج database-level locking أو optimistic concurrency.</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li>المتدرب يعمل 5 أيام/أسبوع (الأحد-الخميس) — الجمعة والسبت لا تُحتسب ضمن الإجازة إلا إذا كانت أيام تدريب.</li>
+            <li>الإجازة السنوية للمتدرب 15 يوم — قيمة افتراضية قابلة للتغيير من إعدادات النظام (system_settings table).</li>
+            <li>رقم التقرير الطبي نصي حر (varchar) — لا يوجد validation لتنسيق بعينه (كل مستشفى له نظام ترقيم مختلف).</li>
+            <li>الإجازات السنوية للموظفين 21 يوم (قابل للتعديل per employee contract)، المرضية 30 يوم، العرضية 6 أيام.</li>
+            <li>notice_weeks الافتراضي 4 أسابيع — قابل للتهيئة per employee في contract settings.</li>
+            <li>Cron السنوي يعمل تلقائياً بدون تدخل بشري — الـ idempotency تمنع مضاعفة المنح.</li>
+            <li>الإشعارات عبر WhatsApp وEmail مُعدَّة بشكل صحيح من المرحلة الأولى (BullMQ + notification templates).</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-6">حالات حافة يجب اختبارها</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>الحالة</th><th>السيناريو</th><th>السلوك المتوقع</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>تداخل مع إجازة pending</td>
+              <td>متدرب لديه طلب pending من 5-10 مارس ويُقدِّم طلباً جديداً من 8-12 مارس</td>
+              <td>رفض 409 مع تفاصيل الطلب المتداخل</td>
+            </tr>
+            <tr>
+              <td>رصيد صفر</td>
+              <td>متدرب استنزف كل 15 يوم + carry-over</td>
+              <td>رفض تلقائي إلا لـ emergency مع admin override</td>
+            </tr>
+            <tr>
+              <td>إجازة عبر رأس السنة</td>
+              <td>إجازة من 29 ديسمبر إلى 5 يناير</td>
+              <td>days_count يُحتسب من رصيد سنتين مختلفتين</td>
+            </tr>
+            <tr>
+              <td>متدرب غير نشط</td>
+              <td>متدرب بـ status=suspended يُقدِّم طلب إجازة</td>
+              <td>رفض 403 مع رسالة "الحساب موقوف"</td>
+            </tr>
+            <tr>
+              <td>استقالة ملغاة</td>
+              <td>موظف أراد التراجع عن الاستقالة بعد تقديمها</td>
+              <td>is_cancelled=true يُوقف التذكيرات — offboarding tasks تُلغى يدوياً</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 11: CHECKLIST ========== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة السادسة اكتملت؟</h2>
+
+      <ol class="num-list">
+        <li>
+          <strong>Database:</strong> الجداول الستة (annual_leave_grants, leave_requests, medical_leaves, employee_leaves, employee_leave_balances, resignation_notifications) مُهاجَرة بالكامل مع indexes وconstraints و UNIQUE المطلوبة. Migration لإضافة leave_request_id و medical_leave_id كـ FK nullable في جدول attendance. ✅
+        </li>
+        <li>
+          <strong>Backend — Leave Requests:</strong> جميع الـ 13 API endpoint تعمل مع validation كامل (zod schemas)، قاعدة الرصيد (6.3)، قاعدة التداخل (6.10)، قاعدة days_count (6.1) مع helper function للعطل. ✅
+        </li>
+        <li>
+          <strong>Backend — Attendance Integration:</strong> عند approve/verify يُنشئ النظام تلقائياً attendance records بـ excused لكل يوم في الفترة. UPSERT آمن لا يُلغي سجلات present موجودة. ✅
+        </li>
+        <li>
+          <strong>Backend — Cron Jobs:</strong> BullMQ job للمنح السنوي (1 يناير) مُفعَّل ومُختبَر بـ dry-run mode. Job يومي لتذكيرات الاستقالة غير المُعترَف بها. كلاهما idempotent. ✅
+        </li>
+        <li>
+          <strong>Backend — Notifications:</strong> كل approval وrejection وverification يُولِّد notification event مع template صحيح (WhatsApp+Email). ✅
+        </li>
+        <li>
+          <strong>Frontend — شاشة طلبات الإجازة:</strong> قائمة مع فلاتر وفرز، كارد رصيد لكل متدرب، نافذة حوار للموافقة/الرفض مع حقل سبب الرفض. ✅
+        </li>
+        <li>
+          <strong>Frontend — شاشة الإجازات الطبية:</strong> عرض المرفقات inline، زر التحقق، عرض رقم التقرير وبيانات الطبيب والمستشفى. ✅
+        </li>
+        <li>
+          <strong>Frontend — شاشة الموظفين والاستقالات:</strong> بطاقة الرصيد التفصيلية (annual/sick/casual)، جدول الاستقالات مع شارة urgent للغير مُعترَف بها. ✅
+        </li>
+        <li>
+          <strong>Frontend — مركز الإجازات الموحَّد:</strong> تقويم شهري/أسبوعي مرمَّز بالألوان، شريط فلتر، لوحة إحصائيات، تصدير CSV. ✅
+        </li>
+        <li>
+          <strong>Testing:</strong> اختبارات وحدة لـ days_count helper (حالات عادية + public holidays + cross-year). اختبارات تكامل لـ approve flow (leave → attendance excused). اختبارات carry-over لـ cron السنوي. اختبار رفض التداخل. ✅
+        </li>
+        <li>
+          <strong>QA — Edge Cases:</strong> رصيد صفر، تداخل إجازتين، استقالة ملغاة، إجازة عبر رأس السنة، رقم تقرير طبي مكرر — كلها تُعطي الأخطاء والرسائل الصحيحة. ✅
+        </li>
+      </ol>
+
+      <div class="alert al-teal">
+        <span class="ico">✅</span>
+        <div><strong>تعريف "مكتملة":</strong> المرحلة تعتبر مكتملة عندما يُمكِّن إجراء موافقة كاملة على طلب إجازة يُنشئ تلقائياً سجلات excused في attendance، يُرسل إشعار للمتدرب، ويُسجَّل في audit_log — كل ذلك في طلب HTTP واحد بدون أي تدخل يدوي إضافي.</div>
+      </div>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-05-attendance-operations.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٥. الحضور والعمليات</span>
+      </a>
+      <a href="phase-07-violations-financials.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٧. المخالفات والرواتب والتميز</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

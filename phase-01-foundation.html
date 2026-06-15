@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ١ — الأساس المعماري | معهد ريادة الغد</title>
+<meta name="description" content="المرحلة الأولى من نظام إدارة معهد ريادة الغد — بناء الأساس المعماري الكامل: Express، PostgreSQL، Redis، JWT، RBAC، Tenant Isolation، وأول شاشات المصادقة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============= TOP NAV ============= -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html" class="active">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- ============= BREADCRUMB ============= -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ١ — الأساس المعماري</span>
+  </div>
+</div>
+
+<!-- ============= PAGE HERO ============= -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: عالي · ⏱ 2–3 أسابيع</div>
+    <div class="hero-label">المرحلة ١ من 10 · Architecture Foundation</div>
+    <h1>الأساس المعماري<br><span>Infrastructure &amp; Auth Core</span></h1>
+    <p class="hero-desc">
+      قبل أن يُدخل أي متدرب بيانات، وقبل أن تُسجَّل أي حصة حضور، يجب أن يُبنى هيكل الثقة الكامل للنظام.
+      هذه المرحلة تُنشئ الـ Monorepo بكامل طبقاته، تُركّب خادم Express مُحصَّن، تُعرِّف قاعدة البيانات الأولى، وتبني نظام المصادقة والصلاحيات من الصفر —
+      بما يشمل JWT، RBAC، Tenant Isolation، وفصل الجنسين. كل مرحلة لاحقة في النظام تستند على ما يُبنى هنا.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>6</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>3</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>8</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>2–3</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= PHASE NAVIGATOR ============= -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot current"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- ============= MAIN BODY ============= -->
+<div class="page-body">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- ===== SECTION 1: SUMMARY ===== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة الأولى هي الحجر الأساسي لكامل النظام. لا توجد مرحلة واحدة من المراحل العشر تستطيع العمل دون المخرجات التي تُنتجها هنا —
+        من هيكل الملفات، إلى اتصال قاعدة البيانات، وصولاً إلى نظام المصادقة بكامل طبقاته الأمنية.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p1">
+          <h3>🎯 الهدف</h3>
+          <p>
+            بناء بنية تحتية موثوقة وآمنة تُشغّل كل الوحدات اللاحقة. يشمل ذلك: Monorepo جاهز،
+            خادم Express مُحصَّن بـ Helmet + CORS + Rate Limiting، اتصال PostgreSQL بـ Pool،
+            Redis للـ Cache والـ Queues، ونظام JWT كامل مع Refresh Token Rotation.
+          </p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات الرئيسية</h3>
+          <ul class="feat-list">
+            <li><span class="ico">🗂️</span>هيكل <code>monorepo</code>: backend + frontend + shared + docs</li>
+            <li><span class="ico">🔐</span>نظام JWT كامل: access (15min) + refresh (7d)</li>
+            <li><span class="ico">👮</span>RBAC: 5 أدوار + permission matrix كاملة</li>
+            <li><span class="ico">🏢</span>Tenant Isolation: <code>company_id</code> مُحقون في كل Query</li>
+            <li><span class="ico">⚥</span>Gender Scope Middleware: فصل تلقائي حسب الجنس</li>
+            <li><span class="ico">📋</span>Audit Logs: تسجيل كل action مع old/new values</li>
+            <li><span class="ico">⚛️</span>Frontend: React + Vite + Zustand + TanStack Query</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><span class="ico">✅</span>لا تعتمد على أي مرحلة سابقة — هذه هي نقطة الانطلاق</li>
+            <li><span class="ico">🛠️</span>Node.js 20+ + npm/pnpm مثبت على البيئة</li>
+            <li><span class="ico">🗄️</span>PostgreSQL 16 قاعدة بيانات منشأة وجاهزة</li>
+            <li><span class="ico">📦</span>Redis 7 مشغّل ومتاح للاتصال</li>
+            <li><span class="ico">📄</span>ملف <code>.env</code> مهيأ بالمتغيرات اللازمة</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong>جميع المراحل من 2 إلى 10</strong> — كل مرحلة لاحقة تستخدم نظام المصادقة،
+            الـ Tenant Isolation، الـ RBAC، وطبقة الـ Audit Logs التي تُبنى هنا.
+            بدون هذه المرحلة، لا يمكن لأي API أو شاشة في النظام أن تعمل بشكل آمن.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 2: WHY ===== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">الأساس أولاً — لأن كل شيء يبنى فوقه</h2>
+      <p class="section-desc">
+        البرمجيات الكبيرة لا تفشل بسبب خطأ في ميزة واحدة — بل تفشل لأن أساسها الأمني والمعماري مبني بشكل خاطئ.
+        معهد ريادة الغد يتعامل مع بيانات حساسة: عقود مدربين، رواتب، سجلات حضور وغياب، وبيانات متدربين.
+        كل هذا يستوجب أن تُبنى طبقات الحماية من اليوم الأول.
+      </p>
+
+      <div class="alert al-gold">
+        <span class="ico">💡</span>
+        <div>
+          <strong>السبب المعماري الأول:</strong> النظام متعدد الشركات (Multi-Tenant SaaS).
+          إذا لم يُحقَن <code>company_id</code> في كل Query من البداية، فكل مرحلة لاحقة ستتطلب إعادة كتابة كاملة للـ Queries.
+          التأسيس الصحيح هنا يوفر أسابيع من العمل لاحقاً.
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div>
+          <strong>السبب الأمني:</strong> فصل الجنسين (Gender Scope) هو متطلب تشغيلي أساسي.
+          موظف ذكر لا يجب أن يرى بيانات المتدربات إطلاقاً. هذا القيد يجب أن يكون في Middleware مركزي —
+          وليس شرطاً يُنسى إضافته في كل API جديد يُكتب لاحقاً.
+        </div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🔒</span>
+        <div>
+          <strong>السبب التقني:</strong> Refresh Token Rotation ودوّامة الـ logout الصامتة من أصعب المشاكل لحلها لاحقاً.
+          البناء الصحيح من البداية — مع تخزين التوكن في <code>httpOnly cookie</code> وتدوير صارم —
+          يحمي المستخدمين من اختطاف الجلسات ويمنع session replay attacks.
+        </div>
+      </div>
+
+      <div class="grid grid-3 mt-6">
+        <div class="card card-accent c-p1">
+          <div class="card-head">
+            <div class="card-icon">🔑</div>
+            <div>
+              <div class="card-title">بدونها: لا يوجد أمان</div>
+              <div class="card-sub">Zero security guarantees</div>
+            </div>
+          </div>
+          <p>
+            كل API ستكتبه في المراحل 2–10 سيكون مكشوفاً بالكامل إذا لم تُبنَ طبقة المصادقة أولاً.
+          </p>
+        </div>
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🏗️</div>
+            <div>
+              <div class="card-title">بدونها: لا يوجد هيكل</div>
+              <div class="card-sub">No monorepo structure</div>
+            </div>
+          </div>
+          <p>
+            الـ Frontend لن يعرف أين يستدعي الـ API، الـ Shared types غير موجودة، والـ ESLint rules غير مفعّلة.
+          </p>
+        </div>
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">📊</div>
+            <div>
+              <div class="card-title">بدونها: لا يوجد تتبع</div>
+              <div class="card-sub">No audit trail</div>
+            </div>
+          </div>
+          <p>
+            أي تغيير في البيانات سيحدث بدون سجل — من غيّر ماذا ومتى ومن أي IP؟ هذا خطر قانوني.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 3: MODULES ===== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">ما الذي يُبنى بالتفصيل في هذه المرحلة؟</h2>
+      <p class="section-desc">
+        المرحلة تنقسم إلى ثماني وحدات تقنية مترابطة — كل وحدة تُكمل التي قبلها وتُمهّد للتي بعدها.
+      </p>
+
+      <div class="grid grid-3">
+
+        <div class="card card-accent c-p1">
+          <div class="card-head">
+            <div class="card-icon">🗂️</div>
+            <div>
+              <div class="card-title">Monorepo Structure</div>
+              <div class="card-sub">هيكل المشروع الموحّد</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">📁</span><code>backend/</code> — Express server + APIs</li>
+            <li><span class="ico">📁</span><code>frontend/</code> — React + Vite app</li>
+            <li><span class="ico">📁</span><code>shared/</code> — Types + Zod schemas مشتركة</li>
+            <li><span class="ico">📁</span><code>docs/</code> — وثائق المشروع</li>
+            <li><span class="ico">⚙️</span>ESLint + Prettier موحّد للـ monorepo</li>
+            <li><span class="ico">🔧</span>Scripts: <code>dev</code>, <code>build</code>, <code>test</code></li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">🛡️</div>
+            <div>
+              <div class="card-title">Express Server Core</div>
+              <div class="card-sub">الخادم المُحصَّن</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">🔒</span>Helmet — HTTP security headers</li>
+            <li><span class="ico">🌐</span>CORS مهيأ لـ frontend origin</li>
+            <li><span class="ico">⏱️</span>Rate Limit: 100/15min عام</li>
+            <li><span class="ico">🗜️</span>Compression — gzip للـ responses</li>
+            <li><span class="ico">📝</span>Winston logging: JSON + file rotation</li>
+            <li><span class="ico">🔄</span>Express JSON + Cookie Parser</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🗄️</div>
+            <div>
+              <div class="card-title">PostgreSQL + Redis</div>
+              <div class="card-sub">طبقة البيانات</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">🔗</span>pg Pool — connection pooling (max 20)</li>
+            <li><span class="ico">📋</span>Migration system — SQL files ترتيبية</li>
+            <li><span class="ico">💾</span>ioredis — cache + session store</li>
+            <li><span class="ico">📦</span>BullMQ — background job queues</li>
+            <li><span class="ico">🌡️</span>Health check endpoint للـ DB + Redis</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🔑</div>
+            <div>
+              <div class="card-title">JWT Auth System</div>
+              <div class="card-sub">نظام المصادقة الكامل</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">⚡</span>Access Token: <code>15min</code> — قصير العمر</li>
+            <li><span class="ico">🔄</span>Refresh Token: <code>7d</code> — مخزون <code>httpOnly</code> cookie</li>
+            <li><span class="ico">🔁</span>Token Rotation — كل refresh يُنشئ جديداً</li>
+            <li><span class="ico">🔐</span>bcryptjs password hash — cost factor 12</li>
+            <li><span class="ico">🚫</span>قفل حساب تلقائي بعد 5 محاولات</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">👮</div>
+            <div>
+              <div class="card-title">RBAC + Permissions</div>
+              <div class="card-sub">نظام الصلاحيات</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">👑</span>Super Admin — وصول كامل بلا قيود</li>
+            <li><span class="ico">🏢</span>Manager — إدارة المعهد</li>
+            <li><span class="ico">👤</span>Staff — عمليات يومية</li>
+            <li><span class="ico">🎓</span>Trainer — إدارة الفصل الخاص</li>
+            <li><span class="ico">📚</span>Trainee — واجهة المتدرب</li>
+            <li><span class="ico">⚙️</span>Permission matrix: view/create/edit/delete/export</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-p1">
+          <div class="card-head">
+            <div class="card-icon">⚥</div>
+            <div>
+              <div class="card-title">Gender Scope Middleware</div>
+              <div class="card-sub">فصل الجنسين تلقائياً</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">♂️</span>موظف ذكر → يرى متدربين ذكور فقط</li>
+            <li><span class="ico">♀️</span>موظفة أنثى → ترى متدربات فقط</li>
+            <li><span class="ico">👑</span>Super Admin → bypass كامل</li>
+            <li><span class="ico">🔧</span>يُحقَن تلقائياً في كل Query بلا استثناء</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">📋</div>
+            <div>
+              <div class="card-title">Audit Logs</div>
+              <div class="card-sub">سجل التدقيق الكامل</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">📝</span>تسجيل كل CRUD action تلقائياً</li>
+            <li><span class="ico">🔄</span>Old values + New values كـ JSONB</li>
+            <li><span class="ico">🌐</span>IP Address + User Agent لكل طلب</li>
+            <li><span class="ico">👤</span>user_id + entity_type + entity_id</li>
+            <li><span class="ico">⏱️</span>Timestamp دقيق بالـ timezone</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">⚛️</div>
+            <div>
+              <div class="card-title">Frontend Foundation</div>
+              <div class="card-sub">قاعدة الواجهة الأمامية</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">⚡</span>React 18 + Vite 5 — HMR سريع</li>
+            <li><span class="ico">🔀</span>react-router-dom v6 — SPA routing</li>
+            <li><span class="ico">📡</span>TanStack Query + axios interceptors</li>
+            <li><span class="ico">🗂️</span>Zustand — global auth store</li>
+            <li><span class="ico">🎨</span>Radix UI primitives + Tailwind/CSS</li>
+            <li><span class="ico">✅</span>react-hook-form + Zod client validation</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🔧</div>
+            <div>
+              <div class="card-title">Zod + Validation Layer</div>
+              <div class="card-sub">طبقة التحقق المركزية</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">📐</span>Zod schemas في <code>shared/</code> مشتركة</li>
+            <li><span class="ico">🔧</span>validateBody/validateQuery middleware</li>
+            <li><span class="ico">🌍</span>رسائل خطأ عربية موحّدة</li>
+            <li><span class="ico">🔒</span>Password rules: 8+ chars, digit, uppercase</li>
+            <li><span class="ico">📦</span>dotenv — إدارة متغيرات البيئة</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 4: SCREENS ===== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">الشاشات الثلاث لهذه المرحلة</h2>
+      <p class="section-desc">
+        هذه المرحلة تُنتج الشاشات التأسيسية للمصادقة — بدونها لا يستطيع أي مستخدم الدخول للنظام.
+      </p>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الشاشة</th>
+              <th>المسار</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-strong">01</td>
+              <td class="td-strong">شاشة تسجيل الدخول</td>
+              <td class="mono">/login</td>
+              <td>
+                نموذج بريد إلكتروني + كلمة مرور مع validation فوري.
+                تُظهر رسالة خطأ محددة عند الفشل، وتُوجِّه المستخدم بعد النجاح
+                حسب دوره مباشرة.
+              </td>
+              <td>
+                <span class="badge b-gray">الكل (غير مسجّل)</span>
+              </td>
+              <td><span class="badge b-teal">مطلوب في هذه المرحلة</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">02</td>
+              <td class="td-strong">شاشة تغيير كلمة المرور</td>
+              <td class="mono">/settings/password</td>
+              <td>
+                نموذج ثلاثي: كلمة المرور الحالية، الجديدة، التأكيد.
+                يتحقق من القوة في الوقت الحقيقي ويحظر إعادة استخدام نفس كلمة المرور.
+                متاح بعد تسجيل الدخول لأي دور.
+              </td>
+              <td>
+                <span class="badge b-gold">Super Admin</span>
+                <span class="badge b-navy">Manager</span>
+                <span class="badge b-teal">Staff</span>
+                <span class="badge b-purple">Trainer</span>
+              </td>
+              <td><span class="badge b-teal">مطلوب في هذه المرحلة</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">03</td>
+              <td class="td-strong">شاشة طلب صلاحية</td>
+              <td class="mono">/permissions/request</td>
+              <td>
+                نموذج يسمح للمستخدم بطلب صلاحية غير ممنوحة له.
+                يختار الصلاحية المطلوبة، يكتب سبباً، ثم يُرسل الطلب للمراجعة من Super Admin.
+                يعرض حالة الطلبات السابقة (pending / approved / rejected).
+              </td>
+              <td>
+                <span class="badge b-navy">Manager</span>
+                <span class="badge b-teal">Staff</span>
+                <span class="badge b-purple">Trainer</span>
+              </td>
+              <td><span class="badge b-teal">مطلوب في هذه المرحلة</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert al-gold mt-4">
+        <span class="ico">📌</span>
+        <div>
+          <strong>ملاحظة:</strong> شاشة لوحة التحكم الرئيسية (Dashboard) تُبنى في <a href="phase-02-master-data.html">المرحلة ٢</a>،
+          بعد أن يكون هناك بيانات فعلية تُعرض. في هذه المرحلة، بعد تسجيل الدخول يُوجَّه المستخدم إلى صفحة مؤقتة "في قيد الإنشاء".
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 5: DATABASE ===== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">الجداول الستة لهذه المرحلة</h2>
+      <p class="section-desc">
+        هذه الجداول تُشكّل النواة الأمنية لكامل النظام. جدول <code>users</code> هو المحور الذي يربط كل كيانات النظام،
+        وجدول <code>companies</code> هو مفتاح الـ Multi-Tenancy.
+      </p>
+
+      <div class="grid grid-3">
+
+        <!-- users -->
+        <div class="db-card">
+          <div class="db-head dh-rust">👤 users</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · <code>uuid</code> DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span>company_id · <code>uuid</code> REFERENCES companies</div>
+            <div class="db-field"><span class="un">UQ</span>username · <code>varchar(60)</code> NOT NULL</div>
+            <div class="db-field"><span class="un">UQ</span>email · <code>varchar(255)</code></div>
+            <div class="db-field">password_hash · <code>varchar(255)</code> NOT NULL</div>
+            <div class="db-field">full_name · <code>varchar(120)</code> NOT NULL</div>
+            <div class="db-field">role · <code>enum</code> (super_admin / manager / staff / trainer / trainee)</div>
+            <div class="db-field">gender · <code>enum</code> (male / female)</div>
+            <div class="db-field">phone · <code>varchar(20)</code></div>
+            <div class="db-field">is_active · <code>boolean</code> DEFAULT true</div>
+            <div class="db-field">is_blocked · <code>boolean</code> DEFAULT false</div>
+            <div class="db-field">failed_login_attempts · <code>int</code> DEFAULT 0</div>
+            <div class="db-field">locked_until · <code>timestamptz</code> NULL</div>
+            <div class="db-field">last_login_at · <code>timestamptz</code> NULL</div>
+            <div class="db-field">created_at · <code>timestamptz</code> DEFAULT now()</div>
+            <div class="db-field">updated_at · <code>timestamptz</code> DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- audit_logs -->
+        <div class="db-card">
+          <div class="db-head dh-rust">📋 audit_logs</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · <code>uuid</code> DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span>user_id · <code>uuid</code> REFERENCES users</div>
+            <div class="db-field"><span class="fk">FK</span>company_id · <code>uuid</code> REFERENCES companies</div>
+            <div class="db-field">action · <code>varchar(80)</code> NOT NULL</div>
+            <div class="db-field">entity_type · <code>varchar(60)</code> NOT NULL</div>
+            <div class="db-field">entity_id · <code>uuid</code> NULL</div>
+            <div class="db-field">old_values · <code>jsonb</code> NULL</div>
+            <div class="db-field">new_values · <code>jsonb</code> NULL</div>
+            <div class="db-field">ip_address · <code>inet</code></div>
+            <div class="db-field">user_agent · <code>text</code></div>
+            <div class="db-field">created_at · <code>timestamptz</code> DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- sessions -->
+        <div class="db-card">
+          <div class="db-head dh-rust">🔑 sessions</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · <code>uuid</code> DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span>user_id · <code>uuid</code> REFERENCES users</div>
+            <div class="db-field">refresh_token_hash · <code>varchar(255)</code> NOT NULL</div>
+            <div class="db-field">expires_at · <code>timestamptz</code> NOT NULL</div>
+            <div class="db-field">ip_address · <code>inet</code></div>
+            <div class="db-field">user_agent · <code>text</code></div>
+            <div class="db-field">revoked_at · <code>timestamptz</code> NULL</div>
+            <div class="db-field">created_at · <code>timestamptz</code> DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- permissions -->
+        <div class="db-card">
+          <div class="db-head dh-rust">🔒 permissions</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · <code>uuid</code> DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span>company_id · <code>uuid</code> REFERENCES companies</div>
+            <div class="db-field">role · <code>enum</code> (super_admin / manager / staff / trainer / trainee)</div>
+            <div class="db-field">page_key · <code>varchar(80)</code> NOT NULL</div>
+            <div class="db-field">can_view · <code>boolean</code> DEFAULT false</div>
+            <div class="db-field">can_create · <code>boolean</code> DEFAULT false</div>
+            <div class="db-field">can_edit · <code>boolean</code> DEFAULT false</div>
+            <div class="db-field">can_delete · <code>boolean</code> DEFAULT false</div>
+            <div class="db-field">can_export · <code>boolean</code> DEFAULT false</div>
+            <div class="db-field">created_at · <code>timestamptz</code> DEFAULT now()</div>
+            <div class="db-field">updated_at · <code>timestamptz</code> DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- permission_requests -->
+        <div class="db-card">
+          <div class="db-head dh-rust">📝 permission_requests</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · <code>uuid</code> DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span>user_id · <code>uuid</code> REFERENCES users</div>
+            <div class="db-field"><span class="fk">FK</span>company_id · <code>uuid</code> REFERENCES companies</div>
+            <div class="db-field">requested_permission · <code>varchar(80)</code> NOT NULL</div>
+            <div class="db-field">reason · <code>text</code> NOT NULL</div>
+            <div class="db-field">status · <code>enum</code> (pending / approved / rejected)</div>
+            <div class="db-field"><span class="fk">FK</span>reviewed_by · <code>uuid</code> REFERENCES users NULL</div>
+            <div class="db-field">reviewed_at · <code>timestamptz</code> NULL</div>
+            <div class="db-field">created_at · <code>timestamptz</code> DEFAULT now()</div>
+          </div>
+        </div>
+
+        <!-- companies (stub) -->
+        <div class="db-card">
+          <div class="db-head dh-rust">🏢 companies <span style="font-weight:400;font-size:11px;opacity:.8">(stub)</span></div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · <code>uuid</code> DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="un">UQ</span>name · <code>varchar(200)</code> NOT NULL</div>
+            <div class="db-field">logo · <code>varchar(500)</code> NULL</div>
+            <div class="db-field">is_active · <code>boolean</code> DEFAULT true</div>
+            <div class="db-field">created_at · <code>timestamptz</code> DEFAULT now()</div>
+            <div class="db-field">updated_at · <code>timestamptz</code> DEFAULT now()</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com">-- العلاقات الأساسية لمرحلة الأساس</span>
+companies <span class="c-key">1:N</span> users            <span class="c-com">-- كل شركة لها مستخدمون متعددون</span>
+companies <span class="c-key">1:N</span> permissions      <span class="c-com">-- permission matrix خاص بكل شركة</span>
+companies <span class="c-key">1:N</span> permission_requests
+users     <span class="c-key">1:N</span> sessions          <span class="c-com">-- مستخدم واحد ← جلسات متعددة</span>
+users     <span class="c-key">1:N</span> audit_logs        <span class="c-com">-- كل action يُسجَّل</span>
+users     <span class="c-key">1:N</span> permission_requests  <span class="c-com">-- user يطلب، super_admin يراجع</span>
+
+<span class="c-com">-- Indexes حيوية للأداء</span>
+<span class="c-key">INDEX</span> users(company_id, role, gender)  <span class="c-com">-- tenant + scope filter</span>
+<span class="c-key">INDEX</span> sessions(user_id, refresh_token_hash)
+<span class="c-key">INDEX</span> audit_logs(company_id, created_at)
+<span class="c-key">INDEX</span> permissions(company_id, role, page_key)
+      </div>
+
+      <div class="alert al-navy mt-4">
+        <span class="ico">ℹ️</span>
+        <div>
+          <strong>ملاحظة حول companies:</strong> يُبنى الجدول هنا كـ Stub بسيط لتمكين Tenant Isolation.
+          تُضاف الحقول الكاملة (departments، subscription plan، contract info) في
+          <a href="phase-02-master-data.html">المرحلة ٢ — البيانات الرئيسية</a>.
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 6: APIs ===== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">نقاط الاتصال — Authentication &amp; Permissions</h2>
+      <p class="section-desc">
+        ثمانية Endpoints تُشكّل العمود الفقري للمصادقة والتفويض في النظام.
+        كل API لاحق في المراحل التالية يمر بهذه الطبقة قبل الوصول للبيانات.
+      </p>
+
+      <!-- Auth Group -->
+      <div class="api-group">
+        <div class="api-group-title">🔐 مجموعة المصادقة — Authentication</div>
+        <div class="api-list">
+
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/auth/login</span>
+            <span class="api-desc">تسجيل الدخول — يُعيد access token + يضع refresh token في cookie</span>
+          </div>
+
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/auth/refresh</span>
+            <span class="api-desc">تجديد الـ Access Token باستخدام Refresh Token من الـ cookie</span>
+          </div>
+
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/auth/logout</span>
+            <span class="api-desc">إلغاء الجلسة — يُبطل الـ refresh token ويمسح الـ cookie</span>
+          </div>
+
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/auth/me</span>
+            <span class="api-desc">بيانات المستخدم المسجّل حالياً مع صلاحياته</span>
+          </div>
+
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/auth/change-password</span>
+            <span class="api-desc">تغيير كلمة المرور — يتطلب كلمة المرور الحالية + الجديدة</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Permissions Group -->
+      <div class="api-group mt-5">
+        <div class="api-group-title">🔒 مجموعة الصلاحيات — Permissions</div>
+        <div class="api-list">
+
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/permissions</span>
+            <span class="api-desc">صلاحيات المستخدم الحالي لجميع الصفحات</span>
+          </div>
+
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/permission-requests</span>
+            <span class="api-desc">إرسال طلب صلاحية جديد للمراجعة</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Audit Logs Group -->
+      <div class="api-group mt-5">
+        <div class="api-group-title">📋 مجموعة سجل التدقيق — Audit Logs</div>
+        <div class="api-list">
+
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/audit-logs</span>
+            <span class="api-desc">سجل التدقيق الكامل — Super Admin فقط، مع pagination وفلاتر</span>
+          </div>
+
+        </div>
+      </div>
+
+      <h3 class="mt-6">تفاصيل الـ Request / Response</h3>
+      <div class="code-block">
+<span class="c-com">// POST /api/auth/login — Request Body</span>
+{
+  <span class="c-str">"username"</span>: <span class="c-str">"admin@riyadah.sa"</span>,
+  <span class="c-str">"password"</span>: <span class="c-str">"SecurePass123"</span>
+}
+
+<span class="c-com">// POST /api/auth/login — Success Response 200</span>
+{
+  <span class="c-str">"success"</span>: <span class="c-val">true</span>,
+  <span class="c-str">"accessToken"</span>: <span class="c-str">"eyJhbGci..."</span>,  <span class="c-com">// expires 15min</span>
+  <span class="c-str">"user"</span>: {
+    <span class="c-str">"id"</span>: <span class="c-str">"uuid"</span>,
+    <span class="c-str">"fullName"</span>: <span class="c-str">"أحمد العمري"</span>,
+    <span class="c-str">"role"</span>: <span class="c-str">"manager"</span>,
+    <span class="c-str">"gender"</span>: <span class="c-str">"male"</span>,
+    <span class="c-str">"companyId"</span>: <span class="c-str">"uuid"</span>
+  }
+}
+<span class="c-com">// Set-Cookie: refreshToken=...; HttpOnly; Secure; SameSite=Strict; Max-Age=604800</span>
+
+<span class="c-com">// POST /api/auth/login — Failed (5th attempt) Response 429</span>
+{
+  <span class="c-str">"success"</span>: <span class="c-val">false</span>,
+  <span class="c-str">"code"</span>: <span class="c-str">"ACCOUNT_LOCKED"</span>,
+  <span class="c-str">"message"</span>: <span class="c-str">"تم قفل الحساب لمدة 15 دقيقة بسبب محاولات تسجيل دخول متكررة"</span>,
+  <span class="c-str">"lockedUntil"</span>: <span class="c-str">"2026-01-15T10:30:00Z"</span>
+}
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 7: FLOWS ===== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك المستخدم في هذه المرحلة؟</h2>
+
+      <h3>🔸 تدفق تسجيل الدخول الكامل</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يفتح /login<div class="fn-sub">أول زيارة</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">يُدخل Username + Password<div class="fn-sub">Zod validates</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">POST /auth/login<div class="fn-sub">Rate: 5/15min</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">bcrypt.compare()<div class="fn-sub">cost 12</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Sign JWT × 2<div class="fn-sub">access + refresh</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Set httpOnly Cookie<div class="fn-sub">refresh token</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">Redirect by Role<div class="fn-sub">Dashboard</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق تجديد الـ Access Token (Silent Refresh)</h3>
+      <div class="flow">
+        <div class="flow-node fn-rust">Access Token منتهي<div class="fn-sub">401 Unauthorized</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Axios Interceptor<div class="fn-sub">يعترض الخطأ</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">POST /auth/refresh<div class="fn-sub">يُرسل cookie</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Verify Refresh Token<div class="fn-sub">في DB + valid?</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Rotate Token<div class="fn-sub">revoke old + create new</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يُعيد الطلب الأصلي<div class="fn-sub">شفاف للمستخدم</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق الـ Request عبر Middleware Pipeline</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">HTTP Request<div class="fn-sub">من Frontend</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">authenticate()<div class="fn-sub">verify JWT</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">tenantIsolation()<div class="fn-sub">inject company_id</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">authorize()<div class="fn-sub">RBAC check</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">genderScope()<div class="fn-sub">if applicable</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">DB Query<div class="fn-sub">مع company_id</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">auditLog()<div class="fn-sub">after mutation</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق طلب الصلاحية</h3>
+      <div class="flow">
+        <div class="flow-node">موظف يحاول وصول محظور<div class="fn-sub">403 Forbidden</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُحوَّل إلى /permissions/request</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">يملأ النموذج + السبب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">POST /api/permission-requests</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Super Admin يرى الطلب<div class="fn-sub">إشعار فوري</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يوافق / يرفض</div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 8: BUSINESS LOGIC ===== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">قواعد تشغيلية دقيقة لا تقبل الاستثناء</h2>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 1.1 — Pipeline الإجباري:</strong>
+          كل API request يمر حتماً بـ 4 مراحل متسلسلة:
+          <code>authenticate → tenantIsolation → authorize → DB query with company_id filter</code>.
+          أي route لا تمر بهذه المراحل تعتبر ثغرة أمنية يجب إصلاحها فوراً.
+        </div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🔒</span>
+        <div><strong>قاعدة 1.2 — Rate Limiting:</strong>
+          معدل الطلبات العام: <strong>100 طلب / 15 دقيقة</strong> لكل IP.
+          معدل تسجيل الدخول: <strong>5 محاولات / 15 دقيقة</strong> لكل IP.
+          عند تجاوز الحد يُعاد <code>HTTP 429 Too Many Requests</code> مع header يوضح وقت الانتهاء.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🔄</span>
+        <div><strong>قاعدة 1.3 — Refresh Token Rotation:</strong>
+          كل مرة يُستعمل فيها Refresh Token، يُنشأ واحد جديد ويُبطَل القديم فوراً في جدول <code>sessions</code>.
+          إذا اكتُشف استخدام توكن مُبطَل (Replay Attack)، تُلغى جميع جلسات المستخدم تلقائياً.
+        </div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">🔑</span>
+        <div><strong>قاعدة 1.4 — قوة كلمة المرور:</strong>
+          الحد الأدنى: 8 أحرف، رقم واحد على الأقل، حرف كبير واحد على الأقل.
+          كلمة المرور تُهشَّر بـ bcryptjs بـ cost factor 12 (حوالي 250ms على server عادي) — متعمد لإبطاء brute force.
+        </div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🚫</span>
+        <div><strong>قاعدة 1.5 — قفل الحساب التلقائي:</strong>
+          عند 5 محاولات تسجيل دخول فاشلة متتالية، يُقفَل الحساب لمدة <strong>15 دقيقة</strong>.
+          يُخزَّن <code>locked_until</code> في جدول <code>users</code> ويُسجَّل في <code>audit_logs</code>.
+          Super Admin يستطيع رفع القفل يدوياً قبل انتهاء المدة.
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚥</span>
+        <div><strong>قاعدة 1.6 — Gender Scope الصارم:</strong>
+          في أي Query يُعيد بيانات مستخدمين أو متدربين، يُحقَن تلقائياً:
+          <code>WHERE gender = current_user.gender OR current_user.role = 'super_admin'</code>.
+          هذا القيد يُضاف في <code>genderScopeMiddleware</code> وليس في كل Route منفصلاً.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📋</span>
+        <div><strong>قاعدة 1.7 — Audit Logging شامل:</strong>
+          كل عملية WRITE (INSERT / UPDATE / DELETE) تُسجَّل تلقائياً في <code>audit_logs</code>
+          مع old_values + new_values كـ JSONB + IP + User Agent.
+          عمليات القراءة الحساسة (جلب كلمة مرور، فتح ملف) تُسجَّل أيضاً كـ action = 'READ_SENSITIVE'.
+        </div>
+      </div>
+
+      <h3 class="mt-6">مثال عملي: Tenant Isolation في Query</h3>
+      <pre class="code-block">
+<span class="c-com">// ❌ Query غير آمنة — تُعيد بيانات جميع الشركات</span>
+<span class="c-key">const</span> result = <span class="c-key">await</span> db.query(
+  <span class="c-str">'SELECT * FROM users WHERE role = $1'</span>,
+  [<span class="c-str">'staff'</span>]
+);
+
+<span class="c-com">// ✅ Query آمنة — مع Tenant Isolation</span>
+<span class="c-key">const</span> result = <span class="c-key">await</span> db.query(
+  <span class="c-str">`SELECT id, full_name, role, gender
+   FROM users
+   WHERE company_id = $1
+     AND role = $2
+     AND ($3 = 'super_admin' OR gender = $4)
+     AND is_active = true`</span>,
+  [req.user.companyId, <span class="c-str">'staff'</span>, req.user.role, req.user.gender]
+);
+      </pre>
+
+      <h3 class="mt-6">RBAC Permission Matrix</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead class="th-rust">
+            <tr>
+              <th>الصفحة / المورد</th>
+              <th>Super Admin</th>
+              <th>Manager</th>
+              <th>Staff</th>
+              <th>Trainer</th>
+              <th>Trainee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-strong">audit_logs</td>
+              <td><span class="badge b-green">كامل</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">users management</td>
+              <td><span class="badge b-green">كامل</span></td>
+              <td><span class="badge b-teal">عرض + إنشاء</span></td>
+              <td><span class="badge b-navy">عرض فقط</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">permissions</td>
+              <td><span class="badge b-green">كامل</span></td>
+              <td><span class="badge b-navy">عرض فقط</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">permission_requests</td>
+              <td><span class="badge b-green">كامل + مراجعة</span></td>
+              <td><span class="badge b-teal">إنشاء + عرض</span></td>
+              <td><span class="badge b-teal">إنشاء + عرض</span></td>
+              <td><span class="badge b-teal">إنشاء + عرض</span></td>
+              <td><span class="badge b-gray">محظور</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">change-password</td>
+              <td><span class="badge b-green">نفسه فقط</span></td>
+              <td><span class="badge b-green">نفسه فقط</span></td>
+              <td><span class="badge b-green">نفسه فقط</span></td>
+              <td><span class="badge b-green">نفسه فقط</span></td>
+              <td><span class="badge b-green">نفسه فقط</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 9: DEPENDENCIES ===== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد هذه المرحلة</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p class="mb-3">هذه هي المرحلة الأولى — لا تعتمد على أي مرحلة سابقة في النظام.</p>
+          <p><strong>المتطلبات البيئية فقط:</strong></p>
+          <ul class="feat-list mt-3">
+            <li><span class="ico">🗄️</span>PostgreSQL 16+ قاعدة بيانات منشأة</li>
+            <li><span class="ico">📦</span>Redis 7+ مشغّل ومتاح</li>
+            <li><span class="ico">🟢</span>Node.js 20+ مع npm/pnpm</li>
+            <li><span class="ico">📄</span>متغيرات .env: DB_URL, REDIS_URL, JWT_SECRET</li>
+          </ul>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p class="mb-3">كل المراحل من 2 إلى 10 تستهلك مخرجات هذه المرحلة:</p>
+          <ul class="feat-list mt-3">
+            <li><span class="ico">→</span><strong>المرحلة ٢:</strong> نظام JWT + RBAC لحماية APIs البيانات الرئيسية</li>
+            <li><span class="ico">→</span><strong>المرحلة ٣:</strong> Tenant Isolation لحصر التسجيل بالشركة</li>
+            <li><span class="ico">→</span><strong>المرحلة ٤:</strong> Gender Scope لفصل متدربي/متدربات المجموعات</li>
+            <li><span class="ico">→</span><strong>المرحلة ٥:</strong> Audit Logs لتسجيل تعديلات الحضور</li>
+            <li><span class="ico">→</span><strong>المراحل ٦-١٠:</strong> نفس الـ Auth + RBAC</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-6">مخطط الاعتماديات البرمجية (Backend)</h3>
+      <div class="code-block">
+<span class="c-com">// package.json — backend dependencies</span>
+{
+  <span class="c-str">"express"</span>: <span class="c-str">"^4.19"</span>,
+  <span class="c-str">"helmet"</span>: <span class="c-str">"^7"</span>,
+  <span class="c-str">"cors"</span>: <span class="c-str">"^2.8"</span>,
+  <span class="c-str">"express-rate-limit"</span>: <span class="c-str">"^7"</span>,
+  <span class="c-str">"compression"</span>: <span class="c-str">"^1.7"</span>,
+  <span class="c-str">"pg"</span>: <span class="c-str">"^8.11"</span>,          <span class="c-com">// PostgreSQL client</span>
+  <span class="c-str">"ioredis"</span>: <span class="c-str">"^5.3"</span>,       <span class="c-com">// Redis client</span>
+  <span class="c-str">"bullmq"</span>: <span class="c-str">"^5"</span>,         <span class="c-com">// Background queues</span>
+  <span class="c-str">"jsonwebtoken"</span>: <span class="c-str">"^9"</span>,   <span class="c-com">// JWT signing/verifying</span>
+  <span class="c-str">"bcryptjs"</span>: <span class="c-str">"^2.4"</span>,     <span class="c-com">// Password hashing</span>
+  <span class="c-str">"zod"</span>: <span class="c-str">"^3.22"</span>,         <span class="c-com">// Runtime validation</span>
+  <span class="c-str">"winston"</span>: <span class="c-str">"^3.11"</span>,     <span class="c-com">// Logging</span>
+  <span class="c-str">"dotenv"</span>: <span class="c-str">"^16"</span>,        <span class="c-com">// Env config</span>
+  <span class="c-str">"cookie-parser"</span>: <span class="c-str">"^1.4"</span>  <span class="c-com">// httpOnly cookie parsing</span>
+}
+
+<span class="c-com">// package.json — frontend dependencies</span>
+{
+  <span class="c-str">"react"</span>: <span class="c-str">"^18"</span>,
+  <span class="c-str">"vite"</span>: <span class="c-str">"^5"</span>,
+  <span class="c-str">"react-router-dom"</span>: <span class="c-str">"^6"</span>,
+  <span class="c-str">"@tanstack/react-query"</span>: <span class="c-str">"^5"</span>,
+  <span class="c-str">"axios"</span>: <span class="c-str">"^1.6"</span>,
+  <span class="c-str">"zustand"</span>: <span class="c-str">"^4"</span>,
+  <span class="c-str">"react-hook-form"</span>: <span class="c-str">"^7"</span>,
+  <span class="c-str">"@radix-ui/react-dialog"</span>: <span class="c-str">"^1"</span>,
+  <span class="c-str">"lucide-react"</span>: <span class="c-str">"^0.400"</span>
+}
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 10: RISKS ===== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يُعيق التسليم</h2>
+
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر التقنية</h5>
+          <ul class="feat-list">
+            <li>
+              <span class="ico">🔴</span>
+              <div>
+                <strong>تعقيد Tenant Isolation:</strong> إذا لم يُبنَ بشكل صحيح من البداية،
+                ستحتاج كل المراحل اللاحقة إلى إعادة كتابة Queries — يُعيق المشروع بأكمله.
+                <span class="badge b-rust mt-2">عالي الأثر</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">🟠</span>
+              <div>
+                <strong>JWT Refresh Loops:</strong> خطأ في منطق التجديد يتسبب في logout متكرر للمستخدمين.
+                يصعب اكتشافه في بيئة التطوير ويظهر فقط في الـ Production.
+                <span class="badge b-orange mt-2">متوسط الأثر</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">🟠</span>
+              <div>
+                <strong>Permission Matrix المعقدة:</strong> 5 أدوار × N صفحة × 5 permissions = جدول ضخم.
+                إذا لم يُبنَ نظام الـ defaults بشكل صحيح، سيكون الـ onboarding لشركات جديدة بطيئاً.
+                <span class="badge b-orange mt-2">متوسط الأثر</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">🟡</span>
+              <div>
+                <strong>bcrypt Performance:</strong> cost factor 12 يعني ~250ms لكل login.
+                مقبول للمستخدمين البشريين، لكن يعطّل اختبارات الـ integration إذا لم تُستبدَل بـ cost 1 في بيئة test.
+                <span class="badge b-gold mt-2">منخفض الأثر</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات والقرارات المسبقة</h5>
+          <ul class="feat-list">
+            <li>
+              <span class="ico">✅</span>
+              <div>
+                <strong>UUID وليس Sequential ID:</strong> استخدام <code>gen_random_uuid()</code> كـ PK
+                يمنع enumeration attacks ويدعم التوسع الأفقي لاحقاً.
+              </div>
+            </li>
+            <li>
+              <span class="ico">✅</span>
+              <div>
+                <strong>httpOnly Cookies للـ Refresh Token:</strong> قرار معماري نهائي —
+                لا يُخزَّن في localStorage أبداً بسبب مخاطر XSS.
+              </div>
+            </li>
+            <li>
+              <span class="ico">✅</span>
+              <div>
+                <strong>Per-Company Permission Defaults:</strong> كل شركة جديدة تحصل على نسخة من permission matrix
+                الافتراضية تستطيع تعديلها لاحقاً. هذا يتطلب seed script عند إنشاء كل company.
+              </div>
+            </li>
+            <li>
+              <span class="ico">✅</span>
+              <div>
+                <strong>Monorepo بـ Workspaces:</strong> يُقرَّر استخدام npm workspaces أو pnpm workspaces —
+                يُسهّل مشاركة الـ Zod schemas بين Backend و Frontend.
+              </div>
+            </li>
+            <li>
+              <span class="ico">✅</span>
+              <div>
+                <strong>Database Migrations:</strong> جميع التغييرات عبر SQL migration files مرقّمة —
+                لا يُسمح بأي تغيير مباشر في الـ Production database.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 11: CHECKLIST ===== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة اكتملت بنجاح؟</h2>
+      <p class="section-desc">
+        هذه القائمة هي معيار القبول للمرحلة — يجب أن تتحقق كل بند قبل الانتقال للمرحلة الثانية.
+      </p>
+
+      <ol class="num-list">
+        <li>
+          <strong>Monorepo مُنشأ ومُهيأ:</strong>
+          هيكل <code>backend/ + frontend/ + shared/ + docs/</code> موجود، ESLint + Prettier يعمل على كل الحزم، وسكريبت <code>dev</code> يُشغّل Frontend + Backend معاً ✅
+        </li>
+        <li>
+          <strong>Express Server يعمل:</strong>
+          يستجيب على <code>GET /health</code> بـ <code>200 OK</code> مع حالة DB + Redis. Helmet + CORS + Rate Limiting + Compression فعّالة ✅
+        </li>
+        <li>
+          <strong>Database Migrations نُفّذت:</strong>
+          الجداول الستة (<code>companies, users, sessions, permissions, permission_requests, audit_logs</code>) موجودة في الـ DB مع الـ indexes الصحيحة ✅
+        </li>
+        <li>
+          <strong>Auth Flow يعمل end-to-end:</strong>
+          Login يُعيد access token + يضع refresh cookie. <code>POST /auth/refresh</code> يُجدّد التوكن ويدوّر الـ refresh. Logout يُبطل الجلسة ✅
+        </li>
+        <li>
+          <strong>RBAC Middleware فعّال:</strong>
+          Super Admin يصل لـ <code>/api/audit-logs</code>. Staff يحصل على 403 من نفس الـ endpoint. اختبارات موثّقة ✅
+        </li>
+        <li>
+          <strong>Tenant Isolation صارم:</strong>
+          مستخدم من Company A لا يرى بيانات Company B في أي endpoint. اختبار موثّق مع مستخدمَين من شركتين مختلفتين ✅
+        </li>
+        <li>
+          <strong>Gender Scope يعمل:</strong>
+          موظف ذكر يستدعي <code>GET /api/users</code> — يرى ذكوراً فقط. Super Admin يرى الجميع. موثّق باختبارات ✅
+        </li>
+        <li>
+          <strong>Audit Logs تُسجَّل:</strong>
+          بعد تغيير أي بيانات، صف جديد في <code>audit_logs</code> مع old_values + new_values صحيحة ✅
+        </li>
+        <li>
+          <strong>Frontend Auth Store يعمل:</strong>
+          Zustand store يحفظ بيانات المستخدم. Axios interceptor يُجدّد التوكن تلقائياً. Protected routes تُحوّل غير المسجّل إلى Login ✅
+        </li>
+        <li>
+          <strong>الشاشات الثلاث مكتملة:</strong>
+          Login + Change Password + Permission Request تعمل بـ validation فوري، رسائل خطأ عربية واضحة ✅
+        </li>
+        <li>
+          <strong>CI/CD Pipeline أساسي:</strong>
+          ESLint + Prettier check تعمل في pipeline. Build يكتمل بنجاح. لا توجد TypeScript errors ✅
+        </li>
+        <li>
+          <strong>Account Lockout يعمل:</strong>
+          5 محاولات فاشلة تُقفل الحساب 15 دقيقة. <code>locked_until</code> يُحفَظ في DB ويُسجَّل في audit_logs ✅
+        </li>
+      </ol>
+
+      <div class="alert al-teal mt-6">
+        <span class="ico">🚀</span>
+        <div>
+          <strong>معيار الانتقال للمرحلة التالية:</strong>
+          عند اكتمال جميع البنود الـ 12 أعلاه، وبعد Code Review من مطوّر آخر (Four-Eyes Principle)،
+          يمكن الانتقال إلى <a href="phase-02-master-data.html">المرحلة ٢ — البيانات الرئيسية</a>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PREV / NEXT NAV ===== -->
+    <div class="phase-footer-nav">
+      <a href="index.html" class="pfn-link prev">
+        <span class="pfn-label">← الصفحة السابقة</span>
+        <span class="pfn-title">الرئيسية · Executive Blueprint</span>
+      </a>
+      <a href="phase-02-master-data.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٢. البيانات الرئيسية</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- ============= FOOTER ============= -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#checklist">قائمة المخرجات</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
