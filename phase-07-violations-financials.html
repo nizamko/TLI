@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٧ — المخالفات والرواتب والتميز | معهد ريادة الغد</title>
+<meta name="description" content="توثيق المرحلة السابعة من نظام معهد ريادة الغد — كتالوج المخالفات بخمس درجات، نظام الرواتب التلقائي، ومنصة التميز الشهري للمتدربين والمدربين.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html" class="active">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٧ — المخالفات والرواتب والتميز</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: عالي · ⏱ 3 أسابيع</div>
+    <div class="hero-label">المرحلة ٠٧ من ١٠ · Violations, Salaries &amp; Excellence</div>
+    <h1>المخالفات والرواتب<br><span>والتميز</span></h1>
+    <p class="hero-desc">
+      قلب منظومة الانضباط المؤسسي — نظام مخالفات متدرج بخمس درجات من التحذير الشفهي حتى الفصل التلقائي مع الحظر،
+      تصعيد ذكي يطبَّق بالحسابات لا بالتدخل اليدوي، ربط مباشر بنظام الحضور لتشغيل المخالفة رقم ١٥ تلقائياً.
+      إلى جانب ذلك: رواتب محسوبة بمنطق صارم (base + allowances + bonuses − deductions) تُولَّد تلقائياً في ٢٥ من كل شهر،
+      ومنصة تميز تُحفِّز المتدربين بنقاط مرجحة على الحضور والأداء والسلوك مع إعلان فائز الشهر في اليوم الأول.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>8</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>8</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>18</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>3</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot done"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot done"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot done"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot current"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ======================================================
+         Section 1: Summary
+         ====================================================== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه المرحلة السابعة</h2>
+      <p class="section-desc">
+        ثلاث منظومات متكاملة تشتغل معاً: منظومة المخالفات للضبط المؤسسي، ومنظومة الرواتب للتسوية المالية، ومنصة التميز للتحفيز الإيجابي.
+        الثلاث تشترك في بنية موحدة تستهدف المتدرب والمدرب على حدٍّ سواء، وتتشابك مع بيانات الحضور من المرحلة الخامسة وبيانات الإجازات من المرحلة السادسة.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p7">
+          <h3>🎯 الهدف</h3>
+          <p>
+            بناء نظام انضباط رقمي كامل يلغي الحاجة للملفات الورقية — كل مخالفة مُسجَّلة بأدلة، كل خصم مالي يتحول تلقائياً لقيد راتب، كل متدرب يرى رصيده من نقاط التميز في بوابته الشخصية.
+          </p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li>كتالوج مخالفات قابل للتخصيص من Super Admin</li>
+            <li>آلية تصعيد تلقائي للمخالفات (3 في 30 يوم)</li>
+            <li>خصومات راتب مرتبطة بمخالفات الدرجة الثالثة</li>
+            <li>رواتب شهرية تُولَّد تلقائياً في كرون يوم ٢٥</li>
+            <li>نظام ترشيح وفوز شهري لمنصة التميز</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><a href="phase-01-foundation.html">المرحلة ١</a> — Auth + RBAC + employees</li>
+            <li><a href="phase-02-master-data.html">المرحلة ٢</a> — Departments + Programs</li>
+            <li><a href="phase-04-trainee-lifecycle.html">المرحلة ٤</a> — Trainees + status lifecycle</li>
+            <li><a href="phase-05-attendance-operations.html">المرحلة ٥</a> — attendance_records (عدد الغيابات)</li>
+            <li><a href="phase-06-leaves-exceptions.html">المرحلة ٦</a> — leaves (لحساب الراتب المتناسب)</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong><a href="phase-08-notifications-reports.html">المرحلة ٨</a>:</strong> إشعارات WhatsApp+Email للمخالفات من الدرجة الثانية فأعلى، وإعلانات فائزي الشهر.<br><br>
+            <strong><a href="phase-09-portals-admin-ops.html">المرحلة ٩</a>:</strong> بوابة المتدرب تعرض سجل مخالفاته ونقاط تميزه وكشف راتب المدرب.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 2: Why
+         ====================================================== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">الانضباط والمال والتحفيز — ثلاثي لا يُختزَل</h2>
+      <p class="section-desc">
+        بدون هذه المرحلة يبقى النظام أداة تسجيل فارغة من الأثر — تُسجَّل الغيابات ولا تُعالَج، وتُرصد الإجازات ولا تُحسَب على الراتب،
+        ويُتجاهَل المتدرب المتميز كما يُتجاهَل المخالف. المرحلة السابعة هي التي تعطي النظام "الأسنان".
+      </p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>⚖️ لماذا المخالفات قبل الإشعارات؟</h3>
+          <p>
+            المرحلة الثامنة (الإشعارات) تحتاج معرفة <em>ماذا تُرسِل</em> — نص الإشعار يعتمد على درجة المخالفة ونوعها.
+            لذا يجب بناء جداول <code class="mono">violations</code> و<code class="mono">violation_types</code> أولاً حتى يتمكن نظام الإشعارات من الاستعلام عنها وإرسال المحتوى الصحيح.
+          </p>
+        </div>
+        <div class="card">
+          <h3>💰 لماذا الرواتب هنا بالتحديد؟</h3>
+          <p>
+            صيغة الراتب الصافي تعتمد على ثلاثة مدخلات من مراحل سابقة: الخصومات من مخالفات الدرجة الثالثة (هذه المرحلة)،
+            أيام الإجازة غير المدفوعة من المرحلة السادسة، وأيام الحضور الفعلي من المرحلة الخامسة.
+            تجميع هذه المدخلات يجعل هذه المرحلة المكان المنطقي لحساب الراتب.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🏆 لماذا التميز مع المخالفات؟</h3>
+          <p>
+            التميز هو وجه العملة الإيجابي مقابل المخالفات السلبية — كلاهما يقيس نفس الأبعاد (الحضور، السلوك، الأداء)
+            لكن بتوجه مختلف. دمجهما في مرحلة واحدة يضمن أن نقاط التميز تُحسَب بالمعادلة ذاتها التي تُحسَب بها درجة الخطورة.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🔗 التكامل مع الحضور (Rule 7.7)</h3>
+          <p>
+            الغياب التراكمي ١٥ يوم يُشغِّل تلقائياً مخالفة الدرجة الخامسة (فصل + حظر تلقائي).
+            هذا يعني أن أي خلل في بيانات الحضور (<a href="phase-05-attendance-operations.html">المرحلة ٥</a>)
+            يمكن أن يُطلِق مخالفة خاطئة — لذا يستلزم هذا تدقيقاً عالياً في خط البيانات.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 3: Modules
+         ====================================================== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">ثلاث منظومات — ثمانية جداول</h2>
+      <div class="grid grid-3">
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">🚨</div>
+            <div>
+              <div class="card-title">منظومة المخالفات</div>
+              <div class="card-sub">Violations System</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>كتالوج أنواع المخالفات (قابل للتخصيص)</li>
+            <li>٥ درجات من التحذير الشفهي للفصل</li>
+            <li>تطبيق على المتدرب والمدرب</li>
+            <li>تصعيد تلقائي بعد ٣ مخالفات في ٣٠ يوم</li>
+            <li>رفع أدلة (evidence_url)</li>
+            <li>نظام طعون بمهلة ٧ أيام</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">💵</div>
+            <div>
+              <div class="card-title">منظومة الرواتب</div>
+              <div class="card-sub">Salary Management</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>سجل راتب فردي لكل موظف</li>
+            <li>base_salary + allowances + bonuses − deductions</li>
+            <li>تعديلات راتب (مكافأة / خصم / بدل)</li>
+            <li>دورة حياة: draft → approved → paid</li>
+            <li>كرون تلقائي يوم ٢٥ من كل شهر</li>
+            <li>ربط خصومات المخالفات تلقائياً</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🏆</div>
+            <div>
+              <div class="card-title">منصة التميز</div>
+              <div class="card-sub">Excellence Platform</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>نقاط تميز لكل متدرب ومدرب</li>
+            <li>ترشيحات من المدربين والإدارة</li>
+            <li>أربع فئات: حضور / أداء / سلوك / أكاديمي</li>
+            <li>حساب تلقائي شهري مرجَّح (40/30/30)</li>
+            <li>إعلان فائز في اليوم الأول من الشهر التالي</li>
+            <li>سجل تاريخي للفائزين</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Violation Degrees Detail -->
+      <h3 class="mt-6">درجات المخالفات الخمس</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>الدرجة</th>
+              <th>الاسم</th>
+              <th>Name</th>
+              <th>الإجراء الفوري</th>
+              <th>الأثر المالي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-gray">1</span></td>
+              <td>تحذير شفهي</td>
+              <td class="mono">verbal_warning</td>
+              <td>تسجيل فقط — بدون إشعار رسمي</td>
+              <td>لا يوجد</td>
+            </tr>
+            <tr>
+              <td><span class="badge b-orange">2</span></td>
+              <td>تحذير كتابي</td>
+              <td class="mono">written_warning</td>
+              <td>إشعار WhatsApp + Email + طباعة رسمية</td>
+              <td>لا يوجد</td>
+            </tr>
+            <tr>
+              <td><span class="badge b-rust">3</span></td>
+              <td>خصم مالي</td>
+              <td class="mono">financial_deduction</td>
+              <td>تسجيل في salary_adjustments (deduction)</td>
+              <td>يساوي <code class="mono">violation_type.financial_amount</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-purple">4</span></td>
+              <td>إيقاف مؤقت</td>
+              <td class="mono">temp_suspension</td>
+              <td>trainee.status = suspended لفترة محددة</td>
+              <td>أيام الإيقاف = إجازة غير مدفوعة</td>
+            </tr>
+            <tr>
+              <td><span class="badge b-navy">5</span></td>
+              <td>فصل + حظر تلقائي</td>
+              <td class="mono">expulsion_ban</td>
+              <td>trainee.status = expelled + إدراج في blocked_profiles</td>
+              <td>تصفية كاملة + حساب مستحقات فقط</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 4: Screens
+         ====================================================== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">٨ شاشات — ثلاثة محاور</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الصفحة</th>
+              <th>Route</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-rust">V1</span></td>
+              <td>كتالوج المخالفات</td>
+              <td class="mono">/violations/types</td>
+              <td>إدارة أنواع المخالفات — إنشاء / تعديل / تفعيل / تعطيل. يتحكم في الدرجة والمبلغ المالي وهل هي تلقائية.</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-rust">V2</span></td>
+              <td>تسجيل مخالفة</td>
+              <td class="mono">/violations/record</td>
+              <td>نموذج تسجيل مخالفة جديدة — اختيار المستهدف (متدرب/مدرب)، النوع، رفع دليل، ملاحظات. تطبيق الإجراء الفوري فور الحفظ.</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-teal">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-rust">V3</span></td>
+              <td>قائمة المخالفات</td>
+              <td class="mono">/violations</td>
+              <td>جدول مخالفات قابل للتصفية بالنوع والدرجة والتاريخ والمستهدف والحالة. يُظهر آيقونة "تلقائي" للمخالفات المُصعَّدة.</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-teal">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-rust">V4</span></td>
+              <td>الطعون</td>
+              <td class="mono">/violations/appeals</td>
+              <td>قائمة الطعون المقدَّمة مع حالتها (pending/accepted/rejected). المدير يقبل أو يرفض ويُدخل ملاحظات مراجعة.</td>
+              <td><span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-navy">S1</span></td>
+              <td>رواتب الموظفين</td>
+              <td class="mono">/salaries</td>
+              <td>جدول الرواتب الشهرية مُصفَّىً بالشهر والسنة — يُظهر الصافي والحالة. أزرار: موافقة / تسديد / تصدير PDF.</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gold">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-navy">S2</span></td>
+              <td>تعديلات الراتب</td>
+              <td class="mono">/salaries/adjustments</td>
+              <td>إضافة مكافأة أو بدل أو خصم يدوي لموظف محدد بربطه بالشهر المطلوب. يُدرج تلقائياً في JSONB الراتب عند التوليد.</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gold">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-teal">E1</span></td>
+              <td>منصة التميز</td>
+              <td class="mono">/excellence</td>
+              <td>لوحة نقاط التميز بالفئات الأربع — رصيد كل فرد مع قياسات الشهر الحالي وتاريخ المنح. نموذج ترشيح مدمج.</td>
+              <td><span class="badge b-teal">Trainer</span> <span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-teal">E2</span></td>
+              <td>فائزو الشهر</td>
+              <td class="mono">/excellence/winners</td>
+              <td>عرض فائز كل فئة لكل شهر — بطاقة احتفالية تُنشَر في اليوم الأول من الشهر التالي مع خيار إرسال إشعار.</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-gold">Super Admin</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 5: Database
+         ====================================================== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">٨ جداول جديدة — ثلاث مجموعات</h2>
+
+      <!-- Violations Group -->
+      <h3 class="mt-6">🚨 مجموعة المخالفات</h3>
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-rust">🚨 violation_types</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field">code · varchar(30) UNIQUE</div>
+            <div class="db-field">name_ar · varchar(150)</div>
+            <div class="db-field">name_en · varchar(150)</div>
+            <div class="db-field">degree · smallint 1–5</div>
+            <div class="db-field">target_type · enum(trainee, trainer, both)</div>
+            <div class="db-field">is_auto · boolean DEFAULT false</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">financial_amount · numeric(10,2) nullable</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-rust">⚡ violations</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field">target_type · enum(trainee, trainer)</div>
+            <div class="db-field">target_id · integer NOT NULL</div>
+            <div class="db-field"><span class="fk">FK</span>violation_type_id → violation_types</div>
+            <div class="db-field">degree · smallint 1–5</div>
+            <div class="db-field">date · date NOT NULL</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field">evidence_url · text nullable</div>
+            <div class="db-field"><span class="fk">FK</span>recorded_by → employees</div>
+            <div class="db-field">is_auto_generated · boolean DEFAULT false</div>
+            <div class="db-field"><span class="fk">FK</span>parent_violation_id → violations (self)</div>
+            <div class="db-field">status · enum(active, revoked, appealed)</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-rust">📋 violation_appeals</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field"><span class="fk">FK</span>violation_id → violations</div>
+            <div class="db-field">appeal_reason · text NOT NULL</div>
+            <div class="db-field">submitted_at · timestamptz DEFAULT now()</div>
+            <div class="db-field">status · enum(pending, accepted, rejected)</div>
+            <div class="db-field"><span class="fk">FK</span>reviewed_by → employees nullable</div>
+            <div class="db-field">reviewed_at · timestamptz nullable</div>
+            <div class="db-field">review_notes · text nullable</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Salaries Group -->
+      <h3 class="mt-6">💵 مجموعة الرواتب</h3>
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-navy">💰 employee_salaries</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field"><span class="fk">FK</span>employee_id → employees</div>
+            <div class="db-field">year · smallint NOT NULL</div>
+            <div class="db-field">month · smallint 1–12</div>
+            <div class="db-field">base_salary · numeric(12,2)</div>
+            <div class="db-field">allowances · JSONB DEFAULT '{}'</div>
+            <div class="db-field">deductions · JSONB DEFAULT '{}'</div>
+            <div class="db-field">bonuses · JSONB DEFAULT '{}'</div>
+            <div class="db-field">net_salary · numeric(12,2) GENERATED ALWAYS AS ...</div>
+            <div class="db-field">status · enum(draft, approved, paid)</div>
+            <div class="db-field"><span class="fk">FK</span>approved_by → employees nullable</div>
+            <div class="db-field">paid_at · timestamptz nullable</div>
+            <div class="db-field">UNIQUE(employee_id, year, month)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-navy">📝 salary_adjustments</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field"><span class="fk">FK</span>employee_id → employees</div>
+            <div class="db-field">adjustment_type · enum(bonus, deduction, allowance)</div>
+            <div class="db-field">amount · numeric(10,2) NOT NULL</div>
+            <div class="db-field">reason · text NOT NULL</div>
+            <div class="db-field">applied_month · smallint 1–12</div>
+            <div class="db-field">applied_year · smallint NOT NULL</div>
+            <div class="db-field"><span class="fk">FK</span>created_by → employees</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Excellence Group -->
+      <h3 class="mt-6">🏆 مجموعة التميز</h3>
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-green">⭐ excellence_records</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field">target_type · enum(trainee, trainer)</div>
+            <div class="db-field">target_id · integer NOT NULL</div>
+            <div class="db-field">category · enum(attendance, performance, behavior, academic)</div>
+            <div class="db-field">points · numeric(6,2) NOT NULL</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field"><span class="fk">FK</span>awarded_by → employees</div>
+            <div class="db-field">awarded_at · timestamptz DEFAULT now()</div>
+            <div class="db-field">month · smallint 1–12</div>
+            <div class="db-field">year · smallint NOT NULL</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">📣 excellence_nominations</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field"><span class="fk">FK</span>nominator_id → employees</div>
+            <div class="db-field">nominee_type · enum(trainee, trainer)</div>
+            <div class="db-field">nominee_id · integer NOT NULL</div>
+            <div class="db-field">category · enum(attendance, performance, behavior, academic)</div>
+            <div class="db-field">reason · text NOT NULL</div>
+            <div class="db-field">month · smallint 1–12</div>
+            <div class="db-field">year · smallint NOT NULL</div>
+            <div class="db-field">status · enum(pending, approved, rejected)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">🥇 monthly_excellence_winners</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · serial</div>
+            <div class="db-field">month · smallint 1–12</div>
+            <div class="db-field">year · smallint NOT NULL</div>
+            <div class="db-field">category · enum(attendance, performance, behavior, academic)</div>
+            <div class="db-field">winner_type · enum(trainee, trainer)</div>
+            <div class="db-field">winner_id · integer NOT NULL</div>
+            <div class="db-field">score · numeric(8,4) NOT NULL</div>
+            <div class="db-field">announcement_status · enum(pending, announced)</div>
+            <div class="db-field">UNIQUE(month, year, category, winner_type)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Relationships -->
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># مجموعة المخالفات</span>
+violation_types <span class="c-key">1:N</span> violations
+violations <span class="c-key">1:1</span> violation_appeals
+violations <span class="c-key">1:N</span> violations <span class="c-com">(self-ref: parent_violation_id للتصعيد)</span>
+
+<span class="c-com"># الربط مع مراحل سابقة</span>
+employees <span class="c-key">1:N</span> violations <span class="c-com">(recorded_by)</span>
+trainees <span class="c-key">1:N</span> violations <span class="c-com">(target_id WHERE target_type='trainee')</span>
+
+<span class="c-com"># مجموعة الرواتب</span>
+employees <span class="c-key">1:N</span> employee_salaries
+employees <span class="c-key">1:N</span> salary_adjustments
+salary_adjustments <span class="c-key">N:1</span> employee_salaries <span class="c-com">(مدمجة وقت التوليد في JSONB)</span>
+
+<span class="c-com"># مجموعة التميز</span>
+employees <span class="c-key">1:N</span> excellence_nominations <span class="c-com">(nominator_id)</span>
+excellence_records <span class="c-key">N:1</span> monthly_excellence_winners <span class="c-com">(يُحسَب من مجموع النقاط)</span>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 6: APIs
+         ====================================================== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">١٨ نقطة اتصال — ثلاث مجموعات</h2>
+
+      <!-- Violations -->
+      <div class="api-group">
+        <div class="api-group-title">🚨 مجموعة المخالفات — Violations</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/violation-types</span>
+            <span class="api-desc">قائمة أنواع المخالفات مع فلتر is_active، degree، target_type</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/violation-types</span>
+            <span class="api-desc">إنشاء نوع مخالفة جديد — يتحقق أن financial_amount مُعطَى إذا degree=3</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/violation-types/:id</span>
+            <span class="api-desc">تعديل نوع مخالفة قائم (يمنع تغيير الدرجة إذا كانت هناك مخالفات نشطة)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/violation-types/:id</span>
+            <span class="api-desc">soft delete — يضع is_active=false لا حذفاً فعلياً</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/violations</span>
+            <span class="api-desc">قائمة مخالفات مع فلاتر: target_type, degree, status, date_from, date_to, is_auto_generated</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/violations</span>
+            <span class="api-desc">تسجيل مخالفة جديدة — يُشغِّل تلقائياً الإجراء المرتبط (تعليق / فصل / خصم) عبر BullMQ job</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/violations/:id/revoke</span>
+            <span class="api-desc">إلغاء مخالفة (status=revoked) — يعكس الإجراء المرتبط إن أمكن</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/violations/:id/appeal</span>
+            <span class="api-desc">تقديم طعن — يتحقق من مهلة ٧ أيام — يوقف تنفيذ degree 3+ حتى الحكم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/violation-appeals/:id/review</span>
+            <span class="api-desc">مراجعة طعن (قبول/رفض) — إذا قُبِل: violation.status=revoked وعكس الإجراء</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salaries -->
+      <div class="api-group">
+        <div class="api-group-title">💵 مجموعة الرواتب — Salaries</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/employee-salaries</span>
+            <span class="api-desc">قائمة رواتب مُصفَّاة بـ month, year, status, employee_id</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/employee-salaries/generate</span>
+            <span class="api-desc">توليد رواتب الشهر الحالي لجميع الموظفين — يُشغَّل يدوياً أو عبر كرون يوم ٢٥</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/employee-salaries/:id</span>
+            <span class="api-desc">تعديل راتب في حالة draft فقط (تغيير allowances أو deductions أو bonuses)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/employee-salaries/:id/approve</span>
+            <span class="api-desc">موافقة على الراتب — status draft → approved — يسجل approved_by</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/employee-salaries/:id/mark-paid</span>
+            <span class="api-desc">تسجيل الدفع — status approved → paid — يسجل paid_at</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/salary-adjustments</span>
+            <span class="api-desc">قائمة التعديلات مع فلتر employee_id, applied_month, applied_year, adjustment_type</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/salary-adjustments</span>
+            <span class="api-desc">إضافة تعديل راتب يدوي — يُدرج في JSONB عند التوليد القادم</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Excellence -->
+      <div class="api-group">
+        <div class="api-group-title">🏆 مجموعة التميز — Excellence</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/excellence-records</span>
+            <span class="api-desc">سجلات التميز مُصفَّاة بـ target_type, target_id, category, month, year</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/excellence-records</span>
+            <span class="api-desc">منح نقاط تميز — awarded_by = الموظف المسجِّل دخوله</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/excellence-nominations</span>
+            <span class="api-desc">تقديم ترشيح — يتحقق من anti-gaming: لا يرشح نفس الموظف نفس الشخص مرتين في الشهر</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/monthly-excellence-winners</span>
+            <span class="api-desc">قائمة الفائزين الشهريين مُصفَّاة بـ month, year, category, winner_type</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/excellence/compute-monthly-winners</span>
+            <span class="api-desc">حساب الفائزين — يُشغَّل كرون في اليوم الأخير من كل شهر — يكتب في monthly_excellence_winners</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 7: User Flows
+         ====================================================== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك المستخدم في منظومة المخالفات؟</h2>
+
+      <h3>🔸 تدفق تسجيل مخالفة يدوية</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Staff يفتح "تسجيل مخالفة"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يختار متدرب أو مدرب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يختار نوع المخالفة من الكتالوج</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يرفع دليل (اختياري)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يضغط حفظ → POST /api/violations</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">BullMQ job ينفذ الإجراء الفوري</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق التصعيد التلقائي</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">كرون يومي يفحص violations</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يجد ٣ مخالفات degree N خلال ٣٠ يوم لنفس الشخص</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يُنشئ violation جديدة degree N+1</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">is_auto_generated=true · parent_violation_id مُسنَد</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">إشعار تلقائي للمدير</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق تقديم طعن</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">المتدرب يرى مخالفته في بوابته</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "تقديم طعن" خلال ٧ أيام</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">النظام يتحقق من المهلة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يوقف تنفيذ degree 3+ مؤقتاً</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">المدير يراجع → يقبل أو يرفض</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">إذا قُبِل: violation.status=revoked + عكس الإجراء</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق توليد الرواتب الشهرية</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">كرون يوم ٢٥ يُشغِّل generate</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يجلب جميع الموظفين النشطين</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يجمع salary_adjustments للشهر</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يحسب net_salary = base + Σallowances + Σbonuses − Σdeductions</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُدرج في employee_salaries بحالة draft</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">المدير يراجع ثم يوافق ثم يدفع</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق منصة التميز وإعلان الفائز</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">مدرب يقدم ترشيح</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Anti-gaming check: ترشيح واحد/شهر لنفس الشخص</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">كرون آخر الشهر يحسب Score لكل متدرب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Score = 40% حضور + 30% عدم مخالفات + 30% تقييم مدرب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يكتب أعلى score في monthly_excellence_winners</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يوم ١ من الشهر التالي: إعلان + إشعار</div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 8: Business Logic
+         ====================================================== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">١٢ قاعدة تشغيلية دقيقة</h2>
+
+      <div class="alert al-rust">
+        <span class="ico">📋</span>
+        <div><strong>قاعدة 7.1:</strong> الدرجة الأولى (تحذير شفهي) — تُسجَّل فقط في قاعدة البيانات. لا إشعار WhatsApp، لا إيميل، لا طباعة. الهدف: توثيق صامت يُستخدَم فقط في حساب التصعيد التلقائي.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📝</span>
+        <div><strong>قاعدة 7.2:</strong> الدرجة الثانية (تحذير كتابي) — يُشغِّل إشعار WhatsApp + Email فور التسجيل، ويُولِّد PDF رسمي يمكن طباعته. إشعار المرحلة الثامنة يتلقى حدث <code class="mono">violation.degree_2</code> ليتولى الإرسال.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">💸</span>
+        <div><strong>قاعدة 7.3:</strong> الدرجة الثالثة (خصم مالي) — قيمة الخصم = <code class="mono">violation_types.financial_amount</code>. يُدرَج تلقائياً سجل في <code class="mono">salary_adjustments</code> بـ <code class="mono">adjustment_type='deduction'</code> مرتبط بالشهر الحالي. إذا كانت هناك طعن معلَّق (pending appeal) فإن الخصم يُجمَّد حتى صدور الحكم.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⏸️</span>
+        <div><strong>قاعدة 7.4:</strong> الدرجة الرابعة (إيقاف مؤقت) — يُعيِّن النظام تلقائياً <code class="mono">trainee.status = 'suspended'</code> لعدد الأيام المحدد في المخالفة. عند انتهاء المدة: job مجدوَل في BullMQ يُعيد الحالة لـ <code class="mono">active</code> تلقائياً ويُسجِّل الحدث.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🚫</span>
+        <div><strong>قاعدة 7.5:</strong> الدرجة الخامسة (فصل + حظر تلقائي) — خطوتان أتوماتيكيتان في transaction واحدة: (١) <code class="mono">trainee.status = 'expelled'</code> و (٢) INSERT في جدول <code class="mono">blocked_profiles</code> بالبيانات التعريفية للمتدرب. أي محاولة تسجيل لاحقة بنفس الهوية الوطنية أو رقم الجوال تُرفَض عند الاستقبال.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">⬆️</span>
+        <div><strong>قاعدة 7.6:</strong> التصعيد التلقائي — كرون يومي يفحص: هل تجمَّع ٣ مخالفات من الدرجة N لنفس الشخص خلال ٣٠ يوماً الأخيرة؟ إذا نعم: يُنشئ مخالفة جديدة degree N+1 مع <code class="mono">is_auto_generated=true</code> و <code class="mono">parent_violation_id</code> يُشير لآخر مخالفة في المجموعة. استثناء: لا تصعيد من الدرجة ٥ (نهاية السلم).</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">📅</span>
+        <div><strong>قاعدة 7.7:</strong> التكامل مع الحضور — جوب منفصل يفحص يومياً العدد التراكمي للغيابات من <code class="mono">attendance_records</code>. عندما يبلغ <code class="mono">absent_count &gt;= 15</code> لمتدرب نشط: يُنشئ violation تلقائياً من الدرجة الخامسة (فصل + حظر) مع <code class="mono">violation_type.code = 'AUTO_ABSENCES_15'</code>. يُرسَل إشعار تحذيري عند الغيابات ١٠ و١٣ قبل الوصول للحد.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚖️</span>
+        <div><strong>قاعدة 7.8:</strong> الطعون — مهلة ٧ أيام تبدأ من <code class="mono">violations.date</code>. الطعن يوقف تنفيذ الإجراء للدرجات 3 و4 و5 حتى صدور الحكم. إذا انتهت المهلة بدون طعن: الإجراء مُنفَّذ نهائياً ولا يمكن تعليقه. إذا قُبِل الطعن: transaction تعكس الإجراء + تُلغي salary_adjustment المرتبطة إن وجدت.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🧮</span>
+        <div><strong>قاعدة 7.9:</strong> معادلة الراتب الصافي:<br>
+        <code class="mono">net_salary = base_salary + SUM(allowances values) + SUM(bonuses values) − SUM(deductions values)</code><br>
+        كل من allowances/deductions/bonuses هو JSONB بصيغة <code class="mono">{"housing": 500, "transport": 200}</code> — يسمح بتفاصيل تصنيفية في كشف الراتب. الخصومات تشمل خصومات المخالفات (degree 3) وخصومات الإجازات غير المدفوعة (المرحلة ٦).
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⏰</span>
+        <div><strong>قاعدة 7.10:</strong> كرون الرواتب — يُشغَّل يوم ٢٥ من كل شهر الساعة 02:00 فجراً. يُولِّد سجل draft لكل موظف نشط. إذا وُجِد سجل للشهر (تشغيل يدوي سابق) يتجاهله لتفادي التكرار (INSERT ... ON CONFLICT DO NOTHING). المدير لديه ٥ أيام للمراجعة والموافقة قبل يوم الدفع ٣٠.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🏆</span>
+        <div><strong>قاعدة 7.11:</strong> معادلة نقاط التميز المرجَّحة:<br>
+        <code class="mono">score = (attendance_rate × 0.4) + (violations_absence_score × 0.3) + (trainer_rating_avg × 0.3)</code><br>
+        حيث <code class="mono">violations_absence_score = max(0, 100 − violations_count × 10)</code> — كل مخالفة تُقلِّص النقاط بمقدار ١٠. <code class="mono">trainer_rating_avg</code> مُستمَدٌّ من جدول التقييمات في المرحلة السادسة.
+        </div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">🥇</span>
+        <div><strong>قاعدة 7.12:</strong> الفائز الشهري — كرون اليوم الأخير من كل شهر يحسب Score لكل (target_type, category) وينتقي أعلى قيمة — يكتب في <code class="mono">monthly_excellence_winners</code> بحالة pending. في اليوم الأول من الشهر التالي: announcement_status → announced + إشعار بالمرحلة الثامنة. في حالة التعادل: المتدرب الأكثر حضوراً يفوز كفاصل.</div>
+      </div>
+
+      <!-- Code example: Auto escalation logic -->
+      <h3 class="mt-6">كود: منطق التصعيد التلقائي (Pseudo-code)</h3>
+      <pre class="code-block">
+<span class="c-com">// BullMQ Daily Job — auto_escalation_check</span>
+<span class="c-key">async function</span> <span class="c-fn">checkAutoEscalation</span>() {
+  <span class="c-key">const</span> cutoff = <span class="c-fn">subDays</span>(<span class="c-fn">new</span> Date(), <span class="c-num">30</span>);
+
+  <span class="c-key">const</span> groups = <span class="c-key">await</span> db.<span class="c-fn">query</span>(<span class="c-str">`
+    SELECT target_type, target_id, degree, COUNT(*) as cnt
+    FROM violations
+    WHERE status = 'active'
+      AND is_auto_generated = false
+      AND date &gt;= $1
+    GROUP BY target_type, target_id, degree
+    HAVING COUNT(*) &gt;= 3
+      AND degree &lt; 5
+  `</span>, [cutoff]);
+
+  <span class="c-key">for</span> (<span class="c-key">const</span> g <span class="c-key">of</span> groups.rows) {
+    <span class="c-key">const</span> nextDegree = g.degree + <span class="c-num">1</span>;
+    <span class="c-key">const</span> autoType = <span class="c-key">await</span> <span class="c-fn">findAutoViolationType</span>(nextDegree, g.target_type);
+    <span class="c-key">await</span> <span class="c-fn">createViolation</span>({
+      target_type: g.target_type,
+      target_id: g.target_id,
+      violation_type_id: autoType.id,
+      degree: nextDegree,
+      is_auto_generated: <span class="c-key">true</span>,
+      parent_violation_id: g.latest_violation_id
+    });
+  }
+}
+      </pre>
+
+      <!-- Code example: Salary computation -->
+      <h3 class="mt-6">كود: حساب الراتب الصافي</h3>
+      <pre class="code-block">
+<span class="c-com">// generateMonthlySalaries — runs 25th of each month</span>
+<span class="c-key">async function</span> <span class="c-fn">generateMonthlySalaries</span>(year, month) {
+  <span class="c-key">const</span> employees = <span class="c-key">await</span> <span class="c-fn">getActiveEmployees</span>();
+
+  <span class="c-key">for</span> (<span class="c-key">const</span> emp <span class="c-key">of</span> employees) {
+    <span class="c-key">const</span> adjustments = <span class="c-key">await</span> <span class="c-fn">getSalaryAdjustments</span>(emp.id, year, month);
+
+    <span class="c-key">const</span> allowances = <span class="c-fn">groupByType</span>(adjustments, <span class="c-str">'allowance'</span>);
+    <span class="c-key">const</span> bonuses    = <span class="c-fn">groupByType</span>(adjustments, <span class="c-str">'bonus'</span>);
+    <span class="c-key">const</span> deductions = <span class="c-fn">groupByType</span>(adjustments, <span class="c-str">'deduction'</span>);
+
+    <span class="c-key">const</span> net = emp.base_salary
+      + <span class="c-fn">sum</span>(Object.<span class="c-fn">values</span>(allowances))
+      + <span class="c-fn">sum</span>(Object.<span class="c-fn">values</span>(bonuses))
+      - <span class="c-fn">sum</span>(Object.<span class="c-fn">values</span>(deductions));
+
+    <span class="c-key">await</span> db.<span class="c-fn">query</span>(<span class="c-str">`
+      INSERT INTO employee_salaries
+        (employee_id, year, month, base_salary, allowances, deductions, bonuses, net_salary, status)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'draft')
+      ON CONFLICT (employee_id, year, month) DO NOTHING
+    `</span>, [emp.id, year, month, emp.base_salary, allowances, deductions, bonuses, net]);
+  }
+}
+      </pre>
+    </section>
+
+    <!-- ======================================================
+         Section 9: Dependencies
+         ====================================================== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد المرحلة السابعة</h2>
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p><strong><a href="phase-01-foundation.html">المرحلة ١ — الأساس:</a></strong><br>
+          جدول <code class="mono">employees</code> للـ recorded_by وawarded_by وcreated_by.<br>
+          نظام RBAC لتحديد من يسجل المخالفات ومن يوافق على الرواتب.</p>
+          <p><strong><a href="phase-02-master-data.html">المرحلة ٢ — البيانات الرئيسية:</a></strong><br>
+          بيانات البرامج والمجموعات لربط المخالفات بالسياق التدريبي الصحيح.</p>
+          <p><strong><a href="phase-04-trainee-lifecycle.html">المرحلة ٤ — دورة المتدرب:</a></strong><br>
+          جدول <code class="mono">trainees</code> للـ target_id + حقل status الذي تعدّله الدرجتان ٤ و٥.<br>
+          جدول <code class="mono">blocked_profiles</code> الذي تملؤه الدرجة الخامسة.</p>
+          <p><strong><a href="phase-05-attendance-operations.html">المرحلة ٥ — الحضور:</a></strong><br>
+          <code class="mono">attendance_records</code> لحساب عدد الغيابات التراكمية (Rule 7.7) ولتحديد attendance_rate في معادلة التميز.</p>
+          <p><strong><a href="phase-06-leaves-exceptions.html">المرحلة ٦ — الإجازات:</a></strong><br>
+          أيام الإجازة غير المدفوعة تُدرَج كـ deduction في JSONB الراتب. تقييمات المدرب من المرحلة ٦ تُغذِّي معادلة التميز.</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p><strong><a href="phase-08-notifications-reports.html">المرحلة ٨ — الإشعارات:</a></strong><br>
+          أحداث: <code class="mono">violation.degree_2</code>، <code class="mono">violation.degree_3</code>، <code class="mono">violation.degree_4</code>، <code class="mono">violation.degree_5</code>، <code class="mono">auto_escalation</code>، <code class="mono">appeal.reviewed</code>، <code class="mono">salary.approved</code>، <code class="mono">salary.paid</code>، <code class="mono">excellence.winner_announced</code>.<br>
+          المرحلة الثامنة تستمع لهذه الأحداث من BullMQ queue وترسل الإشعارات المناسبة.</p>
+          <p><strong><a href="phase-09-portals-admin-ops.html">المرحلة ٩ — البوابات:</a></strong><br>
+          بوابة المتدرب تعرض: سجل مخالفاته الشخصي، نقاط تميزه، حق تقديم طعن.<br>
+          بوابة الشركة الشريكة تعرض: ملخص مخالفات متدربيها (بدون تفاصيل مالية).<br>
+          كشف راتب المدرب متاح في بوابته الخاصة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 10: Risks
+         ====================================================== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يفشل</h2>
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><strong>مخالفات شبح (Phantom Violations):</strong> خطأ في كرون التصعيد يُنشئ مخالفات مضاعفة — يُعالَج بـ idempotent job key في BullMQ.</li>
+            <li><strong>race condition الرواتب:</strong> تشغيل يدوي وكرون متزامنان — يُعالَج بـ ON CONFLICT DO NOTHING + Redis distributed lock.</li>
+            <li><strong>الغياب الخاطئ يُطلق الدرجة ٥:</strong> خطأ في رصد الحضور من المرحلة الخامسة → مخالفة فصل ظالمة. يستلزم human confirmation قبل تنفيذ الدرجة ٥ الأتوماتيكية.</li>
+            <li><strong>التواطؤ في التميز (Collusion):</strong> مدرب يُرشِّح متدربيه باستمرار — Anti-gaming: حد أقصى ترشيح واحد/شهر لنفس الشخص من نفس المُرشِّح.</li>
+            <li><strong>الراتب المتناسب (Prorated):</strong> موظف بدأ أو انتهى في منتصف الشهر — حساب المعادلة بـ عدد الأيام المعمولة / إجمالي أيام الشهر.</li>
+            <li><strong>حدود الدرجة الخامسة:</strong> لا يجب أن تُطبَّق مخالفة الفصل مرتين على نفس المتدرب — CHECK constraint على status=expelled.</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li>بيانات الحضور من المرحلة الخامسة موثوقة ومُعتمَدة قبل حساب الغيابات التراكمية.</li>
+            <li>كل موظف له <code class="mono">base_salary</code> محدد في جدول employees قبل التوليد الأول.</li>
+            <li>BullMQ مُهيَّأ وRedis متاح لجدولة الجوبات والـ delay jobs.</li>
+            <li>النظام لا يدعم استرجاع مخالفة الدرجة الخامسة (فصل نهائي) بعد ٧ أيام من انتهاء مهلة الطعن.</li>
+            <li>منصة التميز اختيارية في المرحلة الأولى من التشغيل — يمكن تعطيلها دون التأثير على المخالفات أو الرواتب.</li>
+            <li>الشركات الشريكة لا تملك صلاحية تسجيل مخالفات — حق حصري للموظفين الداخليين (Staff/Manager/Super Admin).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         Section 11: Checklist
+         ====================================================== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة السابعة انتهت؟</h2>
+      <ol class="num-list">
+        <li>Backend: جداول المخالفات الثلاثة منشأة مع constraints وindexes على (target_type, target_id, date, degree) ✅</li>
+        <li>Backend: جداول الرواتب والتعديلات منشأة مع UNIQUE(employee_id, year, month) ✅</li>
+        <li>Backend: جداول التميز الثلاثة منشأة مع UNIQUE(month, year, category, winner_type) ✅</li>
+        <li>Backend: CRUD كامل لـ violation_types (Super Admin only) مع validation ✅</li>
+        <li>Backend: POST /api/violations يُشغِّل BullMQ job للإجراء الفوري حسب الدرجة ✅</li>
+        <li>Backend: كرون التصعيد التلقائي يعمل يومياً ويكشف 3-في-30-يوم ✅</li>
+        <li>Backend: كرون الغيابات يعمل يومياً ويُطلق الدرجة الخامسة عند الغياب ١٥ ✅</li>
+        <li>Backend: POST /api/violations/:id/appeal يتحقق من مهلة ٧ أيام ويجمِّد الإجراء ✅</li>
+        <li>Backend: POST /api/violation-appeals/:id/review يعكس الإجراء عند القبول ✅</li>
+        <li>Backend: كرون الرواتب يوم ٢٥ يولِّد draft لجميع الموظفين مع ON CONFLICT protection ✅</li>
+        <li>Backend: معادلة الراتب الصافي صحيحة وتشمل خصومات المخالفات والإجازات غير المدفوعة ✅</li>
+        <li>Backend: كرون التميز يحسب Score المرجَّح (40/30/30) ويكتب في monthly_excellence_winners ✅</li>
+        <li>Frontend: شاشة كتالوج المخالفات (V1) تُظهر جميع الأنواع مع فلتر الدرجة والحالة ✅</li>
+        <li>Frontend: نموذج تسجيل مخالفة (V2) يرفع الدليل ويُطبِّق الإجراء فور الحفظ ✅</li>
+        <li>Frontend: قائمة المخالفات (V3) تُميِّز بصرياً المخالفات التلقائية (أيقونة robot) ✅</li>
+        <li>Frontend: شاشة الطعون (V4) تتيح المراجعة مع إدخال الملاحظات ✅</li>
+        <li>Frontend: شاشة الرواتب (S1) تُظهر الصافي وحالة الدفع مع تصدير PDF ✅</li>
+        <li>Frontend: شاشة التعديلات (S2) تُطبِّق التعديل اليدوي وتعكسه في التوليد القادم ✅</li>
+        <li>Frontend: منصة التميز (E1) تُظهر رصيد النقاط بالفئات الأربع مع نموذج ترشيح ✅</li>
+        <li>Frontend: شاشة الفائزين الشهريين (E2) ببطاقات احتفالية وخيار إرسال إشعار ✅</li>
+        <li>Integration: بوابة المتدرب (المرحلة ٩) تعرض مخالفاته الشخصية ونقاط تميزه ✅</li>
+        <li>Integration: BullMQ events تصل لمعالج الإشعارات (المرحلة ٨) ✅</li>
+        <li>Testing: اختبار التصعيد التلقائي (٣ مخالفات في ٣٠ يوماً تُولِّد degree+1) ✅</li>
+        <li>Testing: اختبار الطعن يجمِّد خصم الراتب حتى الحكم ✅</li>
+        <li>Testing: اختبار كرون الغيابات عند الغياب ١٥ يُطلق الفصل ✅</li>
+        <li>Documentation: قاموس أنواع المخالفات الافتراضية (كود + اسم + درجة) موثَّق ✅</li>
+      </ol>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-06-leaves-exceptions.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٦. الإجازات والاستثناءات</span>
+      </a>
+      <a href="phase-08-notifications-reports.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٨. الإشعارات والتقارير</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>في هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

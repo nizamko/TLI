@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٤ — دورة حياة المتدرب | معهد ريادة الغد</title>
+<meta name="description" content="المرحلة الرابعة من نظام معهد ريادة الغد: إدارة دورة حياة المتدرب كاملةً من التسجيل حتى التخرج أو الانسحاب، مع سير حالات، نقل المجموعات، وخزانة الوثائق.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html" class="active">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٤ — دورة حياة المتدرب</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: عالي · ⏱ أسبوعان</div>
+    <div class="hero-label">المرحلة ٠٤ من 10 · Trainee Lifecycle Management</div>
+    <h1>دورة حياة المتدرب<br><span>من الالتحاق حتى التخرج أو المغادرة</span></h1>
+    <p class="hero-desc">
+      تُغطي هذه المرحلة الملف الشامل للمتدرب بدءاً من لحظة الموافقة على طلبه في المرحلة الثالثة وحتى إغلاق ملفه سواء بالتخرج أو الانسحاب أو الطرد.
+      تشمل إدارة سير الحالات، نقل المتدربين بين المجموعات، خزانة الوثائق الرقمية، بوابة طلبات تعديل البيانات، وتتبع انتهاء صلاحية الهوية الوطنية.
+      هي المحور الذي تدور حوله مراحل الحضور والإجازات والمخالفات وبوابة المتدرب.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>5</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>6</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>18</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>2</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot current"><span class="pd-num pdn-4">4</span>دورة المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- Section 1: Summary -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        بمجرد موافقة المرحلة الثالثة على طلب التسجيل، تنشأ سجل المتدرب تلقائياً هنا. تتكفل هذه المرحلة بكل ما يطرأ عليه طوال رحلته داخل المعهد: تعديل بياناته، نقله بين المجموعات، تعليق حضوره، تخريجه، أو إغلاق ملفه.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p4">
+          <h3>🎯 الهدف</h3>
+          <p>توفير سجل مركزي موثوق لكل متدرب يشمل بياناته الكاملة، حالته الحالية، تاريخ تحولات حالاته، ووثائقه الرسمية — مع ضمان سلامة الانتقال بين كل حالة.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li><span class="ico">✅</span>ملف متدرب كامل مع CRUD + صورة + هوية</li>
+            <li><span class="ico">✅</span>محرك سير حالات (status machine) موثق</li>
+            <li><span class="ico">✅</span>نظام نقل بين المجموعات مع audit trail</li>
+            <li><span class="ico">✅</span>بوابة طلبات تعديل البيانات للمتدرب</li>
+            <li><span class="ico">✅</span>خزانة الوثائق الرقمية مع التحقق</li>
+            <li><span class="ico">✅</span>سير تخرج المجموعة وتوليد رقم الشهادة</li>
+            <li><span class="ico">✅</span>cron job لتتبع انتهاء صلاحية الهوية</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><span class="ico">🔗</span><strong>Phase 01:</strong> auth, users, roles, middleware</li>
+            <li><span class="ico">🔗</span><strong>Phase 02:</strong> companies, departments, training_programs, groups</li>
+            <li><span class="ico">🔗</span><strong>Phase 03:</strong> applications, blocked_profiles — الموافقة تُنشئ المتدرب</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong>Phase 05 — الحضور:</strong> يعتمد على trainee_id + group_id الحالي.<br>
+            <strong>Phase 06 — الإجازات:</strong> يتحقق من حالة المتدرب قبل القبول.<br>
+            <strong>Phase 07 — المخالفات:</strong> يربط المخالفة بالمتدرب ويُطلق expulsion.<br>
+            <strong>Phase 09 — بوابة المتدرب:</strong> يعرض الملف الشخصي ويُرسل طلبات التعديل.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Why -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">المتدرب هو محور النظام بأكمله</h2>
+      <p class="section-desc">
+        كل مرحلة لاحقة — الحضور، الإجازات، المخالفات، الرواتب، الشهادات — تبدأ بسؤال واحد: "من هو هذا المتدرب وما حالته الآن؟" بدون هذه المرحلة، لا يوجد subject يُسجَّل عليه الحضور، ولا entity يُحاسَب على المخالفة، ولا مستفيد يصدر له الشهادة.
+      </p>
+
+      <div class="alert al-navy">
+        <span class="ico">💡</span>
+        <div>
+          <strong>لماذا المرحلة 4 وليس الثالثة؟</strong> — المرحلة الثالثة تُدير <em>طلب الالتحاق</em> وليس المتدرب نفسه. الفصل بين <code>applications</code> و<code>trainees</code> متعمد: يسمح بحفظ سجلات المتقدمين المرفوضين دون تلويث بيانات المتدربين النشطين، ويُتيح إعادة تقديم طلب مستقبلاً بشكل منفصل.
+        </div>
+      </div>
+
+      <div class="grid grid-2 mt-4">
+        <div class="card card-accent c-teal">
+          <h3>🔄 سير الحالات — لماذا محدود؟</h3>
+          <p>تحديد مسارات الانتقال المسموح بها يمنع تلاعب البيانات. مثلاً: لا يمكن إعادة تفعيل متدرب <strong>مكتمل</strong> (completed) لأن ذلك قد يُتيح له تسجيل حضور بأثر رجعي أو الحصول على إجازات جديدة بشكل غير مشروع.</p>
+        </div>
+        <div class="card card-accent c-p4">
+          <h3>📋 طلبات التعديل — لماذا workflow؟</h3>
+          <p>حقول مثل الاسم والرقم الوطني تؤثر على العقود والشهادات. اشتراط موافقة الإدارة يحمي من تزوير البيانات الرسمية، بينما السماح للمتدرب بتحديث رقم هاتفه مباشرة يُقلل العبء الإداري.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Modules -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">ست وحدات تشكّل دورة حياة كاملة</h2>
+      <div class="grid grid-3">
+
+        <div class="card card-accent c-p4">
+          <div class="card-head">
+            <div class="card-icon">👤</div>
+            <div>
+              <div class="card-title">الملف الشخصي الكامل</div>
+              <div class="card-sub">Trainee Full Profile CRUD</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">•</span>بيانات شخصية + تواصل + طوارئ</li>
+            <li><span class="ico">•</span>رفع الصورة الشخصية (photo_url)</li>
+            <li><span class="ico">•</span>تفاصيل الهوية الوطنية + تاريخ الانتهاء</li>
+            <li><span class="ico">•</span>ربط بالمجموعة والبرنامج</li>
+            <li><span class="ico">•</span>عرض ذاتي عبر بوابة المتدرب</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🔄</div>
+            <div>
+              <div class="card-title">محرك سير الحالات</div>
+              <div class="card-sub">Status Workflow Engine</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">•</span>active → suspended / withdrawn / expelled</li>
+            <li><span class="ico">•</span>suspended → active / expelled</li>
+            <li><span class="ico">•</span>completed نهائي — لا رجوع</li>
+            <li><span class="ico">•</span>تسجيل السبب والمسؤول والتوقيت</li>
+            <li><span class="ico">•</span>status_history كاملة لكل تحول</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🔁</div>
+            <div>
+              <div class="card-title">نقل المتدرب</div>
+              <div class="card-sub">Group Transfer Module</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">•</span>نقل من مجموعة إلى أخرى مع موافقة</li>
+            <li><span class="ico">•</span>audit trail كامل (from/to/date/reason)</li>
+            <li><span class="ico">•</span>عدم نقل سجلات الحضور السابقة</li>
+            <li><span class="ico">•</span>التحقق من توافق البرنامج قبل النقل</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">📝</div>
+            <div>
+              <div class="card-title">طلبات تعديل البيانات</div>
+              <div class="card-sub">Update Request Workflow</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">•</span>المتدرب يطلب تعديل حقل محدد</li>
+            <li><span class="ico">•</span>حقول مباشرة: هاتف، عنوان، طوارئ</li>
+            <li><span class="ico">•</span>حقول تحتاج موافقة: الاسم، الهوية، التاريخ</li>
+            <li><span class="ico">•</span>admin يقبل/يرفض مع سبب</li>
+            <li><span class="ico">•</span>حفظ old_value / new_value للمراجعة</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">📂</div>
+            <div>
+              <div class="card-title">خزانة الوثائق</div>
+              <div class="card-sub">Document Vault</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">•</span>صورة الهوية، العقد، التقرير الطبي</li>
+            <li><span class="ico">•</span>حد 5MB لكل ملف + فحص النوع</li>
+            <li><span class="ico">•</span>virus scan قبل الحفظ</li>
+            <li><span class="ico">•</span>تاريخ انتهاء الوثيقة + تحقق admin</li>
+            <li><span class="ico">•</span>حذف ناعم فقط (soft delete)</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-p4">
+          <div class="card-head">
+            <div class="card-icon">🎓</div>
+            <div>
+              <div class="card-title">سير التخرج</div>
+              <div class="card-sub">Graduation Workflow</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">•</span>تلقائي عند انتهاء المجموعة + نسبة حضور ≥ 75%</li>
+            <li><span class="ico">•</span>توليد certificate_number تلقائي</li>
+            <li><span class="ico">•</span>Format: INSTITUTE-YYYY-#### (مثلاً: RG-2026-0042)</li>
+            <li><span class="ico">•</span>تحديث graduation_date وحالة completed</li>
+            <li><span class="ico">•</span>تسجيل سجل certificate في النظام</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Screens -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">ست شاشات إدارية تُغطي دورة الحياة كاملةً</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الصفحة</th>
+              <th>الوصف التفصيلي</th>
+              <th>الأدوار</th>
+              <th>الأولوية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-strong">S-4.1</td>
+              <td class="td-strong">قائمة المتدربين</td>
+              <td>جدول متدربين مع فلاتر: المجموعة، الحالة، الجنس، البحث النصي. يُظهر الصورة الشخصية والحالة كـ badge ملوّن. تصدير Excel.</td>
+              <td><span class="badge b-navy">Admin</span><span class="badge b-teal">Staff</span><span class="badge b-gold">Manager</span></td>
+              <td><span class="badge b-rust">P1</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">S-4.2</td>
+              <td class="td-strong">بطاقة المتدرب</td>
+              <td>ملف شامل بأربع تبويبات: (1) المعلومات الشخصية + الهوية، (2) الوثائق، (3) سجل الحالات، (4) ملخص الحضور. أزرار تغيير الحالة في الهيدر.</td>
+              <td><span class="badge b-navy">Admin</span><span class="badge b-teal">Staff</span></td>
+              <td><span class="badge b-rust">P1</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">S-4.3</td>
+              <td class="td-strong">مودال نقل المتدرب</td>
+              <td>نافذة منبثقة: اختيار المجموعة الهدف، إدخال السبب، تاريخ النقل. تُظهر تحذيراً إن كان النقل بين برامج مختلفة.</td>
+              <td><span class="badge b-navy">Admin</span><span class="badge b-gold">Manager</span></td>
+              <td><span class="badge b-orange">P2</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">S-4.4</td>
+              <td class="td-strong">طلبات تعديل البيانات</td>
+              <td>لوحة للإداريين تعرض طلبات التعديل المعلقة مع old/new value. قبول أو رفض مع إضافة سبب. فلتر بالحالة والمتدرب والتاريخ.</td>
+              <td><span class="badge b-navy">Admin</span><span class="badge b-teal">Staff</span></td>
+              <td><span class="badge b-orange">P2</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">S-4.5</td>
+              <td class="td-strong">خزانة الوثائق</td>
+              <td>عرض وثائق المتدرب مُنظَّمة بالنوع. رفع ملف جديد، تحديد نوعه وتاريخ انتهائه، تحقق الإداري. مؤشر الوثائق المنتهية باللون الأحمر.</td>
+              <td><span class="badge b-navy">Admin</span><span class="badge b-teal">Staff</span><span class="badge b-purple">Trainee</span></td>
+              <td><span class="badge b-orange">P2</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">S-4.6</td>
+              <td class="td-strong">تخرج المجموعة</td>
+              <td>شاشة تُعرض عند اكتمال المجموعة: قائمة بالمتدربين المؤهلين (≥75% حضور) والمؤهلين جزئياً. تأكيد جماعي أو فردي. توليد certificate_number فور التأكيد.</td>
+              <td><span class="badge b-navy">Admin</span><span class="badge b-gold">Manager</span></td>
+              <td><span class="badge b-teal">P3</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 5: Database -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">خمسة جداول بقلب المنظومة</h2>
+
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-navy">👤 trainees</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>user_id → users</div>
+            <div class="db-field"><span class="fk">FK</span>application_id → applications</div>
+            <div class="db-field"><span class="fk">FK</span>group_id → groups</div>
+            <div class="db-field"><span class="un">UN</span>national_id · varchar(20)</div>
+            <div class="db-field">national_id_expiry_date · date</div>
+            <div class="db-field">date_of_birth · date</div>
+            <div class="db-field">gender · enum(male,female)</div>
+            <div class="db-field">phone · varchar(20)</div>
+            <div class="db-field">emergency_contact_name · varchar</div>
+            <div class="db-field">emergency_contact_phone · varchar(20)</div>
+            <div class="db-field">address · text</div>
+            <div class="db-field">photo_url · text</div>
+            <div class="db-field"><span class="nn">NN</span>enrollment_date · date</div>
+            <div class="db-field">status · enum(active, suspended, completed, withdrawn, expelled) DEFAULT active</div>
+            <div class="db-field">status_changed_at · timestamptz</div>
+            <div class="db-field">status_reason · text</div>
+            <div class="db-field">graduation_date · date</div>
+            <div class="db-field"><span class="un">UN</span>certificate_number · varchar(30)</div>
+            <div class="db-field">created_at · timestamptz</div>
+            <div class="db-field">updated_at · timestamptz</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-navy">📂 trainee_documents</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees</div>
+            <div class="db-field">document_type · enum(id_copy, contract, medical, photo, other)</div>
+            <div class="db-field"><span class="nn">NN</span>file_url · text</div>
+            <div class="db-field">file_size_kb · integer</div>
+            <div class="db-field">mime_type · varchar(80)</div>
+            <div class="db-field">uploaded_at · timestamptz</div>
+            <div class="db-field">expires_at · date</div>
+            <div class="db-field">is_verified · boolean DEFAULT false</div>
+            <div class="db-field">verified_by · uuid FK → users</div>
+            <div class="db-field">verified_at · timestamptz</div>
+            <div class="db-field">is_deleted · boolean DEFAULT false</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-navy">📝 update_requests</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees</div>
+            <div class="db-field"><span class="nn">NN</span>field_name · varchar(60)</div>
+            <div class="db-field">old_value · text</div>
+            <div class="db-field"><span class="nn">NN</span>new_value · text</div>
+            <div class="db-field">status · enum(pending, approved, rejected) DEFAULT pending</div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field"><span class="fk">FK</span>reviewed_by → users</div>
+            <div class="db-field">reviewed_at · timestamptz</div>
+            <div class="db-field">created_at · timestamptz</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-navy">🔁 group_transfers</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees</div>
+            <div class="db-field"><span class="fk">FK</span>from_group_id → groups</div>
+            <div class="db-field"><span class="fk">FK</span>to_group_id → groups</div>
+            <div class="db-field"><span class="nn">NN</span>transfer_date · date</div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field"><span class="fk">FK</span>approved_by → users</div>
+            <div class="db-field">created_at · timestamptz</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-navy">📜 status_history</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>trainee_id → trainees</div>
+            <div class="db-field"><span class="nn">NN</span>from_status · varchar(20)</div>
+            <div class="db-field"><span class="nn">NN</span>to_status · varchar(20)</div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field"><span class="fk">FK</span>changed_by → users</div>
+            <div class="db-field"><span class="nn">NN</span>changed_at · timestamptz</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># Trainee core relations</span>
+users              <span class="c-key">1:1</span>  trainees              <span class="c-com"># كل user متدرب له سجل واحد</span>
+applications       <span class="c-key">1:1</span>  trainees              <span class="c-com"># الطلب يُولّد متدرباً عند القبول</span>
+groups             <span class="c-key">1:N</span>  trainees              <span class="c-com"># مجموعة → متدربون متعددون</span>
+
+<span class="c-com"># Documents & requests</span>
+trainees           <span class="c-key">1:N</span>  trainee_documents     <span class="c-com"># متدرب له وثائق متعددة</span>
+trainees           <span class="c-key">1:N</span>  update_requests       <span class="c-com"># متدرب يُرسل طلبات تعديل</span>
+trainees           <span class="c-key">1:N</span>  group_transfers       <span class="c-com"># متدرب له سجل نقلات</span>
+trainees           <span class="c-key">1:N</span>  status_history        <span class="c-com"># متدرب له تاريخ تحولات حالة</span>
+
+<span class="c-com"># Cross-phase relations</span>
+trainees           <span class="c-key">1:N</span>  attendance_records    <span class="c-com"># Phase 05</span>
+trainees           <span class="c-key">1:N</span>  leave_requests        <span class="c-com"># Phase 06</span>
+trainees           <span class="c-key">1:N</span>  violations            <span class="c-com"># Phase 07</span>
+trainees           <span class="c-key">N:1</span>  blocked_profiles      <span class="c-com"># Phase 03 — عند الطرد</span>
+      </div>
+
+      <div class="alert al-gold mt-4">
+        <span class="ico">⚠️</span>
+        <div><strong>ملاحظة تصميم:</strong> جدول <code>trainees</code> يخزن فقط <code>group_id</code> الحالي. السجل التاريخي لكل نقل محفوظ في <code>group_transfers</code>. هذا يجعل استعلامات قائمة المتدربين الحالية للمجموعة فورية (O(1)) دون الحاجة لجلب سجلات النقل.
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: APIs -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">١٨ نقطة اتصال تُغطي كل العمليات</h2>
+
+      <div class="api-group">
+        <div class="api-group-title">👤 Trainees — CRUD</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/trainees</span>
+            <span class="api-desc">قائمة متدربين مع فلاتر: group_id, status, gender, search, page, limit</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/trainees/:id</span>
+            <span class="api-desc">تفاصيل متدرب كامل مع tabs data</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees</span>
+            <span class="api-desc">إنشاء تلقائي عند الموافقة على الطلب (Phase 03 webhook)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/trainees/:id</span>
+            <span class="api-desc">تعديل بيانات متدرب من قِبل الإداريين</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">🔄 Status Transitions — تغيير الحالة</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/suspend</span>
+            <span class="api-desc">تعليق المتدرب مع سبب إلزامي + تسجيل status_history</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/withdraw</span>
+            <span class="api-desc">انسحاب (بناءً على طلب المتدرب أو قرار الإدارة)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/graduate</span>
+            <span class="api-desc">تخريج فردي مع توليد certificate_number</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/expel</span>
+            <span class="api-desc">طرد + auto-insert في blocked_profiles (يستدعيه Phase 07)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/reactivate</span>
+            <span class="api-desc">إعادة تفعيل من suspended فقط — يتحقق من صلاحية الانتقال</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">🔁 Transfers — نقل المجموعة</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/transfer</span>
+            <span class="api-desc">نقل إلى مجموعة جديدة — يُسجّل في group_transfers ويُحدّث group_id</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/trainees/:id/history</span>
+            <span class="api-desc">سجل كامل: status_history + group_transfers مرتبة زمنياً</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📂 Documents — الوثائق</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/trainees/:id/documents</span>
+            <span class="api-desc">قائمة وثائق المتدرب مُجمَّعة بالنوع</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/trainees/:id/documents</span>
+            <span class="api-desc">رفع وثيقة جديدة — multipart/form-data + virus scan + type check</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DEL</span>
+            <span class="api-path">/api/trainees/:id/documents/:docId</span>
+            <span class="api-desc">حذف ناعم (soft delete) — is_deleted = true</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/trainees/:id/documents/:docId/verify</span>
+            <span class="api-desc">تحقق إداري من الوثيقة — is_verified = true + verified_by</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📝 Update Requests — طلبات التعديل</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/update-requests</span>
+            <span class="api-desc">قائمة طلبات التعديل للإداريين (فلتر: status, trainee_id, date)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/update-requests</span>
+            <span class="api-desc">المتدرب يُرسل طلب تعديل حقل من بوابته (Phase 09)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/update-requests/:id/approve</span>
+            <span class="api-desc">موافقة — يُطبّق التعديل مباشرة على جدول trainees</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/update-requests/:id/reject</span>
+            <span class="api-desc">رفض مع سبب — يُبلّغ المتدرب عبر إشعار (Phase 08)</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 7: User Flows -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك المستخدم في النظام؟</h2>
+
+      <h3>🔸 تدفق تغيير حالة المتدرب (إداري)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">بطاقة المتدرب<div class="fn-sub">S-4.2</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "تعليق"<div class="fn-sub">زر الحالة</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">نافذة: إدخال السبب<div class="fn-sub">reason إلزامي</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">POST /suspend<div class="fn-sub">API call</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">INSERT status_history<div class="fn-sub">DB trigger</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">إشعار واتساب<div class="fn-sub">Phase 08</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق نقل المتدرب بين المجموعات</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">قائمة المتدربين<div class="fn-sub">S-4.1</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">أيقونة "نقل"<div class="fn-sub">row action</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">مودال النقل<div class="fn-sub">S-4.3</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">POST /transfer<div class="fn-sub">validation</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">UPDATE group_id<div class="fn-sub">+ INSERT transfer</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">تحديث attendance<div class="fn-sub">Phase 05 sync</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق طلب تعديل البيانات (متدرب)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">بوابة المتدرب<div class="fn-sub">Phase 09</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "تعديل"<div class="fn-sub">على الحقل</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">POST /update-requests<div class="fn-sub">حقل + قيمة جديدة</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">هل الحقل مباشر؟<div class="fn-sub">phone/address</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">يُطبَّق فوراً<div class="fn-sub">auto-approved</div></div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-node">حقل يحتاج موافقة<div class="fn-sub">name/national_id</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">status=pending<div class="fn-sub">في قائمة الطلبات</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">Admin يراجع<div class="fn-sub">S-4.4</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">موافقة → يُطبَّق<div class="fn-sub">UPDATE trainees</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">رفض → إشعار<div class="fn-sub">Phase 08</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 سير تخرج المجموعة</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Group status = completed<div class="fn-sub">Phase 02</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">cron يكتشف المجموعة<div class="fn-sub">BullMQ job</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">يحسب attendance%<div class="fn-sub">Phase 05 API</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">متدرب ≥ 75%<div class="fn-sub">مؤهل</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">POST /graduate<div class="fn-sub">cert# يُولَّد</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">إشعار تهنئة<div class="fn-sub">WhatsApp</div></div>
+      </div>
+
+    </section>
+
+    <!-- Section 8: Business Logic -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">تسع قواعد تشغيلية دقيقة</h2>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div>
+          <strong>قاعدة 4.1 — Status Transitions محدودة:</strong>
+          الانتقالات المسموح بها فقط:
+          <code>active → suspended</code> |
+          <code>active → withdrawn</code> |
+          <code>active → expelled</code> |
+          <code>suspended → active</code> |
+          <code>suspended → expelled</code> |
+          <code>active → completed</code> (تلقائي عند التخرج فقط).
+          حالة <strong>completed</strong> نهائية ولا يمكن الانتقال منها. أي محاولة لانتقال غير مسموح تُعيد <code>400 Invalid transition</code>.
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// status-machine.js — مصفوفة الانتقالات المسموحة</span>
+<span class="c-key">const</span> ALLOWED_TRANSITIONS = {
+  active:    [<span class="c-str">'suspended'</span>, <span class="c-str">'withdrawn'</span>, <span class="c-str">'expelled'</span>, <span class="c-str">'completed'</span>],
+  suspended: [<span class="c-str">'active'</span>, <span class="c-str">'expelled'</span>],
+  completed: [],   <span class="c-com">// نهائي — لا رجوع</span>
+  withdrawn: [],   <span class="c-com">// نهائي</span>
+  expelled:  [],   <span class="c-com">// نهائي</span>
+};
+
+<span class="c-key">function</span> <span class="c-fn">validateTransition</span>(current, next) {
+  <span class="c-key">if</span> (!ALLOWED_TRANSITIONS[current]?.includes(next)) {
+    <span class="c-key">throw new</span> AppError(<span class="c-str">`Invalid transition: ${current} → ${next}`</span>, <span class="c-num">400</span>);
+  }
+}
+      </pre>
+
+      <div class="alert al-rust mt-4">
+        <span class="ico">🚫</span>
+        <div>
+          <strong>قاعدة 4.2 — Expulsion → blocked_profiles:</strong>
+          عند استدعاء <code>POST /api/trainees/:id/expel</code>، يُنفَّذ في transaction واحدة:
+          (1) UPDATE trainees SET status = expelled,
+          (2) INSERT INTO blocked_profiles (national_id, reason, blocked_by, source = 'expulsion').
+          هذا يمنع المتدرب المطرود من إعادة التسجيل في أي مجموعة مستقبلاً (يتحقق منه Phase 03 عند قبول الطلب).
+        </div>
+      </div>
+
+      <div class="alert al-gold mt-4">
+        <span class="ico">✏️</span>
+        <div>
+          <strong>قاعدة 4.3 — Update Requests: حقول مباشرة vs. حقول بموافقة:</strong><br>
+          <strong>مباشرة (auto-approved):</strong> phone, emergency_contact_name, emergency_contact_phone, address.<br>
+          <strong>تحتاج موافقة:</strong> national_id, national_id_expiry_date, date_of_birth, gender, photo_url, وأي حقل غير مُدرج في قائمة المباشرة.<br>
+          الفصل محدد في config ثابت (لا في DB) لتسهيل التعديل دون migration.
+        </div>
+      </div>
+
+      <div class="alert al-navy mt-4">
+        <span class="ico">⏰</span>
+        <div>
+          <strong>قاعدة 4.4 — national_id_expiry_date cron:</strong>
+          BullMQ repeatable job يعمل يومياً عند 08:00 AM.
+          يستعلم: <code>SELECT * FROM trainees WHERE status='active' AND national_id_expiry_date BETWEEN NOW() AND NOW()+INTERVAL '60 days'</code>.
+          يُرسل إشعاراً واحداً لكل نقطة: 60 يوم / 30 يوم / 7 أيام. يحفظ في notification_log لمنع التكرار.
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// cron-id-expiry.js — BullMQ daily job</span>
+<span class="c-key">const</span> thresholds = [<span class="c-num">60</span>, <span class="c-num">30</span>, <span class="c-num">7</span>]; <span class="c-com">// أيام</span>
+
+<span class="c-key">for</span> (<span class="c-key">const</span> days <span class="c-key">of</span> thresholds) {
+  <span class="c-key">const</span> trainees = <span class="c-key">await</span> <span class="c-fn">queryExpiring</span>(days);
+  <span class="c-key">for</span> (<span class="c-key">const</span> t <span class="c-key">of</span> trainees) {
+    <span class="c-key">const</span> alreadySent = <span class="c-key">await</span> <span class="c-fn">checkNotificationLog</span>(t.id, <span class="c-str">`id_expiry_${days}d`</span>);
+    <span class="c-key">if</span> (!alreadySent) {
+      <span class="c-key">await</span> <span class="c-fn">sendWhatsApp</span>(t.phone, <span class="c-str">`id_expiry`</span>, { days });
+      <span class="c-key">await</span> <span class="c-fn">logNotification</span>(t.id, <span class="c-str">`id_expiry_${days}d`</span>);
+    }
+  }
+}
+      </pre>
+
+      <div class="alert al-teal mt-4">
+        <span class="ico">🔁</span>
+        <div>
+          <strong>قاعدة 4.5 — Group Transfer وسجلات الحضور:</strong>
+          عند نقل المتدرب إلى مجموعة جديدة، لا تُنقل سجلات <code>attendance_records</code> السابقة (تبقى مرتبطة بـ group_id القديم).
+          يُنشئ النظام "نقطة بداية" جديدة للمتدرب في المجموعة الجديدة من تاريخ النقل. نسبة الحضور تُحسب من تاريخ الانضمام الفعلي للمجموعة.
+        </div>
+      </div>
+
+      <div class="alert al-navy mt-4">
+        <span class="ico">🎓</span>
+        <div>
+          <strong>قاعدة 4.6 — Graduation Threshold:</strong>
+          عند اكتمال مجموعة (group.status = completed)، يُطلق BullMQ job لكل متدرب في المجموعة.
+          الشرط: <code>attendance_percentage >= 75%</code> (قابل للتهيئة per-program في master_data).
+          من يقل عن الحد لا يتخرج تلقائياً — يبقى active ويُنبَّه المسؤول لاتخاذ قرار يدوي.
+        </div>
+      </div>
+
+      <div class="alert al-gold mt-4">
+        <span class="ico">🔒</span>
+        <div>
+          <strong>قاعدة 4.7 — Soft Delete فقط:</strong>
+          المتدربون ذوو الحالات النهائية (withdrawn, expelled, completed) لا يُحذفون مطلقاً من قاعدة البيانات.
+          جميع بياناتهم محفوظة للمراجعة القانونية والإحصاءات التاريخية. الحذف الفعلي غير متاح حتى للـ Super Admin.
+        </div>
+      </div>
+
+      <div class="alert al-rust mt-4">
+        <span class="ico">📂</span>
+        <div>
+          <strong>قاعدة 4.8 — Document Upload Validation:</strong>
+          قبل حفظ الملف: (1) التحقق من MIME type المسموح به (image/jpeg, image/png, application/pdf),
+          (2) حجم أقصى 5MB — رفض فوري إن تجاوز,
+          (3) ClamAV virus scan عبر BullMQ job قبل تعيين is_verified.
+          الملف يُخزَّن في S3 بمسار خاص: <code>trainees/{trainee_id}/docs/{uuid}.ext</code>.
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// certificate-generator.js — قاعدة 4.9</span>
+<span class="c-key">async function</span> <span class="c-fn">generateCertificateNumber</span>(traineeId) {
+  <span class="c-key">const</span> year = <span class="c-key">new</span> Date().<span class="c-fn">getFullYear</span>();
+  <span class="c-key">const</span> seq  = <span class="c-key">await</span> db.<span class="c-fn">query</span>(
+    <span class="c-str">`SELECT COUNT(*)+1 AS n FROM trainees
+     WHERE graduation_date BETWEEN $1 AND $2`</span>,
+    [<span class="c-str">`${year}-01-01`</span>, <span class="c-str">`${year}-12-31`</span>]
+  );
+  <span class="c-key">const</span> padded = String(seq.rows[<span class="c-num">0</span>].n).<span class="c-fn">padStart</span>(<span class="c-num">4</span>, <span class="c-str">'0'</span>);
+  <span class="c-key">return</span> <span class="c-str">`RG-${year}-${padded}`</span>; <span class="c-com">// مثلاً: RG-2026-0042</span>
+}
+      </pre>
+
+    </section>
+
+    <!-- Section 9: Dependencies -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد هذه المرحلة</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p><strong>Phase 01 — الأساس:</strong> نظام المستخدمين والأدوار والـ middleware الكاملة. كل تحول حالة يسجّل <code>changed_by</code> من users.</p>
+          <p class="mt-3"><strong>Phase 02 — البيانات الرئيسية:</strong> جداول companies, departments, training_programs, groups موجودة ومُعبَّأة قبل إنشاء أي متدرب.</p>
+          <p class="mt-3"><strong>Phase 03 — التسجيل والقبول:</strong> الموافقة على application تُطلق إنشاء سجل المتدرب تلقائياً. blocked_profiles يُرجع إليه عند الطرد.</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p><strong>Phase 05 — الحضور:</strong> trainee_id + group_id الحالي + enrollment_date — أساس كل سجل حضور.</p>
+          <p class="mt-3"><strong>Phase 06 — الإجازات:</strong> status المتدرب — الإجازات لا تُقبل إن كان المتدرب withdrawn أو expelled.</p>
+          <p class="mt-3"><strong>Phase 07 — المخالفات:</strong> trainee_id وحالة الملف — المخالفة من degree 5 تستدعي expel API هنا.</p>
+          <p class="mt-3"><strong>Phase 08 — الإشعارات:</strong> phone, email لإرسال الإشعارات على تحولات الحالة وتجديد الهوية.</p>
+          <p class="mt-3"><strong>Phase 09 — بوابة المتدرب:</strong> الملف الشخصي + update_requests + documents — المتدرب يراها ويُعدِّل منها.</p>
+        </div>
+      </div>
+
+      <h3 class="mt-6">الاعتماديات الخارجية</h3>
+      <div class="grid grid-3 mt-3">
+        <div class="card card-accent c-gold">
+          <h3>☁️ S3 / Object Storage</h3>
+          <p>تخزين صور الهوية والعقود والوثائق. يجب تهيئة bucket بـ server-side encryption ومنع الوصول العام.</p>
+        </div>
+        <div class="card card-accent c-teal">
+          <h3>🦠 ClamAV</h3>
+          <p>فحص الفيروسات لكل ملف مرفوع. يعمل كـ BullMQ job منفصل بعد الرفع المؤقت قبل التثبيت الدائم.</p>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>⏰ BullMQ Scheduler</h3>
+          <p>Repeatable job لـ cron الهوية المنتهية (يومياً) وجداول تخريج المجموعات (عند الاكتمال).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: Risks -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يفشل</h2>
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><span class="ico">🔴</span><strong>تعقيد Status Transitions:</strong> أي خطأ في التحقق قد يترك المتدرب في حالة غير متسقة. الحل: unit tests لكل مسار انتقال مسموح + غير مسموح.</li>
+            <li><span class="ico">🔴</span><strong>Group Transfer mid-course:</strong> هل تتأثر نسبة الحضور؟ الحل: حساب الحضور لكل group_id مستقل + تجميع عند الحاجة للتقرير الكلي.</li>
+            <li><span class="ico">🟡</span><strong>Storage Cost:</strong> كل متدرب قد يرفع 4-5 وثائق. تكلفة S3 قد تتراكم. الحل: lifecycle policy لحذف وثائق المتدربين المنتهين بعد 5 سنوات.</li>
+            <li><span class="ico">🟡</span><strong>Virus Scan Latency:</strong> ClamAV قد يتأخر. يجب ألا يبلوك رفع الملف — الملف يُخزَّن مؤقتاً حتى انتهاء الفحص (async).</li>
+            <li><span class="ico">🟡</span><strong>Certificate Number تعارض:</strong> في حالة تخريج متزامن. الحل: استخدام SERIAL أو SEQUENCE في PostgreSQL لضمان التفرد.</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li><span class="ico">✅</span>Phase 01 و02 و03 مكتملة ومُختبرة قبل بدء هذه المرحلة.</li>
+            <li><span class="ico">✅</span>لكل متدرب user_id واحد — لا حسابات مكررة.</li>
+            <li><span class="ico">✅</span>البنية التحتية لـ S3 ومفاتيح الوصول جاهزة في البيئات الثلاث (dev/staging/prod).</li>
+            <li><span class="ico">✅</span>Phase 05 ستُعيد نسبة الحضور بشكل صحيح عند query حساب التخرج.</li>
+            <li><span class="ico">✅</span>ClamAV daemon يعمل على server منفصل أو كـ sidecar في Docker.</li>
+            <li><span class="ico">✅</span>attendance_threshold (75%) قابل للتغيير per-program في Phase 02 config.</li>
+            <li><span class="ico">✅</span>الإشعارات (WhatsApp/Email) ستُنجز في Phase 08 — هذه المرحلة تُعدّ الـ payload فقط.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 11: Checklist -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة انتهت؟</h2>
+      <ol class="num-list">
+        <li><strong>Backend — CRUD:</strong> جميع endpoints CRUD للمتدرب تعمل مع validation كامل بـ Zod، بما يشمل رفع الصورة وتخزينها في S3. ✅</li>
+        <li><strong>Backend — Status Machine:</strong> جميع مسارات الانتقال المسموحة وغير المسموحة مُختبرة بـ unit tests. كل تحول يُسجَّل في status_history. ✅</li>
+        <li><strong>Backend — Transfer:</strong> نقل المتدرب يُحدِّث group_id ويُسجَّل في group_transfers. سجلات الحضور السابقة غير مُتأثرة. ✅</li>
+        <li><strong>Backend — Documents:</strong> رفع الملفات مع التحقق من النوع والحجم و virus scan async. soft delete يعمل. ✅</li>
+        <li><strong>Backend — Update Requests:</strong> الحقول المباشرة تُطبَّق فوراً. الحقول بالموافقة تبقى pending حتى قرار admin. ✅</li>
+        <li><strong>Backend — Graduation:</strong> BullMQ job يُطلَق عند اكتمال المجموعة. certificate_number يُولَّد بتنسيق RG-YYYY-####. ✅</li>
+        <li><strong>Backend — Expulsion:</strong> طرد المتدرب يُنفِّذ INSERT في blocked_profiles في transaction واحدة. ✅</li>
+        <li><strong>Backend — ID Expiry Cron:</strong> BullMQ repeatable job يعمل يومياً ويُرسل إشعارات 60/30/7 أيام دون تكرار. ✅</li>
+        <li><strong>Frontend — S-4.1:</strong> قائمة المتدربين مع فلاتر متعددة وتصدير Excel وعرض الحالة بـ badge ملوّن. ✅</li>
+        <li><strong>Frontend — S-4.2:</strong> بطاقة المتدرب بأربع تبويبات كاملة مع أزرار تغيير الحالة + تأكيد + إدخال سبب. ✅</li>
+        <li><strong>Frontend — S-4.3 إلى S-4.6:</strong> مودال النقل، لوحة طلبات التعديل، خزانة الوثائق، شاشة تخرج المجموعة — جميعها مكتملة وتعمل. ✅</li>
+        <li><strong>Database:</strong> الجداول الخمسة مُهاجَرة مع الـ constraints والـ indexes الصحيحة (index على status, group_id, national_id_expiry_date). ✅</li>
+        <li><strong>Integration Testing:</strong> سيناريو كامل من قبول الطلب (Phase 03) → إنشاء المتدرب → نقل → تعليق → إعادة تفعيل → تخرج. ✅</li>
+        <li><strong>Documentation:</strong> Postman collection مُصدَّرة لجميع endpoints. README يصف status machine بالرسم. ✅</li>
+      </ol>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-03-registration-intake.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٣. التسجيل والقبول</span>
+      </a>
+      <a href="phase-05-attendance-operations.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٥. الحضور والعمليات</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — المرحلة 04: دورة حياة المتدرب · وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

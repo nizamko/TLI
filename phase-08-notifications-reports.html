@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٨ — الإشعارات والتقارير | معهد ريادة الغد</title>
+<meta name="description" content="مرحلة الإشعارات والتقارير — محرك إشعارات متكامل عبر WhatsApp + Email مع 17 قالب جاهز، وتتبع التسليم، ومحرك تقارير شامل بتنسيقات PDF وExcel وCSV، مع تقارير مجدولة تلقائياً.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html" class="active">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٨ — الإشعارات والتقارير</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: عالي · ⏱ ٢–٣ أسبوع</div>
+    <div class="hero-label">المرحلة ٠٨ من ١٠ · Notifications &amp; Reports Engine</div>
+    <h1>الإشعارات والتقارير<br><span>محرك الاتصال والتحليل الذكي</span></h1>
+    <p class="hero-desc">
+      محرك إشعارات متكامل يرسل رسائل WhatsApp وEmail بـ١٧ قالباً قابلاً للتحرير، مع queue ذكي ببصمة BullMQ + Redis يضمن التسليم بإعادة المحاولة والنسب المتدرجة. ومحرك تقارير شامل يُنتج ملفات PDF و Excel و CSV عند الطلب أو وفق جداول زمنية مبرمجة — تغطي الحضور والرواتب والمخالفات والتميز وأداء البرامج. هذه المرحلة تُحوِّل البيانات المتراكمة في جميع المراحل السابقة إلى رسائل فعّالة وتقارير قابلة للتنفيذ.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>٦</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>٦</strong><span>شاشة واجهة</span></div>
+      <div class="hero-meta-item"><strong>١١</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>٢–٣</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot done"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot done"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot done"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot done"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot current"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body with TOC + Content -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 1: Summary
+    ═══════════════════════════════════════════════════ -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة الثامنة تبني الطبقة التواصلية للنظام — إشعارات تلقائية تصل للمتدرب والمسؤول في اللحظة الصحيحة، وتقارير دقيقة يُصدِّرها المدير بنقرة. تُغلق هذه المرحلة حلقة البيانات: كل ما جُمع في المراحل السابقة (حضور، مخالفات، رواتب، إجازات) يتحول هنا إلى قيمة مباشرة ومعلومة قابلة للعمل.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p8">
+          <h3>🎯 الهدف</h3>
+          <p>بناء محرك إشعارات موثوق قائم على Queue مع دعم WhatsApp و Email و In-App، ومحرك تقارير يُنتج ملفات جاهزة للطباعة والتدقيق عند الطلب أو بشكل دوري مجدول.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li>٦ جداول قاعدة بيانات جديدة</li>
+            <li>١٧ قالب إشعار جاهز (WhatsApp + Email)</li>
+            <li>Queue ذكي بإعادة المحاولة التدريجية</li>
+            <li>تتبع حالة التسليم (sent/delivered/read/failed)</li>
+            <li>تقارير حضور / رواتب / مخالفات / تميز</li>
+            <li>تصدير PDF + Excel + CSV</li>
+            <li>تقارير مجدولة تلقائياً (cron)</li>
+            <li>٦ شاشات واجهة + ١١ API Endpoint</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><a href="phase-01-foundation.html">المرحلة ٠١</a>: نظام المستخدمين والصلاحيات</li>
+            <li><a href="phase-03-registration-intake.html">المرحلة ٠٣</a>: بيانات التسجيل والقبول</li>
+            <li><a href="phase-05-attendance-operations.html">المرحلة ٠٥</a>: سجلات الحضور</li>
+            <li><a href="phase-06-leaves-exceptions.html">المرحلة ٠٦</a>: الإجازات والاستثناءات</li>
+            <li><a href="phase-07-violations-financials.html">المرحلة ٠٧</a>: المخالفات والرواتب</li>
+            <li>Redis: لـ BullMQ Queue واستكشاف الأعطال</li>
+            <li>Twilio / 360dialog: حساب WhatsApp Business API</li>
+            <li>SendGrid / SMTP: إعداد SPF + DKIM + DMARC</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <a href="phase-09-portals-admin-ops.html">المرحلة ٠٩ (البوابات)</a>: يعرض مركز الإشعارات للمتدرب في البوابة الشخصية، وإشعارات الموافقات للمدير.<br><br>
+            <a href="phase-10-launch-roadmap.html">المرحلة ١٠ (الإطلاق)</a>: لوحات المراقبة تستهلك إحصاءات Delivery Rate والتقارير الدورية.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 2: Why
+    ═══════════════════════════════════════════════════ -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">بدون إشعارات وتقارير النظام أصم وأعمى</h2>
+      <p class="section-desc">
+        المراحل السابقة (١-٧) بنت محرك البيانات: تسجيل، حضور، إجازات، مخالفات، رواتب. لكن هذه البيانات بلا قيمة إذا لم تصل إلى صاحبها في الوقت المناسب، أو إذا لم يستطع المدير العليا قراءتها في تقرير موحد. المرحلة الثامنة تبني "طبقة التواصل" التي تربط النظام بمستخدميه وتُحوِّل أحداث قاعدة البيانات إلى قرارات فعلية.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card card-accent c-p8">
+          <div class="card-head">
+            <div class="card-icon">⏰</div>
+            <div>
+              <div class="card-title">التوقيت الحرج</div>
+              <div class="card-sub">Critical Timing</div>
+            </div>
+          </div>
+          <p>إشعار انتهاء الهوية قبل ٦٠ يوماً يمنع التأخير. إشعار تحذير الغياب بعد ٥ مرات يُوقف الانزلاق نحو الفصل قبل فوات الأوان. الإشعار المتأخر إشعار بلا قيمة.</p>
+        </div>
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📊</div>
+            <div>
+              <div class="card-title">القرار بالبيانات</div>
+              <div class="card-sub">Data-Driven Decisions</div>
+            </div>
+          </div>
+          <p>تقرير أداء المجموعة يكشف انخفاض الحضور قبل الإنهاء. تقرير الرواتب يُسرِّع مراجعة المحاسب. التقارير المجدولة تصل لصندوق البريد مباشرة بدون طلب.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🔁</div>
+            <div>
+              <div class="card-title">الموثوقية</div>
+              <div class="card-sub">Delivery Reliability</div>
+            </div>
+          </div>
+          <p>Queue مع إعادة المحاولة يضمن وصول الإشعار حتى لو فشل مزوّد WhatsApp لدقائق. سجل كامل لكل محاولة إرسال يُجيب على "هل وصلت الرسالة؟" بدليل.</p>
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">📌</span>
+        <div><strong>لماذا الآن (المرحلة ٨)؟</strong> لأن جميع مصادر البيانات جاهزة: الحضور (٠٥)، الإجازات (٠٦)، المخالفات والرواتب (٠٧). محرك الإشعارات يحتاج هذه المصادر ليُطلِق الأحداث الصحيحة. تأجيله لما بعد المرحلة ٩ كان سيجعل بوابة المتدرب بلا إشعارات — وهي إحدى أهم ميزاتها.</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 3: Modules
+    ═══════════════════════════════════════════════════ -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">وحدتان رئيسيتان: الإشعارات والتقارير</h2>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p8">
+          <div class="card-head">
+            <div class="card-icon">🔔</div>
+            <div>
+              <div class="card-title">محرك الإشعارات</div>
+              <div class="card-sub">Notifications Engine</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>WhatsApp عبر Twilio / 360dialog Business API</li>
+            <li>Email عبر SendGrid أو SMTP مخصص</li>
+            <li>In-App (داخل النظام) للمستخدمين المسجّلين</li>
+            <li>١٧ قالب جاهز بمتغيرات Handlebars-like</li>
+            <li>Queue بـ BullMQ + Redis: priority + retry + throttle</li>
+            <li>تتبع: sent → delivered → read → failed</li>
+            <li>تفضيلات المستخدم (opt-in/out لكل channel/category)</li>
+            <li>Super Admin: تحرير القوالب من الواجهة</li>
+            <li>Rate limit: max ١٠ WhatsApp / مستخدم / يوم</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📈</div>
+            <div>
+              <div class="card-title">محرك التقارير</div>
+              <div class="card-sub">Reports Engine</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>تقارير حضور: يومي / أسبوعي / شهري / لكل مجموعة / لكل متدرب</li>
+            <li>تقارير مالية: رواتب / خصومات / مكافآت</li>
+            <li>تقارير مخالفات: حسب الدرجة / الهدف / الفترة</li>
+            <li>تقارير تميز: الفائزون الشهريون / قادة الفئات</li>
+            <li>أداء البرامج: معدل التخرج / التسرب / متوسط الحضور</li>
+            <li>لوحات تحكم على مستوى الشركة</li>
+            <li>تصدير PDF (Puppeteer + RTL) + Excel + CSV</li>
+            <li>تقارير كبيرة (+١ MB) → توليد async + إشعار عند الجاهزية</li>
+            <li>تقارير مجدولة cron: يومي / أسبوعي / شهري</li>
+            <li>ملفات تنتهي صلاحيتها بعد ٧ أيام (S3 lifecycle)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-6">١٧ نوع إشعار تلقائي</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>المفتاح (Template Key)</th>
+              <th>الحدث المُطلِق</th>
+              <th>القناة</th>
+              <th>الأولوية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>١</td>
+              <td><code>id_expiry_60</code></td>
+              <td>انتهاء صلاحية الهوية بعد ٦٠ يوماً</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-gray">normal</span></td>
+            </tr>
+            <tr>
+              <td>٢</td>
+              <td><code>id_expiry_30</code></td>
+              <td>انتهاء صلاحية الهوية بعد ٣٠ يوماً</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>٣</td>
+              <td><code>id_expiry_7</code></td>
+              <td>انتهاء صلاحية الهوية بعد ٧ أيام</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-rust">critical</span></td>
+            </tr>
+            <tr>
+              <td>٤</td>
+              <td><code>contract_expiry_company</code></td>
+              <td>انتهاء عقد الشركة الشريكة</td>
+              <td><span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>٥</td>
+              <td><code>absence_warning_5</code></td>
+              <td>تراكم ٥ غيابات</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>٦</td>
+              <td><code>absence_expulsion_15</code></td>
+              <td>تراكم ١٥ غياباً — تحذير الفصل</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-rust">critical</span></td>
+            </tr>
+            <tr>
+              <td>٧</td>
+              <td><code>registration_accepted</code></td>
+              <td>قبول التسجيل</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>٨</td>
+              <td><code>registration_rejected</code></td>
+              <td>رفض التسجيل</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>٩</td>
+              <td><code>medical_leave_approved</code></td>
+              <td>الموافقة على الإجازة المرضية</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-purple">In-App</span></td>
+              <td><span class="badge b-gray">normal</span></td>
+            </tr>
+            <tr>
+              <td>١٠</td>
+              <td><code>violation_degree_2plus</code></td>
+              <td>إصدار مخالفة درجة ٢ أو أعلى</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>١١</td>
+              <td><code>excellence_award</code></td>
+              <td>منح جائزة التميز</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-gray">normal</span></td>
+            </tr>
+            <tr>
+              <td>١٢</td>
+              <td><code>salary_ready</code></td>
+              <td>الراتب الشهري جاهز للاستلام</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-purple">In-App</span></td>
+              <td><span class="badge b-gray">normal</span></td>
+            </tr>
+            <tr>
+              <td>١٣</td>
+              <td><code>permission_status</code></td>
+              <td>تحديث حالة طلب الإذن</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-purple">In-App</span></td>
+              <td><span class="badge b-gray">normal</span></td>
+            </tr>
+            <tr>
+              <td>١٤</td>
+              <td><code>group_graduation_soon</code></td>
+              <td>اقتراب موعد تخرج المجموعة (٣٠ يوم)</td>
+              <td><span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-gray">normal</span></td>
+            </tr>
+            <tr>
+              <td>١٥</td>
+              <td><code>room_schedule_change</code></td>
+              <td>تغيير القاعة أو الجدول الاستثنائي</td>
+              <td><span class="badge b-green">WhatsApp</span> <span class="badge b-purple">In-App</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+            <tr>
+              <td>١٦</td>
+              <td><code>password_reset</code></td>
+              <td>طلب إعادة تعيين كلمة المرور</td>
+              <td><span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-rust">critical</span></td>
+            </tr>
+            <tr>
+              <td>١٧</td>
+              <td><code>new_device_login</code></td>
+              <td>تسجيل دخول من جهاز جديد</td>
+              <td><span class="badge b-teal">Email</span></td>
+              <td><span class="badge b-orange">high</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 4: Screens
+    ═══════════════════════════════════════════════════ -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">٦ شاشات — من مركز الإشعارات إلى التقارير المجدولة</h2>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الشاشة</th>
+              <th>المسار</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>١</td>
+              <td>مركز الإشعارات<br><small>Notifications Center</small></td>
+              <td><code>/notifications</code></td>
+              <td>قائمة الإشعارات الواردة للمستخدم مع تصفية حسب الفئة والقناة. علامة "غير مقروء" + Mark as read جماعي.</td>
+              <td><span class="badge b-teal">جميع المستخدمين</span></td>
+            </tr>
+            <tr>
+              <td>٢</td>
+              <td>قوالب الإشعارات<br><small>Notification Templates</small></td>
+              <td><code>/admin/notification-templates</code></td>
+              <td>قائمة بالـ١٧ قالب مع إمكانية التحرير — subject، body، المتغيرات المتوقعة. معاينة live مع بيانات وهمية. تفعيل/تعطيل القالب.</td>
+              <td><span class="badge b-rust">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td>٣</td>
+              <td>سجل الإرسال<br><small>Delivery Log</small></td>
+              <td><code>/admin/notification-log</code></td>
+              <td>جدول كامل لكل الإشعارات المُرسلة — حالة التسليم، وقت الإرسال، عدد المحاولات، سبب الفشل. تصفية حسب القناة / الحالة / الفترة الزمنية / المستخدم.</td>
+              <td><span class="badge b-rust">Super Admin</span> <span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td>٤</td>
+              <td>إعدادات التفضيلات<br><small>User Preferences</small></td>
+              <td><code>/settings/notifications</code></td>
+              <td>يتحكم المستخدم في القنوات التي يرغب باستقبال كل فئة عبرها (WhatsApp / Email / In-App). Opt-out لأي فئة غير حرجة.</td>
+              <td><span class="badge b-teal">جميع المستخدمين</span></td>
+            </tr>
+            <tr>
+              <td>٥</td>
+              <td>مركز التقارير<br><small>Reports Hub</small></td>
+              <td><code>/admin/reports</code></td>
+              <td>توليد التقارير عند الطلب — اختر النوع والفلاتر (شركة / مجموعة / فترة) والتنسيق. قائمة بالتقارير السابقة مع رابط التنزيل وانتهاء الصلاحية.</td>
+              <td><span class="badge b-rust">Super Admin</span> <span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td>٦</td>
+              <td>التقارير المجدولة<br><small>Scheduled Reports</small></td>
+              <td><code>/admin/scheduled-reports</code></td>
+              <td>إنشاء وإدارة التقارير المجدولة: اسم، نوع، فلاتر، cron expression، قائمة المستلمين (email)، التنسيق. زر "تشغيل الآن" لاختبار الجدول.</td>
+              <td><span class="badge b-rust">Super Admin</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 5: Database
+    ═══════════════════════════════════════════════════ -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">٦ جداول — بنية الإشعارات والتقارير</h2>
+
+      <div class="grid grid-3">
+
+        <!-- notifications -->
+        <div class="db-card">
+          <div class="db-head dh-teal">🔔 notifications</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>user_id → users</div>
+            <div class="db-field">template_key · varchar(100)</div>
+            <div class="db-field">channel · enum(whatsapp / email / in_app)</div>
+            <div class="db-field">recipient · varchar(255)</div>
+            <div class="db-field">subject · text</div>
+            <div class="db-field">body · text</div>
+            <div class="db-field">variables · JSONB</div>
+            <div class="db-field">status · enum(queued / sending / sent / delivered / read / failed)</div>
+            <div class="db-field">sent_at · timestamptz</div>
+            <div class="db-field">delivered_at · timestamptz</div>
+            <div class="db-field">read_at · timestamptz</div>
+            <div class="db-field">failed_reason · text</div>
+            <div class="db-field">retry_count · int DEFAULT 0</div>
+            <div class="db-field">priority · int(1–4)</div>
+            <div class="db-field">created_at · timestamptz</div>
+          </div>
+        </div>
+
+        <!-- notification_templates -->
+        <div class="db-card">
+          <div class="db-head dh-teal">📝 notification_templates</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">key · varchar(100) UNIQUE</div>
+            <div class="db-field">name_ar · varchar(200)</div>
+            <div class="db-field">channel · enum(whatsapp / email / in_app)</div>
+            <div class="db-field">subject_template · text</div>
+            <div class="db-field">body_template · text</div>
+            <div class="db-field">variables_schema · JSONB</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+            <div class="db-field"><span class="fk">FK</span>last_updated_by → users</div>
+            <div class="db-field">updated_at · timestamptz</div>
+          </div>
+        </div>
+
+        <!-- notification_preferences -->
+        <div class="db-card">
+          <div class="db-head dh-teal">⚙️ notification_preferences</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>user_id → users</div>
+            <div class="db-field">category · varchar(100)</div>
+            <div class="db-field">channel · enum(whatsapp / email / in_app)</div>
+            <div class="db-field">is_enabled · boolean DEFAULT true</div>
+            <div class="db-field">updated_at · timestamptz</div>
+            <div class="db-field db-note">UNIQUE(user_id, category, channel)</div>
+          </div>
+        </div>
+
+        <!-- notification_queue_logs -->
+        <div class="db-card">
+          <div class="db-head dh-teal">📋 notification_queue_logs</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>notification_id → notifications</div>
+            <div class="db-field">attempt_num · int</div>
+            <div class="db-field">status · enum(success / failed / skipped)</div>
+            <div class="db-field">error · text</div>
+            <div class="db-field">provider_response · JSONB</div>
+            <div class="db-field">attempted_at · timestamptz</div>
+          </div>
+        </div>
+
+        <!-- reports -->
+        <div class="db-card">
+          <div class="db-head dh-teal">📊 reports</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">report_type · varchar(100)</div>
+            <div class="db-field">filters · JSONB</div>
+            <div class="db-field"><span class="fk">FK</span>generated_by → users</div>
+            <div class="db-field">file_url · text</div>
+            <div class="db-field">format · enum(pdf / xlsx / csv)</div>
+            <div class="db-field">size_bytes · bigint</div>
+            <div class="db-field">is_async · boolean DEFAULT false</div>
+            <div class="db-field">status · enum(pending / generating / ready / failed)</div>
+            <div class="db-field">generated_at · timestamptz</div>
+            <div class="db-field">expires_at · timestamptz</div>
+          </div>
+        </div>
+
+        <!-- scheduled_reports -->
+        <div class="db-card">
+          <div class="db-head dh-teal">🗓️ scheduled_reports</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field">name · varchar(200)</div>
+            <div class="db-field">report_type · varchar(100)</div>
+            <div class="db-field">filters · JSONB</div>
+            <div class="db-field">schedule_cron · varchar(100)</div>
+            <div class="db-field">recipients · text[] (email array)</div>
+            <div class="db-field">format · enum(pdf / xlsx / csv)</div>
+            <div class="db-field">is_active · boolean DEFAULT true</div>
+            <div class="db-field">last_run_at · timestamptz</div>
+            <div class="db-field">next_run_at · timestamptz</div>
+            <div class="db-field">created_by FK → users</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># جداول الإشعارات</span>
+users <span class="c-key">1:N</span> notifications
+notifications <span class="c-key">1:N</span> notification_queue_logs
+users <span class="c-key">1:N</span> notification_preferences
+notification_templates <span class="c-key">1:N</span> notifications <span class="c-com">(via template_key)</span>
+
+<span class="c-com"># جداول التقارير</span>
+users <span class="c-key">1:N</span> reports <span class="c-com">(generated_by)</span>
+users <span class="c-key">1:N</span> scheduled_reports <span class="c-com">(created_by)</span>
+
+<span class="c-com"># إنديكسات مقترحة للأداء</span>
+<span class="c-fn">CREATE INDEX</span> idx_notifications_user_status <span class="c-key">ON</span> notifications(user_id, status);
+<span class="c-fn">CREATE INDEX</span> idx_notifications_created <span class="c-key">ON</span> notifications(created_at DESC);
+<span class="c-fn">CREATE INDEX</span> idx_queue_logs_notification <span class="c-key">ON</span> notification_queue_logs(notification_id);
+<span class="c-fn">CREATE INDEX</span> idx_reports_generated_by <span class="c-key">ON</span> reports(generated_by, generated_at DESC);
+      </div>
+
+      <h3 class="mt-6">أنواع التقارير المتاحة</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>report_type</th>
+              <th>الوصف العربي</th>
+              <th>الفلاتر المتاحة</th>
+              <th>التنسيق الافتراضي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>attendance_daily</code></td>
+              <td>حضور يومي</td>
+              <td>date, group_id, company_id</td>
+              <td>PDF / Excel</td>
+            </tr>
+            <tr>
+              <td><code>attendance_weekly</code></td>
+              <td>حضور أسبوعي</td>
+              <td>week_start, group_id, company_id</td>
+              <td>PDF / Excel</td>
+            </tr>
+            <tr>
+              <td><code>attendance_monthly</code></td>
+              <td>حضور شهري</td>
+              <td>month, year, group_id, company_id</td>
+              <td>PDF / Excel</td>
+            </tr>
+            <tr>
+              <td><code>attendance_per_trainee</code></td>
+              <td>حضور متدرب بعينه</td>
+              <td>trainee_id, date_from, date_to</td>
+              <td>PDF</td>
+            </tr>
+            <tr>
+              <td><code>financial_salaries</code></td>
+              <td>الرواتب الشهرية</td>
+              <td>month, year, company_id, department_id</td>
+              <td>Excel / CSV</td>
+            </tr>
+            <tr>
+              <td><code>financial_deductions</code></td>
+              <td>الخصومات والمكافآت</td>
+              <td>month, year, company_id</td>
+              <td>Excel / CSV</td>
+            </tr>
+            <tr>
+              <td><code>violations_by_degree</code></td>
+              <td>مخالفات حسب الدرجة</td>
+              <td>degree, date_from, date_to, company_id</td>
+              <td>PDF / Excel</td>
+            </tr>
+            <tr>
+              <td><code>violations_by_period</code></td>
+              <td>مخالفات حسب الفترة</td>
+              <td>date_from, date_to, group_id</td>
+              <td>PDF / Excel</td>
+            </tr>
+            <tr>
+              <td><code>excellence_monthly</code></td>
+              <td>نتائج التميز الشهري</td>
+              <td>month, year, category</td>
+              <td>PDF</td>
+            </tr>
+            <tr>
+              <td><code>program_performance</code></td>
+              <td>أداء البرنامج التدريبي</td>
+              <td>program_id, date_from, date_to</td>
+              <td>PDF / Excel</td>
+            </tr>
+            <tr>
+              <td><code>company_dashboard</code></td>
+              <td>لوحة الشركة الشاملة</td>
+              <td>company_id, month, year</td>
+              <td>PDF</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 6: APIs
+    ═══════════════════════════════════════════════════ -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">١١ نقطة اتصال — الإشعارات والتقارير</h2>
+
+      <!-- Notifications Group -->
+      <div class="api-group">
+        <div class="api-group-title">🔔 الإشعارات — Notifications</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/notifications</span>
+            <span class="api-desc">إشعارات المستخدم الحالي مع pagination وفلتر الحالة والقناة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/notifications/send</span>
+            <span class="api-desc">إرسال يدوي من Admin — يحدد: user_id، template_key، variables، channel، priority</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/notifications/:id/mark-read</span>
+            <span class="api-desc">تعليم الإشعار كـ "مقروء" — يُحدِّث read_at</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/notifications/mark-all-read</span>
+            <span class="api-desc">تعليم كل إشعارات المستخدم كمقروءة دفعةً واحدة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/notifications/stats</span>
+            <span class="api-desc">إحصاءات Admin: sent/delivered/failed per channel لآخر ٣٠ يوماً</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Templates Group -->
+      <div class="api-group">
+        <div class="api-group-title">📝 قوالب الإشعارات — Notification Templates (Super Admin)</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/notification-templates</span>
+            <span class="api-desc">قائمة كل القوالب مع حالة التفعيل</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/notification-templates/:key</span>
+            <span class="api-desc">تحرير قالب: subject_template، body_template، تفعيل/تعطيل</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preferences Group -->
+      <div class="api-group">
+        <div class="api-group-title">⚙️ تفضيلات المستخدم — Notification Preferences</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/notification-preferences</span>
+            <span class="api-desc">جلب تفضيلات المستخدم الحالي لكل الفئات والقنوات</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/notification-preferences</span>
+            <span class="api-desc">تحديث تفضيلات دفعية — array من { category, channel, is_enabled }</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports Group -->
+      <div class="api-group">
+        <div class="api-group-title">📊 التقارير — Reports</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/reports</span>
+            <span class="api-desc">قائمة التقارير المُولَّدة مسبقاً مع حالتها وروابط التنزيل</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/reports/generate</span>
+            <span class="api-desc">توليد تقرير — sync للصغير (&lt;١MB) | async لـ BullMQ للكبير. يُعيد report_id فوراً</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/reports/:id/download</span>
+            <span class="api-desc">تنزيل ملف التقرير — يُعيد Presigned S3 URL (صالح ١٥ دقيقة)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scheduled Reports Group -->
+      <div class="api-group">
+        <div class="api-group-title">🗓️ التقارير المجدولة — Scheduled Reports (Super Admin)</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/scheduled-reports</span>
+            <span class="api-desc">قائمة التقارير المجدولة مع next_run_at وlast_run_at</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/scheduled-reports</span>
+            <span class="api-desc">إنشاء جدول تقرير جديد — تضمين schedule_cron + recipients array</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/scheduled-reports/:id</span>
+            <span class="api-desc">تعديل الجدول: cron، المستلمين، الفلاتر، التفعيل</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/scheduled-reports/:id/run-now</span>
+            <span class="api-desc">تشغيل فوري للاختبار — يُدرِج مهمة في BullMQ مباشرة</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 7: User Flows
+    ═══════════════════════════════════════════════════ -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف تتحرك الإشعارات والتقارير في النظام؟</h2>
+
+      <h3>🔸 تدفق إرسال الإشعار التلقائي (مثال: تحذير ٥ غيابات)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">سجل الحضور<br><small>يُحدَّث غياب</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Attendance Service<br><small>يحسب total_absences</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">if absences == 5<br><small>يُطلِق حدث الإشعار</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Notification Service<br><small>يفحص preferences</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">BullMQ Queue<br><small>يُضيف بـ priority=2</small></div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-dark">Worker يسحب المهمة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُحمِّل القالب<br><small>يُعوِّض المتغيرات</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُرسِل عبر WhatsApp API<br><small>أو Email SMTP</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">يُحدِّث status<br><small>sent / failed</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يُسجِّل في queue_logs<br><small>attempt_num + response</small></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق توليد تقرير كبير (Async)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Admin يطلب تقريراً<br><small>POST /api/reports/generate</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">API يُنشئ سجل reports<br><small>status = pending</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُضيف مهمة BullMQ<br><small>يُعيد report_id فوراً</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Worker يولِّد الملف<br><small>Puppeteer / xlsx / csv</small></div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-dark">يرفع الملف S3<br><small>مع lifecycle 7 أيام</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُحدِّث status = ready<br><small>يُضيف file_url</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُرسِل إشعاراً للمستخدم<br><small>"تقريرك جاهز للتنزيل"</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Admin ينقر الرابط<br><small>Presigned URL 15 دقيقة</small></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق التقارير المجدولة (Cron)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">croner يُطلِق الـ cron<br><small>مثال: "0 7 * * 1" كل إثنين</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يجلب كل scheduled_reports<br><small>is_active = true, next_run &lt;= now</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يُدرِج مهمة لكل جدول<br><small>في BullMQ</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Worker يولِّد ويُرفع</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-dark">يُرسِل Email مع المرفق<br><small>لكل بريد في recipients[]</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُحدِّث last_run_at<br><small>next_run_at = cron.next()</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">انتهى — ينتظر الدورة القادمة</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق تحرير قالب (Super Admin)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Super Admin يفتح<br><small>قوالب الإشعارات</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يختار القالب<br><small>مثال: absence_warning_5</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُحرِّر body_template<br><small>مع متغيرات {{trainee_name}}</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">معاينة live<br><small>ببيانات وهمية</small></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يحفظ — يُسجَّل last_updated_by</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 8: Business Logic
+    ═══════════════════════════════════════════════════ -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">قواعد تشغيلية دقيقة — ١١ قاعدة</h2>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 8.1 — نظام الأولوية:</strong> كل notification تُضاف لـ BullMQ Queue بـ priority: critical=1، high=2، normal=3، low=4. الـ Worker يسحب الأعلى أولوية أولاً. إشعارات كلمة المرور وتسجيل الدخول الجديد لا تُقابَل بـ User Preferences — تُرسَل دائماً.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🔁</span>
+        <div><strong>قاعدة 8.2 — إعادة محاولة WhatsApp:</strong> فشل الإرسال → retry ٣ مرات بـ exponential backoff: 1 دقيقة، 5 دقائق، 15 دقيقة. بعد ٣ فشل → status = failed + إدراج سبب الفشل في failed_reason.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📧</span>
+        <div><strong>قاعدة 8.3 — إعادة محاولة Email:</strong> retry ٥ مرات: 2 دقيقة، 10 دقائق، 30 دقيقة، 2 ساعة، 6 ساعات. بعد ٥ فشل → failed. Email bounce يُسجَّل في provider_response.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">🙏</span>
+        <div><strong>قاعدة 8.4 — احترام التفضيلات:</strong> قبل إضافة أي notification للـ Queue، يفحص النظام notification_preferences. إذا opt-out من category × channel → skip ولا يُسجَّل الإرسال. الإشعارات الأمنية (password_reset، new_device_login) تُتجاوز التفضيلات دائماً.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">✏️</span>
+        <div><strong>قاعدة 8.5 — متغيرات القوالب:</strong> syntax يشبه Handlebars: <code>{'{'}{'{'}trainee_name{'}'}{'}'}</code>، <code>{'{'}{'{'}absences_count{'}'}{'}'}</code>، <code>{'{'}{'{'}date_hijri{'}'}{'}'}</code>. القالب يُحدِّد variables_schema (JSONB) الذي يُوثِّق المتغيرات المطلوبة. Notification Service يتحقق من وجودها قبل الإرسال.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🌐</span>
+        <div><strong>قاعدة 8.6 — دعم RTL للغة العربية:</strong> قوالب WhatsApp تستخدم أرقام هندية-عربية (٥ غيابات لا 5 absences) حيثما كانت موجَّهة للمتدرب. قوالب Email تُضمِّن dir="rtl" في HTML مع خط Tajawal. تقارير PDF تُوّلَد بـ Puppeteer + إعدادات direction: rtl كاملة.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">📦</span>
+        <div><strong>قاعدة 8.7 — التقارير الكبيرة (Async):</strong> إذا تجاوز التقرير المتوقع ١ MB أو 10,000 سطر → توليد async تلقائياً. يُعاد report_id فوراً بـ status=pending. Worker يُولِّد → يرفع S3 → يُحدِّث status=ready → يُرسِل إشعار in_app + email للمستخدم.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">⏰</span>
+        <div><strong>قاعدة 8.8 — Cron المجدوِل:</strong> schedule_cron يُحلَّل بـ croner library (يدعم 6 حقول بما فيها الثانية). next_run_at يُحسَب عند الإنشاء وبعد كل تشغيل. إذا تأخر التشغيل +٥ دقائق عن next_run_at تُسجَّل مشكلة في Winston logs.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">🗑️</span>
+        <div><strong>قاعدة 8.9 — انتهاء صلاحية الملفات:</strong> ملفات التقارير تُرفع لـ S3 بـ metadata expires_after=7days. AWS S3 lifecycle rule يحذف الملف تلقائياً. expires_at يُسجَّل في جدول reports لإخفاء الرابط من الواجهة قبل انتهاء الصلاحية.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📄</span>
+        <div><strong>قاعدة 8.10 — PDF بالعربية:</strong> Puppeteer يُحمِّل HTML template كاملة مع CDN خط Tajawal + dir="rtl" + text-align: right + page-break-inside: avoid للجداول. الـ headless Chrome يُولِّد PDF بجودة طباعة. يُضاف header وfooter مع اسم التقرير وتاريخ التوليد وشعار المعهد.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🚫</span>
+        <div><strong>قاعدة 8.11 — Rate Limiting:</strong> WhatsApp: max ١٠ رسائل / مستخدم / يوم (للوقاية من spam). تُتحقق عبر Redis counter بـ TTL 24 ساعة. إذا تجاوز الحد: Notification status = failed + failed_reason = "rate_limit_exceeded". يُستثنى من الحد: إشعارات critical (priority=1).</div>
+      </div>
+
+      <h3 class="mt-6">مثال على منطق الـ Queue Worker</h3>
+      <pre class="code-block">
+<span class="c-com">// BullMQ Worker — processNotification(job)</span>
+<span class="c-key">const</span> { notificationId } = job.data;
+<span class="c-key">const</span> notif = <span class="c-key">await</span> db.<span class="c-fn">query</span>(<span class="c-str">'SELECT * FROM notifications WHERE id = $1'</span>, [notificationId]);
+
+<span class="c-com">// 1. تحقق من التفضيلات</span>
+<span class="c-key">const</span> pref = <span class="c-key">await</span> <span class="c-fn">getUserPreference</span>(notif.user_id, notif.template_key, notif.channel);
+<span class="c-key">if</span> (!pref.is_enabled &amp;&amp; notif.priority &gt; <span class="c-num">1</span>) {
+  <span class="c-key">await</span> <span class="c-fn">updateStatus</span>(notificationId, <span class="c-str">'skipped'</span>);
+  <span class="c-key">return</span>;
+}
+
+<span class="c-com">// 2. تحقق من Rate Limit</span>
+<span class="c-key">if</span> (notif.channel === <span class="c-str">'whatsapp'</span>) {
+  <span class="c-key">const</span> count = <span class="c-key">await</span> redis.<span class="c-fn">incr</span>(<span class="c-str">`wa:limit:${notif.user_id}`</span>);
+  <span class="c-key">if</span> (count === <span class="c-num">1</span>) redis.<span class="c-fn">expire</span>(<span class="c-str">`wa:limit:${notif.user_id}`</span>, <span class="c-num">86400</span>);
+  <span class="c-key">if</span> (count &gt; <span class="c-num">10</span> &amp;&amp; notif.priority &gt; <span class="c-num">1</span>) {
+    <span class="c-key">await</span> <span class="c-fn">updateStatus</span>(notificationId, <span class="c-str">'failed'</span>, <span class="c-str">'rate_limit_exceeded'</span>);
+    <span class="c-key">return</span>;
+  }
+}
+
+<span class="c-com">// 3. استبدال المتغيرات في القالب</span>
+<span class="c-key">const</span> template = <span class="c-key">await</span> <span class="c-fn">getTemplate</span>(notif.template_key);
+<span class="c-key">const</span> body = <span class="c-fn">renderTemplate</span>(template.body_template, notif.variables);
+
+<span class="c-com">// 4. الإرسال عبر المزوِّد</span>
+<span class="c-key">try</span> {
+  <span class="c-key">const</span> result = <span class="c-key">await</span> <span class="c-fn">sendViaProvider</span>(notif.channel, notif.recipient, body);
+  <span class="c-key">await</span> <span class="c-fn">logAttempt</span>(notificationId, job.attemptsMade, <span class="c-str">'success'</span>, result);
+  <span class="c-key">await</span> <span class="c-fn">updateStatus</span>(notificationId, <span class="c-str">'sent'</span>);
+} <span class="c-key">catch</span> (err) {
+  <span class="c-key">await</span> <span class="c-fn">logAttempt</span>(notificationId, job.attemptsMade, <span class="c-str">'failed'</span>, err.message);
+  <span class="c-key">throw</span> err; <span class="c-com">// BullMQ يُعيد المحاولة تلقائياً</span>
+}
+      </pre>
+
+      <h3 class="mt-6">مثال على Puppeteer لتوليد PDF عربي</h3>
+      <pre class="code-block">
+<span class="c-com">// generatePDF(reportType, data) → Buffer</span>
+<span class="c-key">const</span> browser = <span class="c-key">await</span> puppeteer.<span class="c-fn">launch</span>({ args: [<span class="c-str">'--no-sandbox'</span>] });
+<span class="c-key">const</span> page = <span class="c-key">await</span> browser.<span class="c-fn">newPage</span>();
+<span class="c-key">const</span> html = <span class="c-fn">buildReportHTML</span>(reportType, data); <span class="c-com">// RTL + Tajawal + Arabic numerals</span>
+<span class="c-key">await</span> page.<span class="c-fn">setContent</span>(html, { waitUntil: <span class="c-str">'networkidle0'</span> });
+<span class="c-key">const</span> pdf = <span class="c-key">await</span> page.<span class="c-fn">pdf</span>({
+  format: <span class="c-str">'A4'</span>,
+  printBackground: <span class="c-key">true</span>,
+  margin: { top: <span class="c-str">'20mm'</span>, bottom: <span class="c-str">'20mm'</span>, right: <span class="c-str">'15mm'</span>, left: <span class="c-str">'15mm'</span> },
+  displayHeaderFooter: <span class="c-key">true</span>,
+  headerTemplate: <span class="c-str">`&lt;div style="font-family:Tajawal;direction:rtl"&gt;معهد ريادة الغد&lt;/div&gt;`</span>,
+});
+<span class="c-key">await</span> browser.<span class="c-fn">close</span>();
+<span class="c-key">return</span> pdf;
+      </pre>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 9: Dependencies
+    ═══════════════════════════════════════════════════ -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد هذه المرحلة</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p><strong><a href="phase-01-foundation.html">المرحلة ٠١</a>:</strong> جدول users (user_id)، نظام الأدوار والصلاحيات لتحديد من يرى ماذا في التقارير ومركز الإشعارات.</p>
+          <p><strong><a href="phase-02-master-data.html">المرحلة ٠٢</a>:</strong> بيانات الشركات والأقسام والبرامج — فلاتر التقارير على مستوى company_id و department_id.</p>
+          <p><strong><a href="phase-03-registration-intake.html">المرحلة ٠٣</a>:</strong> أحداث القبول والرفض تُطلِق registration_accepted / registration_rejected.</p>
+          <p><strong><a href="phase-04-trainee-lifecycle.html">المرحلة ٠٤</a>:</strong> بيانات الهوية (expiry_date) تُطلِق id_expiry_60/30/7. بيانات عقود الشركات تُطلِق contract_expiry_company.</p>
+          <p><strong><a href="phase-05-attendance-operations.html">المرحلة ٠٥</a>:</strong> attendance records هي المصدر الأساسي لتقارير الحضور وإشعارات الغياب.</p>
+          <p><strong><a href="phase-06-leaves-exceptions.html">المرحلة ٠٦</a>:</strong> أحداث موافقة الإجازة تُطلِق medical_leave_approved. استثناءات الجدول تُطلِق room_schedule_change.</p>
+          <p><strong><a href="phase-07-violations-financials.html">المرحلة ٠٧</a>:</strong> مخالفات الدرجة ٢+ تُطلِق violation_degree_2plus. الراتب الشهري يُطلِق salary_ready. جوائز التميز تُطلِق excellence_award.</p>
+          <p><strong>Redis:</strong> لـ BullMQ (queue storage) + rate limit counters (TTL-based).</p>
+          <p><strong>AWS S3:</strong> تخزين ملفات التقارير المُولَّدة مع lifecycle rules.</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p><strong><a href="phase-09-portals-admin-ops.html">المرحلة ٠٩ (البوابات)</a>:</strong></p>
+          <ul class="feat-list">
+            <li>بوابة المتدرب تعرض مركز الإشعارات: الإشعارات غير المقروءة، آخر التحديثات</li>
+            <li>بوابة الشركة تعرض تقارير الحضور والمخالفات لمتدربيها</li>
+            <li>GET /api/notifications تُستهلك في بوابة المتدرب</li>
+            <li>إشعارات طلبات الإذن والإجازات تصل للمسؤول عبر In-App</li>
+          </ul>
+          <p><strong><a href="phase-10-launch-roadmap.html">المرحلة ١٠ (الإطلاق)</a>:</strong></p>
+          <ul class="feat-list">
+            <li>Delivery Rate (WhatsApp / Email) → مؤشرات أداء في لوحة المراقبة</li>
+            <li>Failed notifications count → alerting في Prometheus / Grafana</li>
+            <li>تقارير الأداء المجدولة تتدفق تلقائياً لصندوق Super Admin</li>
+            <li>إحصاءات notification_queue_logs لتقييم موثوقية مزوِّدي الإرسال</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-6">الحزم المضافة (package.json)</h3>
+      <div class="code-block">
+<span class="c-com">// Backend — إضافات جديدة</span>
+<span class="c-str">"bullmq"</span>: <span class="c-str">"^5.x"</span>,           <span class="c-com">// Queue Engine</span>
+<span class="c-str">"ioredis"</span>: <span class="c-str">"^5.x"</span>,          <span class="c-com">// Redis Client (موجود من ال Foundation)</span>
+<span class="c-str">"@twilio/whatsapp"</span>: <span class="c-str">"^5.x"</span>,  <span class="c-com">// WhatsApp Provider</span>
+<span class="c-str">"@sendgrid/mail"</span>: <span class="c-str">"^8.x"</span>,    <span class="c-com">// Email Provider</span>
+<span class="c-str">"puppeteer"</span>: <span class="c-str">"^22.x"</span>,        <span class="c-com">// PDF Generation</span>
+<span class="c-str">"exceljs"</span>: <span class="c-str">"^4.x"</span>,           <span class="c-com">// Excel Reports</span>
+<span class="c-str">"fast-csv"</span>: <span class="c-str">"^5.x"</span>,          <span class="c-com">// CSV Reports</span>
+<span class="c-str">"croner"</span>: <span class="c-str">"^8.x"</span>,            <span class="c-com">// Cron Parsing</span>
+<span class="c-str">"@aws-sdk/client-s3"</span>: <span class="c-str">"^3.x"</span>, <span class="c-com">// S3 Upload (موجود)</span>
+<span class="c-str">"handlebars"</span>: <span class="c-str">"^4.x"</span>         <span class="c-com">// Template Rendering</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 10: Risks
+    ═══════════════════════════════════════════════════ -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يفشل</h2>
+
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><strong>WhatsApp Provider Downtime:</strong> Twilio أو 360dialog قد يعاني انقطاعاً. الحل: Circuit Breaker + Fallback لـ Email إذا فشل WhatsApp ٣ مرات.</li>
+            <li><strong>Email Deliverability:</strong> إذا لم تُعدَّ SPF + DKIM + DMARC صحيحاً فستُحجب الرسائل كـ spam. يجب تهيئة DNS قبل الإطلاق.</li>
+            <li><strong>PDF Generation Cost:</strong> Puppeteer يستهلك ذاكرة كبيرة. تقارير الشركات الكبيرة قد تستغرق 30+ ثانية. الحل: timeout=60s + memory limit per worker.</li>
+            <li><strong>Template Variable Mismatch:</strong> إذا أُضيف حدث جديد بمتغير غير معرَّف في variables_schema → الإشعار يفشل بصمت. الحل: validation قبل الإضافة للـ Queue.</li>
+            <li><strong>Redis Failover:</strong> إذا سقط Redis تُفقد Queue المهام المعلَّقة. الحل: Redis Cluster + AOF persistence.</li>
+            <li><strong>S3 Costs:</strong> التقارير الضخمة (كل يوم) قد تتراكم. lifecycle rule 7 أيام ضروري وليس اختيارياً.</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li>حساب WhatsApp Business API جاهز ومُوثَّق مع رقم المعهد قبل التطوير.</li>
+            <li>SendGrid أو SMTP مُعدَّان بـ SPF/DKIM/DMARC قبل اختبار الإشعارات.</li>
+            <li>AWS S3 Bucket مُنشأ مع Lifecycle Policy من البداية.</li>
+            <li>Redis مُشغَّل بـ persistence (AOF) في بيئة production.</li>
+            <li>المتدربون لديهم أرقام هاتف صحيحة في ملفاتهم (الهاتف حقل مطلوب في التسجيل).</li>
+            <li>كل template_key مُعرَّف في notification_templates قبل أول إرسال.</li>
+            <li>الخوادم لديها Chromium مُثبَّت لـ Puppeteer (أو استخدام puppeteer-core مع مسار محدد).</li>
+            <li>croner يعمل في process واحد — لو كانت خوادم متعددة يحتاج distributed lock (Redlock).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">💡</span>
+        <div><strong>توصية للتخفيف:</strong> في المرحلة الأولى يمكن تأجيل WhatsApp والبدء بـ Email فقط حتى يُوثَّق الحساب. مركز الإشعارات In-App يعمل فوراً بدون أي مزوِّد خارجي. التقارير PDF يمكن البدء بـ Excel فقط ثم إضافة Puppeteer لاحقاً.</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         Section 11: Checklist
+    ═══════════════════════════════════════════════════ -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة الثامنة انتهت؟</h2>
+
+      <div class="grid grid-2">
+        <div>
+          <h3>⚙️ Backend</h3>
+          <ol class="num-list">
+            <li>٦ جداول جديدة مُنشأة ومُهاجَرة بـ Migrations ✅</li>
+            <li>١٧ قالب إشعار محمَّل في notification_templates ✅</li>
+            <li>BullMQ Workers: notification worker + report worker ✅</li>
+            <li>WhatsApp Provider جاهز مع retry + rate limit ✅</li>
+            <li>Email Provider (SendGrid/SMTP) مع retry ✅</li>
+            <li>PDF Generation (Puppeteer) مع Arabic RTL ✅</li>
+            <li>Excel Generation (exceljs) ✅</li>
+            <li>CSV Generation (fast-csv) ✅</li>
+            <li>S3 Upload + Presigned URL ✅</li>
+            <li>Cron Scheduler (croner) مع distributed lock ✅</li>
+            <li>١١ API Endpoint + Auth Guards ✅</li>
+            <li>Zod validation لكل input ✅</li>
+          </ol>
+        </div>
+        <div>
+          <h3>🖥️ Frontend</h3>
+          <ol class="num-list">
+            <li>شاشة مركز الإشعارات مع Unread count في الـ header ✅</li>
+            <li>شاشة قوالب الإشعارات مع Live Preview ✅</li>
+            <li>شاشة سجل الإرسال مع فلاتر ✅</li>
+            <li>شاشة إعدادات التفضيلات (toggle matrix) ✅</li>
+            <li>شاشة مركز التقارير مع form ديناميكي حسب نوع التقرير ✅</li>
+            <li>شاشة التقارير المجدولة مع cron builder ✅</li>
+            <li>Real-time notification badge (polling أو WebSocket) ✅</li>
+          </ol>
+
+          <h3 class="mt-6">🧪 Testing &amp; QA</h3>
+          <ol class="num-list">
+            <li>Unit tests لـ renderTemplate() — كل المتغيرات مغطَّاة ✅</li>
+            <li>Integration test: notification lifecycle (queued → sent → delivered) ✅</li>
+            <li>Integration test: Report generation sync + async ✅</li>
+            <li>E2E: تحرير قالب + إرسال يدوي + تحقق من سجل الإرسال ✅</li>
+            <li>Rate limit test: ١٠+ WhatsApp في يوم واحد للمستخدم ذاته ✅</li>
+            <li>PDF test: تقرير حضور شهري بالعربية — التنسيق صحيح ✅</li>
+            <li>Cron test: تشغيل فوري يُولِّد التقرير ويُرسل Email ✅</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">✅</span>
+        <div><strong>تعريف الاكتمال (Definition of Done):</strong> المرحلة الثامنة مكتملة عندما: (١) إشعار تلقائي يُرسَل فعلياً لهاتف اختباري عبر WhatsApp عند تراكم ٥ غيابات، (٢) تقرير حضور شهري يُولَّد بـ PDF عربي قابل للطباعة، (٣) تقرير مجدول يُرسَل تلقائياً لبريد Super Admin في الموعد المحدد، (٤) كل إشعار مفشل يظهر في سجل الإرسال مع سبب الفشل.</div>
+      </div>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-07-violations-financials.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٧. المخالفات والرواتب والتميز</span>
+      </a>
+      <a href="phase-09-portals-admin-ops.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٩. البوابات والعمليات الإدارية</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#checklist">قائمة المخرجات</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

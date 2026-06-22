@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٣ — التسجيل والقبول | معهد ريادة الغد</title>
+<meta name="description" content="توثيق مرحلة التسجيل والقبول في نظام معهد ريادة الغد — بناء نماذج ديناميكية، روابط تسجيل مُتحكَّمة، مراجعة الطلبات، استيراد Excel، وإدارة الملفات المحظورة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html" class="active">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٣ — التسجيل والقبول</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: عالي · ⏱ 2–3 أسبوع · 🟢 Phase 03</div>
+    <div class="hero-label">المرحلة ٠٣ من ١٠ · Registration &amp; Intake Management</div>
+    <h1>التسجيل والقبول<br><span>بوابة دخول كل متدرب للنظام</span></h1>
+    <p class="hero-desc">
+      المرحلة الثالثة هي نقطة دخول كل متدرب جديد — تبدأ برابط تسجيل مُتحكَّم يُصمَّم لكل برنامج أو مجموعة، مروراً بنموذج ديناميكي قابل للبناء من قِبَل المسؤول، ثم خط مراجعة ذكي يحتوي على فحوصات تلقائية للعمر والجنس والطاقة الاستيعابية وقوائم الحظر. لا يصل أي متدرب لقاعدة البيانات إلا بعد موافقة صريحة أو اجتياز كامل للـ auto-review — عندها يُنشأ حساب وسجل تلقائياً ويُرسل إشعار WhatsApp/Email فوراً.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>6</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>6</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>19</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>2–3</strong><span>أسبوع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot current"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ===== SECTION 1: SUMMARY ===== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        مرحلة التسجيل والقبول هي الطريق الرسمي الوحيد لإدخال أي متدرب في النظام. تُغطي كل شيء من بناء النموذج، وإنشاء رابط التسجيل، حتى المراجعة والقبول وإنشاء الحساب تلقائياً.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p3">
+          <h3>🎯 الهدف</h3>
+          <p>توفير مسار تسجيل رقمي متكامل: نموذج ديناميكي قابل للتخصيص، روابط تسجيل مُتحكَّمة لكل برنامج أو مجموعة، ومسار مراجعة ذكي يُقلل التدخل اليدوي ويضمن دقة البيانات ومطابقة الشروط قبل القبول.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li><span class="ico">✅</span>نظام Form Builder ديناميكي (أقسام + حقول)</li>
+            <li><span class="ico">✅</span>روابط تسجيل منتهية الصلاحية وبحد أقصى للاستخدام</li>
+            <li><span class="ico">✅</span>صفحة تسجيل عامة بدون auth تستهلك الرابط</li>
+            <li><span class="ico">✅</span>خط مراجعة: pending → approved / rejected / needs_info</li>
+            <li><span class="ico">✅</span>Auto-review rules (عمر، جنس، طاقة، حظر)</li>
+            <li><span class="ico">✅</span>Excel bulk import مع error report</li>
+            <li><span class="ico">✅</span>قائمة الملفات المحظورة (auto-reject)</li>
+            <li><span class="ico">✅</span>إنشاء user account + trainee record عند القبول</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><span class="ico">🔗</span><a href="phase-01-foundation.html">Phase 01</a>: Auth system، JWT، audit_logs، rate limiting</li>
+            <li><span class="ico">🔗</span><a href="phase-02-master-data.html">Phase 02</a>: companies، departments، training_programs، groups — كل جداول البيانات الرئيسية يجب أن تكون موجودة قبل إنشاء أي رابط تسجيل</li>
+            <li><span class="ico">📌</span>S3 bucket أو local storage مُعَدّ لرفع الصور</li>
+            <li><span class="ico">📌</span>WhatsApp API و SMTP مُعَدَّان للإشعارات</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong><a href="phase-04-trainee-lifecycle.html">Phase 04 — دورة حياة المتدرب</a>:</strong>
+            جدول <code>trainees</code> المُنشأ عند approve يصبح الكيان الرئيسي لإدارة العقود والرواتب والتعديلات. جدول <code>users</code> المُنشأ تلقائياً يُمكِّن تسجيل دخول المتدرب لبوابته في Phase 09.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 2: WHY ===== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">البوابة التي تحدد جودة كل ما بعدها</h2>
+      <p class="section-desc">
+        بدون مرحلة تسجيل مُنظَّمة، كل مرحلة تالية تعمل على بيانات غير موثوقة. الحضور لا يمكن تسجيله بدون متدرب. الرواتب لا تُحسب بدون عقد. المخالفات لا تُطبَّق بدون سجل. هذه المرحلة هي المرشِّح الأول والأهم.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card card-accent c-p3">
+          <div class="card-head">
+            <div class="card-icon">🔒</div>
+            <div>
+              <div class="card-title">تحكم كامل في من يدخل</div>
+              <div class="card-sub">لا تسجيل بدون رابط صالح</div>
+            </div>
+          </div>
+          <p>كل رابط تسجيل مرتبط ببرنامج محدد أو مجموعة محددة، وله تاريخ انتهاء صلاحية وعدد استخدامات أقصى. لا يمكن لأحد الوصول للنموذج العام خارج هذه القيود.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🤖</div>
+            <div>
+              <div class="card-title">مراجعة تلقائية ذكية</div>
+              <div class="card-sub">قواعد auto-review تُقلل الجهد اليدوي</div>
+            </div>
+          </div>
+          <p>النظام يفحص كل طلب تلقائياً ضد قائمة الحظر، شروط العمر والجنس، والطاقة الاستيعابية للمجموعة. الطلبات المستوفية تُقبَل تلقائياً أو توضع في قائمة انتظار.</p>
+        </div>
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">⚡</div>
+            <div>
+              <div class="card-title">إنشاء فوري عند القبول</div>
+              <div class="card-sub">لا خطوات يدوية بعد approve</div>
+            </div>
+          </div>
+          <p>عند موافقة المسؤول (أو Auto-approve)، يُنشئ النظام حساب المستخدم وسجل المتدرب تلقائياً ويُرسل إشعار ترحيب عبر WhatsApp و Email — صفر تدخل يدوي.</p>
+        </div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">💡</span>
+        <div>
+          <strong>ترتيب المراحل:</strong> هذه المرحلة تأتي بعد Phase 02 مباشرة لأنها تستهلك برامج التدريب والمجموعات المُعرَّفة مسبقاً. لو حُذفت هذه المرحلة، لن يكون هناك طريقة منظمة لإدخال المتدربين — ستُفقد سيطرة المعهد على من يدخل ومن يُرفض.
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 3: MODULES ===== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">ست وحدات تشكّل منظومة التسجيل الكاملة</h2>
+
+      <div class="grid grid-3">
+        <div class="card card-accent c-p3">
+          <div class="card-head">
+            <div class="card-icon">🏗️</div>
+            <div>
+              <div class="card-title">Form Builder</div>
+              <div class="card-sub">بناء النموذج الديناميكي</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">▸</span>إدارة أقسام النموذج (form_sections) بترتيب drag &amp; drop</li>
+            <li><span class="ico">▸</span>إضافة/حذف/تعديل حقول (text, number, date, select, file, textarea, checkbox)</li>
+            <li><span class="ico">▸</span>validation_rules JSONB: min/max length، regex، required، min/max date</li>
+            <li><span class="ico">▸</span>options JSONB للقوائم المنسدلة مع دعم ثنائي اللغة</li>
+            <li><span class="ico">▸</span>معاينة حية للنموذج قبل النشر</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🔗</div>
+            <div>
+              <div class="card-title">Registration Links</div>
+              <div class="card-sub">روابط تسجيل مُتحكَّمة</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">▸</span>إنشاء رابط مع slug فريد (UUID مختصر)</li>
+            <li><span class="ico">▸</span>تحديد expires_at (تاريخ انتهاء) و max_uses (حد أقصى)</li>
+            <li><span class="ico">▸</span>ربط الرابط ببرنامج محدد أو مجموعة محددة</li>
+            <li><span class="ico">▸</span>تفعيل/تعطيل الرابط يدوياً</li>
+            <li><span class="ico">▸</span>مراقبة current_uses في الوقت الحقيقي</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">🌐</div>
+            <div>
+              <div class="card-title">Public Registration Page</div>
+              <div class="card-sub">صفحة عامة بدون auth</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">▸</span>يقرأ الرابط ويتحقق من صلاحيته قبل عرض النموذج</li>
+            <li><span class="ico">▸</span>يعرض النموذج الديناميكي المُعرَّف في form_fields</li>
+            <li><span class="ico">▸</span>رفع صورة شخصية (crop + compress قبل الرفع)</li>
+            <li><span class="ico">▸</span>CAPTCHA لمنع الإرسال الآلي</li>
+            <li><span class="ico">▸</span>رسالة نجاح بعد الإرسال مع رقم الطلب</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">🔍</div>
+            <div>
+              <div class="card-title">Applications Review</div>
+              <div class="card-sub">مراجعة الطلبات وPipeline القبول</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">▸</span>قائمة طلبات مع filter: status، program، group، date</li>
+            <li><span class="ico">▸</span>عرض نتيجة auto_review مع تفاصيل كل فحص</li>
+            <li><span class="ico">▸</span>أزرار approve / reject / request_info</li>
+            <li><span class="ico">▸</span>rejection_reason إجباري (يُرسل للمتقدم)</li>
+            <li><span class="ico">▸</span>إدارة waitlist مع إمكانية الترقية لـ approved</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">📊</div>
+            <div>
+              <div class="card-title">Excel Bulk Import</div>
+              <div class="card-sub">استيراد جماعي من ملف</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">▸</span>تحميل template جاهز للتعبئة (GET endpoint)</li>
+            <li><span class="ico">▸</span>رفع .xlsx → parse → validate صف بصف</li>
+            <li><span class="ico">▸</span>تطبيق نفس قواعد auto-review على كل صف</li>
+            <li><span class="ico">▸</span>error report: ملف Excel بالصفوف الفاشلة والسبب</li>
+            <li><span class="ico">▸</span>الصفوف الناجحة تدخل applications بـ status = pending</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-p3">
+          <div class="card-head">
+            <div class="card-icon">🚫</div>
+            <div>
+              <div class="card-title">Blocked Profiles</div>
+              <div class="card-sub">قائمة المحظورين</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">▸</span>إضافة ملف محظور يدوياً (national_id + سبب)</li>
+            <li><span class="ico">▸</span>حظر تلقائي من Phase 07 (مخالفة درجة 5 = طرد)</li>
+            <li><span class="ico">▸</span>بحث في القائمة بالهوية الوطنية</li>
+            <li><span class="ico">▸</span>ربط الحظر بشركة محددة أو شامل للمعهد</li>
+            <li><span class="ico">▸</span>notes لتوثيق سبب الحظر التفصيلي</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 4: SCREENS ===== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">٦ شاشات تغطي دورة التسجيل الكاملة</h2>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead class="th-teal">
+            <tr>
+              <th>#</th>
+              <th>الشاشة</th>
+              <th>المسار</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-strong">1</td>
+              <td class="td-strong">Form Builder</td>
+              <td class="mono">/admin/form-builder</td>
+              <td>بناء وتعديل نموذج التسجيل — أقسام وحقول ديناميكية مع معاينة حية. Super Admin فقط يقدر يعدّل هيكل النموذج.</td>
+              <td><span class="badge b-purple">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">2</td>
+              <td class="td-strong">Registration Links</td>
+              <td class="mono">/admin/registration-links</td>
+              <td>إنشاء وإدارة روابط التسجيل. كل رابط مرتبط ببرنامج/مجموعة مع تاريخ انتهاء وحد استخدام. يعرض إحصاءات الاستخدام لكل رابط.</td>
+              <td><span class="badge b-purple">Super Admin</span> <span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">3</td>
+              <td class="td-strong">Public Registration</td>
+              <td class="mono">/register/:code</td>
+              <td>صفحة عامة بدون تسجيل دخول — يصل إليها المتقدم بالرابط. تعرض النموذج الديناميكي مع CAPTCHA. لا تُحتسَب الصفحة إذا كان الرابط منتهياً أو مستنفداً.</td>
+              <td><span class="badge b-green">عام (بدون auth)</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">4</td>
+              <td class="td-strong">Applications Review</td>
+              <td class="mono">/admin/applications</td>
+              <td>قائمة الطلبات مع فلاتر متقدمة. يعرض نتيجة auto_review لكل طلب. أزرار approve/reject/needs_info. إدارة Waitlist.</td>
+              <td><span class="badge b-purple">Super Admin</span> <span class="badge b-navy">Manager</span> <span class="badge b-gray">Staff</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">5</td>
+              <td class="td-strong">Excel Bulk Import</td>
+              <td class="mono">/admin/bulk-import</td>
+              <td>رفع ملف Excel، معاينة البيانات قبل الاستيراد، تنزيل template فارغ، عرض نتائج الاستيراد مع error report قابل للتنزيل.</td>
+              <td><span class="badge b-purple">Super Admin</span> <span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td class="td-strong">6</td>
+              <td class="td-strong">Blocked Profiles</td>
+              <td class="mono">/admin/blocked-profiles</td>
+              <td>قائمة المحظورين مع فلتر بالهوية والاسم والشركة. إضافة حظر يدوي. التمييز بين auto_blocked (من النظام) والحظر اليدوي.</td>
+              <td><span class="badge b-purple">Super Admin</span> <span class="badge b-navy">Manager</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📱</span>
+        <div>
+          <strong>ملاحظة UX:</strong> صفحة التسجيل العامة (/register/:code) يجب أن تكون mobile-first بالكامل — معظم المتقدمين سيصلون إليها من رسالة WhatsApp على هواتفهم. يجب أن تعمل على اتصالات 3G ضعيفة، مع تقليص الصورة على الـ client قبل الرفع.
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 5: DATABASE ===== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">٦ جداول تُشكِّل منظومة التسجيل</h2>
+
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-teal">🔗 registration_links</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="nn">NN</span>code · varchar(64) UNIQUE</div>
+            <div class="db-field"><span class="fk">FK</span>program_id → training_programs.id</div>
+            <div class="db-field"><span class="fk">FK</span>group_id → groups.id · nullable</div>
+            <div class="db-field">expires_at · timestamptz · nullable</div>
+            <div class="db-field">max_uses · integer · nullable</div>
+            <div class="db-field">current_uses · integer · default 0</div>
+            <div class="db-field">is_active · boolean · default true</div>
+            <div class="db-field"><span class="fk">FK</span>created_by → users.id</div>
+            <div class="db-field">created_at · timestamptz · default now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-teal">📋 form_sections</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · integer SERIAL</div>
+            <div class="db-field"><span class="nn">NN</span>title_ar · varchar(120)</div>
+            <div class="db-field">title_en · varchar(120) · nullable</div>
+            <div class="db-field">display_order · integer · default 0</div>
+            <div class="db-field">is_active · boolean · default true</div>
+            <div class="db-field">created_at · timestamptz · default now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-teal">🔧 form_fields</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · integer SERIAL</div>
+            <div class="db-field"><span class="fk">FK</span>section_id → form_sections.id</div>
+            <div class="db-field"><span class="nn">NN</span>field_key · varchar(80) UNIQUE</div>
+            <div class="db-field"><span class="nn">NN</span>label_ar · varchar(120)</div>
+            <div class="db-field">label_en · varchar(120) · nullable</div>
+            <div class="db-field">field_type · enum: text | number | date | select | file | textarea | checkbox | phone</div>
+            <div class="db-field">is_required · boolean · default false</div>
+            <div class="db-field">validation_rules · JSONB · nullable</div>
+            <div class="db-field">options · JSONB · nullable</div>
+            <div class="db-field">display_order · integer · default 0</div>
+            <div class="db-field">is_active · boolean · default true</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-teal">📝 applications</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>registration_link_id → registration_links.id</div>
+            <div class="db-field"><span class="fk">FK</span>program_id → training_programs.id</div>
+            <div class="db-field"><span class="fk">FK</span>group_id → groups.id · nullable</div>
+            <div class="db-field"><span class="nn">NN</span>full_name · varchar(200)</div>
+            <div class="db-field"><span class="un">UN</span>national_id · varchar(20)</div>
+            <div class="db-field">gender · enum: male | female</div>
+            <div class="db-field">date_of_birth · date</div>
+            <div class="db-field">phone · varchar(20)</div>
+            <div class="db-field">email · varchar(200) · nullable</div>
+            <div class="db-field">address · text · nullable</div>
+            <div class="db-field">photo_url · text · nullable</div>
+            <div class="db-field">form_data · JSONB</div>
+            <div class="db-field">status · enum: pending | approved | rejected | needs_info | waitlisted</div>
+            <div class="db-field">auto_review_result · JSONB · nullable</div>
+            <div class="db-field"><span class="fk">FK</span>reviewed_by → users.id · nullable</div>
+            <div class="db-field">reviewed_at · timestamptz · nullable</div>
+            <div class="db-field">rejection_reason · text · nullable</div>
+            <div class="db-field">created_at · timestamptz · default now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-teal">🚫 blocked_profiles</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="un">UN</span>national_id · varchar(20)</div>
+            <div class="db-field">full_name · varchar(200)</div>
+            <div class="db-field">block_reason · text</div>
+            <div class="db-field"><span class="fk">FK</span>blocked_from_company_id → companies.id · nullable</div>
+            <div class="db-field">blocked_at · timestamptz · default now()</div>
+            <div class="db-field">auto_blocked · boolean · default false</div>
+            <div class="db-field">notes · text · nullable</div>
+            <div class="db-field"><span class="fk">FK</span>blocked_by → users.id · nullable</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-teal">👤 trainees (skeleton)</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span>id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span>application_id → applications.id · UNIQUE</div>
+            <div class="db-field"><span class="fk">FK</span>user_id → users.id · UNIQUE</div>
+            <div class="db-field"><span class="fk">FK</span>group_id → groups.id</div>
+            <div class="db-field">enrollment_date · date</div>
+            <div class="db-field">status · enum: active | suspended | completed | withdrawn | expelled</div>
+            <div class="db-field">national_id_expiry_date · date · nullable</div>
+            <div class="db-field">... حقول إضافية في Phase 04</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># Phase 03 — Registration Tables Relationships</span>
+
+training_programs  <span class="c-key">1:N</span>  registration_links
+groups             <span class="c-key">1:N</span>  registration_links    <span class="c-com"># nullable FK</span>
+registration_links <span class="c-key">1:N</span>  applications
+
+form_sections      <span class="c-key">1:N</span>  form_fields
+<span class="c-com"># form_fields.field_key → applications.form_data (JSONB key mapping)</span>
+
+applications       <span class="c-key">1:1</span>  trainees              <span class="c-com"># عند approve</span>
+trainees           <span class="c-key">1:1</span>  users                 <span class="c-com"># user_id مُنشأ تلقائياً</span>
+
+companies          <span class="c-key">1:N</span>  blocked_profiles      <span class="c-com"># nullable — لو الحظر خاص بشركة</span>
+
+<span class="c-com"># JSONB Schemas:</span>
+<span class="c-com"># validation_rules: { "min_length": 5, "max_length": 100, "regex": "^\\d+$", "min_age": 18, "max_age": 45 }</span>
+<span class="c-com"># options: [{ "value": "riyadh", "label_ar": "الرياض", "label_en": "Riyadh" }, ...]</span>
+<span class="c-com"># auto_review_result: { "blocked": false, "gender_match": true, "age_check": { "pass": true, "age": 24 }, "capacity": "ok" }</span>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">📌</span>
+        <div>
+          <strong>Index مهم:</strong> جدول <code>applications</code> يحتاج index على <code>(national_id, status)</code> لأن auto-review يبحث بالهوية الوطنية في blocked_profiles وفي applications الموجودة في نفس الوقت. أيضاً <code>registration_links.code</code> يجب أن يكون UNIQUE INDEX لأنه يُستعلَم بكثرة من الصفحة العامة.
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 6: APIS ===== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">١٩ نقطة اتصال — ٤ مجموعات</h2>
+
+      <div class="api-group">
+        <div class="api-group-title">🔗 Registration Links — إدارة الروابط</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/registration-links</span>
+            <span class="api-desc">إنشاء رابط تسجيل جديد مع تحديد البرنامج/المجموعة والقيود</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/registration-links</span>
+            <span class="api-desc">قائمة روابط التسجيل مع إحصاءات الاستخدام — Admin only</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-patch">PATCH</span>
+            <span class="api-path">/api/registration-links/:id</span>
+            <span class="api-desc">تعديل رابط (تفعيل/تعطيل، تمديد تاريخ، زيادة max_uses)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/public/register/:code</span>
+            <span class="api-desc">PUBLIC — التحقق من صحة الرابط وإرجاع تفاصيل البرنامج + النموذج الديناميكي</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📝 Applications — الطلبات</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/public/applications</span>
+            <span class="api-desc">PUBLIC — إرسال طلب تسجيل جديد (يستهلك الرابط + يشغّل auto-review)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/applications</span>
+            <span class="api-desc">قائمة الطلبات مع فلاتر: status، program_id، group_id، date_range، search</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/applications/:id</span>
+            <span class="api-desc">تفاصيل طلب واحد مع auto_review_result الكامل</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/applications/:id/approve</span>
+            <span class="api-desc">قبول الطلب → ينشئ user + trainee + يرسل WhatsApp/Email</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/applications/:id/reject</span>
+            <span class="api-desc">رفض الطلب (rejection_reason إجباري) → يُرسل إشعار للمتقدم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/applications/:id/request-info</span>
+            <span class="api-desc">طلب معلومات إضافية → status = needs_info + إشعار للمتقدم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/applications/upload-photo</span>
+            <span class="api-desc">رفع صورة شخصية إلى S3/storage → يعيد photo_url</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">📊 Bulk Import — الاستيراد الجماعي</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/applications/bulk-import/template</span>
+            <span class="api-desc">تحميل قالب Excel الفارغ بأعمدة محددة مسبقاً</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/applications/bulk-import</span>
+            <span class="api-desc">رفع .xlsx → parse → validate → import الصفوف الصالحة → error report للفاشلة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">🏗️ Form Builder — بناء النموذج</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/form-sections</span>
+            <span class="api-desc">قائمة الأقسام بالترتيب مع عدد الحقول في كل قسم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/form-sections</span>
+            <span class="api-desc">إنشاء قسم جديد</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/form-sections/:id</span>
+            <span class="api-desc">تعديل قسم (الاسم، الترتيب، التفعيل)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DEL</span>
+            <span class="api-path">/api/form-sections/:id</span>
+            <span class="api-desc">حذف قسم (فقط إذا لم يكن يحتوي على حقول مستخدمة)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/form-fields</span>
+            <span class="api-desc">قائمة جميع الحقول مُجمَّعة بالأقسام</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/form-fields</span>
+            <span class="api-desc">إضافة حقل جديد مع validation_rules و options</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/form-fields/:id</span>
+            <span class="api-desc">تعديل حقل</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DEL</span>
+            <span class="api-path">/api/form-fields/:id</span>
+            <span class="api-desc">حذف حقل (soft delete — field_key يُحتفظ به لـ JSONB integrity)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-group">
+        <div class="api-group-title">🚫 Blocked Profiles — المحظورون</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/blocked-profiles</span>
+            <span class="api-desc">قائمة المحظورين مع فلاتر: national_id، company_id، auto_blocked</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/blocked-profiles</span>
+            <span class="api-desc">إضافة ملف محظور يدوياً</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DEL</span>
+            <span class="api-path">/api/blocked-profiles/:id</span>
+            <span class="api-desc">رفع الحظر (Super Admin فقط) مع تسجيل في audit_logs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 7: USER FLOWS ===== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك كل طرف في منظومة التسجيل؟</h2>
+
+      <h3>🔸 تدفق المتقدم (Public — بدون auth)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يستلم رابط<div class="fn-sub">WhatsApp/Email</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">يفتح /register/:code</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">النظام يتحقق<div class="fn-sub">صلاحية الرابط</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">يملأ النموذج<div class="fn-sub">+ يرفع صورة</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يرسل الطلب<div class="fn-sub">auto-review يعمل</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">رقم الطلب<div class="fn-sub">رسالة تأكيد</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق المراجع (Admin — مراجعة الطلبات)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يفتح Applications<div class="fn-sub">filter: pending</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">يراجع الطلب<div class="fn-sub">+ auto_review result</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يقرر: approve<div class="fn-sub">/ reject / needs_info</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Approve<div class="fn-sub">→ ينشئ user + trainee</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">إشعار تلقائي<div class="fn-sub">WhatsApp + Email</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق Auto-Review (خلف الكواليس)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">طلب جديد<div class="fn-sub">POST /api/public/applications</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">فحص الحظر<div class="fn-sub">blocked_profiles</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">فحص الجنس<div class="fn-sub">program.gender_restriction</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">فحص العمر<div class="fn-sub">validation_rules</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">فحص الطاقة<div class="fn-sub">group.max_trainees</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">النتيجة<div class="fn-sub">pending / waitlisted / rejected</div></div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق Excel Bulk Import</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">تنزيل Template<div class="fn-sub">GET /template</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node">تعبئة الملف<div class="fn-sub">بيانات المتدربين</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">رفع .xlsx<div class="fn-sub">POST /bulk-import</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Parse + Validate<div class="fn-sub">صف بصف</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">Error Report<div class="fn-sub">صفوف فاشلة + سبب</div></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">Import ناجح<div class="fn-sub">applications = pending</div></div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 8: BUSINESS LOGIC ===== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل التفصيلي</div>
+      <h2 class="section-title">٩ قواعد تشغيلية حاسمة</h2>
+
+      <div class="alert al-rust">
+        <span class="ico">🔒</span>
+        <div><strong>قاعدة 3.1 — Link Validation:</strong> قبل عرض النموذج العام، يتحقق النظام من: (1) is_active = true، (2) expires_at إما null أو أكبر من now()، (3) max_uses إما null أو current_uses أقل منه. أي فشل في أي شرط → HTTP 410 Gone مع رسالة واضحة للمتقدم.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🚫</span>
+        <div><strong>قاعدة 3.2 — Blocked Profile Auto-Reject:</strong> عند استلام طلب جديد، يتحقق النظام فوراً من جدول blocked_profiles بـ national_id. لو موجود → status = rejected تلقائياً + auto_review_result.blocked = true + إشعار للمسؤول (لا يُرسل إشعار للمتقدم الـ reason للأمان). يُسجَّل في audit_logs.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚥</span>
+        <div><strong>قاعدة 3.3 — Gender Matching:</strong> إذا كان البرنامج المرتبط بالرابط يحتوي على gender_restriction (male_only أو female_only)، يجب أن يطابق جنس المتقدم هذا القيد. فشل المطابقة → rejected تلقائياً + auto_review_result.gender_match = false.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">🎂</span>
+        <div><strong>قاعدة 3.4 — Age Verification:</strong> إذا كان النموذج يحتوي على حقل date_of_birth مع validation_rules.min_age أو validation_rules.max_age، يحسب النظام العمر بالسنوات من date_of_birth لتاريخ اليوم. أي خروج عن النطاق المحدد → rejected تلقائياً. مثال: min_age = 18، max_age = 45.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📊</span>
+        <div><strong>قاعدة 3.5 — Capacity Check &amp; Waitlist:</strong> يتحقق النظام من عدد المتدربين في المجموعة المستهدفة. إذا كان group.current_trainees &gt;= group.max_trainees → status = waitlisted (ليس rejected). لو أُلغي متدرب أو انسحب لاحقاً، يُرقَّى أول طلب في الـ waitlist تلقائياً.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">⚡</span>
+        <div><strong>قاعدة 3.6 — Auto-Create on Approve:</strong> عند تغيير status إلى approved (يدوياً أو تلقائياً)، تنفَّذ transaction تحتوي: (1) إنشاء user بـ username = national_id وكلمة مرور مؤقتة، (2) إنشاء trainee record مرتبط بـ application_id وـ group_id، (3) تحديث group.current_trainees++، (4) إرسال BullMQ job لـ WhatsApp + Email مع كلمة المرور المؤقتة. كل هذا في transaction واحدة — أي فشل يُلغي الكل.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🪪</span>
+        <div><strong>قاعدة 3.7 — National ID Expiry:</strong> حقل national_id_expiry_date يُحفظ إما يدوياً من قِبَل المراجع أو بشكل تلقائي إذا رفع المتقدم صورة بطاقة. يُستخدم في Phase 08 لإرسال إشعار قبل 30 يوم من الانتهاء. لو كانت البطاقة منتهية عند التسجيل → تحذير للمراجع (ليس رفضاً تلقائياً).</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">📊</span>
+        <div><strong>قاعدة 3.8 — Excel Import Error Report:</strong> عند bulk import، يُعالَج كل صف بشكل مستقل. الصفوف الفاشلة (validation error أو auto-review reject) تُجمَّع في error report بنفس هيكل الـ template + عمود إضافي "سبب الفشل" باللغتين. يُرسَل كـ .xlsx. الصفوف الناجحة تُدخَل حتى لو فشل بعضها.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">❌</span>
+        <div><strong>قاعدة 3.9 — Rejection Reason Mandatory:</strong> لا يمكن رفض طلب بدون rejection_reason غير فارغ (min 10 حروف). النظام يتحقق من هذا في backend أيضاً، ليس فقط frontend. rejection_reason يُرسَل للمتقدم عبر WhatsApp/Email حرفياً — لذا يجب أن يكون مناسباً ومهنياً.</div>
+      </div>
+
+      <h3 class="mt-6">مثال على auto_review_result JSONB</h3>
+      <pre class="code-block">
+<span class="c-com">// مثال على نتيجة مراجعة تلقائية شاملة</span>
+{
+  <span class="c-str">"timestamp"</span>: <span class="c-str">"2025-09-15T10:23:44Z"</span>,
+  <span class="c-str">"overall"</span>: <span class="c-str">"pending"</span>,
+  <span class="c-str">"checks"</span>: {
+    <span class="c-str">"blocked_profile"</span>: { <span class="c-str">"pass"</span>: <span class="c-val">true</span>, <span class="c-str">"checked_national_id"</span>: <span class="c-str">"1058xxxxxxx"</span> },
+    <span class="c-str">"gender_match"</span>: { <span class="c-str">"pass"</span>: <span class="c-val">true</span>, <span class="c-str">"required"</span>: <span class="c-str">"male"</span>, <span class="c-str">"provided"</span>: <span class="c-str">"male"</span> },
+    <span class="c-str">"age_check"</span>: { <span class="c-str">"pass"</span>: <span class="c-val">true</span>, <span class="c-str">"age"</span>: <span class="c-num">24</span>, <span class="c-str">"min_age"</span>: <span class="c-num">18</span>, <span class="c-str">"max_age"</span>: <span class="c-num">45</span> },
+    <span class="c-str">"capacity"</span>: { <span class="c-str">"pass"</span>: <span class="c-val">true</span>, <span class="c-str">"current"</span>: <span class="c-num">18</span>, <span class="c-str">"max"</span>: <span class="c-num">25</span> }
+  }
+}
+      </pre>
+
+      <h3 class="mt-6">منطق Auto-approve vs Manual Review</h3>
+      <pre class="code-block">
+<span class="c-com">// التسلسل الكامل لمعالجة طلب جديد</span>
+<span class="c-key">async function</span> <span class="c-fn">processApplication</span>(application) {
+  <span class="c-key">const</span> review = <span class="c-key">await</span> <span class="c-fn">runAutoReview</span>(application);
+
+  <span class="c-key">if</span> (review.blocked_profile) {
+    <span class="c-key">return</span> <span class="c-fn">setStatus</span>(<span class="c-str">'rejected'</span>, <span class="c-str">'محظور من النظام'</span>); <span class="c-com">// قاعدة 3.2</span>
+  }
+
+  <span class="c-key">if</span> (!review.gender_match || !review.age_check.pass) {
+    <span class="c-key">return</span> <span class="c-fn">setStatus</span>(<span class="c-str">'rejected'</span>, <span class="c-fn">buildReason</span>(review)); <span class="c-com">// قاعدة 3.3، 3.4</span>
+  }
+
+  <span class="c-key">if</span> (!review.capacity.pass) {
+    <span class="c-key">return</span> <span class="c-fn">setStatus</span>(<span class="c-str">'waitlisted'</span>); <span class="c-com">// قاعدة 3.5</span>
+  }
+
+  <span class="c-key">return</span> <span class="c-fn">setStatus</span>(<span class="c-str">'pending'</span>); <span class="c-com">// يذهب للمراجعة اليدوية</span>
+}
+      </pre>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 9: DEPENDENCIES ===== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد مرحلة التسجيل</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على (Requires)</h5>
+          <p><strong><a href="phase-01-foundation.html">Phase 01 — الأساس المعماري:</a></strong><br>
+          نظام auth و JWT لحماية admin endpoints. جدول users لإنشاء حساب المتدرب. نظام audit_logs لتسجيل عمليات approve/reject/block. Rate limiting للحماية من spam على الصفحة العامة. BullMQ queue للإشعارات عند approve.</p>
+          <p class="mt-6"><strong><a href="phase-02-master-data.html">Phase 02 — البيانات الرئيسية:</a></strong><br>
+          training_programs وـ groups يجب أن تكون موجودة قبل إنشاء أي رابط تسجيل. gender_restriction في training_programs تُستخدم في auto-review. max_trainees في groups تُستخدم في capacity check. companies تُستخدم لتحديد نطاق blocked_profiles.</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى (Delivers)</h5>
+          <p><strong><a href="phase-04-trainee-lifecycle.html">Phase 04 — دورة حياة المتدرب:</a></strong><br>
+          جدول trainees المُنشأ عند approve يحمل كل التفاصيل اللازمة لإدارة العقود والرواتب والتعديلات. سجل application_id محفوظ في trainee للرجوع للطلب الأصلي.</p>
+          <p class="mt-6"><strong><a href="phase-09-portals-admin-ops.html">Phase 09 — بوابة المتدرب:</a></strong><br>
+          user account المُنشأ تلقائياً عند approve يُمكِّن المتدرب من تسجيل الدخول لبوابته.</p>
+          <p class="mt-6"><strong><a href="phase-07-violations-financials.html">Phase 07 — المخالفات:</a></strong><br>
+          المخالفات من درجة 5 (طرد) تُضيف إدخالاً في blocked_profiles تلقائياً بـ auto_blocked = true.</p>
+          <p class="mt-6"><strong><a href="phase-08-notifications-reports.html">Phase 08 — الإشعارات:</a></strong><br>
+          national_id_expiry_date المحفوظ في trainees يُستخدم لإرسال تنبيه قبل 30 يوم.</p>
+        </div>
+      </div>
+
+      <h3 class="mt-6">نقاط التكامل الحرجة</h3>
+      <div class="timeline">
+        <div class="timeline-item ti-teal">
+          <h4>registration_links.program_id → training_programs (Phase 02)</h4>
+          <p>FK يجب أن يتحقق من وجود البرنامج قبل إنشاء الرابط. البرنامج يجب أن يكون is_active = true.</p>
+        </div>
+        <div class="timeline-item ti-navy">
+          <h4>applications.approved → users (Phase 01)</h4>
+          <p>إنشاء user في نفس transaction مع trainee. username = national_id، password = bcrypt(random_8_chars)، role = 'trainee'.</p>
+        </div>
+        <div class="timeline-item ti-rust">
+          <h4>blocked_profiles.auto_blocked ← violations (Phase 07)</h4>
+          <p>Phase 07 يكتب مباشرة في blocked_profiles عند تطبيق مخالفة درجة 5. هذا الاتجاه يعني Phase 03 يجب أن يبقى الـ schema مستقر.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>trainees.national_id_expiry_date → notifications (Phase 08)</h4>
+          <p>Phase 08 يقرأ هذا الحقل في cron job يومي للتحقق من البطاقات المنتهية قريباً.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 10: RISKS ===== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يُعقِّد التنفيذ</h2>
+
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><span class="ico">🔴</span><strong>Excel Parsing Complexity:</strong> ملفات Excel قد تأتي بـ encoding مختلف (Windows-1256 للعربية)، تنسيقات تاريخ متعددة (Hijri/Gregorian)، خلايا مدمجة، أو صفوف فارغة في الوسط. يجب استخدام مكتبة mature مثل <code>exceljs</code> مع معالجة شاملة للـ edge cases.</li>
+            <li><span class="ico">🔴</span><strong>Storage Cost للصور:</strong> لو كل متدرب رفع صورة بـ 3-5MB، مع آلاف المتدربين التكلفة ترتفع. الحل: compress على الـ client قبل الرفع (max 400KB)، وتحويل لـ WebP. تحديد حد أقصى للحجم 2MB في backend أيضاً.</li>
+            <li><span class="ico">🟡</span><strong>Spam عبر الروابط العامة:</strong> الروابط العامة مكشوفة — يمكن ملء النموذج بشكل آلي (bots). الحل: CAPTCHA (hCaptcha أو Google reCAPTCHA)، rate limiting per IP (max 3 submissions/hour)، fingerprinting الطلبات.</li>
+            <li><span class="ico">🟡</span><strong>Race Condition في Capacity Check:</strong> لو قدَّم متدربان في نفس اللحظة وبقيت مقعد واحد، قد يُقبَلا معاً. الحل: استخدام SELECT FOR UPDATE أو transaction isolation level SERIALIZABLE على جدول groups.</li>
+            <li><span class="ico">🟡</span><strong>Form Builder Backward Compatibility:</strong> لو عدَّل المسؤول بنية النموذج بعد وجود طلبات pending، قد تُقرأ form_data JSONB القديمة بشكل خاطئ. يجب تخزين snapshot من schema الحقول مع كل طلب.</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li><span class="ico">✅</span>S3 bucket أو Minio instance مُعدَّة ومتاحة قبل بدء التطوير. التكوين (credentials, bucket name) محفوظ في .env.</li>
+            <li><span class="ico">✅</span>WhatsApp Business API (Twilio أو Meta Cloud API) متاح وله حصة كافية من الرسائل. نموذج رسالة approve و reject مُعتمَدان مسبقاً من Meta.</li>
+            <li><span class="ico">✅</span>SMTP مُعَدّ وعامل (SendGrid أو Mailgun) لإرسال رسائل القبول والرفض.</li>
+            <li><span class="ico">✅</span>training_programs و groups مُدخَّلة في النظام قبل بدء أي تسجيل. لا يمكن إنشاء رابط تسجيل لبرنامج غير موجود.</li>
+            <li><span class="ico">✅</span>الحقول الأساسية (الاسم، الهوية الوطنية، الجنس، تاريخ الميلاد، الجوال) موجودة دائماً في النموذج ولا يمكن حذفها من Form Builder — هي required hard-coded.</li>
+            <li><span class="ico">✅</span>الـ national_id يستخدم كـ unique identifier للمتدرب عبر كل النظام. لا يمكن وجود application أو trainee بنفس الـ national_id في نفس المجموعة.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ===== SECTION 11: CHECKLIST ===== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة اكتملت؟</h2>
+      <p class="section-desc">
+        هذه القائمة تُستخدَم كـ Definition of Done — المرحلة لا تنتهي حتى تُعلَّم جميع البنود بـ ✅.
+      </p>
+
+      <ol class="num-list">
+        <li><strong>Backend — Form Builder:</strong> CRUD كامل لـ form_sections وـ form_fields مع validation على field_type وـ field_key uniqueness. Reordering endpoint يعمل بشكل atomic. ✅</li>
+        <li><strong>Backend — Registration Links:</strong> إنشاء links مع validation على expires_at و max_uses. endpoint عام GET /public/register/:code يتحقق من جميع قواعد الصلاحية (قاعدة 3.1) ويعيد HTTP 410 عند الفشل. ✅</li>
+        <li><strong>Backend — Applications:</strong> POST /public/applications يُشغِّل auto-review pipeline كاملاً (قواعد 3.2–3.5) ويحفظ النتيجة في auto_review_result. ✅</li>
+        <li><strong>Backend — Approve Transaction:</strong> POST /applications/:id/approve يُنفِّذ atomic transaction تنشئ users + trainees + تُحدِّث group.current_trainees + تُصدر BullMQ notification job (قاعدة 3.6). ✅</li>
+        <li><strong>Backend — Reject Validation:</strong> POST /applications/:id/reject يتحقق من rejection_reason (min 10 chars) في zod schema قبل تنفيذ أي شيء (قاعدة 3.9). ✅</li>
+        <li><strong>Backend — Bulk Import:</strong> POST /bulk-import يعالج .xlsx بـ exceljs، يطبق auto-review على كل صف، يعيد error report كـ Excel مع عمود "سبب الفشل" (قاعدة 3.8). ✅</li>
+        <li><strong>Backend — Blocked Profiles:</strong> CRUD لـ blocked_profiles. auto_blocked = true يُعيَّن فقط من Phase 07. رفع الحظر يُسجَّل في audit_logs. ✅</li>
+        <li><strong>Frontend — Form Builder UI:</strong> شاشة بناء النموذج تعمل بـ drag &amp; drop للأقسام والحقول. معاينة حية للنموذج. لا يمكن حذف الحقول الإلزامية الأساسية (national_id، full_name، gender، dob، phone). ✅</li>
+        <li><strong>Frontend — Public Registration Page:</strong> تعمل على mobile (375px+). تعرض CAPTCHA. تضغط الصورة على الـ client. تعرض رسالة خطأ واضحة إذا كان الرابط منتهياً. تعرض رقم الطلب بعد الإرسال. ✅</li>
+        <li><strong>Frontend — Applications Review:</strong> قائمة مع فلاتر تعمل. auto_review_result يُعرَض بشكل مرئي واضح (pass/fail لكل check). Waitlist tab مستقل. ✅</li>
+        <li><strong>Frontend — Bulk Import:</strong> رفع ملف مع progress bar. معاينة أول 10 صفوف قبل Import. تنزيل error report بعد الانتهاء. ✅</li>
+        <li><strong>Database — Migrations:</strong> 6 جداول جديدة بـ migrations منفصلة. Indexes على: registration_links.code، applications.national_id، applications.status. ✅</li>
+        <li><strong>Testing — Auto-Review:</strong> unit tests لكل rule (3.1–3.5) مع edge cases: رابط منتهي بثانية واحدة، متقدم بعمر 17 سنة و364 يوم، مجموعة ممتلئة بالضبط. ✅</li>
+        <li><strong>Testing — Race Condition:</strong> integration test يُرسِل 2 طلبات متزامنة لمجموعة بمقعد واحد متبقٍّ — يتأكد من قبول طلب واحد فقط. ✅</li>
+        <li><strong>Documentation — API:</strong> جميع endpoints موثَّقة في Postman collection مع examples للـ request/response وحالات الخطأ. ✅</li>
+      </ol>
+
+      <div class="alert al-teal">
+        <span class="ico">🔗</span>
+        <div>
+          <strong>تسليم المرحلة:</strong> بعد اكتمال جميع البنود، تُسلَّم trainees table بـ statuses active إلى <a href="phase-04-trainee-lifecycle.html">Phase 04 — دورة حياة المتدرب</a> لبدء إدارة العقود والرواتب.
+        </div>
+      </div>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-02-master-data.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٢. البيانات الرئيسية</span>
+      </a>
+      <a href="phase-04-trainee-lifecycle.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٤. دورة حياة المتدرب</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#checklist">قائمة المخرجات</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٥ — الحضور والعمليات | معهد ريادة الغد</title>
+<meta name="description" content="توثيق كامل للمرحلة الخامسة: نظام الحضور والعمليات اليومية — 4 مصادر بصمة وإلكتروني ويدوي وإكسل، 6 جداول قاعدة بيانات، 15 API endpoint، 6 شاشات إدارية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html" class="active">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٥ — الحضور والعمليات</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: عالي جداً · ⏱ 3 أسابيع تنفيذ</div>
+    <div class="hero-label">المرحلة ٠٥ من ١٠ · Attendance &amp; Daily Operations</div>
+    <h1>الحضور والعمليات<br><span>نظام متكامل لرصد الحضور من أربعة مصادر</span></h1>
+    <p class="hero-desc">
+      قلب النظام التشغيلي — هذه المرحلة تبني الآلية الكاملة لتسجيل حضور المتدربين يومياً عبر أربعة مصادر ذات أولويات مُدرَّجة: البصمة الإلكترونية (أعلى أولوية)، ثم تسجيل الدخول الإلكتروني عبر البوابة، ثم الإدخال اليدوي من الإدارة، وأخيراً الاستيراد من Excel. تشمل المرحلة منطق الغياب التلقائي، حساب التأخير، التقويم الرسمي، وآلية المصالحة بين المصادر المتعارضة. أي خلل في هذه المرحلة يعطّل المراحل ٦ و٧ و٨ كلياً.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>6</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>6</strong><span>شاشة إدارية</span></div>
+      <div class="hero-meta-item"><strong>15</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>3</strong><span>أسابيع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot done"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot current"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Main Body -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ============================
+         Section 1: Summary
+         ============================ -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة الخامسة تبني نظام الحضور الكامل — من لحظة وصول إشارة البصمة من الجهاز وحتى ظهور تقرير الغياب الشهري. تشمل أربعة مصادر مُرتَّبة بأولويات صارمة، آلية مصالحة تلقائية بين المصادر المتعارضة، تقويم الإجازات الرسمية والاستثنائية، وعداد غيابات يُطلق إشعارات تلقائية عند عتبات محددة.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p5">
+          <h3>🎯 الهدف</h3>
+          <p>
+            بناء بنية تحتية موثوقة لتسجيل الحضور تدعم أربعة مصادر بيانات متزامنة، مع ضمان سلامة البيانات عبر آلية الأولويات والمصالحة، وتوليد إحصاءات يومية/أسبوعية/شهرية تُغذّي التقارير والإشعارات التلقائية.
+          </p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li>6 جداول قاعدة بيانات مُهيَّأة ومُفهرَسة</li>
+            <li>15 API endpoint موثَّقة ومختبَرة</li>
+            <li>6 شاشات إدارية كاملة</li>
+            <li>BullMQ queue لمصالحة البصمة</li>
+            <li>Materialized view للغيابات المتراكمة</li>
+            <li>منطق تقويم موحَّد (رسمي + استثنائي)</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><a href="phase-01-foundation.html">المرحلة ١</a> — Auth، roles، JWT، database setup</li>
+            <li><a href="phase-02-master-data.html">المرحلة ٢</a> — Groups، rooms، schedules، training_programs</li>
+            <li><a href="phase-04-trainee-lifecycle.html">المرحلة ٤</a> — Trainees في المجموعات (trainee_id FK)</li>
+            <li>جهاز بصمة أو API للاختبار (mock مقبول)</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong>المرحلة ٦:</strong> الإجازات تُعدِّل سجلات الحضور (excused بدل absent) — تحتاج attendance_id.<br>
+            <strong>المرحلة ٧:</strong> عداد الغيابات يُطلق درجة المخالفة الخامسة (طرد محتمل).<br>
+            <strong>المرحلة ٨:</strong> تقارير الحضور الشهرية والتنبيهات المُجمَّعة تستهلك stats API.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 2: Why
+         ============================ -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">الحضور هو مركز ثقل العملية التدريبية كلها</h2>
+      <p class="section-desc">
+        لا يمكن بناء نظام مخالفات (مرحلة ٧) دون عداد غيابات دقيق. لا يمكن حساب الراتب (مرحلة ٧) دون معدّل حضور. لا يمكن إصدار تقارير الأداء (مرحلة ٨) دون بيانات يومية منظمة. هذه المرحلة تأتي الآن لأن البنية التحتية (مرحلة ١) والمجموعات (مرحلة ٢) والمتدربين (مرحلة ٤) جاهزة — وهي الشروط الأساسية لأي سجل حضور صالح.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📡</div>
+            <div>
+              <div class="card-title">تعدد المصادر — مشكلة حقيقية</div>
+              <div class="card-sub">لماذا نحتاج أولويات صارمة؟</div>
+            </div>
+          </div>
+          <p>
+            في الواقع العملي قد يُسجِّل المتدرب بصمة الدخول ثم يُسجِّل المشرف دخوله يدوياً في نفس اليوم. لو قبلنا المصدرين فسنحصل على سجلَّين لنفس اليوم — بيانات مكررة وأوقات متعارضة. الحل: قاعدة الأولوية تُبقي مصدر البصمة (90) وتُؤرشف المدخل اليدوي (50) في سجل التدقيق.
+          </p>
+        </div>
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">📅</div>
+            <div>
+              <div class="card-title">التقويم الديناميكي — ضرورة لا رفاهية</div>
+              <div class="card-sub">لماذا نحتاج attendance_day_config؟</div>
+            </div>
+          </div>
+          <p>
+            مجموعة قد تحضر أحد-ثلاثاء-خميس فقط (3 أيام/أسبوع)، ومجموعة أخرى اثنين-أربعاء-خميس. لو احتسبنا غياب السبت على مجموعة لا تتدرب فيه = بيانات خاطئة تُشعل إشعارات كاذبة وتُعطّل المراحل اللاحقة.
+          </p>
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚠️</span>
+        <div>
+          <strong>ترتيب التنفيذ حرج:</strong> يجب اكتمال <code>attendance_day_config</code> لكل مجموعة <em>قبل</em> تشغيل أي عملية استيراد أو مصالحة، وإلا سيُعامَل كل يوم يوم تدريب بشكل افتراضي وتتضخم أعداد الغياب بشكل خاطئ.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 3: Modules
+         ============================ -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">ست وحدات تشغيلية متكاملة</h2>
+
+      <div class="grid grid-3">
+
+        <div class="card card-accent c-p5">
+          <div class="card-head">
+            <div class="card-icon">🖐️</div>
+            <div>
+              <div class="card-title">مصادر الحضور الأربعة</div>
+              <div class="card-sub">Attendance Sources</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="badge b-purple">90</span> Fingerprint — بصمة إلكترونية تلقائية</li>
+            <li><span class="badge b-teal">70</span> Electronic — تسجيل دخول من البوابة</li>
+            <li><span class="badge b-navy">50</span> Manual — إدخال يدوي من الإدارة</li>
+            <li><span class="badge b-gray">30</span> Excel Import — بيانات تاريخية</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📋</div>
+            <div>
+              <div class="card-title">سجل الحضور اليومي</div>
+              <div class="card-sub">Daily Attendance Record</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>وقت الدخول والخروج لكل متدرب</li>
+            <li>الحالات: present / absent / late / half_day / excused</li>
+            <li>ربط المصدر وأولويته بكل سجل</li>
+            <li>ملاحظات اختيارية + recorded_by</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-gold">
+          <div class="card-head">
+            <div class="card-icon">🗓️</div>
+            <div>
+              <div class="card-title">التقويم والاستثناءات</div>
+              <div class="card-sub">Calendar &amp; Exceptions</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>الإجازات الرسمية (وطنية + مؤسسية)</li>
+            <li>استثناءات الجدول: إلغاء / نقل / يوم طارئ</li>
+            <li>إعداد أيام التدريب لكل مجموعة (0–6)</li>
+            <li>دعم التقويم الهجري للاستيراد</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-rust">
+          <div class="card-head">
+            <div class="card-icon">⚡</div>
+            <div>
+              <div class="card-title">مصالحة البصمة</div>
+              <div class="card-sub">Fingerprint Reconciliation</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>BullMQ retry queue لو الجهاز offline</li>
+            <li>مقارنة البصمة بالمدخل الإلكتروني/اليدوي</li>
+            <li>تسجيل تعارض الأولويات في attendance_sources_log</li>
+            <li>تشغيل يدوي من الإدارة عند الحاجة</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">📊</div>
+            <div>
+              <div class="card-title">عداد الغيابات والإشعارات</div>
+              <div class="card-sub">Absence Counters</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>Materialized view: absence_counters</li>
+            <li>5 غيابات → إشعار تحذير أول (WhatsApp + Email)</li>
+            <li>15 غياب → إشعار طرد + فتح مخالفة درجة 5</li>
+            <li>last_notification_sent_at لمنع تكرار الإشعار</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">📥</div>
+            <div>
+              <div class="card-title">استيراد Excel + تقارير</div>
+              <div class="card-sub">Excel Import &amp; Stats</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li>قالب Excel موحَّد مع validation</li>
+            <li>تقرير أخطاء تفصيلي بالصفوف الفاشلة</li>
+            <li>تجميع: يومي → أسبوعي → شهري → دوري</li>
+            <li>Stats API تُغذّي لوحة القيادة اليومية</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 4: Screens
+         ============================ -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">ست شاشات إدارية لإدارة الحضور</h2>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الشاشة</th>
+              <th>Route</th>
+              <th>الوصف</th>
+              <th>الأدوار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-purple">١</span></td>
+              <td>لوحة الحضور اليومي</td>
+              <td><code>/attendance/daily</code></td>
+              <td>جدول شامل بحضور كل متدرب في اليوم الحالي — فلاتر بالمجموعة والحالة، مع ملخص إحصائي سريع (نسبة الحضور، عدد المتأخرين، عدد الغائبين)</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-teal">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-purple">٢</span></td>
+              <td>تسجيل حضور يدوي</td>
+              <td><code>/attendance/manual</code></td>
+              <td>نموذج لتسجيل أو تعديل حضور متدرب محدد: اختيار التاريخ، وقت الدخول/الخروج، الحالة، ملاحظة. يُسجَّل المصدر تلقائياً كـ manual مع recorded_by</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-teal">Staff</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-purple">٣</span></td>
+              <td>استيراد من Excel</td>
+              <td><code>/attendance/import</code></td>
+              <td>رفع ملف Excel بحضور تاريخي، preview قبل الحفظ، تقرير أخطاء قابل للتنزيل (الصفوف الفاشلة مع سبب الفشل)، دعم التواريخ الهجرية والميلادية</td>
+              <td><span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-purple">٤</span></td>
+              <td>استثناءات الجدول</td>
+              <td><code>/attendance/exceptions</code></td>
+              <td>إدارة استثناءات أيام التدريب: إلغاء يوم، نقله لتاريخ آخر، أو إضافة يوم طارئ. يؤثر على حسابات الغياب فوراً بعد الحفظ</td>
+              <td><span class="badge b-navy">Manager</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-purple">٥</span></td>
+              <td>الإجازات الرسمية</td>
+              <td><code>/attendance/holidays</code></td>
+              <td>تقويم الإجازات الوطنية والمؤسسية. إضافة، تعديل، حذف. يمكن تحديد ما إذا كانت الإجازة تؤثر على جميع المجموعات أم مجموعات محددة</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-orange">Super Admin</span></td>
+            </tr>
+            <tr>
+              <td><span class="badge b-purple">٦</span></td>
+              <td>إعدادات أيام التدريب</td>
+              <td><code>/attendance/day-config/:groupId</code></td>
+              <td>تحديد أيام الأسبوع التي تتدرب فيها كل مجموعة (أحد=0 إلى سبت=6). واجهة checkbox بسيطة تُغذّي جدول attendance_day_config مباشرة</td>
+              <td><span class="badge b-navy">Manager</span> <span class="badge b-teal">Staff</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">📱</span>
+        <div>
+          <strong>بوابة المتدرب:</strong> يرى المتدرب سجل حضوره الشخصي (read-only) في بوابته الذاتية عبر المرحلة ٩. التسجيل الإلكتروني عبر <code>POST /api/attendance/electronic-checkin</code> يُتيح له تسجيل دخوله بنفسه بشرط التحقق من الموقع الجغرافي وبصمة الجهاز.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 5: Database
+         ============================ -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">الجداول الستة لمنظومة الحضور</h2>
+
+      <div class="grid grid-3">
+
+        <!-- attendance -->
+        <div class="db-card">
+          <div class="db-head dh-purple">📋 attendance</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span> trainee_id → trainees</div>
+            <div class="db-field"><span class="fk">FK</span> group_id → groups</div>
+            <div class="db-field">date · date NOT NULL</div>
+            <div class="db-field">check_in_time · time</div>
+            <div class="db-field">check_out_time · time</div>
+            <div class="db-field">status · ENUM<br><code class="mono">present | absent | late | half_day | excused</code></div>
+            <div class="db-field">source · ENUM<br><code class="mono">fingerprint | electronic | manual | excel</code></div>
+            <div class="db-field">source_priority · smallint (30–90)</div>
+            <div class="db-field">notes · text</div>
+            <div class="db-field"><span class="fk">FK</span> recorded_by → users</div>
+            <div class="db-field">created_at · timestamptz</div>
+            <div class="db-field"><span class="badge b-gray">INDEX</span> (trainee_id, date)</div>
+            <div class="db-field"><span class="badge b-gray">INDEX</span> (group_id, date)</div>
+            <div class="db-field"><span class="badge b-orange">UNIQUE</span> (trainee_id, date) — منع تكرار اليوم</div>
+          </div>
+        </div>
+
+        <!-- attendance_sources_log -->
+        <div class="db-card">
+          <div class="db-head dh-purple">🔍 attendance_sources_log</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span> attendance_id → attendance</div>
+            <div class="db-field">source · ENUM<br><code class="mono">fingerprint | electronic | manual | excel</code></div>
+            <div class="db-field">raw_data · JSONB<br><small>بيانات الإشارة الأصلية من الجهاز أو المستخدم</small></div>
+            <div class="db-field">device_id · varchar(100)<br><small>null إذا لم يكن جهاز بصمة</small></div>
+            <div class="db-field">timestamp · timestamptz<br><small>وقت وصول الإشارة فعلياً</small></div>
+            <div class="db-field">priority_override · bool<br><small>true إذا كان هذا المصدر قد خسر الأولوية</small></div>
+            <div class="db-field"><span class="badge b-gray">INDEX</span> (attendance_id)</div>
+          </div>
+        </div>
+
+        <!-- public_holidays -->
+        <div class="db-card">
+          <div class="db-head dh-purple">🗓️ public_holidays</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid</div>
+            <div class="db-field">date · date NOT NULL</div>
+            <div class="db-field">name_ar · varchar(200)</div>
+            <div class="db-field">name_en · varchar(200)</div>
+            <div class="db-field">is_national · bool DEFAULT true<br><small>وطني (true) أم مؤسسي (false)</small></div>
+            <div class="db-field">affects_all_groups · bool DEFAULT true</div>
+            <div class="db-field">created_at · timestamptz</div>
+            <div class="db-field"><span class="badge b-gray">INDEX</span> (date)</div>
+            <div class="db-field"><span class="badge b-orange">UNIQUE</span> (date) — إجازة واحدة لكل تاريخ</div>
+          </div>
+        </div>
+
+        <!-- schedule_exceptions -->
+        <div class="db-card">
+          <div class="db-head dh-purple">🔀 schedule_exceptions</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span> group_id → groups</div>
+            <div class="db-field">date · date NOT NULL<br><small>تاريخ الاستثناء المُطبَّق</small></div>
+            <div class="db-field">exception_type · ENUM<br><code class="mono">cancelled | moved | emergency_day</code></div>
+            <div class="db-field">original_date · date<br><small>لـ moved: التاريخ الأصلي</small></div>
+            <div class="db-field">new_date · date<br><small>لـ moved: التاريخ الجديد</small></div>
+            <div class="db-field">reason · text</div>
+            <div class="db-field"><span class="fk">FK</span> created_by → users</div>
+            <div class="db-field">created_at · timestamptz</div>
+          </div>
+        </div>
+
+        <!-- attendance_day_config -->
+        <div class="db-card">
+          <div class="db-head dh-purple">⚙️ attendance_day_config</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid</div>
+            <div class="db-field"><span class="fk">FK</span> group_id → groups</div>
+            <div class="db-field">day_of_week · smallint<br><code class="mono">0=أحد · 1=اثنين · ... · 6=سبت</code></div>
+            <div class="db-field">is_training_day · bool DEFAULT false</div>
+            <div class="db-field">created_at · timestamptz</div>
+            <div class="db-field"><span class="badge b-orange">UNIQUE</span> (group_id, day_of_week)</div>
+            <div class="db-field"><span class="badge b-gray">NOTE</span> 7 صفوف لكل مجموعة (يوم 0 إلى 6)</div>
+          </div>
+        </div>
+
+        <!-- absence_counters -->
+        <div class="db-card">
+          <div class="db-head dh-purple">📊 absence_counters</div>
+          <div class="db-body">
+            <div class="db-field"><span class="badge b-purple">MAT VIEW</span> Materialized View</div>
+            <div class="db-field"><span class="fk">FK</span> trainee_id → trainees</div>
+            <div class="db-field">cumulative_absences · int<br><small>العدد الكلي منذ بداية الدورة</small></div>
+            <div class="db-field">last_absent_date · date</div>
+            <div class="db-field">last_notification_sent_at · timestamptz<br><small>null = لم يُرسَل إشعار بعد</small></div>
+            <div class="db-field">warning_level · smallint<br><code class="mono">0=لا شيء · 1=تحذير أول · 2=طرد محتمل</code></div>
+            <div class="db-field">
+              <span class="badge b-gray">REFRESH</span>
+              يتحدث عبر trigger بعد كل INSERT/UPDATE على attendance حيث status = absent
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># العلاقات الأساسية</span>
+trainees    <span class="c-key">1:N</span>  attendance            <span class="c-com"># متدرب → سجلات حضوره</span>
+groups      <span class="c-key">1:N</span>  attendance            <span class="c-com"># مجموعة → حضور كل أعضائها</span>
+attendance  <span class="c-key">1:N</span>  attendance_sources_log <span class="c-com"># سجل حضور → مصادر بديلة مُؤرشفة</span>
+groups      <span class="c-key">1:N</span>  schedule_exceptions    <span class="c-com"># مجموعة → استثناءات جدولها</span>
+groups      <span class="c-key">1:7</span>  attendance_day_config  <span class="c-com"># مجموعة → 7 صفوف (أيام الأسبوع)</span>
+trainees    <span class="c-key">1:1</span>  absence_counters       <span class="c-com"># متدرب → عداد غياباته (mat view)</span>
+public_holidays <span class="c-key">N/A</span> <span class="c-com"># جدول مستقل، يُستعلَم عند حساب أيام التدريب</span>
+
+<span class="c-com"># القيود المهمة</span>
+attendance: UNIQUE (trainee_id, date)   <span class="c-com"># ← يمنع سجلين لنفس اليوم</span>
+attendance_day_config: UNIQUE (group_id, day_of_week)  <span class="c-com"># ← 7 صفوف فقط/مجموعة</span>
+public_holidays: UNIQUE (date)          <span class="c-com"># ← إجازة واحدة/تاريخ</span>
+      </div>
+
+      <h3 class="mt-6">فهارس الأداء المقترحة</h3>
+      <div class="code-block">
+<span class="c-com">-- الفهارس الضرورية للاستعلامات المتكررة</span>
+<span class="c-key">CREATE INDEX</span> idx_att_trainee_date    <span class="c-fn">ON</span> attendance (trainee_id, date <span class="c-key">DESC</span>);
+<span class="c-key">CREATE INDEX</span> idx_att_group_date      <span class="c-fn">ON</span> attendance (group_id, date <span class="c-key">DESC</span>);
+<span class="c-key">CREATE INDEX</span> idx_att_status          <span class="c-fn">ON</span> attendance (status) <span class="c-fn">WHERE</span> status = <span class="c-str">'absent'</span>;
+<span class="c-key">CREATE INDEX</span> idx_holiday_date         <span class="c-fn">ON</span> public_holidays (date);
+<span class="c-key">CREATE INDEX</span> idx_excep_group_date     <span class="c-fn">ON</span> schedule_exceptions (group_id, date);
+<span class="c-key">CREATE INDEX</span> idx_sources_log_att      <span class="c-fn">ON</span> attendance_sources_log (attendance_id);
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 6: APIs
+         ============================ -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">١٥ نقطة اتصال موزَّعة على ٤ مجموعات</h2>
+
+      <!-- Group 1: Core Attendance -->
+      <div class="api-group">
+        <div class="api-group-title">📋 الحضور الأساسي — Core Attendance</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/attendance</span>
+            <span class="api-desc">قائمة الحضور مع فلاتر: group_id، trainee_id، date_from، date_to، status، source — مع pagination</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/attendance</span>
+            <span class="api-desc">إدخال يدوي — يُسجَّل source=manual تلقائياً، يُطلق trigger تحديث absence_counters</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/attendance/:id</span>
+            <span class="api-desc">تعديل سجل حضور — المصدر الأعلى أولوية فقط يمكنه التعديل، وإلا يُرفَض الطلب</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/attendance/fingerprint-sync</span>
+            <span class="api-desc">Webhook من جهاز البصمة — يُضاف إلى BullMQ queue للمعالجة غير المتزامنة. يقبل batch من الأحداث</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/attendance/electronic-checkin</span>
+            <span class="api-desc">تسجيل دخول المتدرب عبر البوابة — يتحقق من GPS coordinates + device fingerprint قبل القبول</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/attendance/excel-import</span>
+            <span class="api-desc">رفع ملف Excel — يُعيد preview + error_report (صفوف فاشلة) قبل الحفظ الفعلي. يقبل multipart/form-data</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/attendance/reconcile</span>
+            <span class="api-desc">تشغيل المصالحة يدوياً من الإدارة — يقارن كل مصادر اليوم المحدد ويُطبِّق قاعدة الأولوية</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 2: Statistics -->
+      <div class="api-group">
+        <div class="api-group-title">📊 الإحصاءات والتقارير — Statistics &amp; Reports</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/attendance/summary</span>
+            <span class="api-desc">ملخص إجمالي — يقبل فلاتر group_id، trainee_id، date_from، date_to. يُعيد: نسبة الحضور، إجمالي الحاضرين/الغائبين/المتأخرين</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/attendance/stats/daily</span>
+            <span class="api-desc">إحصاءات اليوم الحالي لمجموعة — تُغذّي لوحة القيادة. مُخزَّنة في Redis cache (ttl: 300s)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/attendance/stats/group/:id</span>
+            <span class="api-desc">تقرير شهري تفصيلي لمجموعة — نسب الحضور لكل متدرب، الأيام المحتسبة، الغياب، التأخر</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 3: Calendar Management -->
+      <div class="api-group">
+        <div class="api-group-title">🗓️ التقويم والاستثناءات — Calendar Management</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/public-holidays</span>
+            <span class="api-desc">قائمة الإجازات الرسمية — فلتر بالسنة. يُعيد is_national و affects_all_groups</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/public-holidays</span>
+            <span class="api-desc">إضافة إجازة رسمية — يتحقق من UNIQUE(date) قبل الحفظ</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/public-holidays/:id</span>
+            <span class="api-desc">تعديل إجازة — تغيير الاسم أو النوع أو نطاق التأثير</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/public-holidays/:id</span>
+            <span class="api-desc">حذف إجازة — يُعيد حساب سجلات الحضور المُؤثَّرة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/schedule-exceptions</span>
+            <span class="api-desc">استثناءات جدول مجموعة — فلتر بـ group_id والفترة الزمنية</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/schedule-exceptions</span>
+            <span class="api-desc">إنشاء استثناء: cancelled / moved / emergency_day. لـ moved يجب إرسال original_date و new_date</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/schedule-exceptions/:id</span>
+            <span class="api-desc">تعديل استثناء قائم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-del">DELETE</span>
+            <span class="api-path">/api/schedule-exceptions/:id</span>
+            <span class="api-desc">إلغاء الاستثناء — يُعاد احتساب الغياب للمجموعة في ذلك اليوم</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 4: Day Config -->
+      <div class="api-group">
+        <div class="api-group-title">⚙️ إعداد أيام التدريب — Attendance Day Config</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/attendance-day-config/:group_id</span>
+            <span class="api-desc">إعداد أيام التدريب لمجموعة — يُعيد مصفوفة 7 عناصر (0–6) مع is_training_day لكل يوم</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/attendance-day-config/:group_id</span>
+            <span class="api-desc">إنشاء الإعداد الأولي لمجموعة جديدة — يُنشئ 7 صفوف دفعة واحدة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/attendance-day-config/:group_id</span>
+            <span class="api-desc">تحديث أيام التدريب — يقبل مصفوفة JSON بالأيام المُفعَّلة. يُبطل Redis cache للمجموعة</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 7: User Flows
+         ============================ -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك المستخدم في منظومة الحضور؟</h2>
+
+      <h3>🔸 تدفق البصمة الإلكترونية (التلقائي)</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">جهاز البصمة يقرأ بصمة المتدرب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Webhook إلى <code>/fingerprint-sync</code></div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">BullMQ queue يستقبل الحدث</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Worker يتحقق: هل يوجد سجل لهذا اليوم؟</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">لا → ينشئ سجلاً جديداً (source=fingerprint, priority=90)</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-navy">نعم → يقارن الأولوية</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">البصمة أعلى → تُحدِّث السجل، القديم يُؤرشَف في sources_log</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُحدِّث absence_counters عبر trigger</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">Redis cache للمجموعة يُبطَل</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق المشرف — تسجيل يدوي</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">لوحة الحضور اليومي</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "تسجيل يدوي" لمتدرب غائب</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُدخل وقت الدخول والحالة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy"><code>POST /api/attendance</code> source=manual</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">السجل يُحفظ + trigger يُحدِّث absence_counters</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق استيراد Excel</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">المشرف يرفع ملف .xlsx</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Server يُحلِّل الملف + يتحقق من التنسيق</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">Preview: صفوف صالحة + صفوف فاشلة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">المشرف يؤكد الاستيراد</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">الصفوف الصالحة تُحفظ (source=excel, priority=30)</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node fn-gold">تقرير أخطاء: صفوف فاشلة + سبب الفشل</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">قابل للتنزيل كـ CSV</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">المشرف يُصلِّح ويُعيد الرفع</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق المتدرب — تسجيل إلكتروني</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">المتدرب يفتح بوابته على هاتفه</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "تسجيل الحضور"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">البوابة تطلب الموقع الجغرافي (GPS)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-navy">Server يتحقق من Geofence + device fingerprint</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">نجاح → source=electronic (priority=70)</div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 8: Business Logic
+         ============================ -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">١١ قاعدة تشغيلية دقيقة</h2>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div>
+          <strong>قاعدة 5.1 — أولوية المصادر:</strong>
+          fingerprint (90) &gt; electronic (70) &gt; manual (50) &gt; excel (30).
+          عند تعارض مصدرَين لنفس اليوم: المصدر ذو الأولوية الأعلى يُحفظ في <code>attendance</code>، والآخر يُؤرشَف في <code>attendance_sources_log</code> مع <code>priority_override=true</code>. لا يُحذف أي مصدر أبداً — فقط يُؤرشَف للتدقيق.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">⏰</span>
+        <div>
+          <strong>قاعدة 5.2 — حساب التأخير:</strong>
+          وقت الدخول المُسجَّل يُقارَن بـ <code>schedule.start_time</code> للمجموعة.
+          تأخير &gt; 15 دقيقة → <code>status=late</code>.
+          تأخير &gt; 60 دقيقة → <code>status=absent</code> (رغم حضور البصمة).
+          نصف اليوم: خروج قبل منتصف وقت الجلسة → <code>status=half_day</code>.
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// Rule 5.2 — Late/Absent threshold logic</span>
+<span class="c-key">function</span> <span class="c-fn">resolveStatus</span>(checkIn, scheduleStart) {
+  <span class="c-key">const</span> delayMinutes = <span class="c-fn">diffMinutes</span>(checkIn, scheduleStart);
+  <span class="c-key">if</span> (delayMinutes &lt;= <span class="c-num">15</span>)  <span class="c-key">return</span> <span class="c-str">'present'</span>;
+  <span class="c-key">if</span> (delayMinutes &lt;= <span class="c-num">60</span>)  <span class="c-key">return</span> <span class="c-str">'late'</span>;
+  <span class="c-key">return</span> <span class="c-str">'absent'</span>;  <span class="c-com">// &gt; 60 دقيقة</span>
+}
+      </pre>
+
+      <div class="alert al-teal">
+        <span class="ico">🗓️</span>
+        <div>
+          <strong>قاعدة 5.3 — الإجازات الرسمية:</strong>
+          إذا كان التاريخ موجوداً في <code>public_holidays</code> وكانت <code>affects_all_groups=true</code> (أو المجموعة ضمن القائمة المُحددة) → لا يُحتسَب هذا اليوم في الغياب. سجل الحضور يبقى null (لا يُنشأ) أو يُعلَّم كـ <code>excused</code>.
+        </div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">❌</span>
+        <div>
+          <strong>قاعدة 5.4 — يوم ملغي:</strong>
+          إذا وُجد سجل في <code>schedule_exceptions</code> لهذه المجموعة وهذا التاريخ مع <code>exception_type=cancelled</code> → اليوم لا يُحتسَب تدريباً، ولا يُحسَب غياب على أحد.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🔀</span>
+        <div>
+          <strong>قاعدة 5.5 — يوم منقول:</strong>
+          <code>exception_type=moved</code> → <code>original_date</code> يُلغى تماماً (مثل قاعدة 5.4)، و<code>new_date</code> يُعامَل كيوم تدريب إضافي حتى لو لم يكن ضمن <code>attendance_day_config</code> الاعتيادي. الغياب في <code>new_date</code> يُحسَب بشكل طبيعي.
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">📆</span>
+        <div>
+          <strong>قاعدة 5.6 — أيام التدريب الديناميكية:</strong>
+          قبل احتساب أي غياب يتحقق النظام من <code>attendance_day_config</code> للمجموعة. إذا كان <code>is_training_day=false</code> لذلك اليوم → يُتجاهَل تماماً. مثال: مجموعة تتدرب أحد+ثلاثاء+خميس فقط (is_training_day=true للأيام 0,2,4 و false للبقية).
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// Rule 5.6 — isTrainingDay check</span>
+<span class="c-key">async function</span> <span class="c-fn">isTrainingDay</span>(groupId, date) {
+  <span class="c-key">const</span> dayOfWeek = <span class="c-key">new</span> <span class="c-fn">Date</span>(date).<span class="c-fn">getDay</span>(); <span class="c-com">// 0=Sunday</span>
+  <span class="c-key">const</span> config = <span class="c-key">await</span> db.<span class="c-fn">query</span>(
+    <span class="c-str">`SELECT is_training_day FROM attendance_day_config
+     WHERE group_id=$1 AND day_of_week=$2`</span>,
+    [groupId, dayOfWeek]
+  );
+  <span class="c-key">if</span> (!config.rows[<span class="c-num">0</span>]?.is_training_day) <span class="c-key">return false</span>;
+  <span class="c-key">const</span> holiday = <span class="c-key">await</span> <span class="c-fn">checkPublicHoliday</span>(date, groupId); <span class="c-com">// Rule 5.3</span>
+  <span class="c-key">const</span> exception = <span class="c-key">await</span> <span class="c-fn">checkScheduleException</span>(groupId, date); <span class="c-com">// Rules 5.4/5.5</span>
+  <span class="c-key">return</span> !holiday &amp;&amp; exception?.type !== <span class="c-str">'cancelled'</span>;
+}
+      </pre>
+
+      <div class="alert al-rust">
+        <span class="ico">🔔</span>
+        <div>
+          <strong>قاعدة 5.7 — إشعار الغياب الأول (5 غيابات):</strong>
+          عند تحديث <code>absence_counters</code> إذا وصل <code>cumulative_absences = 5</code> وكان <code>warning_level = 0</code> → يُرسَل إشعار WhatsApp + Email للمتدرب وللإدارة، ويُحدَّث <code>warning_level = 1</code> و <code>last_notification_sent_at</code>. لا يُعاد الإشعار إذا كان warning_level &gt;= 1 بالفعل.
+        </div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">🚨</span>
+        <div>
+          <strong>قاعدة 5.8 — إشعار الطرد المحتمل (15 غياب):</strong>
+          <code>cumulative_absences = 15</code> → إشعار "طرد محتمل" للمتدرب + الإدارة، يُحدَّث <code>warning_level = 2</code>، ويُنشأ تلقائياً violation في المرحلة ٧ بدرجة 5 (أعلى درجة مخالفة). هذا الـ trigger يعمل عبر BullMQ job لا عبر HTTP request مباشر.
+        </div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// Rule 5.7 + 5.8 — Absence counter trigger (PostgreSQL function)</span>
+<span class="c-key">CREATE OR REPLACE FUNCTION</span> <span class="c-fn">check_absence_threshold</span>()
+<span class="c-key">RETURNS TRIGGER AS</span> $$
+<span class="c-key">BEGIN</span>
+  <span class="c-key">IF</span> NEW.status = <span class="c-str">'absent'</span> <span class="c-key">THEN</span>
+    <span class="c-fn">REFRESH MATERIALIZED VIEW CONCURRENTLY</span> absence_counters;
+    <span class="c-com">-- BullMQ job للتحقق من العتبات وإرسال الإشعارات</span>
+    <span class="c-fn">PERFORM</span> pg_notify(<span class="c-str">'absence_threshold_check'</span>, NEW.trainee_id::text);
+  <span class="c-key">END IF</span>;
+  <span class="c-key">RETURN</span> NEW;
+<span class="c-key">END</span>;
+$$ <span class="c-key">LANGUAGE</span> plpgsql;
+      </pre>
+
+      <div class="alert al-teal">
+        <span class="ico">📍</span>
+        <div>
+          <strong>قاعدة 5.9 — التسجيل الإلكتروني بالموقع:</strong>
+          <code>POST /api/attendance/electronic-checkin</code> يتطلب: <code>latitude</code>، <code>longitude</code>، <code>device_fingerprint</code>. يتحقق Server من Geofence (مسافة ≤ 200 متر من الموقع المُعيَّن للمعهد). إذا خرج المتدرب عن النطاق → يُرفَض الطلب برسالة خطأ واضحة. الـ device_fingerprint يمنع تسجيل شخص آخر بدلاً عنه.
+        </div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🔄</span>
+        <div>
+          <strong>قاعدة 5.10 — Fingerprint Retry Queue:</strong>
+          لو كان جهاز البصمة offline (timeout أو connection refused) → يُخزَّن الحدث في BullMQ مع <code>attempts: 5</code> و <code>backoff: exponential</code>. عند استعادة الاتصال تُعالَج الأحداث المُؤجَّلة بالترتيب الزمني. الحد الأقصى لتأخير المعالجة: 24 ساعة — بعدها يُعلَّم الحدث كـ failed ويُنبَّه المشرف.
+        </div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">📄</span>
+        <div>
+          <strong>قاعدة 5.11 — تقرير أخطاء Excel:</strong>
+          كل صف فاشل في الاستيراد يُوثَّق بـ: رقم الصف، قيمة الحقل الفاشل، سبب الفشل (مثال: "رقم المتدرب غير موجود"، "تنسيق التاريخ غير صالح"، "المجموعة لا تتدرب في هذا اليوم"). التقرير يُنزَّل كـ CSV لإصلاحه وإعادة الرفع.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 9: Dependencies
+         ============================ -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">ما قبل هذه المرحلة وما بعدها</h2>
+
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على</h5>
+          <p>يجب أن تكون هذه المكونات جاهزة ومختبَرة قبل البدء:</p>
+          <p>
+            <strong><a href="phase-01-foundation.html">Phase 01 — الأساس:</a></strong>
+            نظام المصادقة (JWT)، أدوار المستخدمين (Manager/Staff/Trainee)، Winston logging، BullMQ setup، قاعدة البيانات PostgreSQL مُهيَّأة.
+          </p>
+          <p>
+            <strong><a href="phase-02-master-data.html">Phase 02 — البيانات الرئيسية:</a></strong>
+            جدول <code>groups</code> مع <code>days_per_week</code> و <code>schedule.start_time</code>. جدول <code>rooms</code>. جدول <code>training_programs</code>.
+          </p>
+          <p>
+            <strong><a href="phase-04-trainee-lifecycle.html">Phase 04 — المتدرب:</a></strong>
+            جدول <code>trainees</code> مع <code>id</code> و <code>group_id</code>. المتدرب يجب أن يكون في حالة <code>active</code> لكي يُسجَّل حضوره.
+          </p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p>المراحل التالية تستهلك مخرجات هذه المرحلة مباشرة:</p>
+          <p>
+            <strong><a href="phase-06-leaves-exceptions.html">Phase 06 — الإجازات:</a></strong>
+            عند الموافقة على إجازة → يُحدَّث <code>attendance.status</code> من <code>absent</code> إلى <code>excused</code> عبر <code>attendance_id</code>. عداد الغيابات يُعاد احتسابه.
+          </p>
+          <p>
+            <strong><a href="phase-07-violations-financials.html">Phase 07 — المخالفات:</a></strong>
+            <code>absence_counters.cumulative_absences</code> يُطلق درجة مخالفة 5 تلقائياً. معدّل الحضور يدخل في حسابات الراتب (خصومات).
+          </p>
+          <p>
+            <strong><a href="phase-08-notifications-reports.html">Phase 08 — التقارير:</a></strong>
+            <code>GET /api/attendance/stats/*</code> يُغذّي التقارير الشهرية وداشبورد المديرين. البيانات المُجمَّعة تذهب لنظام الإشعارات الأسبوعية.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="mt-6">جدول التبعيات التقنية</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المكوِّن</th>
+              <th>يعتمد على</th>
+              <th>المرحلة</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>attendance.trainee_id FK</code></td>
+              <td>جدول <code>trainees</code></td>
+              <td>Phase 04</td>
+              <td><span class="badge b-green">مطلوب</span></td>
+            </tr>
+            <tr>
+              <td><code>attendance.group_id FK</code></td>
+              <td>جدول <code>groups</code></td>
+              <td>Phase 02</td>
+              <td><span class="badge b-green">مطلوب</span></td>
+            </tr>
+            <tr>
+              <td><code>attendance_day_config</code></td>
+              <td>جدول <code>groups</code></td>
+              <td>Phase 02</td>
+              <td><span class="badge b-green">مطلوب</span></td>
+            </tr>
+            <tr>
+              <td>BullMQ fingerprint queue</td>
+              <td>Redis setup</td>
+              <td>Phase 01</td>
+              <td><span class="badge b-green">مطلوب</span></td>
+            </tr>
+            <tr>
+              <td>إشعارات الغياب (WhatsApp)</td>
+              <td>Notification service</td>
+              <td>Phase 08</td>
+              <td><span class="badge b-orange">يُبنى في Phase 08</span></td>
+            </tr>
+            <tr>
+              <td>violation trigger (15 غياب)</td>
+              <td>Violations table</td>
+              <td>Phase 07</td>
+              <td><span class="badge b-orange">يُفعَّل في Phase 07</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 10: Risks
+         ============================ -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يُعقِّد التنفيذ</h2>
+
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li>
+              <strong>أعطال جهاز البصمة:</strong> الجهاز offline أو انقطاع الشبكة يُضيِّع أحداث دخول. الحل: BullMQ retry + تخزين محلي في الجهاز لو كان يدعم ذلك.
+            </li>
+            <li>
+              <strong>استيراد Excel — تحليل التواريخ:</strong> ملفات Excel الموروثة قد تحتوي تواريخ هجرية، أو تنسيقات مختلطة (DD/MM/YYYY vs MM/DD/YYYY)، أو تواريخ مُخزَّنة كأرقام (Excel serial). يجب بناء parser قوي يتعامل مع الحالات الثلاث.
+            </li>
+            <li>
+              <strong>Double-counting في المصالحة:</strong> لو شغّلنا reconcile مرتين على نفس اليوم → ممكن نُؤرشف سجلاً صحيحاً بالخطأ. الحل: idempotency check قبل كل مصالحة.
+            </li>
+            <li>
+              <strong>Materialized View تأخر التحديث:</strong> REFRESH CONCURRENTLY على attendance_counters بعد كل سجل غياب قد يُبطئ النظام عند الذروة (مثل نهاية الأسبوع). الحل: batch refresh كل 5 دقائق + immediate notification trigger مستقل.
+            </li>
+            <li>
+              <strong>Geofence دقة GPS:</strong> الهواتف داخل المباني قد تُعطي قراءات GPS غير دقيقة. الحل: رفع نطاق الـ Geofence لـ 500 متر مع إمكانية تعديله من الإدارة.
+            </li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li>كل مجموعة لها <code>attendance_day_config</code> مُعبَّأ قبل تفعيل الحضور</li>
+            <li>جهاز البصمة يدعم Webhook HTTP أو API للمزامنة (ليس SFTP فقط)</li>
+            <li>ساعة الجهاز مُزامَنة مع NTP (±2 دقيقة كحد أقصى)</li>
+            <li>قاعدة البيانات تدعم pg_notify للـ triggers (PostgreSQL ≥ 12)</li>
+            <li>Redis متاح ومُهيَّأ مع BullMQ من المرحلة الأولى</li>
+            <li>Excel template موحَّد ومُوثَّق للمستخدمين المستوردين</li>
+            <li>إعدادات Geofence (إحداثيات المعهد) مُدخَّلة في متغيرات البيئة</li>
+          </ul>
+          <h5 class="mt-4">🧪 حالات الحافة الحرجة</h5>
+          <ul class="feat-list">
+            <li>متدرب يُسجِّل بصمة دخول ولا يُسجِّل خروجاً → <code>check_out_time=null</code>، الحالة تُحسَب بناءً على check_in فقط</li>
+            <li>يوم منقول (moved) يقع على إجازة رسمية → الإجازة تُقدَّم على الاستثناء</li>
+            <li>استيراد Excel لمتدرب تسرَّب من المجموعة → يُرفَض الصف برسالة "المتدرب غير نشط"</li>
+            <li>نفس المتدرب يُسجِّل بصمة مرتين في نفس اليوم (دخول صباحي + دخول عودة من استراحة) → النظام يأخذ أول بصمة كـ check_in وآخر بصمة كـ check_out</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         Section 11: Checklist
+         ============================ -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة اكتملت؟</h2>
+
+      <div class="grid grid-2">
+        <div>
+          <h3>Backend ✅</h3>
+          <ol class="num-list">
+            <li>Migration: 6 جداول + indexes + UNIQUE constraints مُطبَّقة</li>
+            <li>Materialized view <code>absence_counters</code> مُنشأة مع REFRESH trigger</li>
+            <li>BullMQ worker للـ fingerprint-sync مع retry 5 مرات</li>
+            <li>15 API endpoint تعمل مع validation كامل (Zod schemas)</li>
+            <li>Geofence middleware مُطبَّق على electronic-checkin</li>
+            <li>Excel parser يدعم Hijri + mixed date formats + error report</li>
+            <li>pg_notify → BullMQ bridge للـ absence threshold checks</li>
+            <li>Redis cache على stats/daily مع TTL 300s + invalidation</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Frontend ✅</h3>
+          <ol class="num-list">
+            <li>لوحة الحضور اليومي: فلتر + جدول + ملخص إحصائي</li>
+            <li>نموذج التسجيل اليدوي مع date/time picker عربي</li>
+            <li>صفحة استيراد Excel: رفع + preview + error report قابل للتنزيل</li>
+            <li>إدارة استثناءات الجدول: modal CRUD كامل</li>
+            <li>تقويم الإجازات الرسمية: month view + CRUD</li>
+            <li>صفحة إعداد أيام التدريب: 7 checkboxes + حفظ آني</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div>
+          <h3>Testing ✅</h3>
+          <ol class="num-list">
+            <li>Unit tests: قاعدة الأولوية (5.1)، حساب التأخير (5.2)، isTrainingDay (5.6)</li>
+            <li>Integration test: fingerprint webhook → BullMQ → DB write</li>
+            <li>Integration test: Excel import مع تواريخ هجرية وميلادية مختلطة</li>
+            <li>Load test: 500 بصمة متزامنة في queue — لا يُفقد أي حدث</li>
+            <li>Edge case: reconcile idempotency (تشغيل مرتين = نفس النتيجة)</li>
+            <li>Absence threshold: اختبار إشعار 5 غيابات و15 غياباً</li>
+          </ol>
+        </div>
+        <div>
+          <h3>توثيق وتسليم ✅</h3>
+          <ol class="num-list">
+            <li>Postman collection لكل 15 endpoint مع examples</li>
+            <li>قالب Excel موحَّد + تعليمات الاستيراد بالعربية</li>
+            <li>وثيقة Geofence setup (إحداثيات + نصف قطر)</li>
+            <li>Runbook: إجراءات استعادة بيانات البصمة بعد انقطاع</li>
+            <li>Demo: تسجيل يوم حضور كامل من 4 مصادر مختلفة</li>
+            <li>Handoff: تسليم Phase 06 (Leaves) قائمة attendance_ids القابلة للتعديل</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-04-trainee-lifecycle.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٤. دورة حياة المتدرب</span>
+      </a>
+      <a href="phase-06-leaves-exceptions.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">٦. الإجازات والاستثناءات</span>
+      </a>
+    </div>
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">الـ APIs</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Phase 05 — الحضور والعمليات · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

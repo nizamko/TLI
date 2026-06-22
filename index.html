@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معهد ريادة الغد — نظام إدارة مركز التدريب | المخطط التنفيذي الكامل</title>
+<meta name="description" content="وثيقة المشروع الكاملة لنظام إدارة معهد ريادة الغد — 10 مراحل تنفيذية، 23+ جدول، 29 صفحة، 14+ إشعار تلقائي، منصة متدربين، نظام مخالفات منظم، وإدارة شركات شريكة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============= TOP NAV ============= -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- ============= HERO ============= -->
+<header class="hero-big">
+  <div class="hero-big-inner">
+    <div class="complexity-badge">📘 وثيقة تنفيذية — الإصدار 3.0 — شاملة ومحدَّثة</div>
+    <h1>نظام إدارة <span>معهد ريادة الغد</span><br>منصة SaaS متكاملة لإدارة مراكز التدريب</h1>
+    <p class="hero-big-desc">
+      منصة إدارية احترافية تغطي دورة حياة المتدرب بالكامل — من التسجيل في رابط مُتحكَّم، مروراً بالقبول، ثم التعيين في مجموعات، ومتابعة الحضور ببصمة إلكترونية، والإجازات المرضية برقم رسمي، والمخالفات المنظمة بخمس درجات، والرواتب المحسوبة تلقائياً، حتى التجديد أو إنهاء العقد. مصمَّمة لفريقين من مطوري Full-Stack، قابلة للتوسع لآلاف المتدربين بدون تراجع في الأداء.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>10</strong><span>مراحل تنفيذية</span></div>
+      <div class="hero-stat"><strong>23+</strong><span>جدول قاعدة بيانات</span></div>
+      <div class="hero-stat"><strong>29</strong><span>صفحة واجهة</span></div>
+      <div class="hero-stat"><strong>14+</strong><span>نوع إشعار تلقائي</span></div>
+      <div class="hero-stat"><strong>5</strong><span>أدوار مستخدمين</span></div>
+      <div class="hero-stat"><strong>4</strong><span>مصادر حضور</span></div>
+      <div class="hero-stat"><strong>16–20</strong><span>أسبوع تنفيذ</span></div>
+      <div class="hero-stat"><strong>AR/EN</strong><span>ثنائي اللغة</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============= EXECUTIVE SUMMARY ============= -->
+<section id="executive-summary" class="section-wrap bg-paper">
+  <div class="section-wrap-inner">
+    <div class="section-label">الملخص التنفيذي</div>
+    <h2 class="section-title">مشروع مركز التدريب الرقمي — نظرة شاملة</h2>
+    <p class="section-desc">
+      هذه الوثيقة تشرح البناء الكامل لنظام إدارة معهد ريادة الغد — موجَّهة للعميل، لفريق التطوير، ولقرارات الإدارة العليا. كل مرحلة موثَّقة بصفحة مستقلة ومترابطة مع باقي المراحل.
+    </p>
+    <div class="grid grid-2">
+      <div class="card card-accent c-teal">
+        <div class="card-head">
+          <div class="card-icon">🎯</div>
+          <div>
+            <div class="card-title">طبيعة النظام</div>
+            <div class="card-sub">منصة إدارية تشغيلية (Operational Admin SaaS)</div>
+          </div>
+        </div>
+        <p>نظام ويب متعدد المستأجرين (Multi-Tenant) يخدم معهداً واحداً رئيسياً له عدة شركات شريكة. كل شركة لها أقسام، وكل قسم به برامج تدريب، وكل برنامج يُقسَّم إلى مجموعات. يُدار النظام مركزياً من المعهد، وتملك كل شركة رؤية محدودة لبيانات متدربيها فقط.</p>
+      </div>
+      <div class="card card-accent c-gold">
+        <div class="card-head">
+          <div class="card-icon">🧭</div>
+          <div>
+            <div class="card-title">أهداف الأعمال</div>
+            <div class="card-sub">لماذا النظام موجود أصلاً؟</div>
+          </div>
+        </div>
+        <ul class="feat-list">
+          <li><span class="ico">✓</span> تقليل العمل اليدوي في الحضور والإشعارات والتقارير بنسبة 80%</li>
+          <li><span class="ico">✓</span> منع الأخطاء البشرية في الرواتب والمخالفات</li>
+          <li><span class="ico">✓</span> إثبات الالتزام تجاه الشركات الشريكة بتقارير موثَّقة</li>
+          <li><span class="ico">✓</span> رفع جودة تجربة المتدرب عبر بوابة خاصة</li>
+          <li><span class="ico">✓</span> إدارة دقيقة للعقود وتجديدها أو إنهائها</li>
+        </ul>
+      </div>
+      <div class="card card-accent c-navy">
+        <div class="card-head">
+          <div class="card-icon">🏢</div>
+          <div>
+            <div class="card-title">الهيكل التنظيمي للبيانات</div>
+            <div class="card-sub">خمسة مستويات متداخلة</div>
+          </div>
+        </div>
+        <div class="flow">
+          <div class="flow-node fn-dark">شركة</div>
+          <span class="flow-arrow">←</span>
+          <div class="flow-node fn-navy">قسم</div>
+          <span class="flow-arrow">←</span>
+          <div class="flow-node fn-teal">برنامج</div>
+          <span class="flow-arrow">←</span>
+          <div class="flow-node fn-gold">مجموعة</div>
+          <span class="flow-arrow">←</span>
+          <div class="flow-node fn-rust">متدرب</div>
+        </div>
+        <p class="txt-sm mt-2">يُمكن لبرنامج واحد أن يستوعب مجموعات متعددة (ذكور/إناث)، وكل مجموعة لها مدرب وقاعة وجدول مستقل.</p>
+      </div>
+      <div class="card card-accent c-rust">
+        <div class="card-head">
+          <div class="card-icon">⚡</div>
+          <div>
+            <div class="card-title">قيود الأداء المقصودة</div>
+            <div class="card-sub">صمِّم من اليوم الأول لأجل المقياس الكبير</div>
+          </div>
+        </div>
+        <ul class="feat-list">
+          <li><span class="ico">📦</span> Pagination إجباري في كل القوائم الكبيرة (افتراضي 20 صف/صفحة)</li>
+          <li><span class="ico">⚡</span> Redis Cache للإحصاءات والقوائم المرجعية (TTL ذكي)</li>
+          <li><span class="ico">⏱️</span> Background Jobs (BullMQ) لكل تقرير/تصدير/مطابقة حضور</li>
+          <li><span class="ico">🗂️</span> Indexes على: date, status, company_id, program_id, trainee_id</li>
+          <li><span class="ico">📡</span> Endpoints مستقلة لكل Widget في الداشبورد</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= VISION ============= -->
+<section id="vision" class="section-wrap bg-white">
+  <div class="section-wrap-inner">
+    <div class="section-label">الرؤية</div>
+    <h2 class="section-title">لماذا "ريادة الغد" نظام مختلف؟</h2>
+    <p class="section-desc">لا يوجد في السوق نظام عربي متخصص يجمع: (1) بصمة + حضور إلكتروني، (2) عقود شركات، (3) مخالفات بخمس درجات، (4) رواتب فردية، (5) منصة متميزين، في منظومة واحدة.</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>🎓 متدرب في المركز</h3>
+        <p>بوابة شخصية تعرض: حالة التدريب، سجل الحضور الشهري، الراتب المحدَّث، الإجازات، المخالفات الموقَّعة إلكترونياً، طلب تعديل البيانات، تجديد الهوية، شارة التميز.</p>
+      </div>
+      <div class="card">
+        <h3>👨‍💼 موظف إداري</h3>
+        <p>لوحة تحكم بصلاحيات دقيقة لكل صفحة وكل إجراء. قد يُقيَّد بنطاق الجنس (ذكور فقط / إناث فقط) ونطاق الشركات، مع تسجيل كل إجراء في Audit Log.</p>
+      </div>
+      <div class="card">
+        <h3>🏢 شركة شريكة</h3>
+        <p>تستقبل تقارير حضور شهرية موثَّقة، إشعارات قبل انتهاء العقد بـ 60 و 30 يوماً، تقارير المخالفات، وقائمة المتميزين من متدربيها.</p>
+      </div>
+    </div>
+    <div class="alert al-gold mt-6">
+      <span class="ico">💡</span>
+      <div><strong>الرؤية طويلة المدى:</strong> أن يكون النظام قابلاً للاستنساخ (White-Label) لمعاهد تدريب أخرى، بنفس البنية، مع تخصيص الألوان والشعار فقط. قاعدة البيانات مصمَّمة من اليوم الأول لدعم ذلك.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= USERS / ROLES ============= -->
+<section id="roles" class="section-wrap bg-paper">
+  <div class="section-wrap-inner">
+    <div class="section-label">المستخدمون والأدوار</div>
+    <h2 class="section-title">خمسة أدوار — صلاحيات دقيقة</h2>
+    <p class="section-desc">كل دور له نطاق صلاحيات محدَّد، والنظام يدعم صلاحيات على مستوى الصفحة والإجراء (CRUD) بشكل مستقل لكل موظف.</p>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px;">
+      <div class="role-card r-admin">
+        <div class="role-icon">👑</div>
+        <div class="role-title">Super Admin</div>
+        <ul class="feat-list">
+          <li><span class="ico">✓</span> كل الصلاحيات</li>
+          <li><span class="ico">✓</span> إدارة الموظفين والأدوار</li>
+          <li><span class="ico">✓</span> عرض سجل المراجعة الكامل</li>
+          <li><span class="ico">✓</span> الوصول لإعدادات النظام</li>
+        </ul>
+      </div>
+      <div class="role-card r-manager">
+        <div class="role-icon">💼</div>
+        <div class="role-title">Manager / مدير</div>
+        <ul class="feat-list">
+          <li><span class="ico">✓</span> إدارة الشركات والعقود</li>
+          <li><span class="ico">✓</span> اعتماد الإجازات والاستثناءات</li>
+          <li><span class="ico">✓</span> توقيع المخالفات</li>
+          <li><span class="ico">✗</span> لا يعدِّل صلاحيات الموظفين</li>
+        </ul>
+      </div>
+      <div class="role-card r-staff">
+        <div class="role-icon">👤</div>
+        <div class="role-title">Staff / موظف</div>
+        <ul class="feat-list">
+          <li><span class="ico">✓</span> صلاحيات محدَّدة لكل صفحة</li>
+          <li><span class="ico">✓</span> نطاق جنس (ذكور / إناث / الكل)</li>
+          <li><span class="ico">✓</span> نطاق شركات محدَّد</li>
+          <li><span class="ico">✗</span> لا يعدِّل الإعدادات العامة</li>
+        </ul>
+      </div>
+      <div class="role-card r-trainer">
+        <div class="role-icon">🧑‍🏫</div>
+        <div class="role-title">Trainer / مدرب</div>
+        <ul class="feat-list">
+          <li><span class="ico">✓</span> عرض مجموعاته فقط</li>
+          <li><span class="ico">✓</span> تسجيل الحضور اليدوي</li>
+          <li><span class="ico">✓</span> تقديم طلب إجازة / استئذان</li>
+          <li><span class="ico">✓</span> تحرير مخالفات على متدربيه</li>
+        </ul>
+      </div>
+      <div class="role-card r-trainee">
+        <div class="role-icon">🎓</div>
+        <div class="role-title">Trainee / متدرب</div>
+        <ul class="feat-list">
+          <li><span class="ico">✓</span> بوابة شخصية محدودة</li>
+          <li><span class="ico">✓</span> رفع تقرير طبي</li>
+          <li><span class="ico">✓</span> طلب استئذان أو تبديل يوم</li>
+          <li><span class="ico">✗</span> لا يرى بيانات زملائه</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert al-navy mt-6">
+      <span class="ico">🔐</span>
+      <div><strong>عزل البيانات بالجنس (Gender Scoping):</strong> الموظف الذي نطاقه "إناث فقط" لا يرى أي متدرب ذكر في أي قائمة، ولا يمكنه الوصول لملفه حتى لو كان يعرف الـ URL المباشر. هذا التطبيق على مستوى Database Query وليس على مستوى الواجهة فقط.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SYSTEM SCOPE ============= -->
+<section id="scope" class="section-wrap bg-white">
+  <div class="section-wrap-inner">
+    <div class="section-label">نطاق المشروع</div>
+    <h2 class="section-title">ما يشمله المشروع — وما لا يشمله</h2>
+    <p class="section-desc">تحديد النطاق بوضوح يمنع التمدد غير المدروس (Scope Creep) ويوضِّح للعميل ما سيُسلَّم فعلياً.</p>
+
+    <div class="grid grid-2">
+      <div class="card card-accent c-teal">
+        <h3>✅ ما يشمله المشروع</h3>
+        <ul class="feat-list">
+          <li><span class="ico">🌐</span> <strong>واجهة إدارة كاملة</strong> — 19 صفحة بصلاحيات دقيقة</li>
+          <li><span class="ico">🎓</span> <strong>بوابة متدرب</strong> — 10 صفحات + صفحة التسجيل العام</li>
+          <li><span class="ico">🧑‍🏫</span> <strong>بوابة مدرب</strong> — عرض مجموعاته + تسجيل حضور + مخالفات</li>
+          <li><span class="ico">🔗</span> <strong>ربط جهاز البصمة</strong> عبر API/SDK مع مطابقة تلقائية</li>
+          <li><span class="ico">📱</span> <strong>إشعارات واتساب</strong> + إيميل (SMTP) بقوالب ديناميكية</li>
+          <li><span class="ico">📊</span> <strong>Excel Import/Export</strong> لكل الكيانات الرئيسية</li>
+          <li><span class="ico">📄</span> <strong>تصدير PDF</strong> للتقارير الرسمية والكشوفات</li>
+          <li><span class="ico">🌍</span> <strong>دعم لغتين</strong> عربي/إنجليزي كامل (i18n)</li>
+          <li><span class="ico">📝</span> <strong>Audit Log</strong> لكل تغيير حساس في البيانات</li>
+          <li><span class="ico">🔐</span> <strong>أمان متقدم</strong> — JWT + RBAC + Tenant Isolation + Rate Limiting</li>
+        </ul>
+      </div>
+      <div class="card card-accent c-rust">
+        <h3>⛔ ما لا يشمله (خارج النطاق)</h3>
+        <ul class="feat-list">
+          <li><span class="ico">❌</span> تطبيقات جوال Native (iOS/Android) — الموقع Responsive</li>
+          <li><span class="ico">❌</span> بوابة شركة مستقلة (Company Portal) — فقط تقارير ترسل عبر الإيميل</li>
+          <li><span class="ico">❌</span> دفع إلكتروني أو بوابات دفع — الرواتب تصدَّر ككشف</li>
+          <li><span class="ico">❌</span> ذكاء اصطناعي للتقييمات — مؤجَّل للـ Roadmap</li>
+          <li><span class="ico">❌</span> محادثة مباشرة (Chat) بين المتدربين — خارج النطاق</li>
+          <li><span class="ico">❌</span> نظام اختبارات إلكتروني (LMS) — مرحلة ثانية</li>
+          <li><span class="ico">❌</span> تكامل مع أنظمة حكومية خارجية — يعتمد على توفر الـ API</li>
+        </ul>
+        <div class="alert al-gold mt-3">
+          <span class="ico">📌</span>
+          <div>البنود المؤجَّلة مُصمَّم لها النظام من اليوم الأول بحيث يمكن إضافتها لاحقاً دون إعادة بناء.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= MODULE MAP ============= -->
+<section id="modules" class="section-wrap bg-paper">
+  <div class="section-wrap-inner">
+    <div class="section-label">خريطة الوحدات</div>
+    <h2 class="section-title">12 وحدة رئيسية — كيف تترابط؟</h2>
+    <p class="section-desc">كل وحدة تُبنى على وحدات سبقتها. هذا الترتيب يحدِّد تسلسل التنفيذ في المراحل العشر.</p>
+
+    <div class="grid grid-3">
+      <div class="card card-accent c-p1">
+        <div class="card-head"><div class="card-icon">🏗️</div><div><div class="card-title">1. الأساس المعماري</div><div class="card-sub">Foundation</div></div></div>
+        <p>مصادقة JWT، هيكل المشروع، Design System، Navigation. <br><a href="phase-01-foundation.html" class="txt-gold fw-800">← ذهاب إلى Phase 01</a></p>
+      </div>
+      <div class="card card-accent c-p2">
+        <div class="card-head"><div class="card-icon">🏢</div><div><div class="card-title">2. البيانات الرئيسية</div><div class="card-sub">Master Data</div></div></div>
+        <p>الشركات، الأقسام، البرامج، المجموعات، القاعات، الموظفون، المدربون. <br><a href="phase-02-master-data.html" class="txt-gold fw-800">← ذهاب إلى Phase 02</a></p>
+      </div>
+      <div class="card card-accent c-p3">
+        <div class="card-head"><div class="card-icon">📝</div><div><div class="card-title">3. التسجيل والقبول</div><div class="card-sub">Registration</div></div></div>
+        <p>روابط تسجيل ذكية، نموذج ديناميكي، Excel Import، قائمة انتظار. <br><a href="phase-03-registration-intake.html" class="txt-gold fw-800">← ذهاب إلى Phase 03</a></p>
+      </div>
+      <div class="card card-accent c-p4">
+        <div class="card-head"><div class="card-icon">🎓</div><div><div class="card-title">4. دورة حياة المتدرب</div><div class="card-sub">Lifecycle</div></div></div>
+        <p>ملف المتدرب، الوثائق، تجديد الهوية، طلبات التعديل، تغيير الحالة. <br><a href="phase-04-trainee-lifecycle.html" class="txt-gold fw-800">← ذهاب إلى Phase 04</a></p>
+      </div>
+      <div class="card card-accent c-p5">
+        <div class="card-head"><div class="card-icon">📅</div><div><div class="card-title">5. الحضور والعمليات</div><div class="card-sub">Attendance</div></div></div>
+        <p>بصمة + إلكتروني + يدوي + Excel، مطابقة تلقائية، استثناءات الجداول. <br><a href="phase-05-attendance-operations.html" class="txt-gold fw-800">← ذهاب إلى Phase 05</a></p>
+      </div>
+      <div class="card card-accent c-p6">
+        <div class="card-head"><div class="card-icon">🏥</div><div><div class="card-title">6. الإجازات والاستثناءات</div><div class="card-sub">Leaves</div></div></div>
+        <p>مرضية + سنوية + عامة + موظفين، رقم رسمي، مركز تحكم، استئذان. <br><a href="phase-06-leaves-exceptions.html" class="txt-gold fw-800">← ذهاب إلى Phase 06</a></p>
+      </div>
+      <div class="card card-accent c-p7">
+        <div class="card-head"><div class="card-icon">⚠️</div><div><div class="card-title">7. المخالفات والرواتب</div><div class="card-sub">Violations & Salary</div></div></div>
+        <p>خمس درجات مخالفة، توقيع إلكتروني، خصم تلقائي، راتب فردي، منصة تميز. <br><a href="phase-07-violations-financials.html" class="txt-gold fw-800">← ذهاب إلى Phase 07</a></p>
+      </div>
+      <div class="card card-accent c-p8">
+        <div class="card-head"><div class="card-icon">🔔</div><div><div class="card-title">8. الإشعارات والتقارير</div><div class="card-sub">Notifications</div></div></div>
+        <p>14+ نوع إشعار، Cron Jobs، WhatsApp + Email، تصدير PDF/Excel/CSV. <br><a href="phase-08-notifications-reports.html" class="txt-gold fw-800">← ذهاب إلى Phase 08</a></p>
+      </div>
+      <div class="card card-accent c-p9">
+        <div class="card-head"><div class="card-icon">🖥️</div><div><div class="card-title">9. البوابات الإدارية</div><div class="card-sub">Portals</div></div></div>
+        <p>19 صفحة إدارة + 10 بوابة متدرب + صلاحيات دقيقة + Audit Log كامل. <br><a href="phase-09-portals-admin-ops.html" class="txt-gold fw-800">← ذهاب إلى Phase 09</a></p>
+      </div>
+      <div class="card card-accent c-p10">
+        <div class="card-head"><div class="card-icon">🚀</div><div><div class="card-title">10. الإطلاق والـ Roadmap</div><div class="card-sub">Launch</div></div></div>
+        <p>اختبار، أداء، تسليم، تدريب الفريق، خارطة الطريق للمراحل القادمة. <br><a href="phase-10-launch-roadmap.html" class="txt-gold fw-800">← ذهاب إلى Phase 10</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TECH STACK ============= -->
+<section id="stack" class="section-wrap bg-ink">
+  <div class="section-wrap-inner">
+    <div class="section-label">التقنيات المختارة</div>
+    <h2 class="section-title">Stack مدروس — كل حزمة لها سبب</h2>
+    <p class="section-desc">اختيار التقنيات مبني على ثلاثة معايير: (1) أداء حقيقي تحت الحمل، (2) مجتمع نشط ودعم طويل المدى، (3) مرونة في الصيانة لفريق صغير.</p>
+
+    <div class="grid grid-2">
+      <div>
+        <h3 class="txt-gold mb-3">Backend Stack</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>الحزمة</th><th>الغرض</th><th>سبب الاختيار</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">express</td><td>Web framework</td><td>خفيف، مرن، صيانة بسيطة</td></tr>
+              <tr><td class="mono">pg</td><td>PostgreSQL driver</td><td>الأسرع، يدعم prepared statements</td></tr>
+              <tr><td class="mono">ioredis</td><td>Redis client</td><td>يدعم cluster + pub/sub</td></tr>
+              <tr><td class="mono">jsonwebtoken</td><td>JWT</td><td>معيار صناعي للمصادقة</td></tr>
+              <tr><td class="mono">bcryptjs</td><td>Password hashing</td><td>آمن، خالص JS</td></tr>
+              <tr><td class="mono">zod</td><td>Schema validation</td><td>Type-safe، سهل الدمج</td></tr>
+              <tr><td class="mono">helmet</td><td>Security headers</td><td>حماية من XSS/Clickjacking</td></tr>
+              <tr><td class="mono">cors</td><td>CORS handling</td><td>ضبط دقيق للمصادر</td></tr>
+              <tr><td class="mono">express-rate-limit</td><td>Rate limiting</td><td>حماية من Brute-force</td></tr>
+              <tr><td class="mono">winston</td><td>Logging</td><td>Log levels + file rotation</td></tr>
+              <tr><td class="mono">dotenv</td><td>Env variables</td><td>إدارة مفاتيح الإعدادات</td></tr>
+              <tr><td class="mono">bullmq</td><td>Queue / Jobs</td><td>Background jobs + cron</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h3 class="txt-gold mb-3">Frontend Stack</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>الحزمة</th><th>الغرض</th><th>سبب الاختيار</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">react + vite</td><td>UI framework + bundler</td><td>أسرع DX، HMR فوري</td></tr>
+              <tr><td class="mono">react-router-dom</td><td>Routing</td><td>المعيار الأول في React</td></tr>
+              <tr><td class="mono">@tanstack/react-query</td><td>Server state + cache</td><td>كاش ذكي + refetch تلقائي</td></tr>
+              <tr><td class="mono">axios</td><td>HTTP client</td><td>Interceptors لـ JWT refresh</td></tr>
+              <tr><td class="mono">zustand</td><td>Global state</td><td>خفيف جداً، بدون boilerplate</td></tr>
+              <tr><td class="mono">react-hook-form + zod</td><td>Forms + validation</td><td>أداء عالي + توافق مع Backend</td></tr>
+              <tr><td class="mono">@radix-ui/react-*</td><td>UI primitives</td><td>Accessible بالكامل، بدون تصميم مفروض</td></tr>
+              <tr><td class="mono">lucide-react</td><td>Icons</td><td>خفيف، tree-shakable</td></tr>
+              <tr><td class="mono">date-fns</td><td>Date utils</td><td>أخف من moment بـ 70%</td></tr>
+              <tr><td class="mono">recharts</td><td>Charts (Phase 08)</td><td>بسيط + Responsive</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert al-teal mt-5">
+      <span class="ico">⚡</span>
+      <div><strong>لماذا هذا الـ Stack خفيف ومتين؟</strong> Vite يبني الواجهة في ثواني، React Query يمنع الطلبات المكررة للـ API، Zustand لا يحمِّل 500KB مثل Redux، وRadix لا يفرض أي تصميم — نحن نتحكم في كل CSS. النتيجة: حزمة نهائية أقل من 300KB gzipped، وFirst Paint أقل من 1.2 ثانية.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= HIGH-LEVEL COUNTS ============= -->
+<section id="project-structure" class="section-wrap bg-white">
+  <div class="section-wrap-inner">
+    <div class="section-label">هيكل المشروع</div>
+    <h2 class="section-title">أرقام المشروع من منظور أعلى</h2>
+    <p class="section-desc">نظرة سريعة على حجم الشُغل الفعلي قبل البدء في التفاصيل.</p>
+
+    <div class="grid grid-4">
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--gold);line-height:1">23+</div>
+        <div class="fw-800 mt-2">جدول قاعدة بيانات</div>
+        <p class="txt-sm mt-2">12 أصلي + 9 جديد + 2 محدَّث</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--teal);line-height:1">29</div>
+        <div class="fw-800 mt-2">صفحة واجهة</div>
+        <p class="txt-sm mt-2">19 إدارة + 10 بوابة متدرب</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--navy);line-height:1">~140</div>
+        <div class="fw-800 mt-2">API Endpoint</div>
+        <p class="txt-sm mt-2">12 مجموعة موارد مختلفة</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--rust);line-height:1">14+</div>
+        <div class="fw-800 mt-2">نوع إشعار تلقائي</div>
+        <p class="txt-sm mt-2">عبر WhatsApp + Email</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--p6);line-height:1">5</div>
+        <div class="fw-800 mt-2">Cron Jobs</div>
+        <p class="txt-sm mt-2">يومية + شهرية</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--p5);line-height:1">4</div>
+        <div class="fw-800 mt-2">مصادر حضور</div>
+        <p class="txt-sm mt-2">Fingerprint/Electronic/Manual/Excel</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--p3);line-height:1">3</div>
+        <div class="fw-800 mt-2">تكاملات خارجية</div>
+        <p class="txt-sm mt-2">WhatsApp + SMTP + Fingerprint Device</p>
+      </div>
+      <div class="card txt-center">
+        <div style="font-size:38px;font-weight:900;color:var(--p2);line-height:1">2</div>
+        <div class="fw-800 mt-2">لغات مدعومة</div>
+        <p class="txt-sm mt-2">عربي (RTL) + إنجليزي (LTR)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= DATABASE SUMMARY ============= -->
+<section id="db-summary" class="section-wrap bg-paper">
+  <div class="section-wrap-inner">
+    <div class="section-label">قاعدة البيانات — ملخص</div>
+    <h2 class="section-title">23 جدول مُصنَّفة حسب الوحدة</h2>
+    <p class="section-desc">التفاصيل الكاملة لكل جدول (الحقول، العلاقات، الـ Indexes) موجودة في صفحة المرحلة المسؤولة عنه.</p>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h4>🏢 البيانات الرئيسية — Master Data</h4>
+        <div class="mt-3">
+          <span class="badge b-gold">companies</span>
+          <span class="badge b-gold">departments</span>
+          <span class="badge b-gold">training_programs</span>
+          <span class="badge b-gold">groups</span>
+          <span class="badge b-gold">users</span>
+        </div>
+        <p class="txt-sm mt-2">شركات شريكة، أقسامها، البرامج، المجموعات، الموظفون والمدربون.</p>
+        <a href="phase-02-master-data.html" class="txt-gold fw-800">→ تفاصيل Phase 02</a>
+      </div>
+      <div class="card">
+        <h4>📝 التسجيل — Registration</h4>
+        <div class="mt-3">
+          <span class="badge b-teal">registration_links</span>
+          <span class="badge b-teal">form_sections</span>
+          <span class="badge b-teal">form_fields</span>
+          <span class="badge b-teal">registration_requests</span>
+          <span class="badge b-teal">reserve_pool</span>
+        </div>
+        <p class="txt-sm mt-2">روابط التسجيل المُتحكَّمة، النموذج الديناميكي، قائمة الانتظار.</p>
+        <a href="phase-03-registration-intake.html" class="txt-gold fw-800">→ تفاصيل Phase 03</a>
+      </div>
+      <div class="card">
+        <h4>🎓 دورة المتدرب — Lifecycle</h4>
+        <div class="mt-3">
+          <span class="badge b-rust">trainees</span>
+          <span class="badge b-rust">update_requests</span>
+          <span class="badge b-rust">trainee_documents</span>
+        </div>
+        <p class="txt-sm mt-2">المتدرب، وثائقه، طلبات التعديل على البيانات، تاريخ التدريب.</p>
+        <a href="phase-04-trainee-lifecycle.html" class="txt-gold fw-800">→ تفاصيل Phase 04</a>
+      </div>
+      <div class="card">
+        <h4>📅 الحضور — Attendance</h4>
+        <div class="mt-3">
+          <span class="badge b-navy">attendance</span>
+          <span class="badge b-navy">schedule_exceptions</span>
+          <span class="badge b-navy">public_holidays</span>
+        </div>
+        <p class="txt-sm mt-2">سجل الحضور اليومي، استثناءات الجدول، الإجازات العامة.</p>
+        <a href="phase-05-attendance-operations.html" class="txt-gold fw-800">→ تفاصيل Phase 05</a>
+      </div>
+      <div class="card">
+        <h4>🏥 الإجازات — Leaves</h4>
+        <div class="mt-3">
+          <span class="badge b-purple">medical_leaves</span>
+          <span class="badge b-purple">annual_leave_grants</span>
+          <span class="badge b-purple">employee_leaves</span>
+          <span class="badge b-purple">permission_requests</span>
+        </div>
+        <p class="txt-sm mt-2">المرضية، السنوية، إجازات الموظفين، الاستئذان.</p>
+        <a href="phase-06-leaves-exceptions.html" class="txt-gold fw-800">→ تفاصيل Phase 06</a>
+      </div>
+      <div class="card">
+        <h4>⚠️ المخالفات والمال — Violations</h4>
+        <div class="mt-3">
+          <span class="badge b-orange">violations</span>
+          <span class="badge b-orange">violation_types</span>
+          <span class="badge b-orange">salary_adjustments</span>
+          <span class="badge b-orange">excellence_records</span>
+        </div>
+        <p class="txt-sm mt-2">المخالفات بخمس درجات، الرواتب، شارات التميز.</p>
+        <a href="phase-07-violations-financials.html" class="txt-gold fw-800">→ تفاصيل Phase 07</a>
+      </div>
+      <div class="card">
+        <h4>🔔 الإشعارات والسجل — System</h4>
+        <div class="mt-3">
+          <span class="badge b-pink">notifications</span>
+          <span class="badge b-pink">notification_templates</span>
+          <span class="badge b-pink">audit_logs</span>
+        </div>
+        <p class="txt-sm mt-2">الإشعارات، قوالبها، سجل المراجعة لكل إجراء.</p>
+        <a href="phase-08-notifications-reports.html" class="txt-gold fw-800">→ تفاصيل Phase 08</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TIMELINE ============= -->
+<section id="timeline" class="section-wrap bg-white">
+  <div class="section-wrap-inner">
+    <div class="section-label">الجدول الزمني</div>
+    <h2 class="section-title">10 مراحل — 16 إلى 20 أسبوع</h2>
+    <p class="section-desc">التقسيم مصمَّم لفريق مكوَّن من 2 Full-Stack. كل مرحلة لها مُخرَج واضح يمكن اختباره قبل الانتقال للتي بعدها.</p>
+
+    <div class="phases-grid">
+      <a href="phase-01-foundation.html" class="phase-card pc-1">
+        <div class="pc-num">المرحلة 01</div>
+        <h3>الأساس المعماري</h3>
+        <p>Authentication، هيكل المشروع، Design System، Multi-Tenancy، Dev Environment.</p>
+        <div class="pc-meta"><span>⏱ 1.5–2 أسبوع</span><span>⚡ أساسية</span></div>
+      </a>
+      <a href="phase-02-master-data.html" class="phase-card pc-2">
+        <div class="pc-num">المرحلة 02</div>
+        <h3>البيانات الرئيسية</h3>
+        <p>الشركات، الأقسام، البرامج، المجموعات، القاعات، الموظفون، المدربون.</p>
+        <div class="pc-meta"><span>⏱ 2–3 أسابيع</span><span>🏢 أساسية</span></div>
+      </a>
+      <a href="phase-03-registration-intake.html" class="phase-card pc-3">
+        <div class="pc-num">المرحلة 03</div>
+        <h3>التسجيل والقبول</h3>
+        <p>روابط تسجيل مُتحكَّمة + نموذج ديناميكي + Excel Import + قائمة انتظار.</p>
+        <div class="pc-meta"><span>⏱ 2 أسبوع</span><span>📝 متوسطة</span></div>
+      </a>
+      <a href="phase-04-trainee-lifecycle.html" class="phase-card pc-4">
+        <div class="pc-num">المرحلة 04</div>
+        <h3>دورة حياة المتدرب</h3>
+        <p>ملف المتدرب، تجديد الهوية، طلبات التعديل، حظر الحساب، التجديد الجماعي.</p>
+        <div class="pc-meta"><span>⏱ 1.5 أسبوع</span><span>🎓 متوسطة</span></div>
+      </a>
+      <a href="phase-05-attendance-operations.html" class="phase-card pc-5">
+        <div class="pc-num">المرحلة 05</div>
+        <h3>الحضور والعمليات</h3>
+        <p>البصمة + الإلكتروني + اليدوي + Excel + مطابقة تلقائية + استثناءات.</p>
+        <div class="pc-meta"><span>⏱ 2–3 أسابيع</span><span>📅 عالية الأولوية</span></div>
+      </a>
+      <a href="phase-06-leaves-exceptions.html" class="phase-card pc-6">
+        <div class="pc-num">المرحلة 06</div>
+        <h3>الإجازات والاستثناءات</h3>
+        <p>المرضية برقم رسمي، السنوية، إجازات الموظفين، الاستئذان، تبديل أيام.</p>
+        <div class="pc-meta"><span>⏱ 2 أسبوع</span><span>🏥 متوسطة</span></div>
+      </a>
+      <a href="phase-07-violations-financials.html" class="phase-card pc-7">
+        <div class="pc-num">المرحلة 07</div>
+        <h3>المخالفات والرواتب والتميز</h3>
+        <p>خمس درجات مخالفة، توقيع إلكتروني، راتب فردي، منصة المتميزين.</p>
+        <div class="pc-meta"><span>⏱ 2–3 أسابيع</span><span>⚠️ عالية التعقيد</span></div>
+      </a>
+      <a href="phase-08-notifications-reports.html" class="phase-card pc-8">
+        <div class="pc-num">المرحلة 08</div>
+        <h3>الإشعارات والتقارير والتصدير</h3>
+        <p>WhatsApp + Email + Cron Jobs + PDF/Excel Exports + 14 نوع إشعار.</p>
+        <div class="pc-meta"><span>⏱ 2–3 أسابيع</span><span>🔔 حيوية</span></div>
+      </a>
+      <a href="phase-09-portals-admin-ops.html" class="phase-card pc-9">
+        <div class="pc-num">المرحلة 09</div>
+        <h3>البوابات والعمليات الإدارية</h3>
+        <p>19 صفحة إدارة + 10 بوابة متدرب + صلاحيات دقيقة + Audit Views.</p>
+        <div class="pc-meta"><span>⏱ 2 أسبوع</span><span>🖥️ تكاملية</span></div>
+      </a>
+      <a href="phase-10-launch-roadmap.html" class="phase-card pc-10">
+        <div class="pc-num">المرحلة 10</div>
+        <h3>الإطلاق والـ Roadmap</h3>
+        <p>اختبار، تحسين أداء، Seed Data، تدريب الفريق، خارطة الطريق المستقبلية.</p>
+        <div class="pc-meta"><span>⏱ 2 أسبوع</span><span>🚀 ختامية</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= DEPENDENCY MAP ============= -->
+<section id="dependencies" class="section-wrap bg-paper">
+  <div class="section-wrap-inner">
+    <div class="section-label">خريطة التبعيات</div>
+    <h2 class="section-title">ما يتوقف على ماذا؟</h2>
+    <p class="section-desc">كل مرحلة ترث مُخرجات سابقاتها وتُسلِّم مُخرَجاتها للتالية. هذا الترابط يمنع العودة لإعادة بناء أي شيء.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>المرحلة</th>
+            <th>تعتمد على</th>
+            <th>تُسلِّم إلى</th>
+            <th>المخرج الأساسي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-strong">01 الأساس</td>
+            <td><span class="badge b-gray">لا شيء</span></td>
+            <td><span class="badge b-teal">كل المراحل</span></td>
+            <td>مشروع قابل للتشغيل + Login + Design System</td>
+          </tr>
+          <tr>
+            <td class="td-strong">02 البيانات الرئيسية</td>
+            <td><span class="badge b-navy">Phase 01</span></td>
+            <td><span class="badge b-teal">03, 04, 05</span></td>
+            <td>شركات وأقسام وبرامج ومجموعات قابلة للاستخدام</td>
+          </tr>
+          <tr>
+            <td class="td-strong">03 التسجيل</td>
+            <td><span class="badge b-navy">Phase 02</span></td>
+            <td><span class="badge b-teal">04</span></td>
+            <td>رابط تسجيل مُتحكَّم + طلبات جاهزة للاعتماد</td>
+          </tr>
+          <tr>
+            <td class="td-strong">04 دورة المتدرب</td>
+            <td><span class="badge b-navy">02, 03</span></td>
+            <td><span class="badge b-teal">05, 06, 07</span></td>
+            <td>ملف متدرب كامل + حساب للبوابة</td>
+          </tr>
+          <tr>
+            <td class="td-strong">05 الحضور</td>
+            <td><span class="badge b-navy">02, 04</span></td>
+            <td><span class="badge b-teal">06, 07, 08</span></td>
+            <td>سجل حضور يومي + مطابقة بصمة + استثناءات</td>
+          </tr>
+          <tr>
+            <td class="td-strong">06 الإجازات</td>
+            <td><span class="badge b-navy">04, 05</span></td>
+            <td><span class="badge b-teal">07, 08</span></td>
+            <td>مركز إجازات موحَّد + تأثير على الحضور</td>
+          </tr>
+          <tr>
+            <td class="td-strong">07 المخالفات والمال</td>
+            <td><span class="badge b-navy">04, 05, 06</span></td>
+            <td><span class="badge b-teal">08, 09</span></td>
+            <td>مخالفات موقَّعة + راتب محسوب + قائمة متميزين</td>
+          </tr>
+          <tr>
+            <td class="td-strong">08 الإشعارات</td>
+            <td><span class="badge b-navy">كل المراحل من 02–07</span></td>
+            <td><span class="badge b-teal">09, 10</span></td>
+            <td>14+ إشعار يعمل تلقائياً + تقارير قابلة للتصدير</td>
+          </tr>
+          <tr>
+            <td class="td-strong">09 البوابات</td>
+            <td><span class="badge b-navy">كل المراحل من 02–08</span></td>
+            <td><span class="badge b-teal">10</span></td>
+            <td>واجهات كاملة لكل الأدوار + صلاحيات دقيقة</td>
+          </tr>
+          <tr>
+            <td class="td-strong">10 الإطلاق</td>
+            <td><span class="badge b-navy">كل المراحل</span></td>
+            <td><span class="badge b-gold">الإنتاج</span></td>
+            <td>نسخة Production + تدريب + وثائق + Roadmap</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert al-navy mt-5">
+      <span class="ico">🔗</span>
+      <div><strong>قاعدة ذهبية:</strong> لا يُبدأ في مرحلة قبل اختبار مُخرَجات المرحلة السابقة فعلياً على بيئة Staging. كل Completion Checklist في نهاية الصفحة يجب أن يكون مُنجَزاً 100% قبل الانتقال.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= EXECUTION STRATEGY ============= -->
+<section id="execution" class="section-wrap bg-white">
+  <div class="section-wrap-inner">
+    <div class="section-label">استراتيجية التنفيذ</div>
+    <h2 class="section-title">ابدأ من الأسفل إلى الأعلى — هرمياً</h2>
+    <p class="section-desc">طريقة العمل الهرمية المعتمدة: ابدأ بصفحة تسجيل الدخول، ثم إدارة الموظفين والصلاحيات، ثم الشركات، ثم البرامج، ثم المتدربون — لا تبدأ بالواجهات الجميلة قبل المنطق.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>الخطوة 1 — صفحة تسجيل الدخول + Auth</h4>
+        <p>JWT + Refresh Token + Password Hashing. بدون login صحيح، كل ما بعده غير آمن.</p>
+      </div>
+      <div class="timeline-item ti-teal">
+        <h4>الخطوة 2 — إدارة الموظفين والصلاحيات (RBAC)</h4>
+        <p>إنشاء Super Admin يدوياً، ثم واجهة إضافة موظف + تعيين صلاحيات دقيقة (صفحة + إجراء + نطاق جنس + نطاق شركات).</p>
+      </div>
+      <div class="timeline-item ti-rust">
+        <h4>الخطوة 3 — إدارة الشركات والأقسام</h4>
+        <p>CRUD كامل. كل الحقول المطلوبة (السجل التجاري، HR، العقد، حد متدربين). تعطيل بسبب واضح.</p>
+      </div>
+      <div class="timeline-item ti-navy">
+        <h4>الخطوة 4 — البرامج والمجموعات والقاعات</h4>
+        <p>برنامج ينتمي لقسم، مجموعة تنتمي لبرنامج وتُسنَد لمدرب وقاعة، نوع الدوام (يومي/أيام محددة).</p>
+      </div>
+      <div class="timeline-item">
+        <h4>الخطوة 5 — التسجيل والقبول</h4>
+        <p>رابط مُتحكَّم بحد أقصى، نموذج ديناميكي، مراجعة، قبول، تعيين، إرسال بيانات الدخول.</p>
+      </div>
+      <div class="timeline-item ti-teal">
+        <h4>الخطوة 6 — ملف المتدرب + بوابته</h4>
+        <p>ملف كامل، تحديث بيانات، تجديد هوية، رفع وثائق، بوابة شخصية تعرض البيانات الأساسية.</p>
+      </div>
+      <div class="timeline-item ti-rust">
+        <h4>الخطوة 7 — الحضور</h4>
+        <p>جدول المجموعة، تسجيل حضور يدوي، ثم إلكتروني، ثم ربط البصمة، ثم مطابقة، ثم استثناءات.</p>
+      </div>
+      <div class="timeline-item ti-navy">
+        <h4>الخطوة 8 — الإجازات والاستئذان</h4>
+        <p>مرضية برقم رسمي، سنوية بعد سنة، عامة من الإدارة، موظفين بالراتب/بدون.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>الخطوة 9 — المخالفات والرواتب</h4>
+        <p>خمس درجات، توقيع إلكتروني، خصم تلقائي، راتب فردي + تعديلات دائمة/شهرية.</p>
+      </div>
+      <div class="timeline-item ti-teal">
+        <h4>الخطوة 10 — الإشعارات والتقارير والتميز</h4>
+        <p>Cron Jobs + Templates + Queue + تصدير شامل + منصة المتميزين.</p>
+      </div>
+    </div>
+
+    <div class="alert al-gold mt-5">
+      <span class="ico">⚠️</span>
+      <div><strong>لا تتخطَّ القاعدة الذهبية:</strong> أولوية التنفيذ هي Data Model → APIs → Workflow → UI → Reports. أي مطوِّر يبدأ بالواجهة قبل الـ API سيعيد العمل مرتين.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FUTURE READY ============= -->
+<section id="future" class="section-wrap bg-paper">
+  <div class="section-wrap-inner">
+    <div class="section-label">قابلية التوسع</div>
+    <h2 class="section-title">مصمَّم اليوم — جاهز للغد</h2>
+    <p class="section-desc">النظام مبني بحيث يمكن إضافة هذه الميزات مستقبلاً دون هدم البنية.</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h4>🤖 مساعد AI للإدارة</h4>
+        <p>"كم متدرب غائب اليوم؟" / "اقتراح أفضل مجموعة لمتدرب جديد". مُخطَّط له في Phase 10 Roadmap.</p>
+      </div>
+      <div class="card">
+        <h4>📱 تطبيق جوال Native</h4>
+        <p>الـ API جاهز للاستهلاك من أي client. تطبيق React Native يمكن بناؤه في 4 أسابيع لاحقاً.</p>
+      </div>
+      <div class="card">
+        <h4>🏢 بوابة الشركة</h4>
+        <p>اليوم الشركة تتلقى تقارير عبر الإيميل. غداً يمكن إضافة بوابة حيث تراجع HR التقارير مباشرة.</p>
+      </div>
+      <div class="card">
+        <h4>💳 بوابات الدفع</h4>
+        <p>الراتب يصدَّر كشف. مستقبلاً يمكن ربطه بـ STC Pay / بنك مباشرة لدفع تلقائي.</p>
+      </div>
+      <div class="card">
+        <h4>📚 نظام اختبارات (LMS)</h4>
+        <p>تقييمات نهاية البرنامج، شهادات، مسارات. قابل للإضافة كـ Module مستقل.</p>
+      </div>
+      <div class="card">
+        <h4>🌐 White-Label</h4>
+        <p>ألوان وشعار وroot domain لكل معهد. قاعدة البيانات مُعدَّة من اليوم الأول.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= ALL PHASES ============= -->
+<section id="all-phases" class="section-wrap bg-ink">
+  <div class="section-wrap-inner">
+    <div class="section-label">الروابط السريعة</div>
+    <h2 class="section-title">ابدأ القراءة من أي مرحلة</h2>
+    <div class="grid grid-3 mt-6">
+      <a href="phase-01-foundation.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 01 — الأساس</h3><p style="color:#aab8cc">البنية، المصادقة، Design System، Multi-Tenancy.</p></a>
+      <a href="phase-02-master-data.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 02 — البيانات الرئيسية</h3><p style="color:#aab8cc">شركات وأقسام وبرامج ومجموعات وموظفون.</p></a>
+      <a href="phase-03-registration-intake.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 03 — التسجيل والقبول</h3><p style="color:#aab8cc">روابط مُتحكَّمة، نموذج ديناميكي، Excel.</p></a>
+      <a href="phase-04-trainee-lifecycle.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 04 — دورة حياة المتدرب</h3><p style="color:#aab8cc">ملف، وثائق، هوية، طلبات تعديل، تجديد.</p></a>
+      <a href="phase-05-attendance-operations.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 05 — الحضور</h3><p style="color:#aab8cc">بصمة + إلكتروني + مطابقة + استثناءات.</p></a>
+      <a href="phase-06-leaves-exceptions.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 06 — الإجازات</h3><p style="color:#aab8cc">مرضية، سنوية، عامة، موظفين، استئذان.</p></a>
+      <a href="phase-07-violations-financials.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 07 — المخالفات والمال</h3><p style="color:#aab8cc">خمس درجات، توقيع، راتب، تميز.</p></a>
+      <a href="phase-08-notifications-reports.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 08 — الإشعارات</h3><p style="color:#aab8cc">WhatsApp + Email + Cron + تقارير.</p></a>
+      <a href="phase-09-portals-admin-ops.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 09 — البوابات</h3><p style="color:#aab8cc">إدارة + متدرب + صلاحيات + Audit.</p></a>
+      <a href="phase-10-launch-roadmap.html" class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)"><h3 style="color:#fff">المرحلة 10 — الإطلاق</h3><p style="color:#aab8cc">اختبار، أداء، تسليم، خارطة طريق.</p></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============= FOOTER ============= -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>أقسام الصفحة</h5>
+      <ul>
+        <li><a href="#executive-summary">الملخص التنفيذي</a></li>
+        <li><a href="#vision">الرؤية</a></li>
+        <li><a href="#roles">المستخدمون والأدوار</a></li>
+        <li><a href="#stack">التقنيات</a></li>
+        <li><a href="#timeline">الجدول الزمني</a></li>
+        <li><a href="#dependencies">خريطة التبعيات</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · Built with HTML + CSS + JS · Zero dependencies
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

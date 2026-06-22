@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة ٠٩ — البوابات والعمليات الإدارية | معهد ريادة الغد</title>
+<meta name="description" content="المرحلة التاسعة من نظام إدارة معهد ريادة الغد — بوابة المتدرب (10 شاشات)، بوابة المدرب (5 شاشات)، لوحة Super Admin، Audit Log، System Health، Feature Flags.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- 1. Top Nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo">🏛️ ريادة الغد <span>| Documentation</span></a>
+    <button class="nav-toggle" aria-label="القائمة">☰</button>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="phase-01-foundation.html">١. الأساس</a>
+      <a href="phase-02-master-data.html">٢. البيانات الرئيسية</a>
+      <a href="phase-03-registration-intake.html">٣. التسجيل</a>
+      <a href="phase-04-trainee-lifecycle.html">٤. دورة المتدرب</a>
+      <a href="phase-05-attendance-operations.html">٥. الحضور</a>
+      <a href="phase-06-leaves-exceptions.html">٦. الإجازات</a>
+      <a href="phase-07-violations-financials.html">٧. المخالفات</a>
+      <a href="phase-08-notifications-reports.html">٨. الإشعارات</a>
+      <a href="phase-09-portals-admin-ops.html" class="active">٩. البوابات</a>
+      <a href="phase-10-launch-roadmap.html">١٠. الإطلاق</a>
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- 2. Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 الرئيسية</a>
+    <span class="sep">/</span>
+    <a href="index.html#timeline">المراحل</a>
+    <span class="sep">/</span>
+    <span class="current">المرحلة ٠٩ — البوابات والعمليات الإدارية</span>
+  </div>
+</div>
+
+<!-- 3. Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="complexity-badge">⚡ تعقيد: متوسط-عالي · ⏱ 3 أسابيع</div>
+    <div class="hero-label">المرحلة ٠٩ من ١٠ · Portals &amp; Admin Operations</div>
+    <h1>البوابات والعمليات الإدارية<br><span>Portals &amp; Admin Ops</span></h1>
+    <p class="hero-desc">
+      الواجهة المرئية الكاملة للمستخدم النهائي — بوابة المتدرب بـ 10 شاشات Mobile-First تُتيح له متابعة حضوره وإجازاته ووثائقه دون الحاجة للتواصل مع الإدارة، بوابة المدرب لتسجيل الحضور الإلكتروني عبر GPS، ولوحة Super Admin التي تُشغِّل كامل المنصة — من Audit Log وSystem Health حتى Feature Flags والنسخ الاحتياطية. هذه المرحلة هي الطبقة الأمامية فوق كل المراحل السابقة.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>6</strong><span>جداول قاعدة بيانات</span></div>
+      <div class="hero-meta-item"><strong>21</strong><span>صفحة واجهة</span></div>
+      <div class="hero-meta-item"><strong>28</strong><span>API Endpoint</span></div>
+      <div class="hero-meta-item"><strong>3</strong><span>أسابيع تنفيذ</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4. Phase Navigator -->
+<div class="phase-navigator">
+  <div class="phase-nav-inner">
+    <span class="phase-nav-label">المراحل:</span>
+    <a href="phase-01-foundation.html" class="phase-dot done"><span class="pd-num pdn-1">1</span>الأساس</a>
+    <a href="phase-02-master-data.html" class="phase-dot done"><span class="pd-num pdn-2">2</span>البيانات</a>
+    <a href="phase-03-registration-intake.html" class="phase-dot done"><span class="pd-num pdn-3">3</span>التسجيل</a>
+    <a href="phase-04-trainee-lifecycle.html" class="phase-dot done"><span class="pd-num pdn-4">4</span>المتدرب</a>
+    <a href="phase-05-attendance-operations.html" class="phase-dot done"><span class="pd-num pdn-5">5</span>الحضور</a>
+    <a href="phase-06-leaves-exceptions.html" class="phase-dot done"><span class="pd-num pdn-6">6</span>الإجازات</a>
+    <a href="phase-07-violations-financials.html" class="phase-dot done"><span class="pd-num pdn-7">7</span>المخالفات</a>
+    <a href="phase-08-notifications-reports.html" class="phase-dot done"><span class="pd-num pdn-8">8</span>الإشعارات</a>
+    <a href="phase-09-portals-admin-ops.html" class="phase-dot current"><span class="pd-num pdn-9">9</span>البوابات</a>
+    <a href="phase-10-launch-roadmap.html" class="phase-dot"><span class="pd-num pdn-10">10</span>الإطلاق</a>
+  </div>
+</div>
+
+<!-- 5. Page Body -->
+<div class="page-body">
+  <aside class="toc">
+    <h4>محتويات الصفحة</h4>
+    <ul>
+      <li><a href="#summary">ملخص المرحلة</a></li>
+      <li><a href="#why">لماذا هذه المرحلة؟</a></li>
+      <li><a href="#modules">الوحدات المشمولة</a></li>
+      <li><a href="#screens">الصفحات والشاشات</a></li>
+      <li><a href="#database">قاعدة البيانات</a></li>
+      <li><a href="#apis">الـ APIs</a></li>
+      <li><a href="#flows">تدفقات المستخدم</a></li>
+      <li><a href="#logic">منطق العمل التفصيلي</a></li>
+      <li><a href="#dependencies">خريطة التبعيات</a></li>
+      <li><a href="#risks">المخاطر والافتراضات</a></li>
+      <li><a href="#checklist">قائمة المخرجات</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ===== SECTION 1: SUMMARY ===== -->
+    <section id="summary" class="section">
+      <div class="section-label">ملخص المرحلة</div>
+      <h2 class="section-title">ما ستُسلِّمه هذه المرحلة</h2>
+      <p class="section-desc">
+        المرحلة التاسعة تُحوِّل النظام الإداري الداخلي إلى منظومة مفتوحة للمستخدمين النهائيين. ثلاث بوابات متمايزة الصلاحيات — المتدرب يرى فقط بياناته، المدرب يدير مجموعاته فقط، والـ Super Admin يرى كل شيء ويتحكم في كل شيء. كل بوابة Mobile-First مع حماية صارمة على مستوى الاستعلام.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card card-accent c-p9">
+          <h3>🎯 الهدف</h3>
+          <p>بناء تجربة مستخدم نهائية كاملة عبر ثلاث بوابات — متدرب، مدرب، Super Admin — مع تطبيق صلاحيات دقيقة على مستوى الصف في قاعدة البيانات، ودعم كامل للجوال.</p>
+        </div>
+        <div class="card card-accent c-gold">
+          <h3>📤 المخرجات</h3>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> بوابة متدرب — 10 شاشات</li>
+            <li><span class="ico">✓</span> بوابة مدرب — 5 شاشات</li>
+            <li><span class="ico">✓</span> لوحة Super Admin — 6 شاشات</li>
+            <li><span class="ico">✓</span> 6 جداول جديدة في قاعدة البيانات</li>
+            <li><span class="ico">✓</span> 28 API Endpoint موثَّقة</li>
+            <li><span class="ico">✓</span> Audit Log مع تصدير</li>
+            <li><span class="ico">✓</span> نظام Feature Flags</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-navy">
+          <h3>📥 المتطلبات السابقة</h3>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> جميع المراحل 01-08 مكتملة</li>
+            <li><span class="ico">✓</span> نظام المصادقة وإدارة الأدوار (Phase 01)</li>
+            <li><span class="ico">✓</span> بيانات المتدربين والمجموعات (Phases 02–04)</li>
+            <li><span class="ico">✓</span> سجلات الحضور والإجازات (Phases 05–06)</li>
+            <li><span class="ico">✓</span> سجلات المخالفات (Phase 07)</li>
+            <li><span class="ico">✓</span> نظام الإشعارات والتقارير (Phase 08)</li>
+          </ul>
+        </div>
+        <div class="card card-accent c-rust">
+          <h3>🔗 يُسلِّم إلى</h3>
+          <p>
+            <strong><a href="phase-10-launch-roadmap.html">Phase 10 — الإطلاق</a>:</strong> البوابات المكتملة هي المنتج النهائي الذي يُختبر في UAT قبل الإطلاق الرسمي. System Health + Audit Logs تُغذِّي خطة المراقبة في المرحلة العاشرة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: WHY ===== -->
+    <section id="why" class="section">
+      <div class="section-label">لماذا هذه المرحلة؟</div>
+      <h2 class="section-title">الطبقة الأمامية التي تُكمِل الدورة</h2>
+      <p class="section-desc">
+        المراحل الثماني السابقة بنت نظاماً إدارياً داخلياً ممتازاً — لكن بدون بوابة المتدرب، يبقى المتدرب مُتلقِّياً سلبياً يعتمد على الموظفين لكل معلومة. بوابة المتدرب تُحرِّره: هو يتابع حضوره، يطلب إجازة، يرفع وثيقة، يعترض على مخالفة — كل ذلك بنفسه من هاتفه.
+      </p>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-icon">📱</div>
+            <div>
+              <div class="card-title">بدون البوابة</div>
+              <div class="card-sub">الوضع الحالي</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico" style="color:var(--rust)">✗</span> المتدرب يتصل بالمعهد لمعرفة حضوره</li>
+            <li><span class="ico" style="color:var(--rust)">✗</span> طلبات الإجازة ورقية أو واتساب شخصي</li>
+            <li><span class="ico" style="color:var(--rust)">✗</span> الموظفون يُضيِّعون وقتهم في الاستفسارات</li>
+            <li><span class="ico" style="color:var(--rust)">✗</span> لا رؤية للـ Super Admin على صحة النظام</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div class="card-icon">🚀</div>
+            <div>
+              <div class="card-title">مع البوابة</div>
+              <div class="card-sub">الوضع المستهدف</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> المتدرب يرى بياناته لحظياً من هاتفه</li>
+            <li><span class="ico">✓</span> طلبات الإجازة رقمية ومتتبَّعة</li>
+            <li><span class="ico">✓</span> الموظفون يركّزون على الإدارة لا الاستفسارات</li>
+            <li><span class="ico">✓</span> Super Admin يرى Audit Log وصحة النظام في الوقت الفعلي</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert al-navy mt-6">
+        <span class="ico">🔒</span>
+        <div><strong>مبدأ الفصل التام:</strong> كل بوابة مُصمَّمة بصلاحيات معزولة على مستوى الاستعلام — لا يُمكن لمتدرب رؤية بيانات متدرب آخر حتى لو عبث بالـ URL أو الـ token. Row-Level Security مُطبَّق في كل endpoint.</div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: MODULES ===== -->
+    <section id="modules" class="section">
+      <div class="section-label">الوحدات المشمولة</div>
+      <h2 class="section-title">ثلاث بوابات — خمس عشرة وحدة وظيفية</h2>
+      <div class="grid grid-3">
+
+        <div class="card card-accent c-p9">
+          <div class="card-head">
+            <div class="card-icon">🎓</div>
+            <div>
+              <div class="card-title">بوابة المتدرب</div>
+              <div class="card-sub">Trainee Portal — Mobile-First</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> Dashboard (الصورة الكاملة دفعة واحدة)</li>
+            <li><span class="ico">✓</span> سجل الحضور التفصيلي</li>
+            <li><span class="ico">✓</span> طلبات الإجازة + السجل</li>
+            <li><span class="ico">✓</span> طلب إجازة مرضية</li>
+            <li><span class="ico">✓</span> الملف الشخصي + طلبات التعديل</li>
+            <li><span class="ico">✓</span> رفع الوثائق</li>
+            <li><span class="ico">✓</span> مركز الإشعارات</li>
+            <li><span class="ico">✓</span> المخالفات (عرض + اعتراض)</li>
+            <li><span class="ico">✓</span> التميز والإنجازات</li>
+            <li><span class="ico">✓</span> الشهادات (بعد التخرج)</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-teal">
+          <div class="card-head">
+            <div class="card-icon">👨‍🏫</div>
+            <div>
+              <div class="card-title">بوابة المدرب</div>
+              <div class="card-sub">Trainer Portal — GPS-Enabled</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> قائمة مجموعاتي المُعيَّنة</li>
+            <li><span class="ico">✓</span> كشف المتدربين لكل مجموعة</li>
+            <li><span class="ico">✓</span> تسجيل الحضور الإلكتروني (GPS)</li>
+            <li><span class="ico">✓</span> طلبات الإجازة الخاصة بالمدرب</li>
+            <li><span class="ico">✓</span> ترشيح تميز المتدربين</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent c-navy">
+          <div class="card-head">
+            <div class="card-icon">⚙️</div>
+            <div>
+              <div class="card-title">لوحة Super Admin</div>
+              <div class="card-sub">Admin Ops — Full Control</div>
+            </div>
+          </div>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> Dashboard النظام الشامل</li>
+            <li><span class="ico">✓</span> Audit Log مع فلاتر + تصدير</li>
+            <li><span class="ico">✓</span> System Health (DB, Redis, Queue)</li>
+            <li><span class="ico">✓</span> Backup/Restore UI</li>
+            <li><span class="ico">✓</span> إعدادات النظام</li>
+            <li><span class="ico">✓</span> إدارة المستخدمين</li>
+            <li><span class="ico">✓</span> البحث الشامل Cross-Entity</li>
+            <li><span class="ico">✓</span> Feature Flags</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: SCREENS ===== -->
+    <section id="screens" class="section">
+      <div class="section-label">الصفحات والشاشات</div>
+      <h2 class="section-title">21 شاشة — متدرب (10) + مدرب (5) + أدمن (6)</h2>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الشاشة</th>
+              <th>الوصف التفصيلي</th>
+              <th>الدور</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Trainee Portal -->
+            <tr>
+              <td><code>T-01</code></td>
+              <td>Dashboard المتدرب</td>
+              <td>نظرة سريعة: الدرس القادم، نسبة الحضور %، رصيد الإجازات، آخر الإشعارات، أي تحذيرات نشطة</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>T-02</code></td>
+              <td>سجل الحضور</td>
+              <td>جدول شهري تفاعلي (حاضر / غائب / إجازة / متأخر) مع فلتر بالشهر، تصدير PDF</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>T-03</code></td>
+              <td>طلبات الإجازة</td>
+              <td>نموذج طلب جديد (نوع + تاريخ + مرفق)، جدول الطلبات السابقة مع الحالة (معلق/مقبول/مرفوض)</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>T-04</code></td>
+              <td>الإجازة المرضية</td>
+              <td>نموذج مخصص للمرضية: رقم التقرير الطبي الرسمي + رفع المستند + التواريخ</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>T-05</code></td>
+              <td>الملف الشخصي</td>
+              <td>عرض البيانات الكاملة، تعديل البيانات غير الحساسة مباشرة، إرسال طلب تعديل للحقول الحساسة (اسم، هوية)</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>T-06</code></td>
+              <td>رفع الوثائق</td>
+              <td>قائمة الوثائق المطلوبة (هوية، طبي، إلخ) مع مؤشر الاكتمال، رفع متعدد، معاينة، حذف</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>T-07</code></td>
+              <td>مركز الإشعارات</td>
+              <td>قائمة مرتبة زمنياً، فلتر بالنوع (تحذير/تذكير/معلومة)، تحديد الكل كمقروء</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>T-08</code></td>
+              <td>المخالفات</td>
+              <td>عرض القائمة (القرار + التاريخ + الدرجة)، قراءة فقط، زر "اعتراض" يفتح نموذج الاستئناف</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>T-09</code></td>
+              <td>التميز والإنجازات</td>
+              <td>بطاقات الإنجازات، عدد مرات الترشح، الفترة الزمنية، رسالة المدرب</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-gray">P2</span></td>
+            </tr>
+            <tr>
+              <td><code>T-10</code></td>
+              <td>الشهادات</td>
+              <td>متاحة بعد التخرج فقط — شهادة الاجتياز كـ PDF، QR code للتحقق، تاريخ الإصدار</td>
+              <td><span class="badge b-green">متدرب</span></td>
+              <td><span class="badge b-gray">P2</span></td>
+            </tr>
+            <!-- Trainer Portal -->
+            <tr>
+              <td><code>TR-01</code></td>
+              <td>مجموعاتي</td>
+              <td>بطاقات المجموعات المُعيَّنة على المدرب — اسم المجموعة، عدد المتدربين، الجدول الزمني</td>
+              <td><span class="badge b-teal">مدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>TR-02</code></td>
+              <td>كشف المتدربين</td>
+              <td>قائمة متدربي مجموعة محددة — الاسم، نسبة الحضور، الحالة، زر اتصال</td>
+              <td><span class="badge b-teal">مدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>TR-03</code></td>
+              <td>تسجيل الحضور</td>
+              <td>واجهة تسجيل إلكتروني — التحقق من الموقع GPS، كشف اسمي تفاعلي، تأكيد دفعي</td>
+              <td><span class="badge b-teal">مدرب</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>TR-04</code></td>
+              <td>إجازاتي</td>
+              <td>طلب إجازة خاص بالمدرب، سجل الطلبات السابقة</td>
+              <td><span class="badge b-teal">مدرب</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>TR-05</code></td>
+              <td>ترشيحات التميز</td>
+              <td>نموذج ترشيح متدرب للتميز — اختيار المتدرب، الفئة، السبب، الفترة</td>
+              <td><span class="badge b-teal">مدرب</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <!-- Admin Ops -->
+            <tr>
+              <td><code>A-01</code></td>
+              <td>Super Admin Dashboard</td>
+              <td>إجماليات النظام: عدد المستخدمين النشطين، المتدربين، أخطاء API 24h، حجم DB، Queue backlog</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>A-02</code></td>
+              <td>Audit Log Viewer</td>
+              <td>جدول قابل للفرز — فلاتر (مستخدم، تاريخ، كيان، إجراء)، pagination، تصدير CSV/Excel</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>A-03</code></td>
+              <td>System Health Panel</td>
+              <td>مؤشرات حية: DB size, Redis memory, Queue sizes, Active connections, API errors, Slow queries</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+              <td><span class="badge b-gold">P0</span></td>
+            </tr>
+            <tr>
+              <td><code>A-04</code></td>
+              <td>Backup / Restore</td>
+              <td>قائمة النسخ (تلقائي/يدوي)، حالة التنفيذ، حجم الملف، زر نسخ يدوية، تنزيل، استعادة</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>A-05</code></td>
+              <td>إعدادات النظام</td>
+              <td>جدول Key-Value: اسم المعهد، الشعار، التواصل، القيم الافتراضية — تعديل مباشر مع تسجيل Audit</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+              <td><span class="badge b-teal">P1</span></td>
+            </tr>
+            <tr>
+              <td><code>A-06</code></td>
+              <td>Feature Flags</td>
+              <td>تفعيل/تعطيل ميزات تدريجياً — نسبة الـ rollout، وصف الميزة، آخر تعديل</td>
+              <td><span class="badge b-navy">Super Admin</span></td>
+              <td><span class="badge b-gray">P2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: DATABASE ===== -->
+    <section id="database" class="section">
+      <div class="section-label">قاعدة البيانات</div>
+      <h2 class="section-title">الجداول الجديدة في المرحلة التاسعة</h2>
+      <p class="section-desc">6 جداول جديدة تدعم التشغيل والمراقبة والضبط الديناميكي للنظام — جميعها بعناوين <code>dh-green</code>.</p>
+
+      <div class="grid grid-3">
+
+        <div class="db-card">
+          <div class="db-head dh-green">⚙️ system_settings</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · serial</div>
+            <div class="db-field">key · varchar(100) UNIQUE NOT NULL</div>
+            <div class="db-field">value · JSONB NOT NULL</div>
+            <div class="db-field">category · varchar(50) — (general/notifications/portal/security)</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field"><span class="fk">FK</span> updated_by → users.id</div>
+            <div class="db-field">updated_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">💾 backups</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid DEFAULT gen_random_uuid()</div>
+            <div class="db-field">type · enum('auto','manual')</div>
+            <div class="db-field">file_url · text</div>
+            <div class="db-field">size_bytes · bigint</div>
+            <div class="db-field">started_at · timestamptz</div>
+            <div class="db-field">completed_at · timestamptz</div>
+            <div class="db-field">status · enum('pending','running','success','failed')</div>
+            <div class="db-field"><span class="fk">FK</span> triggered_by → users.id (nullable)</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">📊 system_health_snapshots</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · serial</div>
+            <div class="db-field">snapshot_at · timestamptz DEFAULT now()</div>
+            <div class="db-field">db_size · bigint (bytes)</div>
+            <div class="db-field">redis_memory · bigint (bytes)</div>
+            <div class="db-field">queue_size · int</div>
+            <div class="db-field">active_connections · int</div>
+            <div class="db-field">api_errors_count_24h · int</div>
+            <div class="db-field">slow_queries_count · int</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">📋 portal_activity_logs</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span> user_id → users.id</div>
+            <div class="db-field">portal · enum('trainee','trainer','admin')</div>
+            <div class="db-field">action · varchar(100) — (view/submit/update/download)</div>
+            <div class="db-field">path · varchar(255)</div>
+            <div class="db-field">ip_address · inet</div>
+            <div class="db-field">user_agent · text</div>
+            <div class="db-field">duration_ms · int</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">🚩 feature_flags</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · serial</div>
+            <div class="db-field">key · varchar(100) UNIQUE NOT NULL</div>
+            <div class="db-field">is_enabled · boolean DEFAULT false</div>
+            <div class="db-field">rollout_percentage · int DEFAULT 0 (0–100)</div>
+            <div class="db-field">description · text</div>
+            <div class="db-field"><span class="fk">FK</span> updated_by → users.id</div>
+            <div class="db-field">updated_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+        <div class="db-card">
+          <div class="db-head dh-green">🔍 saved_searches</div>
+          <div class="db-body">
+            <div class="db-field"><span class="pk">PK</span> id · uuid DEFAULT gen_random_uuid()</div>
+            <div class="db-field"><span class="fk">FK</span> user_id → users.id</div>
+            <div class="db-field">name · varchar(100) NOT NULL</div>
+            <div class="db-field">entity_type · varchar(50) — (trainee/violation/company/…)</div>
+            <div class="db-field">filters · JSONB NOT NULL</div>
+            <div class="db-field">created_at · timestamptz DEFAULT now()</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="mt-6">العلاقات بين الجداول</h3>
+      <div class="code-block">
+<span class="c-com"># جداول المرحلة التاسعة وعلاقاتها</span>
+system_settings     <span class="c-key">N:1</span> users            <span class="c-com">(updated_by — من عدَّل الإعداد)</span>
+backups             <span class="c-key">N:1</span> users            <span class="c-com">(triggered_by — nullable للنسخ التلقائية)</span>
+portal_activity_logs <span class="c-key">N:1</span> users           <span class="c-com">(user_id — من نفَّذ الإجراء)</span>
+feature_flags       <span class="c-key">N:1</span> users            <span class="c-com">(updated_by — آخر من غيَّر الـ flag)</span>
+saved_searches      <span class="c-key">N:1</span> users            <span class="c-com">(user_id — البحث المحفوظ لمستخدم بعينه)</span>
+system_health_snapshots <span class="c-key">standalone</span>       <span class="c-com">(لا FK — لقطات دورية مستقلة)</span>
+
+<span class="c-com"># إندكسات مُوصى بها</span>
+CREATE INDEX ON portal_activity_logs (user_id, created_at DESC);
+CREATE INDEX ON portal_activity_logs (portal, action);
+CREATE INDEX ON system_health_snapshots (snapshot_at DESC);
+CREATE UNIQUE INDEX ON system_settings (key);
+CREATE UNIQUE INDEX ON feature_flags (key);
+
+<span class="c-com"># GIN index للبحث الشامل</span>
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE INDEX ON trainees USING GIN (full_name gin_trgm_ops);
+CREATE INDEX ON companies USING GIN (name gin_trgm_ops);
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: APIS ===== -->
+    <section id="apis" class="section">
+      <div class="section-label">API Endpoints</div>
+      <h2 class="section-title">28 نقطة اتصال — موزَّعة على ثلاث بوابات</h2>
+
+      <!-- Trainee APIs -->
+      <div class="api-group">
+        <div class="api-group-title">🎓 بوابة المتدرب — Trainee Portal</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/dashboard</span>
+            <span class="api-desc">الملخص الرئيسي: الدرس القادم، نسبة الحضور، رصيد الإجازات، آخر 3 إشعارات</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/attendance</span>
+            <span class="api-desc">سجل الحضور مع ?month=&year= — يعيد مصفوفة أيام مع الحالة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/leaves</span>
+            <span class="api-desc">قائمة طلبات الإجازة مع الحالة والتواريخ</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/portal/trainee/leaves</span>
+            <span class="api-desc">تقديم طلب إجازة جديد — body: {type, from, to, reason, attachment_url?}</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/violations</span>
+            <span class="api-desc">قائمة المخالفات المسجَّلة على المتدرب — read only</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/portal/trainee/violations/:id/appeal</span>
+            <span class="api-desc">تقديم اعتراض على مخالفة محددة — body: {reason, evidence_url?}</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/documents</span>
+            <span class="api-desc">قائمة الوثائق المرفوعة مع الحالة (pending/approved/rejected)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/portal/trainee/documents</span>
+            <span class="api-desc">رفع وثيقة جديدة — multipart/form-data: {type, file}</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/notifications</span>
+            <span class="api-desc">قائمة الإشعارات مع فلتر ?is_read= — تحديث is_read عبر PATCH</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/certificates</span>
+            <span class="api-desc">الشهادات المتاحة — يعيد 403 إذا لم يتخرج المتدرب بعد</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/excellence</span>
+            <span class="api-desc">إنجازات وترشيحات التميز الخاصة بالمتدرب</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainee/profile</span>
+            <span class="api-desc">بيانات الملف الشخصي الكاملة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/portal/trainee/profile/update-request</span>
+            <span class="api-desc">طلب تعديل حقول حساسة — ينشئ سجل في update_requests (Phase 04)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trainer APIs -->
+      <div class="api-group">
+        <div class="api-group-title">👨‍🏫 بوابة المدرب — Trainer Portal</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainer/groups</span>
+            <span class="api-desc">المجموعات المُعيَّن عليها المدرب الحالي فقط</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainer/group/:id/roster</span>
+            <span class="api-desc">كشف متدربي مجموعة محددة — مع التحقق أن المدرب مُعيَّن عليها</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/portal/trainer/attendance/record</span>
+            <span class="api-desc">تسجيل حضور إلكتروني — body: {group_id, date, records[], gps_coords}</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/portal/trainer/leaves</span>
+            <span class="api-desc">إجازات المدرب + نموذج طلب جديد (POST /api/portal/trainer/leaves)</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/portal/trainer/nominations</span>
+            <span class="api-desc">ترشيح متدرب للتميز — body: {trainee_id, category, reason, period}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin APIs -->
+      <div class="api-group">
+        <div class="api-group-title">⚙️ عمليات Super Admin</div>
+        <div class="api-list">
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/audit-logs</span>
+            <span class="api-desc">سجل المراجعة مع فلاتر: ?user_id=&from=&to=&entity=&action= + pagination</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/audit-logs/export</span>
+            <span class="api-desc">تصدير Audit Log — نفس الفلاتر + format=csv|xlsx</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/system-health</span>
+            <span class="api-desc">اللقطة الفورية لصحة النظام + آخر 24 ساعة من system_health_snapshots</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/system-settings</span>
+            <span class="api-desc">جميع إعدادات النظام مُجمَّعة بالـ category</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/admin/system-settings/:key</span>
+            <span class="api-desc">تحديث قيمة إعداد معين — يُسجِّل في Audit Log تلقائياً ويُبطل الـ cache</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/backups</span>
+            <span class="api-desc">قائمة النسخ الاحتياطية مرتبة بـ started_at DESC</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/admin/backups/trigger</span>
+            <span class="api-desc">بدء نسخة احتياطية يدوية فورية — يُضاف إلى BullMQ queue</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/admin/users/:id/disable</span>
+            <span class="api-desc">تعطيل مستخدم — يُعيد 403 إذا كان Super Admin آخر</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-post">POST</span>
+            <span class="api-path">/api/admin/users/:id/reset-password</span>
+            <span class="api-desc">إعادة تعيين كلمة مرور — يُرسل بريداً إلكترونياً وينهي الجلسات الحالية</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/search</span>
+            <span class="api-desc">بحث شامل — ?q=&entities=trainee,company,violation — GIN + pg_trgm</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-get">GET</span>
+            <span class="api-path">/api/admin/feature-flags</span>
+            <span class="api-desc">قائمة جميع Feature Flags مع حالتها الراهنة</span>
+          </div>
+          <div class="api-item">
+            <span class="method m-put">PUT</span>
+            <span class="api-path">/api/admin/feature-flags/:key</span>
+            <span class="api-desc">تحديث is_enabled + rollout_percentage لـ flag معيَّن</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7: FLOWS ===== -->
+    <section id="flows" class="section">
+      <div class="section-label">تدفقات المستخدم</div>
+      <h2 class="section-title">كيف يتحرك كل دور في بوابته؟</h2>
+
+      <h3>🔸 تدفق المتدرب — تقديم إجازة مرضية</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يسجّل دخوله للبوابة</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Dashboard يظهر تنبيه: غائب اليوم</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يفتح "الإجازة المرضية"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يُدخل رقم التقرير الطبي + يرفع المستند</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">POST /api/portal/trainee/leaves</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يصل إشعار للمشرف (Phase 08)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">الحالة تتحدث في الكشف</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق المدرب — تسجيل الحضور الإلكتروني</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يفتح بوابة المدرب من هاتفه</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يختار المجموعة من "مجموعاتي"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">النظام يطلب إذن الموقع GPS</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يؤكد أنه داخل نطاق المعهد (&lt;200m)</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يظهر الكشف — يُحدِّد الحاضرين</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">POST /attendance/record مع GPS coords</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يُحفظ كـ electronic attendance (Phase 05)</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق Super Admin — مراجعة Audit Log بعد حادثة</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">يفتح Audit Log Viewer</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-rust">يفلتر بالتاريخ + اسم المستخدم</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يرى جميع الإجراءات مرتبة زمنياً</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يُصدِّر CSV للمراجع الخارجي</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">يُعطِّل المستخدم إذا لزم</div>
+      </div>
+
+      <h3 class="mt-6">🔸 تدفق Super Admin — تشغيل نسخة احتياطية يدوية</h3>
+      <div class="flow">
+        <div class="flow-node fn-dark">Backup/Restore UI</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">يضغط "نسخة احتياطية الآن"</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">POST /api/admin/backups/trigger</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-dark">BullMQ يُنفِّذ Job في الخلفية</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-gold">Status: running → success</div>
+        <span class="flow-arrow">←</span>
+        <div class="flow-node fn-teal">يظهر في القائمة مع الحجم + رابط التنزيل</div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 8: BUSINESS LOGIC ===== -->
+    <section id="logic" class="section">
+      <div class="section-label">منطق العمل</div>
+      <h2 class="section-title">قواعد تشغيلية دقيقة — 11 قاعدة</h2>
+
+      <div class="alert al-navy">
+        <span class="ico">🔒</span>
+        <div><strong>قاعدة 9.1 — عزل بيانات المتدرب:</strong> جميع queries في trainee portal تتضمن <code>WHERE trainee_id = req.user.trainee_id</code> إلزامياً — لا توجد طريقة لتجاوزه حتى لو تم تعديل الـ request يدوياً.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">👨‍🏫</span>
+        <div><strong>قاعدة 9.2 — عزل مجموعات المدرب:</strong> <code>SELECT * FROM groups WHERE trainer_id = req.user.trainer_id</code> — المدرب لا يرى أي مجموعة غير مُعيَّن عليها حتى لو عرف الـ group_id.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📍</span>
+        <div><strong>قاعدة 9.3 — شروط تسجيل الحضور الإلكتروني:</strong> GPS ضروري + يجب أن تكون الإحداثيات في نطاق 200 متر من المعهد + التسجيل مقبول فقط خلال آخر 60 دقيقة من بداية الحصة. تجاوز هذه الشروط يُعيد 422 مع رسالة توضيحية.</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">✏️</span>
+        <div><strong>قاعدة 9.4 — طلبات التعديل الحساسة:</strong> تعديل الاسم الكامل أو رقم الهوية الوطنية من بوابة المتدرب لا يُطبَّق مباشرة — ينشئ سجلاً في <code>update_requests</code> (المرحلة الرابعة) يحتاج موافقة مشرف.</div>
+      </div>
+
+      <div class="alert al-rust">
+        <span class="ico">⚠️</span>
+        <div><strong>قاعدة 9.5 — المخالفات للقراءة فقط:</strong> بوابة المتدرب تُظهر المخالفات بصيغة عرض بحتة. الزر الوحيد المتاح هو "اعتراض" الذي يُنشئ <code>violation_appeal</code> في المرحلة السابعة — لا يمكن حذف أو تعديل المخالفة.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">🔍</span>
+        <div><strong>قاعدة 9.6 — أداء البحث الشامل:</strong> Global Search يعمل عبر <code>pg_trgm</code> و GIN indexes على جداول trainees, companies, violations, documents. عتبة التشابه 0.3. الاستعلام محدود بـ 20 نتيجة لكل entity_type. Cache Redis بمفتاح <code>search:{hash(q+entities)}</code> TTL 60 ثانية.</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">📋</span>
+        <div><strong>قاعدة 9.7 — Audit Log:</strong> pagination إلزامي (page_size max 100). تصدير CSV/Excel يُنفَّذ كـ BullMQ job لتفادي timeout. الـ export link صالح 10 دقائق فقط (signed URL).</div>
+      </div>
+
+      <div class="alert al-navy">
+        <span class="ico">⚙️</span>
+        <div><strong>قاعدة 9.8 — تغيير الإعدادات:</strong> كل PUT على system_settings يُسجِّل في Audit Log (entity='system_settings', action='update', old_value, new_value) ثم يُبطل مفتاح Redis <code>settings:{key}</code> فوراً.</div>
+      </div>
+
+      <div class="alert al-teal">
+        <span class="ico">💾</span>
+        <div><strong>قاعدة 9.9 — سياسة النسخ الاحتياطية:</strong> Cron Job يومي الساعة 02:00 بالتوقيت المحلي. الاحتفاظ بآخر 30 نسخة تلقائية (الأقدم يُحذف تلقائياً). النسخ اليدوية تُحتفظ حتى يحذفها الـ Super Admin يدوياً. Storage: S3-compatible (Backblaze B2 أو AWS).</div>
+      </div>
+
+      <div class="alert al-gold">
+        <span class="ico">🚩</span>
+        <div><strong>قاعدة 9.10 — Feature Flags:</strong> الـ rollout يعمل بـ hash المستخدم: <code>hash(user_id) % 100 &lt; rollout_percentage</code> — يضمن ثبات التجربة لنفس المستخدم بغض النظر عن وقت الطلب. إلغاء الـ flag (is_enabled=false) يُوقف الميزة لكل المستخدمين فوراً.</div>
+      </div>
+
+      <pre class="code-block">
+<span class="c-com">// Feature Flag evaluation — helper</span>
+<span class="c-key">function</span> <span class="c-fn">isFeatureEnabled</span>(flagKey, userId) {
+  <span class="c-key">const</span> flag = <span class="c-key">await</span> redis.get(<span class="c-str">`flag:${flagKey}`</span>);
+  <span class="c-key">if</span> (!flag || !flag.is_enabled) <span class="c-key">return false</span>;
+  <span class="c-key">if</span> (flag.rollout_percentage === <span class="c-num">100</span>) <span class="c-key">return true</span>;
+  <span class="c-key">const</span> hash = crc32(userId.toString()) % <span class="c-num">100</span>;
+  <span class="c-key">return</span> hash &lt; flag.rollout_percentage;
+}
+
+<span class="c-com">// GPS validation — trainer attendance</span>
+<span class="c-key">function</span> <span class="c-fn">isWithinInstitute</span>(lat, lng) {
+  <span class="c-key">const</span> d = haversine(INSTITUTE_LAT, INSTITUTE_LNG, lat, lng);
+  <span class="c-key">return</span> d &lt;= <span class="c-num">200</span>; <span class="c-com">// meters</span>
+}
+
+<span class="c-com">// Attendance window check</span>
+<span class="c-key">const</span> sessionStart = <span class="c-fn">getSessionStart</span>(groupId, date);
+<span class="c-key">const</span> windowEnd = addMinutes(sessionStart, <span class="c-num">60</span>);
+<span class="c-key">if</span> (!isWithin(now, [sessionStart, windowEnd])) {
+  <span class="c-key">throw</span> <span class="c-key">new</span> <span class="c-fn">AppError</span>(<span class="c-str">'خارج نافذة الحضور (60 دقيقة)'</span>, <span class="c-num">422</span>);
+}
+      </pre>
+
+      <div class="alert al-teal">
+        <span class="ico">📱</span>
+        <div><strong>قاعدة 9.11 — Responsive Design إلزامي:</strong> جميع شاشات البوابات تستخدم Mobile-First breakpoints. بوابة المتدرب ومدرب محسَّنتان لـ 375px. الجداول تتحول إلى بطاقات في الجوال. touch targets ≥ 44px. لا horizontal scroll على أي شاشة.</div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 9: DEPENDENCIES ===== -->
+    <section id="dependencies" class="section">
+      <div class="section-label">خريطة التبعيات</div>
+      <h2 class="section-title">قبل وبعد هذه المرحلة</h2>
+      <div class="matrix">
+        <div class="matrix-cell mc-in">
+          <h5>📥 تعتمد على — ALL PHASES</h5>
+          <p><strong><a href="phase-01-foundation.html">Phase 01:</a></strong> JWT Auth, Role Middleware, Redis — أساس كل بوابة</p>
+          <p><strong><a href="phase-02-master-data.html">Phase 02:</a></strong> Companies, Groups, Trainers — بيانات شاشات المدرب</p>
+          <p><strong><a href="phase-03-registration-intake.html">Phase 03:</a></strong> بيانات تسجيل المتدرب الأولية</p>
+          <p><strong><a href="phase-04-trainee-lifecycle.html">Phase 04:</a></strong> trainee profile, documents, update_requests — بوابة المتدرب</p>
+          <p><strong><a href="phase-05-attendance-operations.html">Phase 05:</a></strong> attendance records — سجل الحضور للمتدرب وتسجيل المدرب</p>
+          <p><strong><a href="phase-06-leaves-exceptions.html">Phase 06:</a></strong> leave_requests — طلبات إجازة المتدرب والمدرب</p>
+          <p><strong><a href="phase-07-violations-financials.html">Phase 07:</a></strong> violations, appeals, excellence — شاشات المتدرب</p>
+          <p><strong><a href="phase-08-notifications-reports.html">Phase 08:</a></strong> notifications table — مركز إشعارات المتدرب</p>
+        </div>
+        <div class="matrix-cell mc-out">
+          <h5>📤 تُسلِّم إلى</h5>
+          <p><strong><a href="phase-10-launch-roadmap.html">Phase 10 — الإطلاق:</a></strong> البوابات المكتملة هي المنتج الذي يدخل UAT. System Health + Audit Log تُبنى عليها خطة المراقبة في الإنتاج.</p>
+          <p class="mt-2"><strong>المستقبل:</strong> تطبيق React Native يستهلك نفس الـ APIs. بوابة الشركة الشريكة يمكن إضافتها كبوابة رابعة بنفس النمط المعماري.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 10: RISKS ===== -->
+    <section id="risks" class="section">
+      <div class="section-label">المخاطر والافتراضات</div>
+      <h2 class="section-title">ما يمكن أن يتأخر أو يُعيق</h2>
+      <div class="grid grid-2">
+        <div class="matrix-cell mc-risk">
+          <h5>⚠️ المخاطر</h5>
+          <ul class="feat-list">
+            <li><span class="ico">⚠️</span> <strong>أداء الجوال على 3G:</strong> صور الوثائق المرفوعة قد تثقِّل الاتصال — يتطلب lazy loading + compression.</li>
+            <li><span class="ico">⚠️</span> <strong>ارتباك الأدوار:</strong> مستخدم بدورين (مدرب + مشرف) قد يرى بيانات غير متوقعة — يتطلب تعريف واضح للـ "active role" في الجلسة.</li>
+            <li><span class="ico">⚠️</span> <strong>أداء البحث الشامل:</strong> عند وصول DB إلى 100K+ متدرب، pg_trgm قد يتأخر — يتطلب مراقبة مستمرة وإضافة Elasticsearch لاحقاً.</li>
+            <li><span class="ico">⚠️</span> <strong>تكاليف تخزين النسخ:</strong> 30 نسخة يومية × حجم DB = تكاليف متصاعدة — يتطلب سياسة compression + تيّرد (hot/cold storage).</li>
+            <li><span class="ico">⚠️</span> <strong>GPS spoofing:</strong> المدرب قد يزوِّر موقعه — يتطلب Cross-check مع IP + توثيق device fingerprint.</li>
+          </ul>
+        </div>
+        <div class="matrix-cell">
+          <h5>📌 الافتراضات</h5>
+          <ul class="feat-list">
+            <li><span class="ico">✓</span> المتدرب يملك هاتفاً ذكياً بمتصفح حديث.</li>
+            <li><span class="ico">✓</span> المعهد لديه نطاق جغرافي ثابت ومحدَّد (lat/lng + radius).</li>
+            <li><span class="ico">✓</span> بنية S3-compatible متاحة للنسخ الاحتياطية.</li>
+            <li><span class="ico">✓</span> Audit Log لن يُحذف أبداً (retention للأبد أو حسب السياسة التنظيمية).</li>
+            <li><span class="ico">✓</span> بيانات المراحل 01-08 سليمة ومختبرة قبل البدء في البوابات.</li>
+            <li><span class="ico">✓</span> الشهادات تُولَّد فقط بعد وضع الحالة = graduated في trainee profile.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 11: CHECKLIST ===== -->
+    <section id="checklist" class="section">
+      <div class="section-label">قائمة المخرجات</div>
+      <h2 class="section-title">كيف نعرف أن المرحلة التاسعة انتهت؟</h2>
+      <ol class="num-list">
+        <li>Backend: جميع الـ 28 API endpoint مكتوبة، مُختبَرة بـ Postman/Jest، ومحمية بـ Role Middleware ✅</li>
+        <li>Backend: Row-Level Security مُطبَّق ومُختبَر — محاولات تجاوز الصلاحيات تُعيد 403 ✅</li>
+        <li>Backend: GPS validation + attendance window يعملان صحيحاً على بيانات حقيقية ✅</li>
+        <li>Backend: BullMQ jobs للـ backup و audit export تعمل بدون timeout ✅</li>
+        <li>Backend: Feature Flags يُحدِّدون المستخدمين بشكل متسق (نفس النتيجة لنفس user_id) ✅</li>
+        <li>Database: 6 جداول جديدة مُنشَأة مع جميع الـ indexes و constraints ✅</li>
+        <li>Database: GIN indexes على trainees, companies للبحث الشامل ✅</li>
+        <li>Database: Cron Job النسخ الاحتياطية يعمل يومياً بنجاح ✅</li>
+        <li>Frontend: بوابة المتدرب — 10 شاشات مكتملة، Mobile-First، اختُبرت على 375px ✅</li>
+        <li>Frontend: بوابة المدرب — 5 شاشات مكتملة، تسجيل حضور GPS يعمل ✅</li>
+        <li>Frontend: لوحة Super Admin — 6 شاشات مكتملة بما فيها Audit Log مع export ✅</li>
+        <li>Testing: UAT مع 5 متدربين حقيقيين يُؤكِّدون سهولة الاستخدام ✅</li>
+        <li>Testing: Penetration test أولي — تأكيد عدم تسرب بيانات بين المتدربين ✅</li>
+        <li>Documentation: جميع الـ APIs موثَّقة في Swagger/Postman Collection ✅</li>
+        <li>Documentation: دليل استخدام بوابة المتدرب (PDF عربي) ✅</li>
+      </ol>
+    </section>
+
+    <!-- Prev / Next Navigation -->
+    <div class="phase-footer-nav">
+      <a href="phase-08-notifications-reports.html" class="pfn-link prev">
+        <span class="pfn-label">← المرحلة السابقة</span>
+        <span class="pfn-title">٨. الإشعارات والتقارير</span>
+      </a>
+      <a href="phase-10-launch-roadmap.html" class="pfn-link next">
+        <span class="pfn-label">المرحلة التالية →</span>
+        <span class="pfn-title">١٠. الإطلاق والـ Roadmap</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="sf-brand">🏛️ معهد ريادة الغد</div>
+      <p class="sf-desc">نظام إدارة مركز التدريب — منصة SaaS كاملة للمعاهد التي ترتبط بشركات شريكة وتحتاج إدارة دقيقة للحضور والعقود والرواتب والمخالفات.</p>
+    </div>
+    <div>
+      <h5>المراحل الأساسية</h5>
+      <ul>
+        <li><a href="phase-01-foundation.html">01. الأساس المعماري</a></li>
+        <li><a href="phase-02-master-data.html">02. البيانات الرئيسية</a></li>
+        <li><a href="phase-03-registration-intake.html">03. التسجيل والقبول</a></li>
+        <li><a href="phase-04-trainee-lifecycle.html">04. دورة حياة المتدرب</a></li>
+        <li><a href="phase-05-attendance-operations.html">05. الحضور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>المراحل التشغيلية</h5>
+      <ul>
+        <li><a href="phase-06-leaves-exceptions.html">06. الإجازات</a></li>
+        <li><a href="phase-07-violations-financials.html">07. المخالفات والمال</a></li>
+        <li><a href="phase-08-notifications-reports.html">08. الإشعارات</a></li>
+        <li><a href="phase-09-portals-admin-ops.html">09. البوابات</a></li>
+        <li><a href="phase-10-launch-roadmap.html">10. الإطلاق</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>هذه الصفحة</h5>
+      <ul>
+        <li><a href="#summary">ملخص المرحلة</a></li>
+        <li><a href="#modules">الوحدات المشمولة</a></li>
+        <li><a href="#screens">الشاشات — 21 شاشة</a></li>
+        <li><a href="#database">قاعدة البيانات</a></li>
+        <li><a href="#apis">API Endpoints</a></li>
+        <li><a href="#logic">منطق العمل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    © 2026 معهد ريادة الغد — وثيقة المشروع الإصدار 3.0 · المرحلة 09 — البوابات والعمليات الإدارية · Built with HTML + CSS + JS
+  </div>
+</footer>
+
+<button class="back-top" aria-label="الرجوع للأعلى">↑</button>
+<script src="assets/js/app.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
