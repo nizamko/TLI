@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Riyadat — Design System v2 · Vivid & Flexible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --navy-700:#254159;--navy-800:#1B3043;--navy-900:#11202E;--navy-500:#3C627D;
+ --steel-500:#718A91;--steel-600:#5C7178;--steel-300:#B0C0C4;
+ --slate-0:#fff;--slate-50:#F7F9FA;--slate-100:#EEF1F3;--slate-200:#E1E6E9;--slate-300:#CBD3D7;
+ --slate-400:#A4AFB4;--slate-500:#7C888D;--slate-600:#5C686D;--slate-700:#404B50;--slate-800:#2A3338;--slate-900:#181F23;
+ --success:#16A06F;--success-soft:#E4F4EE;--success-bd:#BBE3D3;--success-tx:#157A57;
+ --warning:#D08A1E;--warning-soft:#FAF1E2;--warning-bd:#EBD9B8;--warning-tx:#9A6516;
+ --danger:#D24237;--danger-soft:#FBE9E7;--danger-bd:#F1C7C3;--danger-tx:#A0322A;
+ --info:#2B7DC5;--info-soft:#E6F0F8;--info-bd:#BFDAEE;--info-tx:#235F92;
+ --bg:var(--slate-50);--surface:#fff;--border:var(--slate-200);--bds:var(--slate-300);
+ --tx-strong:var(--slate-900);--tx:var(--slate-700);--muted:var(--slate-500);
+ --sh-sm:0 1px 3px rgba(37,65,89,.08),0 1px 2px rgba(37,65,89,.05);
+ --sh-md:0 4px 14px rgba(37,65,89,.09);--sh-lg:0 16px 36px rgba(37,65,89,.14);
+ --r-sm:6px;--r-md:8px;--r-lg:10px;--r-xl:14px;
+ --fd:"Sora","IBM Plex Sans Arabic",sans-serif;--fa:"IBM Plex Sans Arabic",sans-serif;--fm:"JetBrains Mono",monospace;
+ /* page-accent default */
+ --acc:var(--navy-700);--acc-h:var(--navy-800);--acc-soft:#F1F5F8;--acc-bd:#BDCBD7;--acc-strong:#1B3043;--gf:var(--navy-500);--gt:var(--navy-700);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:var(--fa);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--fm);font-feature-settings:"tnum"}
+section{padding:54px 0;border-bottom:1px solid var(--border)}
+.eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-600);font-weight:500;display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--steel-500)}
+h2.sec{font-family:var(--fd);font-size:1.65rem;font-weight:700;color:var(--tx-strong);margin-bottom:6px}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:28px;max-width:64ch}
+
+/* HERO */
+.hero{background:linear-gradient(155deg,var(--navy-900),var(--navy-700) 55%,var(--navy-600));color:#fff;border:none;padding:0;position:relative;overflow:hidden}
+.hero .wrap{padding:64px 24px 60px;position:relative;z-index:2}
+.hero h1{font-family:var(--fd);font-size:clamp(1.9rem,4.5vw,2.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.hero h1 b{background:linear-gradient(90deg,#5BD0FF,#7DE3B0,#FFD56B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#C7D6E0;max-width:56ch;margin-top:16px;font-size:1.04rem}
+.hero .tag{font-family:var(--fm);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel-300);margin-bottom:20px}
+.spectrum{display:flex;height:8px;border-radius:99px;overflow:hidden;margin-top:30px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.spectrum i{flex:1}
+
+/* TONE GRID */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:12px}
+.tcard{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:12px 13px;box-shadow:var(--sh-sm)}
+.tic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:var(--sh-sm)}
+.tic svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tmeta b{font-family:var(--fd);font-size:.86rem;color:var(--tx-strong);display:block}
+.tmeta .hx{font-family:var(--fm);font-size:.64rem;color:var(--muted)}
+
+/* PLAYGROUND */
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;align-items:center}
+.ctl-label{font-size:.78rem;color:var(--muted);font-weight:600;margin-inline-end:4px}
+.chip{font-family:var(--fa);font-size:.76rem;font-weight:600;border:1px solid var(--border);background:#fff;color:var(--tx);padding:7px 12px;border-radius:99px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.12s}
+.chip .d{width:9px;height:9px;border-radius:50%}
+.chip:hover{border-color:var(--bds)}
+.chip.on{color:#fff;border-color:transparent}
+.seg{display:inline-flex;background:var(--slate-100);border-radius:99px;padding:3px}
+.seg button{font-family:var(--fa);border:none;background:none;font-size:.76rem;font-weight:600;color:var(--muted);padding:6px 14px;border-radius:99px;cursor:pointer}
+.seg button.on{background:#fff;color:var(--acc-strong);box-shadow:var(--sh-sm)}
+
+/* APP FRAME (re-themed by --acc via JS) */
+.app{background:#fff;border:1px solid var(--bds);border-radius:var(--r-xl);box-shadow:var(--sh-lg);overflow:hidden;display:grid;grid-template-columns:228px 1fr;min-height:540px}
+.side{background:var(--navy-800);padding:16px 12px;color:#fff;overflow:hidden}
+.sbrand{display:flex;align-items:center;gap:10px;padding:4px 6px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:12px}
+.sbrand .lg{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--navy-500),var(--steel-500));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:.78rem}
+.sbrand b{font-family:var(--fd);font-size:.85rem}.sbrand span{font-size:.64rem;color:var(--steel-300);display:block}
+.snav{display:flex;flex-direction:column;gap:2px}
+.snav a{display:flex;align-items:center;gap:10px;padding:8px 9px;border-radius:8px;color:#AEC0CC;font-size:.79rem;font-weight:500;text-decoration:none;cursor:pointer}
+.snav a .ni{width:25px;height:25px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.snav a .ni svg{width:14px;height:14px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.snav a:hover{background:rgba(255,255,255,.05);color:#fff}
+.snav a.active{background:rgba(255,255,255,.10);color:#fff;box-shadow:inset 2px 0 var(--acc)}
+.main{background:var(--slate-50);padding:20px 22px}
+.phead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.peb{font-family:var(--fm);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-strong);font-weight:600}
+.phead h3{font-family:var(--fd);font-size:1.32rem;color:var(--tx-strong);margin-top:2px;display:inline-flex;align-items:center;gap:10px}
+.phead h3::after{content:"";flex:0 0 auto;width:30px;height:3px;border-radius:3px;background:var(--acc)}
+.phead p{font-size:.8rem;color:var(--muted)}
+.btn{font-family:var(--fa);border:none;border-radius:var(--r-md);padding:9px 15px;font-size:.8rem;font-weight:600;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.btn-acc{background:var(--acc);color:#fff}.btn-acc:hover{background:var(--acc-h)}
+.btn-gh{background:#fff;color:var(--acc-strong);border:1px solid var(--bds)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin:16px 0}
+.tab{font-family:var(--fa);background:none;border:none;font-size:.82rem;font-weight:600;color:var(--muted);padding:9px 13px;cursor:pointer;position:relative}
+.tab.on{color:var(--acc-strong)}
+.tab.on::after{content:"";position:absolute;inset-inline:6px;bottom:-1px;height:2px;background:var(--acc);border-radius:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap,12px);margin-bottom:14px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--card-p,13px);box-shadow:var(--sh-sm);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:3px;background:linear-gradient(var(--gf),var(--gt))}
+.stat .l{font-size:.69rem;color:var(--muted);font-weight:500}.stat .v{font-family:var(--fd);font-size:1.45rem;font-weight:700;color:var(--tx-strong);margin-top:3px}
+.tbl{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.tbl table{width:100%;border-collapse:collapse;font-size:.79rem}
+.tbl th{background:var(--acc-soft);color:var(--acc-strong);text-align:right;padding:10px 13px;font-weight:600;font-size:.72rem}
+.tbl td{padding:var(--row-py,11px) 13px;border-top:1px solid var(--border)}
+.tbl tr:hover td{background:var(--slate-50)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;font-size:.69rem;font-weight:600;border:1px solid}
+.badge .d{width:6px;height:6px;border-radius:50%}
+.av{display:inline-flex;align-items:center;gap:8px}.av .ph{width:27px;height:27px;border-radius:8px;background:var(--acc-soft);color:var(--acc-strong);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.68rem;font-family:var(--fd)}
+.tag-acc{display:inline-flex;background:var(--acc-soft);color:var(--acc-strong);border:1px solid var(--acc-bd);padding:3px 9px;border-radius:99px;font-size:.69rem;font-weight:600}
+
+/* PERMISSIONS MATRIX */
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px;font-size:.78rem}
+.lg-item{display:flex;align-items:center;gap:8px}
+.cellpill{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:7px 6px;border-radius:8px;font-size:.72rem;font-weight:600;cursor:default;border:1px solid;transition:.12s}
+.cellpill svg{width:13px;height:13px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cellpill.solid{color:#fff;border-color:transparent}
+.cellpill.soft{background:#fff}
+.cellpill.off{background:var(--slate-50);color:var(--slate-400);border-color:var(--border);border-style:dashed}
+.mtx{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.mtx table{width:100%;border-collapse:separate;border-spacing:0;font-size:.78rem}
+.mtx th{background:var(--slate-100);padding:11px 10px;font-weight:700;color:var(--slate-700);font-size:.72rem;text-align:center;border-bottom:1px solid var(--border)}
+.mtx th.res{text-align:right;min-width:170px}
+.mtx td{padding:7px 8px;border-bottom:1px solid var(--border);text-align:center;width:120px}
+.mtx td.res{text-align:right}
+.mtx .rname{font-weight:700;color:var(--tx-strong)}.mtx .rmeta{font-size:.66rem;color:var(--muted)}
+.mtx tr:last-child td{border-bottom:none}
+.grp-h th{background:var(--navy-700);color:#fff;font-size:.68rem;letter-spacing:.04em;padding:8px}
+
+footer{padding:38px 0;text-align:center;color:var(--muted);font-size:.82rem}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{display:none}.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="tag">TLI Design System · v2</div>
+  <h1>ملوّن، بس <b>منهجي</b>.<br>وكل صفحة تحت تحكّمك.</h1>
+  <p>ألوان متشبّعة وغنية للتمييز السريع بين الموديولات — كلها مضبوطة على نفس مستوى الطاقة فوق قاعدة navy/steel هادية. كل صفحة بتاخد لونها بـ <span class="mono" style="color:#9FD8FF">data-tone</span> واحدة بس.</p>
+  <div class="spectrum" id="spectrum"></div>
+</div></header>
+
+<!-- TONE GRID -->
+<section><div class="wrap">
+  <div class="eyebrow">19 Module Tones</div>
+  <h2 class="sec">لوحة ألوان الموديولات</h2>
+  <p class="sub">كل موديول لون مميّز بـ gradient للأيقونة — متشبّع للتمييز، منضبط عشان مفيش لون يطغى على التاني. ده اللي بيخلي السايدبار غني ومنظّم في نفس الوقت.</p>
+  <div class="tgrid" id="tgrid"></div>
+</div></section>
+
+<!-- PLAYGROUND -->
+<section style="background:var(--slate-100)"><div class="wrap">
+  <div class="eyebrow">Live Playground · المرونة</div>
+  <h2 class="sec">بدّل لون الصفحة — وشوفها بتتلوّن</h2>
+  <p class="sub">دوس على أي tone: الـ header، الـ tabs، رأس الجدول، الأزرار، والأيقونة النشطة كلهم بيتلوّنوا فوراً. ده معنى التحكّم المرن — موديول واحد، سطر CSS واحد.</p>
+
+  <div class="controls">
+    <span class="ctl-label">Tone:</span>
+    <span id="toneChips"></span>
+  </div>
+  <div class="controls">
+    <span class="ctl-label">الكثافة:</span>
+    <span class="seg" id="densitySeg">
+      <button data-d="comfortable" class="on">مريحة</button>
+      <button data-d="compact">مضغوطة</button>
+    </span>
+  </div>
+
+  <div class="app" id="app" data-tone="companies" data-density="comfortable">
+    <aside class="side">
+      <div class="sbrand"><div class="lg">TLI</div><div><b>ريادة الغد</b><span>لوحة الإدارة</span></div></div>
+      <nav class="snav" id="snav"></nav>
+    </aside>
+    <main class="main">
+      <div class="phead">
+        <div><div class="peb" id="peb">إدارة الشركات</div><h3 id="ptitle">الشركات</h3><p>إدارة الشركات والعقود المرتبطة بها</p></div>
+        <div style="display:flex;gap:8px"><button class="btn btn-gh">تصدير</button><button class="btn btn-acc">＋ إضافة</button></div>
+      </div>
+      <div class="tabs"><button class="tab on">القائمة</button><button class="tab">العقود</button><button class="tab">الإحصائيات</button></div>
+      <div class="stats">
+        <div class="stat"><div class="l">الإجمالي</div><div class="v">48</div></div>
+        <div class="stat"><div class="l">نشط</div><div class="v">41</div></div>
+        <div class="stat"><div class="l">قرب الانتهاء</div><div class="v">5</div></div>
+        <div class="stat"><div class="l">متدربين</div><div class="v">2,840</div></div>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>الاسم</th><th>الكود</th><th>العدد</th><th>التصنيف</th><th>الحالة</th></tr></thead>
+        <tbody>
+          <tr><td><span class="av"><span class="ph">أس</span> أسمنت السويس</span></td><td class="mono">CN-2041</td><td>320</td><td><span class="tag-acc">قطاع صناعي</span></td><td><span class="badge" style="background:var(--success-soft);border-color:var(--success-bd);color:var(--success-tx)"><span class="d" style="background:var(--success)"></span>نشط</span></td></tr>
+          <tr><td><span class="av"><span class="ph">دل</span> دلتا للصلب</span></td><td class="mono">CN-2038</td><td>185</td><td><span class="tag-acc">قطاع صناعي</span></td><td><span class="badge" style="background:var(--warning-soft);border-color:var(--warning-bd);color:var(--warning-tx)"><span class="d" style="background:var(--warning)"></span>قرب الانتهاء</span></td></tr>
+          <tr><td><span class="av"><span class="ph">نا</span> النصر للسيارات</span></td><td class="mono">CN-2055</td><td>402</td><td><span class="tag-acc">قطاع نقل</span></td><td><span class="badge" style="background:var(--success-soft);border-color:var(--success-bd);color:var(--success-tx)"><span class="d" style="background:var(--success)"></span>نشط</span></td></tr>
+        </tbody>
+      </table></div>
+    </main>
+  </div>
+</div></section>
+
+<!-- PERMISSIONS MATRIX -->
+<section><div class="wrap">
+  <div class="eyebrow">صفحة الصلاحيات · color-coded</div>
+  <h2 class="sec">مصفوفة الصلاحيات — ملوّنة بمنطق</h2>
+  <p class="sub">دي الصفحة اللي وريتني إياها. اللون بيشتغل على بُعدين: <b>نوع العملية</b> (لون) و <b>الوضع</b> (مملوء = تنفيذ مباشر · مفرّغ = مقيّد بالموافقة · متقطّع = مقفول). كده تقرا المصفوفة كلها بنظرة.</p>
+
+  <div class="legend">
+    <span class="lg-item"><span class="cellpill solid" style="background:var(--info);width:auto;padding:5px 10px">عرض</span></span>
+    <span class="lg-item"><span class="cellpill solid" style="background:var(--success);width:auto;padding:5px 10px">إضافة</span></span>
+    <span class="lg-item"><span class="cellpill solid" style="background:var(--warning);width:auto;padding:5px 10px">تعديل</span></span>
+    <span class="lg-item"><span class="cellpill solid" style="background:var(--danger);width:auto;padding:5px 10px">حذف</span></span>
+    <span style="width:1px;height:22px;background:var(--border)"></span>
+    <span class="lg-item"><span class="cellpill solid" style="background:var(--slate-600);width:auto;padding:5px 10px">مملوء = مباشر</span></span>
+    <span class="lg-item"><span class="cellpill soft" style="border-color:var(--slate-400);color:var(--slate-600);width:auto;padding:5px 10px">مفرّغ = موافقة</span></span>
+    <span class="lg-item"><span class="cellpill off" style="width:auto;padding:5px 10px">متقطّع = مقفول</span></span>
+  </div>
+
+  <div class="mtx"><table>
+    <thead><tr><th class="res">المورد / الصفحة</th><th>عرض</th><th>إضافة</th><th>تعديل</th><th>حذف</th></tr></thead>
+    <tbody id="mtxBody"></tbody>
+  </table></div>
+</div></section>
+
+<footer>نظام تصميم <b style="color:var(--navy-700);font-family:var(--fd)">Riyadat v2</b> — Vivid &amp; Systematic · مشتق من لوجو TLI · طبقتين <span class="mono" style="color:var(--steel-600)">--tli-*</span> + <span class="mono" style="color:var(--steel-600)">--riyadat-*</span> + <span class="mono" style="color:var(--steel-600)">data-tone</span></footer>
+
+<script>
+const TONES={
+ admin:['#2B59C5','#234592','#E6EBF8','#BFCDEE','#3764CD','#2731B4'],
+ companies:['#2BC597','#1F7760','#E6F8F3','#BFEEE0','#37CDA0','#27B4AA'],
+ contracts:['#C5852B','#8F6426','#F8F0E6','#EEDABF','#CD8F37','#B49A27'],
+ departments:['#2B97C5','#237192','#E6F3F8','#BFE0EE','#37A0CD','#2769B4'],
+ programs:['#352BC5','#2A2592','#E7E6F8','#C2BFEE','#4137CD','#5227B4'],
+ rooms:['#7D2BC5','#5C2592','#EFE6F8','#D8BFEE','#8737CD','#9327B4'],
+ groups:['#C52B91','#8F256E','#F8E6F2','#EEBFDE','#CD379B','#B42764'],
+ schedules:['#2BC5BF','#1F7776','#E6F8F7','#BFEEEC','#37CDC8','#2798B4'],
+ forms:['#A62BC5','#792592','#F4E6F8','#E4BFEE','#AF37CD','#B427AF'],
+ reglinks:['#542BC5','#402592','#EAE6F8','#CCBFEE','#5F37CD','#6E27B4'],
+ applications:['#C5592B','#8F4526','#F8EBE6','#EECDBF','#CD6437','#B47227'],
+ trainees:['#2BC55E','#1F7740','#E6F8EC','#BFEECF','#37CD69','#27B477'],
+ attendance:['#2BC5A1','#1F7765','#E6F8F4','#BFEEE3','#37CDAA','#27B4B4'],
+ blocked:['#C5352B','#8F2C26','#F8E7E6','#EEC2BF','#CD4137','#B45227'],
+ permissions:['#C5A12B','#7D6A25','#F8F4E6','#EEE3BF','#CDAA37','#B4B427'],
+ pending:['#C57D2B','#8F5E26','#F8EFE6','#EED8BF','#CD8737','#B49327'],
+ users:['#2B40C5','#233492','#E6E8F8','#BFC6EE','#374BCD','#3627B4'],
+ audit:['#637788','#4A5A68','#ECEFF1','#D0D6DB','#6E8191','#586C7E'],
+ reports:['#2BABC5','#22778A','#E6F5F8','#BFE6EE','#37B4CD','#277CB4'],
+};
+const AR={admin:'الرئيسية',companies:'الشركات',contracts:'العقود',departments:'الأقسام',programs:'البرامج',rooms:'القاعات',groups:'المجموعات',schedules:'الجدول',forms:'بناء النماذج',reglinks:'روابط التسجيل',applications:'الطلبات',trainees:'المتدربون',attendance:'الحضور',blocked:'المحظورون',permissions:'الصلاحيات',pending:'التعديلات المعلقة',users:'المستخدمون',audit:'سجل التدقيق',reports:'التقارير'};
+const EB={companies:['إدارة الشركات','الشركات'],permissions:['الأمان','إدارة الصلاحيات'],trainees:['المتدربون','المتدربون'],attendance:['التشغيل','الحضور'],programs:['التدريب','البرامج التدريبية'],reports:['التحليلات','التقارير']};
+const I={
+ admin:'<path d="M3 13h8V3H3zM13 21h8v-8h-8zM13 3v6h8V3zM3 21h8v-4H3z"/>',
+ companies:'<path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01"/>',
+ contracts:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6M9 13h6M9 17h4"/>',
+ departments:'<path d="M3 7h18v13H3zM3 7l3-4h12l3 4M9 12h6"/>',
+ programs:'<path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 1-2-2.5zM8 8h6"/>',
+ rooms:'<path d="M3 21V5l8-2v18M11 21V8l8 2v11M3 21h18M7 8h.01M7 12h.01"/>',
+ groups:'<circle cx="9" cy="7" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 4a3 3 0 0 1 0 6M21 20a5 5 0 0 0-4-5"/>',
+ schedules:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4M8 14h3"/>',
+ forms:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/>',
+ reglinks:'<path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/>',
+ applications:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6M9 15l2 2 4-4"/>',
+ trainees:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ attendance:'<path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+ blocked:'<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6 18.4 18.4"/>',
+ permissions:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+ pending:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ users:'<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11l2 2 4-4"/>',
+ audit:'<path d="M9 11l2 2 4-4M21 12a9 9 0 1 1-3-6.7"/>',
+ reports:'<path d="M3 3v18h18M7 14l3-4 4 3 5-7"/>',
+};
+const order=Object.keys(TONES);
+
+// spectrum
+document.getElementById('spectrum').innerHTML=order.map(k=>`<i style="background:${TONES[k][0]}"></i>`).join('');
+
+// tone grid
+document.getElementById('tgrid').innerHTML=order.map(k=>{
+ const[b,st,sf,bd,gf,gt]=TONES[k];
+ return `<div class="tcard"><div class="tic" style="background:linear-gradient(135deg,${gf},${gt})"><svg viewBox="0 0 24 24">${I[k]}</svg></div>
+  <div class="tmeta"><b>${AR[k]}</b><span class="hx">${b}</span></div></div>`;
+}).join('');
+
+// sidebar nav
+const navKeys=['admin','companies','contracts','departments','programs','rooms','groups','schedules','trainees','attendance','permissions','users','reports'];
+function buildNav(active){
+ document.getElementById('snav').innerHTML=navKeys.map(k=>{
+  const[,,,,gf,gt]=TONES[k];
+  return `<a data-k="${k}" class="${k===active?'active':''}"><span class="ni" style="background:linear-gradient(135deg,${gf},${gt})"><svg viewBox="0 0 24 24">${I[k]}</svg></span>${AR[k]}</a>`;
+ }).join('');
+ document.querySelectorAll('.snav a').forEach(a=>a.onclick=()=>applyTone(a.dataset.k));
+}
+
+// tone chips
+const chipKeys=['companies','permissions','trainees','attendance','programs','reports','contracts','rooms'];
+document.getElementById('toneChips').innerHTML=chipKeys.map(k=>`<button class="chip" data-k="${k}"><span class="d" style="background:${TONES[k][0]}"></span>${AR[k]}</button>`).join('');
+
+function applyTone(k){
+ const app=document.getElementById('app');
+ app.dataset.tone=k;
+ const[b,st,sf,bd,gf,gt]=TONES[k];
+ app.style.setProperty('--acc',b);app.style.setProperty('--acc-h',TONES[k][1]);
+ app.style.setProperty('--acc-soft',sf);app.style.setProperty('--acc-bd',bd);
+ app.style.setProperty('--acc-strong',st);app.style.setProperty('--gf',gf);app.style.setProperty('--gt',gt);
+ const eb=EB[k]||[AR[k],AR[k]];
+ document.getElementById('peb').textContent=eb[0];
+ document.getElementById('ptitle').textContent=eb[1];
+ document.querySelectorAll('.chip').forEach(c=>{const on=c.dataset.k===k;c.classList.toggle('on',on);c.style.background=on?b:'';});
+ buildNav(k);
+}
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>applyTone(c.dataset.k));
+document.querySelectorAll('#densitySeg button').forEach(b=>b.onclick=()=>{
+ document.getElementById('app').dataset.density=b.dataset.d;
+ document.querySelectorAll('#densitySeg button').forEach(x=>x.classList.toggle('on',x===b));
+ document.querySelectorAll('.app').forEach(a=>{const d=b.dataset.d;
+  a.style.setProperty('--row-py',d==='compact'?'7px':'13px');
+  a.style.setProperty('--card-p',d==='compact'?'12px':'18px');
+  a.style.setProperty('--gap',d==='compact'?'10px':'16px');});
+});
+applyTone('companies');
+document.getElementById('app').style.setProperty('--row-py','13px');
+document.getElementById('app').style.setProperty('--card-p','18px');
+
+// permissions matrix
+const ACT={view:['#2B7DC5','#E6F0F8','#BFDAEE','#235F92','<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>'],
+ add:['#16A06F','#E4F4EE','#BBE3D3','#157A57','<path d="M12 5v14M5 12h14"/>'],
+ edit:['#D08A1E','#FAF1E2','#EBD9B8','#9A6516','<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>'],
+ del:['#D24237','#FBE9E7','#F1C7C3','#A0322A','<path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/>']};
+// state: 2=direct(solid) 1=pending(soft) 0=off
+const RES=[
+ ['الشركات','أساسي · 4 مفعّلة',[2,2,1,1]],
+ ['الأقسام','أساسي · 4 مفعّلة',[2,2,2,1]],
+ ['البرامج التدريبية','أساسي · 3 مفعّلة',[2,2,1,0]],
+ ['المجموعات','أساسي · 4 مفعّلة',[2,1,1,1]],
+ ['المتدربون','حساس · 2 مفعّلة',[2,1,0,0]],
+ ['الحضور','تشغيلي · 3 مفعّلة',[2,2,2,0]],
+ ['الصلاحيات','حرِج · 1 مفعّلة',[2,0,0,0]],
+];
+function cell(act,state){
+ const[c,sf,bd,st,ic]=ACT[act];
+ if(state===2)return `<span class="cellpill solid" style="background:${c}"><svg viewBox="0 0 24 24" stroke="#fff">${ic}</svg>مباشر</span>`;
+ if(state===1)return `<span class="cellpill soft" style="border-color:${bd};color:${st}"><svg viewBox="0 0 24 24" stroke="${c}">${ic}</svg>موافقة</span>`;
+ return `<span class="cellpill off"><svg viewBox="0 0 24 24" stroke="currentColor">${ic}</svg>مقفول</span>`;
+}
+document.getElementById('mtxBody').innerHTML=RES.map(([n,m,s])=>`
+ <tr><td class="res"><div class="rname">${n}</div><div class="rmeta">${m}</div></td>
+ <td>${cell('view',s[0])}</td><td>${cell('add',s[1])}</td><td>${cell('edit',s[2])}</td><td>${cell('del',s[3])}</td></tr>`).join('');
+</script>
+</body>
+</html>
