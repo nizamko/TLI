@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riyadat — Brand & Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-50:#F1F5F8;--navy-100:#DEE7ED;--navy-200:#BDCBD7;--navy-300:#93AABC;--navy-400:#5F7F96;
+  --navy-500:#3C627D;--navy-600:#305169;--navy-700:#254159;--navy-800:#1B3043;--navy-900:#11202E;
+  --steel-50:#F4F6F7;--steel-100:#E7ECED;--steel-200:#CFD8DA;--steel-300:#B0C0C4;--steel-400:#90A4AA;
+  --steel-500:#718A91;--steel-600:#5C7178;--steel-700:#495A60;--steel-800:#374449;--steel-900:#232C2F;
+  --slate-0:#FFFFFF;--slate-50:#F7F9FA;--slate-100:#EEF1F3;--slate-200:#E1E6E9;--slate-300:#CBD3D7;
+  --slate-400:#A4AFB4;--slate-500:#7C888D;--slate-600:#5C686D;--slate-700:#404B50;--slate-800:#2A3338;--slate-900:#181F23;
+  --success:#2E8B6B;--success-soft:#E6F1ED;--success-border:#C0DCD3;--success-text:#29795E;
+  --warning:#C08A2C;--warning-soft:#F7F1E6;--warning-border:#ECDCC0;--warning-text:#A57829;
+  --danger:#C0453D;--danger-soft:#F7E9E8;--danger-border:#ECC7C5;--danger-text:#A53D37;
+  --info:#3C627D;--info-soft:#E8ECEF;--info-border:#C4D0D8;--info-text:#35566E;
+  --bg:var(--slate-50);--surface:#fff;--border:var(--slate-200);--border-strong:var(--slate-300);
+  --text-strong:var(--slate-900);--text:var(--slate-700);--muted:var(--slate-500);--faint:var(--slate-400);
+  --shadow-sm:0 1px 3px rgba(37,65,89,.08),0 1px 2px rgba(37,65,89,.05);
+  --shadow-md:0 4px 14px rgba(37,65,89,.09);--shadow-lg:0 14px 32px rgba(37,65,89,.13);
+  --r-sm:6px;--r-md:8px;--r-lg:10px;--r-xl:14px;
+  --f-disp:"Sora","IBM Plex Sans Arabic",sans-serif;
+  --f-ar:"IBM Plex Sans Arabic",sans-serif;
+  --f-body:"Inter","IBM Plex Sans Arabic",sans-serif;
+  --f-mono:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--f-ar);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--f-mono);font-feature-settings:"tnum"}
+section{padding:56px 0;border-bottom:1px solid var(--border)}
+.eyebrow{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-600);font-weight:500;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--steel-500);display:inline-block}
+h2.sec{font-family:var(--f-disp);font-size:1.7rem;font-weight:700;color:var(--text-strong);letter-spacing:-.01em;margin-bottom:6px;direction:rtl}
+.sec-sub{color:var(--muted);font-size:.95rem;margin-bottom:30px;max-width:60ch}
+
+/* ---------- HERO ---------- */
+.hero{background:linear-gradient(160deg,var(--navy-800) 0%,var(--navy-700) 45%,var(--navy-600) 100%);color:#fff;padding:0;position:relative;overflow:hidden;border-bottom:none}
+.hero .wrap{padding-top:70px;padding-bottom:74px;position:relative;z-index:2}
+.hero-gears{position:absolute;inset:0;z-index:1;opacity:.12;pointer-events:none}
+.hero-gears svg{position:absolute;left:-60px;top:-30px;width:420px;height:420px}
+.hero-tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel-300);margin-bottom:22px}
+.hero h1{font-family:var(--f-disp);font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin-bottom:8px}
+.hero h1 .ar{font-family:var(--f-ar);font-weight:700;display:block;font-size:.7em;color:var(--steel-200);margin-top:10px}
+.hero p.lede{color:#C7D6E0;font-size:1.05rem;max-width:52ch;margin-top:18px}
+.hero-anchors{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.anchor-chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:14px 16px;display:flex;align-items:center;gap:12px;backdrop-filter:blur(4px)}
+.anchor-chip .dot{width:34px;height:34px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.anchor-chip b{font-family:var(--f-disp);font-size:.92rem;color:#fff;display:block}
+.anchor-chip span{font-family:var(--f-mono);font-size:.72rem;color:var(--steel-200)}
+
+/* ---------- RAMPS ---------- */
+.ramp{display:grid;grid-template-columns:repeat(10,1fr);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
+.ramp .step{padding:14px 8px 12px;min-height:84px;display:flex;flex-direction:column;justify-content:flex-end}
+.ramp .step .n{font-family:var(--f-mono);font-size:.66rem;font-weight:500;opacity:.85}
+.ramp .step .hex{font-family:var(--f-mono);font-size:.6rem;opacity:.7;margin-top:2px}
+.ramp-label{display:flex;align-items:baseline;gap:10px;margin:26px 0 10px}
+.ramp-label b{font-family:var(--f-disp);font-size:1rem;color:var(--text-strong)}
+.ramp-label .tok{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.ramp-label .pin{font-family:var(--f-mono);font-size:.62rem;color:var(--steel-700);background:var(--steel-50);border:1px solid var(--steel-200);padding:2px 7px;border-radius:999px;margin-inline-start:auto}
+
+/* ---------- SEMANTIC ---------- */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sem-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow-sm)}
+.sem-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sem-head .sw{width:26px;height:26px;border-radius:7px}
+.sem-head b{font-family:var(--f-disp);font-size:.95rem;color:var(--text-strong)}
+.sem-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid}
+.sem-pill .d{width:7px;height:7px;border-radius:50%}
+.sem-card .hexrow{font-family:var(--f-mono);font-size:.68rem;color:var(--muted);margin-top:12px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- TONES ---------- */
+.tone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tone-card{display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:13px 15px;box-shadow:var(--shadow-sm)}
+.tone-ic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.tone-ic svg{width:21px;height:21px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tone-meta b{font-family:var(--f-disp);font-size:.9rem;color:var(--text-strong);display:block}
+.tone-meta .hx{font-family:var(--f-mono);font-size:.66rem;color:var(--muted)}
+.tone-soft{margin-inline-start:auto;font-size:.7rem;font-weight:600;padding:5px 10px;border-radius:7px;border:1px solid}
+
+/* ---------- APP PREVIEW ---------- */
+.preview{background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);overflow:hidden;display:grid;grid-template-columns:230px 1fr;min-height:520px}
+.pv-side{background:var(--navy-800);padding:18px 14px;color:#fff}
+.pv-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:14px}
+.pv-brand .logo{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--navy-500),var(--steel-500));display:flex;align-items:center;justify-content:center;font-family:var(--f-disp);font-weight:800;color:#fff;font-size:.85rem}
+.pv-brand b{font-family:var(--f-disp);font-size:.9rem;color:#fff}
+.pv-brand span{font-size:.66rem;color:var(--steel-300);display:block}
+.pv-nav{display:flex;flex-direction:column;gap:3px}
+.pv-nav a{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:8px;color:#AEC0CC;font-size:.82rem;font-weight:500;text-decoration:none;transition:.15s}
+.pv-nav a .nic{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.pv-nav a .nic svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pv-nav a:hover{background:rgba(255,255,255,.05);color:#fff}
+.pv-nav a.active{background:rgba(255,255,255,.09);color:#fff}
+.pv-main{background:var(--slate-50);padding:22px 24px}
+.pv-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.pv-head .eb{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-600);font-weight:500}
+.pv-head h3{font-family:var(--f-disp);font-size:1.3rem;color:var(--text-strong);margin-top:3px}
+.pv-head p{font-size:.82rem;color:var(--muted)}
+.btn{font-family:var(--f-ar);border:none;border-radius:var(--r-md);padding:9px 16px;font-size:.82rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.btn-primary{background:var(--navy-700);color:#fff}
+.btn-primary:hover{background:var(--navy-800)}
+.btn-ghost{background:#fff;color:var(--navy-700);border:1px solid var(--border-strong)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:13px 15px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:3px}
+.stat .lbl{font-size:.7rem;color:var(--muted);font-weight:500}
+.stat .val{font-family:var(--f-disp);font-size:1.5rem;font-weight:700;color:var(--text-strong);margin-top:4px}
+.stat .delta{font-size:.66rem;font-weight:600;margin-top:2px}
+.tbl{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+.tbl table{width:100%;border-collapse:collapse;font-size:.8rem}
+.tbl th{background:var(--slate-100);text-align:right;padding:11px 14px;font-weight:600;color:var(--slate-600);font-size:.72rem;letter-spacing:.02em}
+.tbl td{padding:11px 14px;border-top:1px solid var(--border);color:var(--text)}
+.tbl tr:hover td{background:var(--slate-50)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:600;border:1px solid}
+.badge .d{width:6px;height:6px;border-radius:50%}
+.av{display:inline-flex;align-items:center;gap:9px}
+.av .ph{width:28px;height:28px;border-radius:8px;background:var(--steel-100);color:var(--steel-700);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.7rem;font-family:var(--f-disp)}
+.alert{display:flex;gap:12px;padding:13px 15px;border-radius:var(--r-md);border:1px solid var(--warning-border);background:var(--warning-soft);margin-top:16px;font-size:.8rem;color:var(--warning-text)}
+.alert .ai{flex:0 0 auto;width:20px;height:20px;color:var(--warning)}
+
+footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.82rem}
+footer .mono{color:var(--steel-600)}
+@media(max-width:880px){
+  .ramp{grid-template-columns:repeat(5,1fr)}.grid4,.tone-grid,.stats{grid-template-columns:repeat(2,1fr)}
+  .preview{grid-template-columns:1fr}.pv-side{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-gears">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fff" d="M100 55a45 45 0 1 0 0 90 45 45 0 0 0 0-90Zm0 22a23 23 0 1 1 0 46 23 23 0 0 1 0-46Z"/>
+      <g fill="#fff"><rect x="92" y="20" width="16" height="22" rx="3"/><rect x="92" y="158" width="16" height="22" rx="3"/><rect x="20" y="92" width="22" height="16" rx="3"/><rect x="158" y="92" width="22" height="16" rx="3"/><rect x="40" y="40" width="16" height="22" rx="3" transform="rotate(45 48 51)"/><rect x="144" y="40" width="16" height="22" rx="3" transform="rotate(-45 152 51)"/><rect x="40" y="138" width="16" height="22" rx="3" transform="rotate(-45 48 149)"/><rect x="144" y="138" width="16" height="22" rx="3" transform="rotate(45 152 149)"/></g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-tag">Tomorrow's Leadership Institute · Design System v2</div>
+    <h1>Industrial&nbsp;Calm
+      <span class="ar">نظام تصميم معهد ريادة الغد</span>
+    </h1>
+    <p class="lede">لوحة ألوان enterprise مشتقّة مباشرةً من اللوجو — Navy للسلطة والبنية، Steel للهدوء والأسطح، والألوان المميّزة إشارات منضبطة داخل الشاشات الكثيفة، مش زينة.</p>
+    <div class="hero-anchors">
+      <div class="anchor-chip"><div class="dot" style="background:#254159"></div><div><b>Brand Navy</b><span>#254159 · navy-700</span></div></div>
+      <div class="anchor-chip"><div class="dot" style="background:#718A91"></div><div><b>Brand Steel</b><span>#718A91 · steel-500</span></div></div>
+      <div class="anchor-chip"><div class="dot" style="background:#5A5A5A"></div><div><b>Wordmark Ink</b><span>#5A5A5A · brand-ink</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ RAMPS ============ -->
+<section><div class="wrap">
+  <div class="eyebrow">Core Ramps</div>
+  <h2 class="sec">الـ ramps الأساسية</h2>
+  <p class="sec-sub">كل لون اتبنى كـ ramp من 50 لـ 900 حوالين لون البرند. النقطة المثبّتة (◆) هي اللون اللي اتسحب من اللوجو بالظبط.</p>
+
+  <div class="ramp-label"><b>Navy</b><span class="tok">--tli-navy-*</span><span class="pin">◆ 700 = brand</span></div>
+  <div class="ramp" id="rampNavy"></div>
+
+  <div class="ramp-label"><b>Steel</b><span class="tok">--tli-steel-*</span><span class="pin">◆ 500 = brand</span></div>
+  <div class="ramp" id="rampSteel"></div>
+
+  <div class="ramp-label"><b>Slate</b><span class="tok">--tli-slate-*</span><span class="pin">cool neutrals</span></div>
+  <div class="ramp" id="rampSlate"></div>
+</div></section>
+
+<!-- ============ SEMANTIC ============ -->
+<section><div class="wrap">
+  <div class="eyebrow">Semantic</div>
+  <h2 class="sec">الألوان الدلالية</h2>
+  <p class="sec-sub">هادية ومضبوطة على نفس درجة الـ chroma — تقرأها العين كـ "حالة" مش كـ تنبيه صارخ. كل واحدة معاها soft background للـ badges والـ alerts.</p>
+  <div class="grid4" id="semGrid"></div>
+</div></section>
+
+<!-- ============ TONES ============ -->
+<section><div class="wrap">
+  <div class="eyebrow">Category Tones · الأيقونات تتلوّن</div>
+  <h2 class="sec">ألوان الموديولات (9 tones)</h2>
+  <p class="sec-sub">كل موديول له لون مميّز — بس كلهم عائلة cool واحدة بنفس الانضباط، عشان السايدبار والتابات يبقوا متمايزين من غير ما الشكل يبقى رينبو. ده سر الـ enterprise look.</p>
+  <div class="tone-grid" id="toneGrid"></div>
+</div></section>
+
+<!-- ============ APP PREVIEW ============ -->
+<section style="background:var(--slate-100)"><div class="wrap">
+  <div class="eyebrow">Live Preview</div>
+  <h2 class="sec">الـ System شغّال</h2>
+  <p class="sec-sub">معاينة حقيقية: سايدبار بأيقونات ملوّنة بالـ tones، header، stat cards، جدول بـ badges، وأزرار — كله من نفس الـ tokens.</p>
+
+  <div class="preview">
+    <aside class="pv-side">
+      <div class="pv-brand">
+        <div class="logo">TLI</div>
+        <div><b>ريادة الغد</b><span>لوحة الإدارة</span></div>
+      </div>
+      <nav class="pv-nav" id="pvNav"></nav>
+    </aside>
+    <main class="pv-main">
+      <div class="pv-head">
+        <div>
+          <div class="eb">إدارة الشركات</div>
+          <h3>الشركات</h3>
+          <p>إدارة الشركات والعقود المرتبطة بها</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost">تصدير</button>
+          <button class="btn btn-primary">＋ إضافة شركة</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat" style="--c:var(--navy-700)"><div class="lbl">إجمالي الشركات</div><div class="val">48</div><div class="delta" style="color:var(--success-text)">▲ 6 هذا الشهر</div></div>
+        <div class="stat" style="--c:var(--success)"><div class="lbl">عقود نشطة</div><div class="val">41</div><div class="delta" style="color:var(--muted)">مستقر</div></div>
+        <div class="stat" style="--c:var(--warning)"><div class="lbl">قرب الانتهاء</div><div class="val">5</div><div class="delta" style="color:var(--warning-text)">يحتاج متابعة</div></div>
+        <div class="stat" style="--c:var(--steel-500)"><div class="lbl">متدربين نشطين</div><div class="val">2,840</div><div class="delta" style="color:var(--success-text)">▲ 12%</div></div>
+      </div>
+
+      <div class="tbl">
+        <table>
+          <thead><tr><th>الشركة</th><th>العقد</th><th>المتدربين</th><th>الحالة</th></tr></thead>
+          <tbody>
+            <tr><td><span class="av"><span class="ph">أس</span> أسمنت السويس</span></td><td class="mono">CN-2041</td><td>320</td><td><span class="badge" style="background:var(--success-soft);border-color:var(--success-border);color:var(--success-text)"><span class="d" style="background:var(--success)"></span>نشط</span></td></tr>
+            <tr><td><span class="av"><span class="ph">دل</span> دلتا للصلب</span></td><td class="mono">CN-2038</td><td>185</td><td><span class="badge" style="background:var(--warning-soft);border-color:var(--warning-border);color:var(--warning-text)"><span class="d" style="background:var(--warning)"></span>قرب الانتهاء</span></td></tr>
+            <tr><td><span class="av"><span class="ph">نا</span> النصر للسيارات</span></td><td class="mono">CN-2055</td><td>402</td><td><span class="badge" style="background:var(--success-soft);border-color:var(--success-border);color:var(--success-text)"><span class="d" style="background:var(--success)"></span>نشط</span></td></tr>
+            <tr><td><span class="av"><span class="ph">شر</span> الشرقية للدخان</span></td><td class="mono">CN-2012</td><td>0</td><td><span class="badge" style="background:var(--danger-soft);border-color:var(--danger-border);color:var(--danger-text)"><span class="d" style="background:var(--danger)"></span>منتهٍ</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert">
+        <svg class="ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <div>عقدان سينتهيان خلال 30 يوم. التعديل على بياناتهما يحتاج موافقة المدير قبل التنفيذ.</div>
+      </div>
+    </main>
+  </div>
+</div></section>
+
+<footer>
+  <div>نظام تصميم <b style="color:var(--navy-700);font-family:var(--f-disp)">Riyadat</b> — مشتق من لوجو TLI · مبني على طبقتين <span class="mono">--tli-*</span> + <span class="mono">--riyadat-*</span></div>
+</footer>
+
+<script>
+const navy=['50','100','200','300','400','500','600','700','800','900'].map(n=>['navy-'+n,getCss('--navy-'+n)]);
+const steel=['50','100','200','300','400','500','600','700','800','900'].map(n=>['steel-'+n,getCss('--steel-'+n)]);
+const slate=['50','100','200','300','400','500','600','700','800','900'].map(n=>['slate-'+n,getCss('--slate-'+n)]);
+function getCss(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+function lum(hex){const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return(0.299*r+0.587*g+0.114*b);}
+function ramp(id,arr,pin){
+  document.getElementById(id).innerHTML=arr.map(([n,hex])=>{
+    const t=lum(hex)<140?'#fff':'#1B3043';
+    const isPin=n.endsWith(pin);
+    return `<div class="step" style="background:${hex};color:${t}">
+      <div class="n">${n.split('-')[1]}${isPin?' ◆':''}</div><div class="hex">${hex}</div></div>`;
+  }).join('');
+}
+ramp('rampNavy',navy,'700');ramp('rampSteel',steel,'500');ramp('rampSlate',slate,'');
+
+// Semantic
+const sem=[
+ ['نجاح / Success','success','#2E8B6B','#E6F1ED','#C0DCD3','#29795E'],
+ ['تحذير / Warning','warning','#C08A2C','#F7F1E6','#ECDCC0','#A57829'],
+ ['خطر / Danger','danger','#C0453D','#F7E9E8','#ECC7C5','#A53D37'],
+ ['معلومة / Info','info','#3C627D','#E8ECEF','#C4D0D8','#35566E'],
+];
+document.getElementById('semGrid').innerHTML=sem.map(([ar,k,base,soft,bd,tx])=>`
+ <div class="sem-card">
+   <div class="sem-head"><div class="sw" style="background:${base}"></div><b>${ar}</b></div>
+   <span class="sem-pill" style="background:${soft};border-color:${bd};color:${tx}"><span class="d" style="background:${base}"></span>حالة نموذجية</span>
+   <div class="hexrow"><span>base ${base}</span><span>soft ${soft}</span></div>
+ </div>`).join('');
+
+// Tones + icons
+const I={
+ admin:'<path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/>',
+ companies:'<path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01"/>',
+ programs:'<path d="M4 5h16v14H4zM4 9h16M8 5v4"/>',
+ trainees:'<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11l2 2 4-4"/>',
+ attendance:'<path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+ applications:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6"/>',
+ permissions:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+ audit:'<path d="M12 8v4l3 2M12 3a9 9 0 1 0 9 9"/>',
+ reports:'<path d="M3 3v18h18M7 14l3-4 4 3 5-7"/>',
+};
+const tones=[
+ ['admin','الإدارة','#2F5070','#EAEEF1','#C5CED7','#294560'],
+ ['companies','الشركات','#5C7178','#EFF1F2','#D1D7D9','#4D6066'],
+ ['programs','البرامج','#45567E','#ECEEF2','#CBD0DB','#3B4A6B'],
+ ['trainees','المتدربين','#2E7C82','#EAF2F2','#C4DADC','#28696F'],
+ ['attendance','الحضور','#2E8B6B','#EAF3F0','#C4DFD6','#28755C'],
+ ['applications','الطلبات','#B5812B','#F8F2EA','#EADCC4','#966D27'],
+ ['permissions','الصلاحيات','#6E4F7A','#F0EDF2','#D6CEDA','#5C4468'],
+ ['audit','السجلّات','#5C686D','#EFF0F0','#D1D5D6','#4D585D'],
+ ['reports','التقارير','#2C7A8C','#EAF2F4','#C4DADF','#266777'],
+];
+document.getElementById('toneGrid').innerHTML=tones.map(([k,ar,base,soft,bd,tx])=>`
+ <div class="tone-card">
+   <div class="tone-ic" style="background:${base}"><svg viewBox="0 0 24 24">${I[k]}</svg></div>
+   <div class="tone-meta"><b>${ar}</b><span class="hx">${base}</span></div>
+   <span class="tone-soft" style="background:${soft};border-color:${bd};color:${tx}">${k}</span>
+ </div>`).join('');
+
+// Sidebar nav (icons colored by tone)
+const nav=[
+ ['admin','الرئيسية',0],['companies','الشركات',1],['programs','البرامج',0],
+ ['trainees','المتدربين',0],['attendance','الحضور',0],['applications','الطلبات',0],
+ ['permissions','الصلاحيات',0],['reports','التقارير',0],
+];
+const tmap=Object.fromEntries(tones.map(t=>[t[0],t[2]]));
+document.getElementById('pvNav').innerHTML=nav.map(([k,ar,act])=>`
+ <a class="${act?'active':''}"><span class="nic" style="background:${tmap[k]}"><svg viewBox="0 0 24 24">${I[k]}</svg></span>${ar}</a>`).join('');
+</script>
+</body>
+</html>
